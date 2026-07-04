@@ -2067,7 +2067,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
           <span class="faq-q-text">Which browsers does Projiq support?</span>
           <span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">Projiq runs on <strong>Web</strong> (Chrome, Safari, Firefox, Edge), <strong>iOS</strong> (iPhone &amp; iPad), and <strong>Android</strong> (all phones and tablets). All three surfaces stay in sync in real time via WebSocket under 100ms — the same live data everywhere, always.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Projiq runs on <strong>Web</strong> — Chrome, Safari, Firefox, and Edge. No installation required. Real-time WebSocket sync keeps all browser sessions live in under 100ms. iOS &amp; Android mobile access is available as an optional add-on — see the pricing section for details.</div></div>
       </div>
 
       <div class="faq-item">
@@ -2120,7 +2120,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
   <div class="container">
     <div class="cta-inner reveal">
       <div class="cta-logo">Projiq</div>
-      <p class="cta-sub">Let&rsquo;s get your organization aligned —<br>on Web, iOS, and Android.</p>
+      <p class="cta-sub">Let&rsquo;s get your organization aligned —<br>on the Web, from day one.</p>
       <div class="cta-btns">
         <a href="https://projiq.app/register-org?plan=professional" target="_blank" class="btn btn-primary" style="font-size:16px;padding:16px 36px;">Start Free Trial</a>
         <a href="mailto:hello@projiq.app?subject=Demo%20Request%20—%20Projiq&body=Hi%2C%0A%0AI'd%20like%20to%20schedule%20a%20demo%20of%20Projiq%20for%20my%20organization.%0A%0AOrganization%3A%20%0ATeam%20size%3A%20%0ABest%20time%3A%20" class="btn btn-ghost" style="font-size:16px;padding:15px 36px;">Request a Demo</a>
@@ -2393,12 +2393,9 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
     if(dev3d){
       window.addEventListener('scroll',function(){
         var sy=window.scrollY;
-        if(sy<600){
-          var t=sy/600;
-          dev3d.style.transform='rotateX('+(22+t*12)+'deg) rotateY('+((-5)-t*4)+'deg) scale('+(0.96-t*.1)+') translateY('+(t*50)+'px)';
-          dev3d.style.opacity=Math.max(0,1-t*.8);
-        } else {
-          dev3d.style.opacity=0;
+        if(sy<800){
+          var t=sy/800;
+          dev3d.style.transform='rotateX('+(22+t*10)+'deg) rotateY('+((-5)-t*3)+'deg) scale('+(1-t*.04)+') translateY('+(t*30)+'px)';
         }
       },{passive:true});
     }
