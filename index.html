@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projiq — Project Management for Organizations</title>
-<meta name="description" content="Projiq — the project management platform organizations trust to align every team, sprint, and milestone across Web, iOS, and Android.">
+<meta name="description" content="Projiq — the project management platform organizations trust to align every team, sprint, and milestone on the Web.">
 <style>
 /* ─── RESET & VARS ─────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -64,7 +64,19 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .nav-links a{font-size:13.5px;color:var(--muted);text-decoration:none;font-weight:500;transition:color .2s;}
 .nav-links a:hover{color:var(--strong);}
 .nav-cta{display:flex;gap:10px;margin-left:28px;}
-@media(max-width:768px){.nav-links{display:none;}.nav-inner{padding:0 22px;}}
+@media(max-width:768px){.nav-links{display:none;}.nav-inner{padding:0 22px;}.nav-cta{display:none;}}
+.nav-ham{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;margin-left:auto;flex-shrink:0;}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform .25s,opacity .25s;}
+.nav-ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-ham.open span:nth-child(2){opacity:0;}
+.nav-ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:768px){.nav-ham{display:flex;}}
+.mob-nav{position:fixed;inset:0;z-index:997;background:rgba(2,11,24,.97);backdrop-filter:blur(18px);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:28px;opacity:0;pointer-events:none;transition:opacity .28s;}
+.mob-nav.open{opacity:1;pointer-events:all;}
+.mob-nav a{font-size:22px;font-weight:700;color:var(--text);text-decoration:none;transition:color .2s;letter-spacing:-.02em;}
+.mob-nav a:hover{color:var(--strong);}
+.mob-nav-div{width:40px;height:1px;background:var(--border);margin:4px 0;}
+.mob-nav-cta{display:flex;flex-direction:column;gap:12px;width:260px;margin-top:8px;}
 
 /* ─── HERO ─────────────────────────────────────────── */
 #hero{min-height:100vh;display:flex;align-items:center;padding:100px 0 80px;overflow:visible;position:relative;z-index:1;}
@@ -277,10 +289,22 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .price-card.featured .price-btn:hover{opacity:.9;}
 .pricing-foot{margin-top:22px;text-align:center;font-size:13px;color:var(--muted);padding:16px;background:var(--bg3);border:1px solid var(--border);border-radius:12px;line-height:1.65;}
 .pricing-foot strong{color:var(--text);}
+.mob-addon{background:linear-gradient(135deg,rgba(59,130,246,.07),rgba(139,92,246,.05));border:1px solid rgba(59,130,246,.22);border-radius:16px;padding:26px 30px;margin-top:16px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:22px;}
+@media(max-width:900px){.mob-addon{grid-template-columns:auto 1fr;}.mob-addon-tiers{grid-column:1/-1;}}
+@media(max-width:480px){.mob-addon{grid-template-columns:1fr;padding:18px 16px;}}
+.mob-addon-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--accent),var(--violet));border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.mob-addon-label{font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px;}
+.mob-addon-desc{font-size:12px;color:var(--muted);line-height:1.5;}
+.mob-addon-tiers{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+.mob-addon-tier{text-align:center;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:10px 16px;min-width:90px;}
+.mob-addon-tier-plan{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+.mob-addon-tier-price{font-size:20px;font-weight:800;color:var(--accentL);}
+.mob-addon-tier-price small{font-size:11px;font-weight:400;color:var(--muted);}
+.mob-addon-tier.ent .mob-addon-tier-price{font-size:15px;color:var(--amber);}
 
 /* ─── IMPLEMENTATION ───────────────────────────────── */
 .impl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px;}
-@media(max-width:768px){.impl-grid{grid-template-columns:repeat(2,1fr);}@media(max-width:480px){.impl-grid{grid-template-columns:1fr;}}}
+@media(max-width:768px){.impl-grid{grid-template-columns:repeat(2,1fr);}}
 .impl-card{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:26px 22px;position:relative;overflow:hidden;}
 .impl-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
 .ic1::before{background:linear-gradient(90deg,var(--accent),var(--accentL));}
@@ -303,7 +327,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 #cta{position:relative;overflow:hidden;padding:120px 0;}
 .cta-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(59,130,246,.13) 0%,rgba(139,92,246,.07) 40%,transparent 68%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;animation:breathe 7s ease-in-out infinite;}
 .cta-inner{text-align:center;position:relative;z-index:1;}
-.cta-logo{font-size:clamp(52px,8vw,88px);font-weight:900;letter-spacing:-.055em;line-height:.9;background:linear-gradient(135deg,#F1F5F9 0%,var(--accentL) 48%,var(--violet) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:20px;}
+.cta-logo{font-size:clamp(52px,8vw,88px);font-weight:900;letter-spacing:-.055em;line-height:.9;color:#F1F5F9;text-shadow:0 0 70px rgba(59,130,246,.55),0 0 130px rgba(139,92,246,.28);margin-bottom:20px;}
 .cta-sub{font-size:18px;color:var(--muted);margin-bottom:36px;line-height:1.6;}
 .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;}
 .cta-note{font-size:12px;color:var(--muted);opacity:.7;}
@@ -483,6 +507,241 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
 @keyframes v6bar3{0%,30%{width:0}46%,100%{width:82%}}
 @keyframes v6scr{0%{width:0}89%{width:100%}100%{width:0}}
 .v6-fill{animation:v6scr 14s linear infinite;}
+
+/* ─── 3D DEPTH SYSTEM ────────────────────────────────── */
+#hero{overflow:hidden;}
+#hero-canvas{position:absolute;inset:0;z-index:0;pointer-events:none;}
+#hero .hero-content{position:relative;z-index:2;}
+#hero .hero-glow,#hero .hero-glow2{z-index:1;}
+
+/* ── Hero 3D Floating Device ── */
+.hero-3d-wrap{perspective:1600px;perspective-origin:50% 35%;margin-top:68px;position:relative;z-index:2;}
+.hero-3d-device{
+  border:1px solid rgba(59,130,246,.22);border-radius:18px;overflow:hidden;
+  background:#04101E;transform-style:preserve-3d;
+  transform:rotateX(22deg) rotateY(-5deg);
+  animation:heroDevFloat 9s ease-in-out infinite;
+  box-shadow:0 70px 140px rgba(0,0,0,.85),0 0 0 1px rgba(59,130,246,.1),0 0 100px rgba(59,130,246,.15),inset 0 1px 0 rgba(255,255,255,.05);
+  will-change:transform;
+}
+@keyframes heroDevFloat{
+  0%,100%{transform:rotateX(22deg) rotateY(-5deg) translateY(0px);}
+  33%     {transform:rotateX(19deg) rotateY(-4deg) translateY(-18px);}
+  66%     {transform:rotateX(24deg) rotateY(-6deg) translateY(-9px);}
+}
+.hero-3d-device:hover{animation-play-state:paused;}
+
+/* Reflection / bottom glow under device */
+.hero-3d-wrap::after{content:'';position:absolute;bottom:-40px;left:10%;right:10%;height:80px;background:radial-gradient(ellipse,rgba(59,130,246,.28) 0%,transparent 70%);pointer-events:none;filter:blur(12px);}
+
+/* Floating 3D badges around device */
+.badge-3d{position:absolute;z-index:10;display:flex;align-items:center;gap:7px;padding:8px 14px;background:rgba(4,14,32,.92);border:1px solid rgba(59,130,246,.3);border-radius:100px;font-size:11px;font-weight:700;color:var(--strong);backdrop-filter:blur(12px);box-shadow:0 8px 32px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04);white-space:nowrap;}
+.badge-3d-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.b3d-tl{top:-18px;left:6%;animation:badge3dFloat 5s ease-in-out infinite;}
+.b3d-tr{top:10px;right:4%;animation:badge3dFloat 6s ease-in-out infinite .8s;}
+.b3d-bl{bottom:60px;left:-10px;animation:badge3dFloat 7s ease-in-out infinite 1.5s;}
+.b3d-br{bottom:40px;right:2%;animation:badge3dFloat 5.5s ease-in-out infinite 2s;}
+@keyframes badge3dFloat{0%,100%{transform:translateY(0) translateZ(30px);}50%{transform:translateY(-8px) translateZ(40px);}}
+@media(max-width:768px){.badge-3d{display:none;}.hero-3d-wrap{margin-top:40px;}.hero-3d-device{transform:rotateX(16deg) rotateY(0deg);}}
+
+/* Tilt-ready surfaces */
+.prob-card,.view-card,.plat-card,.impl-card,.price-card,.faq-item,.feat-item,.role-row,.sec-card,.stat-item{will-change:transform;transform-style:preserve-3d;}
+
+/* Browser frame 3D angle — dramatic */
+.browser-frame{transform:perspective(1800px) rotateX(8deg) rotateY(-4deg) scale(.96);transition:transform .6s cubic-bezier(.23,1,.32,1),box-shadow .5s;}
+.browser-frame:hover{transform:perspective(1800px) rotateX(2deg) rotateY(-1deg) scale(1);box-shadow:0 60px 120px rgba(59,130,246,.2),0 0 60px rgba(59,130,246,.08);}
+
+/* Phone frame 3D — more tilt */
+.phone-wrap{transform:perspective(800px) rotateY(16deg) rotateX(-8deg);transition:transform .5s cubic-bezier(.23,1,.32,1);}
+.phone-wrap:hover{transform:perspective(800px) rotateY(5deg) rotateX(-2deg);}
+
+/* Gallery duo left mock */
+.gallery-duo .mock-wrap{transform:perspective(800px) rotateY(-10deg) rotateX(4deg);transition:transform .4s cubic-bezier(.23,1,.32,1);}
+.gallery-duo .mock-wrap:hover{transform:perspective(800px) rotateY(-2deg) rotateX(0);}
+
+/* Sprint widget */
+.sprint-widget{transform-style:preserve-3d;}
+.feat-block .sprint-widget{transform:perspective(800px) rotateY(14deg) rotateX(-5deg);transition:transform .4s cubic-bezier(.23,1,.32,1);box-shadow:0 30px 80px rgba(0,0,0,.5),20px 0 60px rgba(59,130,246,.06);}
+.feat-block .sprint-widget:hover{transform:perspective(800px) rotateY(4deg) rotateX(-1deg);}
+
+/* Kanban mock-board */
+.mock-board{transform:perspective(900px) rotateX(8deg) rotateY(-12deg);transition:transform .4s cubic-bezier(.23,1,.32,1);box-shadow:0 30px 80px rgba(0,0,0,.5),-20px 0 60px rgba(139,92,246,.06);}
+.mock-board:hover{transform:perspective(900px) rotateX(2deg) rotateY(-4deg);}
+
+/* Mock wrap (issue card) in feature block */
+.feat-block .mock-wrap{transform:perspective(800px) rotateY(14deg) rotateX(-4deg);transition:transform .4s cubic-bezier(.23,1,.32,1);box-shadow:0 30px 80px rgba(0,0,0,.5),20px 0 60px rgba(59,130,246,.06);}
+.feat-block .mock-wrap:hover{transform:perspective(800px) rotateY(3deg) rotateX(-1deg);}
+
+/* Stat items */
+.stat-item{transition:transform .25s ease;}
+.stat-item:hover{transform:perspective(400px) rotateX(-12deg) scale(1.07);box-shadow:0 16px 40px rgba(59,130,246,.12);}
+
+/* Feat items */
+.feat-item{transition:border-color .2s,transform .15s ease,box-shadow .2s;}
+.feat-item:hover{transform:perspective(500px) rotateX(-5deg) translateZ(14px);border-color:rgba(59,130,246,.45);box-shadow:0 14px 48px rgba(59,130,246,.12);}
+
+/* Role rows */
+.role-row{transition:transform .2s ease,border-color .2s,box-shadow .2s;}
+.role-row:hover{transform:perspective(500px) rotateY(8deg) translateZ(10px);border-color:rgba(59,130,246,.35);box-shadow:0 10px 40px rgba(59,130,246,.08);}
+
+/* Sec cards */
+.sec-card{transition:transform .2s ease,border-color .2s,box-shadow .2s;}
+.sec-card:hover{transform:perspective(500px) rotateX(-6deg) translateZ(12px);border-color:rgba(59,130,246,.3);box-shadow:0 14px 40px rgba(59,130,246,.1);}
+
+/* Plat-b chips in hero */
+.plat-b{transition:transform .25s ease,box-shadow .25s;}
+.plat-b:hover{transform:translateY(-5px) perspective(200px) rotateX(-10deg);box-shadow:0 10px 30px rgba(59,130,246,.15);}
+
+/* Comparison table 3D */
+.tbl-wrap{transform:perspective(2400px) rotateX(4deg);transition:transform .5s ease;}
+.tbl-wrap:hover{transform:perspective(2400px) rotateX(0deg);}
+
+/* CTA logo 3D depth */
+.cta-logo{transform-style:preserve-3d;transition:transform .3s ease;}
+.cta-logo:hover{transform:perspective(500px) rotateX(-8deg) rotateY(5deg);}
+
+/* Button press depth */
+.btn:active{transform:perspective(400px) translateZ(-6px) scale(.97)!important;}
+
+/* Price card */
+.price-card{transition:transform .1s ease-out,box-shadow .2s;}
+
+/* Impl tags 3D */
+.impl-tags{transition:transform .3s ease;}
+.impl-tags:hover{transform:perspective(1200px) rotateX(-3deg) translateZ(8px);}
+
+/* Pricing note */
+.pricing-note{transition:transform .3s ease;}
+.pricing-note:hover{transform:perspective(1000px) rotateX(-4deg);}
+
+/* Kol cards in hero device */
+.hero-3d-device .kol-card{transition:transform .2s ease;}
+.hero-3d-device .kol-card:hover{transform:translateZ(12px) scale(1.04);}
+
+/* Floating ring behind the device */
+@keyframes ringOrbit{0%{transform:rotateX(70deg) rotateZ(0deg);}100%{transform:rotateX(70deg) rotateZ(360deg);}}
+.hero-orbit-ring{position:absolute;top:50%;left:50%;width:110%;height:110%;border-radius:50%;border:1px solid rgba(59,130,246,.06);transform:translate(-50%,-50%) rotateX(70deg);animation:ringOrbit 24s linear infinite;pointer-events:none;z-index:1;}
+.hero-orbit-ring-2{position:absolute;top:50%;left:50%;width:90%;height:90%;border-radius:50%;border:1px solid rgba(139,92,246,.05);transform:translate(-50%,-50%) rotateX(70deg);animation:ringOrbit 18s linear infinite reverse;pointer-events:none;z-index:1;}
+@media(max-width:768px){.hero-orbit-ring,.hero-orbit-ring-2{display:none;}}
+
+/* ─── FAQ ──────────────────────────────────────────── */
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px;}
+@media(max-width:768px){.faq-grid{grid-template-columns:1fr;}}
+.faq-item{background:var(--bg3);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .2s;}
+.faq-item:hover{border-color:rgba(59,130,246,.28);}
+.faq-q{width:100%;background:none;border:none;text-align:left;padding:22px 24px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.faq-q-text{font-size:15px;font-weight:700;color:var(--strong);line-height:1.35;}
+.faq-icon{width:22px;height:22px;border-radius:50%;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .25s,background .2s;}
+.faq-icon svg{width:10px;height:10px;stroke:var(--accentL);fill:none;stroke-width:2.5;stroke-linecap:round;transition:transform .25s;}
+.faq-item.open .faq-icon{background:rgba(59,130,246,.2);}
+.faq-item.open .faq-icon svg{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;}
+.faq-item.open .faq-a{max-height:300px;}
+.faq-a-inner{padding:0 24px 22px;font-size:14px;color:var(--muted);line-height:1.7;}
+.faq-a-inner strong{color:var(--text);}
+
+/* ═══════════════════════════════════════════════════════
+   MOBILE — comprehensive overrides
+   All perspective/3D transforms flattened on ≤768px.
+   Touch devices get no tilt (handled in JS too).
+═══════════════════════════════════════════════════════ */
+
+/* ── 900px: gallery duo stacks ── */
+@media(max-width:900px){
+  .gallery-duo{grid-template-columns:1fr;}
+  .gallery-duo .mock-wrap{transform:none!important;}
+}
+
+@media(max-width:768px){
+
+  /* Hero: auto height so device doesn't clip */
+  #hero{min-height:auto;padding:90px 0 56px;}
+
+  /* ── Hero 3D device: flat, no animation ── */
+  .hero-3d-wrap{perspective:none!important;margin-top:28px;}
+  .hero-3d-wrap::after{display:none;}
+  .hero-3d-device{
+    transform:none!important;
+    animation:none!important;
+    border-radius:12px;
+    box-shadow:0 16px 48px rgba(0,0,0,.7),0 0 0 1px rgba(59,130,246,.14)!important;
+  }
+  /* Board: show only 2 columns (To Do + In Progress) */
+  .hero-3d-device .app-board-cols{grid-template-columns:1fr 1fr!important;gap:6px!important;}
+  .hero-3d-device .app-board-cols>div:nth-child(3),
+  .hero-3d-device .app-board-cols>div:nth-child(4){display:none!important;}
+  /* App shell: hide sidebar to gain horizontal space */
+  .hero-3d-device .app-sidebar{display:none!important;}
+  .hero-3d-device .app-ui{height:230px;}
+
+  /* ── Flatten ALL perspective/3D transforms ── */
+  .browser-frame{transform:none!important;box-shadow:0 10px 36px rgba(0,0,0,.55)!important;}
+  .browser-frame:hover{transform:none!important;}
+  .phone-wrap{transform:none!important;}
+  .phone-wrap:hover{transform:none!important;}
+  .feat-block .mock-wrap{transform:none!important;box-shadow:none!important;}
+  .feat-block .mock-wrap:hover{transform:none!important;}
+  .feat-block .sprint-widget{transform:none!important;box-shadow:none!important;}
+  .feat-block .sprint-widget:hover{transform:none!important;}
+  .mock-board{transform:none!important;box-shadow:none!important;}
+  .mock-board:hover{transform:none!important;}
+  .tbl-wrap{transform:none!important;}
+  .tbl-wrap:hover{transform:none!important;}
+  /* Remove hover depth effects on touch */
+  .feat-item:hover,.role-row:hover,.sec-card:hover,
+  .stat-item:hover,.plat-b:hover,.cta-logo:hover{transform:none!important;box-shadow:none!important;}
+
+  /* ── Stats bar: 2×2 grid + last item full-width ── */
+  .stats-inner{flex-wrap:wrap;}
+  .stat-item{flex:0 0 50%;border-right:none;border-bottom:1px solid var(--border);}
+  .stat-item:nth-child(odd){border-right:1px solid var(--border);}
+  .stat-item:last-child{flex:0 0 100%;border-right:none;border-bottom:none;}
+  .stat-num{font-size:26px;}
+
+  /* ── Feature blocks: remove RTL direction quirk ── */
+  .feat-block.reverse>*{direction:ltr;}
+
+  /* ── Nav: tighter ── */
+  .nav-inner{height:56px;}
+  #hero{padding-top:80px;}
+}
+
+@media(max-width:480px){
+  /* Hero board: 1 column, only In Progress visible */
+  .hero-3d-device .app-board-cols{grid-template-columns:1fr!important;}
+  .hero-3d-device .app-board-cols>div:nth-child(1){display:none!important;}
+  .hero-3d-device .app-board-cols>div:nth-child(3),
+  .hero-3d-device .app-board-cols>div:nth-child(4){display:none!important;}
+  .hero-3d-device .app-ui{height:210px;}
+
+  /* Feature blocks: tighter */
+  .feat-block{padding:48px 0;}
+
+  /* Impl: single column */
+  .impl-grid{grid-template-columns:1fr;}
+
+  /* Views: single column */
+  .views-grid{grid-template-columns:1fr;}
+
+  /* Pricing note badges wrap */
+  .pricing-note{font-size:12px;}
+
+  /* Hero headline smaller min */
+  .hero-h1{font-size:clamp(38px,9vw,60px);}
+
+  /* Section sub narrower */
+  .section-sub{font-size:15px;}
+
+  /* Prob grid cards full width */
+  .prob-num{font-size:44px;}
+}
+
+/* prefers-reduced-motion: kill all animations */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}
+  #hero-canvas{display:none;}
+  .hero-orbit-ring,.hero-orbit-ring-2{display:none;}
+}
 </style>
 </head>
 <body>
@@ -520,17 +779,40 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
       <a href="#platform">Platform</a>
       <a href="#security">Security</a>
       <a href="#pricing">Pricing</a>
-      <a href="mailto:hello@projiq.app">Contact Us</a>
+      <a href="#faq">FAQ</a>
+      <a href="mailto:hello@projiq.app">Contact</a>
     </div>
     <div class="nav-cta">
       <a href="#pricing" class="btn btn-ghost btn-sm">See Pricing</a>
       <a href="https://projiq.app/register-org?plan=professional" target="_blank" class="btn btn-primary btn-sm">Get Started</a>
     </div>
+    <button class="nav-ham" id="ham-btn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
+<!-- ═══════════════ MOBILE NAV ═══════════════ -->
+<div class="mob-nav" id="mob-nav" role="dialog" aria-label="Mobile navigation">
+  <a href="#features" class="mob-link">Features</a>
+  <a href="#views" class="mob-link">Views</a>
+  <a href="#platform" class="mob-link">Platform</a>
+  <a href="#security" class="mob-link">Security</a>
+  <a href="#pricing" class="mob-link">Pricing</a>
+  <a href="#faq" class="mob-link">FAQ</a>
+  <a href="mailto:hello@projiq.app" class="mob-link">Contact</a>
+  <div class="mob-nav-div"></div>
+  <div class="mob-nav-cta">
+    <a href="#pricing" class="btn btn-ghost" style="text-align:center;justify-content:center;font-size:15px;">See Pricing</a>
+    <a href="https://projiq.app/register-org?plan=professional" target="_blank" class="btn btn-primary" style="text-align:center;justify-content:center;font-size:15px;">Get Started Free</a>
+  </div>
+</div>
+
 <!-- ═══════════════ HERO ═══════════════ -->
 <section id="hero">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-orbit-ring" aria-hidden="true"></div>
+  <div class="hero-orbit-ring-2" aria-hidden="true"></div>
   <div class="hero-glow"></div>
   <div class="hero-glow2"></div>
   <div class="container">
@@ -540,7 +822,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
       </div>
       <div class="hero-badge">
         <span class="live-dot"></span>
-        Web &nbsp;·&nbsp; iOS &nbsp;·&nbsp; Android &nbsp;·&nbsp; Always in sync
+        Web &nbsp;·&nbsp; Always in sync
       </div>
       <h1 class="hero-h1">
         The project platform<br><span class="gr">built for organizations.</span>
@@ -557,17 +839,87 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--accentL)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
             Web App
           </div>
-          <div class="plat-b">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-            iOS App
+        </div>
+      </div>
+    </div>
+
+    <!-- 3D floating device preview -->
+    <div class="hero-3d-wrap reveal">
+      <!-- floating badge chips -->
+      <div class="badge-3d b3d-tl"><span class="badge-3d-dot" style="background:var(--success);box-shadow:0 0 6px var(--success);"></span>Sprint 14 — 72% complete</div>
+      <div class="badge-3d b3d-tr"><span class="badge-3d-dot" style="background:var(--accentL);box-shadow:0 0 6px var(--accentL);"></span>Live · 6 users online</div>
+      <div class="badge-3d b3d-bl"><span class="badge-3d-dot" style="background:var(--amber);box-shadow:0 0 6px var(--amber);"></span>PRJ-142 moved → In Review</div>
+      <div class="badge-3d b3d-br"><span class="badge-3d-dot" style="background:var(--violet);box-shadow:0 0 6px var(--violet);"></span>Burndown on track</div>
+
+      <div class="hero-3d-device">
+        <!-- browser chrome -->
+        <div class="browser-chrome">
+          <div class="browser-dots"><div class="bd bd-r"></div><div class="bd bd-y"></div><div class="bd bd-g"></div></div>
+          <div class="browser-url">app.projiq.app — Sprint Board · Design System v3</div>
+        </div>
+        <!-- app shell -->
+        <div class="app-ui" style="height:320px;">
+          <div class="app-sidebar">
+            <div class="app-logo-mark" style="font-size:12px;">P</div>
+            <div class="app-nav-item active" title="Board">▦</div>
+            <div class="app-nav-item" title="Backlog">≡</div>
+            <div class="app-nav-item" title="Roadmap">◫</div>
+            <div class="app-nav-item" title="Sprint">⚡</div>
+            <div class="app-nav-item" title="Team">⊕</div>
           </div>
-          <div class="plat-b">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-            Android App
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="app-proj-name">Design System v3</span>
+              <span class="app-sprint-badge">Sprint 14 · 3d left</span>
+              <div style="display:flex;gap:6px;margin-left:auto;">
+                <div style="display:flex;gap:-4px;">
+                  <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--violet));font-size:7px;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;border:2px solid #030C1A;">SR</div>
+                  <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--success),#34D399);font-size:7px;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;border:2px solid #030C1A;margin-left:-6px;">JD</div>
+                  <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--amber),#FCD34D);font-size:7px;font-weight:800;color:#7C2D12;display:flex;align-items:center;justify-content:center;border:2px solid #030C1A;margin-left:-6px;">AM</div>
+                </div>
+                <div class="app-action-btn">+ Add Issue</div>
+              </div>
+            </div>
+            <div class="app-board-cols">
+              <!-- TO DO -->
+              <div class="kol">
+                <div class="kol-hdr"><span class="kol-name">To Do</span><span class="kol-cnt">4</span></div>
+                <div class="kol-card"><div class="kcard-badge story">Story</div><div class="kcard-ttl">Redesign token system</div><div class="kcard-foot"><span class="kcp">8 pts</span><div class="kcav" style="background:linear-gradient(135deg,var(--accent),var(--violet));">JD</div></div></div>
+                <div class="kol-card"><div class="kcard-badge task">Task</div><div class="kcard-ttl">Write API docs v2</div><div class="kcard-foot"><span class="kcp">5 pts</span><div class="kcav" style="background:linear-gradient(135deg,var(--amber),#FCD34D);color:#7C2D12;">AM</div></div></div>
+                <div class="kol-card" style="opacity:.6;"><div class="kcard-badge epic">Epic</div><div class="kcard-ttl">Mobile v2 release</div><div class="kcard-foot"><span class="kcp">13 pts</span></div></div>
+              </div>
+              <!-- IN PROGRESS -->
+              <div class="kol" style="background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.14);">
+                <div class="kol-hdr"><span class="kol-name" style="color:var(--accentL);">In Progress</span><span class="kol-cnt">3</span></div>
+                <div class="kol-card kc-active"><div class="kcard-badge bug">Bug</div><div class="kcard-ttl">Auth fails on Safari 17</div><div class="kcard-foot"><span class="kcp">5 pts</span><div class="kcav" style="background:linear-gradient(135deg,var(--success),#34D399);">SR</div></div></div>
+                <div class="kol-card kc-active"><div class="kcard-badge story">Story</div><div class="kcard-ttl">Dashboard perf pass</div><div class="kcard-foot"><span class="kcp">3 pts</span><div class="kcav" style="background:linear-gradient(135deg,var(--accent),var(--violet));">JD</div></div></div>
+              </div>
+              <!-- IN REVIEW -->
+              <div class="kol">
+                <div class="kol-hdr"><span class="kol-name">In Review</span><span class="kol-cnt">2</span></div>
+                <div class="kol-card"><div class="kcard-badge story">Story</div><div class="kcard-ttl">Onboarding flow redesign</div><div class="kcard-foot"><span class="kcp">8 pts</span><div class="kcav" style="background:linear-gradient(135deg,var(--amber),#FCD34D);color:#7C2D12;">AM</div></div></div>
+              </div>
+              <!-- DONE -->
+              <div class="kol">
+                <div class="kol-hdr"><span class="kol-name" style="color:var(--success);">Done</span><span class="kol-cnt">7</span></div>
+                <div class="kol-card kc-done"><div class="kcard-badge task">Task</div><div class="kcard-ttl">Design system audit</div><div class="kcard-foot"><span class="kcp">8 pts</span></div></div>
+                <div class="kol-card kc-done"><div class="kcard-badge bug">Bug</div><div class="kcard-ttl">Mobile nav regression</div><div class="kcard-foot"><span class="kcp">3 pts</span></div></div>
+                <div class="kol-card kc-done" style="opacity:.38;"><div class="kcard-badge story">Story</div><div class="kcard-ttl">Rate limit middleware</div><div class="kcard-foot"><span class="kcp">5 pts</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- sprint bar at bottom -->
+        <div style="padding:10px 14px;border-top:1px solid var(--border);background:#030C1A;display:flex;align-items:center;justify-content:space-between;font-size:10.5px;">
+          <span style="color:var(--muted);">Sprint 14 &nbsp;·&nbsp; Jun 30 – Jul 13</span>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:120px;height:3px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;"><div style="width:72%;height:100%;background:linear-gradient(90deg,var(--accent),var(--accentL));border-radius:2px;"></div></div>
+            <span style="color:var(--accentL);font-weight:700;">72%</span>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -633,7 +985,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
     <div class="reveal">
       <span class="ey">Introducing Projiq</span>
       <h2 class="section-title">One workspace.<br><span class="gr">Every project. Every team.</span></h2>
-      <p class="section-sub">Projiq is a full-stack project management platform sold to organizations. Your company gets a private workspace — accessible on Web, iOS, and Android — for every person you invite, under one plan.</p>
+      <p class="section-sub">Projiq is a full-stack project management platform sold to organizations. Your company gets a private Web workspace for every person you invite, under one plan.</p>
     </div>
     <div class="chip-row reveal">
       <span class="chip chip-b">Sprint Management</span>
@@ -649,7 +1001,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
       <span class="chip chip-a">Custom Fields</span>
       <span class="chip chip-g">Real-time WebSocket</span>
       <span class="chip chip-g">5-Tier RBAC</span>
-      <span class="chip chip-g">Web + iOS + Android</span>
+      <span class="chip chip-g">Web Application</span>
       <span class="chip chip-v">Velocity Tracking</span>
       <span class="chip chip-v">Sprint Analytics</span>
       <span class="chip chip-v">Multi-tenant</span>
@@ -832,7 +1184,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
     <div class="reveal center">
       <span class="ey">See It in Action</span>
       <h2 class="section-title">The real product.<br><span class="gr">Live and working.</span></h2>
-      <p class="section-sub">Every screen below is the actual Projiq platform — built, tested, and ready for your organization on Web, iOS, and Android.</p>
+      <p class="section-sub">Every screen below is the actual Projiq platform — built, tested, and ready for your organization on the Web.</p>
     </div>
 
     <!-- ── BROWSER: BOARD VIEW ── -->
@@ -987,7 +1339,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
             </div>
           </div>
         </div>
-        <p class="gallery-caption" style="margin-top:14px;">iOS &amp; Android — native mobile app</p>
+        <p class="gallery-caption" style="margin-top:14px;">Mobile app — available as add-on</p>
       </div>
 
     </div>
@@ -1120,7 +1472,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
       <div class="vplayer reveal d3">
         <div class="vpc">
           <div class="vpc-d"><span class="dr"></span><span class="dy"></span><span class="dg"></span></div>
-          <span class="vpc-lbl">Real-time sync — Web ↔ iOS</span>
+          <span class="vpc-lbl">Real-time sync — Live WebSocket</span>
         </div>
         <div class="vscreen">
           <div style="padding:10px;height:100%;display:flex;align-items:center;gap:10px;">
@@ -1165,7 +1517,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
           <div class="vscrub"><div class="vsf v3-fill"></div></div>
           <span class="vtime">0:11</span>
         </div>
-        <div class="vfoot"><div class="vft">Real-time Cross-Platform Sync</div><div class="vfs">Web and mobile update together in under 100ms via WebSockets</div></div>
+        <div class="vfoot"><div class="vft">Real-time Live Sync</div><div class="vfs">All sessions update live in under 100ms via WebSockets</div></div>
       </div>
 
       <!-- ══ VIDEO 4: Sprint Planning / Backlog ══ -->
@@ -1406,9 +1758,9 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
 <section id="platform" class="section-pad" style="background:var(--bg2);">
   <div class="container">
     <div class="reveal center">
-      <span class="ey">Cross-Platform</span>
-      <h2 class="section-title">One platform.<br><span class="gr">Three surfaces. Always in sync.</span></h2>
-      <p class="section-sub">Your organization stays aligned whether at a desk, on a job site, or on the move — Web, iOS, and Android, all powered by live WebSocket sync under 100ms.</p>
+      <span class="ey">Platform</span>
+      <h2 class="section-title">One platform.<br><span class="gr">Built for the Web.</span></h2>
+      <p class="section-sub">Your organization gets a full-featured Web workspace — sprints, boards, roadmaps, and live collaboration — accessible from any browser, on any computer, anywhere.</p>
     </div>
     <div class="plat-grid">
       <div class="plat-card reveal d1">
@@ -1419,21 +1771,21 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
         <div class="plat-desc">Full-featured browser experience on Chrome, Safari, Firefox, and Edge. No installation required — open your workspace from any computer, anywhere in the world. All 6 views, all features, all live.</div>
         <div class="plat-tags"><span class="chip chip-b">All 6 views</span><span class="chip chip-b">Full feature set</span><span class="chip chip-b">Any browser</span></div>
       </div>
-      <div class="plat-card reveal d2" style="border-color:rgba(139,92,246,.25);">
-        <div class="plat-icon" style="background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.2);">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-        </div>
-        <div class="plat-name">iOS App</div>
-        <div class="plat-desc">Native iPhone and iPad app with the full Projiq experience. Manage issues, move cards, comment on tasks, and view your sprint board — with native iOS performance and a polished, touch-first UI.</div>
-        <div class="plat-tags"><span class="chip chip-v">iPhone &amp; iPad</span><span class="chip chip-v">Native UI</span><span class="chip chip-v">Offline-ready</span></div>
-      </div>
-      <div class="plat-card reveal d3" style="border-color:rgba(16,185,129,.2);">
+      <div class="plat-card reveal d2" style="border-color:rgba(16,185,129,.2);">
         <div class="plat-icon" style="background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.2);">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
         </div>
-        <div class="plat-name">Android App</div>
-        <div class="plat-desc">Native Android app for all phones and tablets. Full project management on the go — the same live data your web team sees, always current and instantly in sync with every change across your organization.</div>
-        <div class="plat-tags"><span class="chip chip-g">All Android devices</span><span class="chip chip-g">Offline-ready</span><span class="chip chip-g">Native UI</span></div>
+        <div class="plat-name">Real-time Sync</div>
+        <div class="plat-desc">Every board, backlog, and issue updates the moment a change is made — for every user in your organization, in under 100ms. No refresh, no lag, no stale data. Always live via WebSocket.</div>
+        <div class="plat-tags"><span class="chip chip-g">Under 100ms</span><span class="chip chip-g">Socket.io</span><span class="chip chip-g">Optimistic UI</span></div>
+      </div>
+      <div class="plat-card reveal d3" style="border-color:rgba(139,92,246,.2);">
+        <div class="plat-icon" style="background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.2);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="18" r="1" fill="var(--violet)" stroke="none"/></svg>
+        </div>
+        <div class="plat-name">Mobile Add-on</div>
+        <div class="plat-desc">Need your team on the go? Add iOS &amp; Android access to any plan as an optional extra. Full feature parity — same boards, sprints, and live sync as the Web app, on every phone and tablet.</div>
+        <div class="plat-tags"><span class="chip chip-v">Optional add-on</span><span class="chip chip-v">iOS &amp; Android</span><span class="chip chip-v">Full parity</span></div>
       </div>
     </div>
     <div class="live-bar reveal">
@@ -1511,7 +1863,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
           <tr><td>Release &amp; version management</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="cx">—</span></td><td><span class="cx">—</span></td></tr>
           <tr><td>Custom fields per project</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="cx">—</span></td></tr>
           <tr><td>Real-time WebSocket updates</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="lm">Limited</span></td><td><span class="cx">—</span></td></tr>
-          <tr><td>Native iOS &amp; Android app</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
+          <tr><td>Mobile add-on (iOS &amp; Android)</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="lm">Add-on</span></td><td><span class="lm">Add-on</span></td><td><span class="cx">—</span></td></tr>
           <tr><td>Per-organization pricing (no per-seat)</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="cx">—</span></td><td><span class="cx">—</span></td><td><span class="cx">—</span></td></tr>
           <tr><td>Dedicated onboarding &amp; support</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="cx">—</span></td><td><span class="cx">—</span></td><td><span class="cx">—</span></td></tr>
           <tr><td>Configured to your exact workflows</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="cx">—</span></td><td><span class="cx">—</span></td><td><span class="cx">—</span></td></tr>
@@ -1527,15 +1879,15 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
     <div class="reveal center">
       <span class="ey">Pricing</span>
       <h2 class="section-title">Simple,<br><span class="gr">organization-based pricing</span></h2>
-      <p class="section-sub">Your organization buys one plan. Every invited member gets full access on Web, iOS, and Android. No per-seat charges, ever.</p>
+      <p class="section-sub">Your organization buys one plan. Every invited member gets full Web access. No per-seat charges, ever. Mobile access available as an add-on.</p>
     </div>
-    <p class="pricing-note center reveal"><strong>All plans include</strong> &nbsp;Web App &nbsp;·&nbsp; iOS App &nbsp;·&nbsp; Android App &nbsp;·&nbsp; Real-time sync &nbsp;·&nbsp; Free upgrades &nbsp;·&nbsp; Cancel any time</p>
+    <p class="pricing-note center reveal"><strong>All plans include</strong> &nbsp;Web App &nbsp;·&nbsp; Real-time sync &nbsp;·&nbsp; Free upgrades &nbsp;·&nbsp; Cancel any time</p>
     <div class="pricing-grid">
       <div class="price-card reveal d1">
         <div class="price-tier">Starter</div>
         <div class="price-amount"><sup>$</sup>99<span> / month</span></div>
         <div class="price-users">Per organization &nbsp;·&nbsp; Up to 30 users</div>
-        <div class="price-plat"><span>Web</span><span>iOS</span><span>Android</span></div>
+        <div class="price-plat"><span>Web</span></div>
         <div class="price-div"></div>
         <div class="price-feats">
           <div class="pf"><div class="pf-dot"></div>Kanban &amp; Scrum boards</div>
@@ -1555,7 +1907,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
         <div class="price-tier">Professional</div>
         <div class="price-amount"><sup>$</sup>249<span> / month</span></div>
         <div class="price-users">Per organization &nbsp;·&nbsp; Up to 150 users</div>
-        <div class="price-plat"><span>Web</span><span>iOS</span><span>Android</span></div>
+        <div class="price-plat"><span>Web</span></div>
         <div class="price-div"></div>
         <div class="price-feats">
           <div class="pf"><div class="pf-dot"></div>Everything in Starter</div>
@@ -1575,7 +1927,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
         <div class="price-tier">Enterprise</div>
         <div class="price-amount" style="font-size:40px;line-height:1.15;padding-top:5px;background:linear-gradient(135deg,var(--amber),#FCD34D);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Custom</div>
         <div class="price-users">Per organization &nbsp;·&nbsp; Unlimited users</div>
-        <div class="price-plat"><span>Web</span><span>iOS</span><span>Android</span></div>
+        <div class="price-plat"><span>Web</span></div>
         <div class="price-div"></div>
         <div class="price-feats">
           <div class="pf"><div class="pf-dotA"></div>Everything in Professional</div>
@@ -1592,7 +1944,30 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
         <div class="price-btn" onclick="window.open('https://projiq.app/register-org?plan=enterprise','_blank')" style="border-color:rgba(245,158,11,.4);color:var(--amber);cursor:pointer;">Contact Sales</div>
       </div>
     </div>
-    <div class="pricing-foot reveal">All pricing is <strong>per organization per month</strong> — not per seat. Every member your organization invites gets full access on Web, iOS &amp; Android under a single plan. Upgrade, downgrade, or cancel at any time. No long-term contracts required.</div>
+    <div class="pricing-foot reveal">All pricing is <strong>per organization per month</strong> — not per seat. Every member your organization invites gets full Web access under a single plan. Upgrade, downgrade, or cancel at any time. No long-term contracts required.</div>
+    <div class="mob-addon reveal">
+      <div class="mob-addon-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="18.5" r=".8" fill="#fff" stroke="none"/></svg>
+      </div>
+      <div>
+        <div class="mob-addon-label">Mobile Add-on &mdash; iOS &amp; Android</div>
+        <div class="mob-addon-desc">Add native iOS &amp; Android app access to any plan. Full feature parity &mdash; same boards, sprints, and real-time sync on mobile.</div>
+      </div>
+      <div class="mob-addon-tiers">
+        <div class="mob-addon-tier">
+          <div class="mob-addon-tier-plan">Starter</div>
+          <div class="mob-addon-tier-price">+$29<small>/mo</small></div>
+        </div>
+        <div class="mob-addon-tier">
+          <div class="mob-addon-tier-plan">Professional</div>
+          <div class="mob-addon-tier-price">+$49<small>/mo</small></div>
+        </div>
+        <div class="mob-addon-tier ent">
+          <div class="mob-addon-tier-plan">Enterprise</div>
+          <div class="mob-addon-tier-price">Custom</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1602,7 +1977,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
     <div class="reveal center">
       <span class="ey">Getting Started</span>
       <h2 class="section-title">From sign-up to fully live<br><span class="gr">in four weeks.</span></h2>
-      <p class="section-sub">A dedicated implementation manager handles everything — from workspace setup and data migration to team training on Web, iOS, and Android.</p>
+      <p class="section-sub">A dedicated implementation manager handles everything — from workspace setup and data migration to team training on the Web platform.</p>
     </div>
     <div class="impl-grid">
       <div class="impl-card ic1 reveal d1">
@@ -1613,7 +1988,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
           <div class="impl-item"><div class="impl-dot"></div>Organisation and project structure setup</div>
           <div class="impl-item"><div class="impl-dot"></div>Admin accounts provisioned</div>
           <div class="impl-item"><div class="impl-dot"></div>Roles mapped to your org chart</div>
-          <div class="impl-item"><div class="impl-dot"></div>Web, iOS &amp; Android access live</div>
+          <div class="impl-item"><div class="impl-dot"></div>Web workspace access live</div>
         </div>
       </div>
       <div class="impl-card ic2 reveal d2">
@@ -1624,7 +1999,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
           <div class="impl-item"><div class="impl-dot"></div>Custom fields and labels configured</div>
           <div class="impl-item"><div class="impl-dot"></div>Existing project data migrated</div>
           <div class="impl-item"><div class="impl-dot"></div>Notification and permission setup</div>
-          <div class="impl-item"><div class="impl-dot"></div>Mobile app configuration validated</div>
+          <div class="impl-item"><div class="impl-dot"></div>Permissions and notifications configured</div>
         </div>
       </div>
       <div class="impl-card ic3 reveal d3">
@@ -1632,7 +2007,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
         <div class="impl-phase">Pilot &amp; Training</div>
         <div class="impl-items">
           <div class="impl-item"><div class="impl-dot"></div>Pilot team onboarded (5–10 users)</div>
-          <div class="impl-item"><div class="impl-dot"></div>Live training by role — web &amp; mobile</div>
+          <div class="impl-item"><div class="impl-dot"></div>Live training by role — tailored per team</div>
           <div class="impl-item"><div class="impl-dot"></div>First sprint run end-to-end</div>
           <div class="impl-item"><div class="impl-dot"></div>Feedback collected and actioned</div>
           <div class="impl-item"><div class="impl-dot"></div>User documentation delivered</div>
@@ -1654,9 +2029,87 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
       <span class="impl-tags-label">Enterprise includes</span>
       <span class="chip chip-g">Dedicated implementation manager</span>
       <span class="chip chip-g">Data migration support</span>
-      <span class="chip chip-b">Role-based training — web &amp; mobile</span>
+      <span class="chip chip-b">Role-based training</span>
       <span class="chip chip-v">30-day post-launch helpdesk</span>
       <span class="chip chip-a">Quarterly business review</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FAQ ═══════════════ -->
+<section id="faq" class="section-pad" style="background:var(--bg2);">
+  <div class="container">
+    <div class="reveal center">
+      <span class="ey">FAQ</span>
+      <h2 class="section-title">Common questions,<br><span class="gr">answered.</span></h2>
+      <p class="section-sub">Everything you need to know before signing up. Still have questions? Email us at <a href="mailto:hello@projiq.app" style="color:var(--accentL);text-decoration:none;font-weight:600;">hello@projiq.app</a></p>
+    </div>
+    <div class="faq-grid reveal">
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">Is pricing really per organization — not per seat?</span>
+          <span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Yes — <strong>completely</strong>. You pay one flat monthly fee for your entire organization. Every member you invite gets full Web access at no additional cost. Mobile access (iOS &amp; Android) is available as an optional add-on. Starter covers up to 30 members; Professional up to 150. No per-seat charges, ever.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">How does the 14-day free trial work?</span>
+          <span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Sign up and get <strong>14 days of full Professional access</strong> at no cost — no credit card required. You get every feature and full team access on the Web. At the end of the trial you can choose a plan, or your workspace is paused (all data preserved).</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">Which browsers does Projiq support?</span>
+          <span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Projiq runs on <strong>Web</strong> (Chrome, Safari, Firefox, Edge), <strong>iOS</strong> (iPhone &amp; iPad), and <strong>Android</strong> (all phones and tablets). All three surfaces stay in sync in real time via WebSocket under 100ms — the same live data everywhere, always.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">Can we migrate from Jira, Trello, or another tool?</span>
+          <span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Enterprise plans include <strong>hands-on data migration assistance</strong> from your current tool — Jira, Trello, Asana, Linear, or spreadsheets. Professional and Starter plans include CSV import support. Your implementation manager handles the full transition.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">How secure is our organization's data?</span>
+          <span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Every organization's data is <strong>fully isolated at the database level</strong> — complete multi-tenant separation. Member access is invite-only; no one can join without an explicit email invitation. All API endpoints enforce role-based access control server-side. Every action is audit-logged with a timestamp and user ID.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">Can we invite clients or external stakeholders?</span>
+          <span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. You can invite anyone via email and assign them the <strong>Viewer role</strong> — read-only access to the projects you choose. Viewers can see boards, issues, and progress without being able to make any changes, making them perfect for clients or leadership stakeholders.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">How long does onboarding take?</span>
+          <span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Self-serve teams are typically <strong>live in under an hour</strong>. Enterprise onboarding is structured across 4 weeks: discovery and setup, configuration, pilot training, and full rollout — with a dedicated implementation manager guiding every step. Most teams run their first sprint within Week 3.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">Can we upgrade, downgrade, or cancel any time?</span>
+          <span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner"><strong>Yes — no lock-in, ever</strong>. Upgrade or downgrade your plan at any time from the billing settings. Cancel whenever you want; access continues until the end of your current billing period. All your data is retained for 90 days after cancellation so you can export everything.</div></div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1670,7 +2123,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
       <p class="cta-sub">Let&rsquo;s get your organization aligned —<br>on Web, iOS, and Android.</p>
       <div class="cta-btns">
         <a href="https://projiq.app/register-org?plan=professional" target="_blank" class="btn btn-primary" style="font-size:16px;padding:16px 36px;">Start Free Trial</a>
-        <a href="#features" class="btn btn-ghost" style="font-size:16px;padding:15px 36px;">Schedule a Demo</a>
+        <a href="mailto:hello@projiq.app?subject=Demo%20Request%20—%20Projiq&body=Hi%2C%0A%0AI'd%20like%20to%20schedule%20a%20demo%20of%20Projiq%20for%20my%20organization.%0A%0AOrganization%3A%20%0ATeam%20size%3A%20%0ABest%20time%3A%20" class="btn btn-ghost" style="font-size:16px;padding:15px 36px;">Request a Demo</a>
       </div>
       <p class="cta-note">14 days free &nbsp;·&nbsp; No credit card required &nbsp;·&nbsp; Full Professional access &nbsp;·&nbsp; Cancel any time</p>
       <p style="margin-top:18px;font-size:13.5px;color:var(--muted);">Have questions? Reach us at &nbsp;<a href="mailto:hello@projiq.app" style="color:var(--accentL);text-decoration:none;font-weight:600;border-bottom:1px solid rgba(96,165,250,.35);padding-bottom:1px;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--accentL)'" onmouseout="this.style.borderColor='rgba(96,165,250,.35)'">hello@projiq.app</a></p>
@@ -1698,6 +2151,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
         <a href="#platform">Platform</a>
         <a href="#security">Security</a>
         <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
         <a href="#cta">Get Started</a>
         <a href="mailto:hello@projiq.app" style="color:var(--accentL);display:flex;align-items:center;gap:6px;">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -1711,33 +2165,245 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
 
 <script>
 (function(){
-  /* ── Scroll reveal ── */
+  /* ══════════════════════════════════════════
+     SCROLL REVEAL
+  ══════════════════════════════════════════ */
   var els=document.querySelectorAll('.reveal');
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-  },{threshold:0.12});
+  var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:0.1});
   els.forEach(function(el){io.observe(el);});
 
-  /* ── Nav active link ── */
+  /* ══════════════════════════════════════════
+     NAV
+  ══════════════════════════════════════════ */
   var sections=Array.from(document.querySelectorAll('section[id]'));
   var navLinks=Array.from(document.querySelectorAll('.nav-links a'));
-  var sio=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        var id=e.target.id;
-        navLinks.forEach(function(a){
-          a.style.color=a.getAttribute('href')==='#'+id?'var(--strong)':'';
-        });
-      }
-    });
-  },{threshold:0.4});
+  var sio=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){var id=e.target.id;navLinks.forEach(function(a){a.style.color=a.getAttribute('href')==='#'+id?'var(--strong)':'';});}});},{threshold:0.35});
   sections.forEach(function(s){sio.observe(s);});
-
-  /* ── Nav shrink on scroll ── */
   var nav=document.querySelector('.nav');
-  window.addEventListener('scroll',function(){
-    nav.style.borderBottomColor=window.scrollY>60?'rgba(59,130,246,0.2)':'rgba(59,130,246,0.12)';
-  },{passive:true});
+  window.addEventListener('scroll',function(){nav.style.borderBottomColor=window.scrollY>60?'rgba(59,130,246,0.22)':'rgba(59,130,246,0.12)';},{passive:true});
+
+  /* ══════════════════════════════════════════
+     MOBILE HAMBURGER
+  ══════════════════════════════════════════ */
+  var hamBtn=document.getElementById('ham-btn'),mobNav=document.getElementById('mob-nav');
+  function openM(){mobNav.classList.add('open');hamBtn.classList.add('open');hamBtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function closeM(){mobNav.classList.remove('open');hamBtn.classList.remove('open');hamBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  hamBtn.addEventListener('click',function(){mobNav.classList.contains('open')?closeM():openM();});
+  mobNav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeM);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeM();});
+
+  /* ══════════════════════════════════════════
+     FAQ ACCORDION
+  ══════════════════════════════════════════ */
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var item=btn.closest('.faq-item'),isOpen=item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(el){el.classList.remove('open');el.querySelector('.faq-q').setAttribute('aria-expanded','false');});
+      if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}
+    });
+  });
+
+  /* ══════════════════════════════════════════
+     3D HERO CANVAS
+     • 300 depth particles (star-field warp)
+     • 6 rotating wireframe cubes
+     • Mouse parallax shifts the entire field
+     • Connecting lines between nearby particles
+  ══════════════════════════════════════════ */
+  var canvas=document.getElementById('hero-canvas');
+  var ctx=canvas.getContext('2d');
+  var W=0,H=0;
+
+  function resizeC(){
+    var h=document.getElementById('hero');
+    W=canvas.width=h.offsetWidth;
+    H=canvas.height=h.offsetHeight;
+  }
+  resizeC();
+  window.addEventListener('resize',resizeC,{passive:true});
+
+  /* Mouse normalized −1…1 (desktop only) */
+  var mxn=0,myn=0;
+  window.addEventListener('mousemove',function(e){mxn=(e.clientX/window.innerWidth-.5)*2;myn=(e.clientY/window.innerHeight-.5)*2;},{passive:true});
+
+  /* — PARTICLES — */
+  var pts=[];
+  for(var i=0;i<320;i++){
+    pts.push({
+      x:(Math.random()-.5)*2600,y:(Math.random()-.5)*2600,
+      z:Math.random()*1900+80,spd:Math.random()*1.8+0.3,
+      ph:Math.random()*6.28,   /* pulse phase */
+      hue:Math.random()>.55?263:(Math.random()>.5?213:190)
+    });
+  }
+
+  /* — WIREFRAME CUBES — */
+  var cubes=[
+    {x:-380,y:-200,z:180,rx:0,   ry:0,   rz:0,   s:60, dr:{x:.0045,y:.008,z:.002}},
+    {x: 400,y:-140,z:320,rx:.6,  ry:.3,  rz:0,   s:42, dr:{x:.003, y:-.006,z:.004}},
+    {x:-160,y: 220,z:460,rx:1.1, ry:.8,  rz:0,   s:70, dr:{x:-.002,y:.007, z:.003}},
+    {x: 300,y: 260,z:140,rx:.2,  ry:1.2, rz:0,   s:36, dr:{x:.006, y:-.005,z:.002}},
+    {x:-300,y:  90,z:600,rx:.9,  ry:.4,  rz:.3,  s:85, dr:{x:.002, y:.003, z:-.003}},
+    {x: 180,y:-300,z:380,rx:.4,  ry:.9,  rz:.6,  s:50, dr:{x:-.003,y:.005, z:.004}},
+  ];
+
+  /* 3-axis rotation helpers */
+  function rX(v,a){return[v[0],v[1]*Math.cos(a)-v[2]*Math.sin(a),v[1]*Math.sin(a)+v[2]*Math.cos(a)];}
+  function rY(v,a){return[v[0]*Math.cos(a)+v[2]*Math.sin(a),v[1],-v[0]*Math.sin(a)+v[2]*Math.cos(a)];}
+  function rZ(v,a){return[v[0]*Math.cos(a)-v[1]*Math.sin(a),v[0]*Math.sin(a)+v[1]*Math.cos(a),v[2]];}
+  function proj(v,cx,cy,fov){var z=v[2]+fov;if(z<=0)return null;var s=fov/z;return[cx+v[0]*s,cy+v[1]*s,s];}
+
+  var CUBE_VERTS=[[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],[-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]];
+  var CUBE_EDGES=[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
+
+  function drawCube(c,cx,cy,t){
+    var vp=CUBE_VERTS.map(function(v){
+      var r=rX([v[0]*c.s,v[1]*c.s,v[2]*c.s],c.rx);
+      r=rY(r,c.ry);r=rZ(r,c.rz);
+      return proj([r[0]+c.x,r[1]+c.y,r[2]+c.z],cx,cy,550);
+    });
+    var glow=0.09+Math.sin(t*.015+c.rx)*.04;
+    ctx.lineWidth=.65;
+    CUBE_EDGES.forEach(function(e){
+      var a=vp[e[0]],b=vp[e[1]];if(!a||!b)return;
+      /* fade edges by depth */
+      var avgS=(a[2]+b[2])*.5;
+      var la=glow*Math.min(1,avgS*4);
+      ctx.strokeStyle='rgba(96,165,250,'+la+')';
+      ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();
+    });
+    /* vertex dots */
+    vp.forEach(function(p){
+      if(!p)return;
+      var dotA=glow*Math.min(1,p[2]*5)*.7;
+      ctx.beginPath();ctx.arc(p[0],p[1],1.1,0,6.28);
+      ctx.fillStyle='rgba(139,92,246,'+dotA+')';ctx.fill();
+    });
+    c.rx+=c.dr.x;c.ry+=c.dr.y;c.rz+=c.dr.z;
+  }
+
+  var tick=0;
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    tick++;
+
+    /* parallax offset from mouse */
+    var cx=W/2+mxn*50, cy=H/2+myn*32;
+
+    /* cubes (drawn first, behind particles) */
+    cubes.forEach(function(c){drawCube(c,cx,cy,tick);});
+
+    /* particles */
+    var proj2=[];
+    pts.forEach(function(p){
+      p.z-=p.spd;
+      if(p.z<=1){p.z=1900;p.x=(Math.random()-.5)*2600;p.y=(Math.random()-.5)*2600;}
+      p.ph+=.028;
+      var sc=700/p.z;
+      var px=cx+p.x*sc, py=cy+p.y*sc;
+      if(px<-30||px>W+30||py<-30||py>H+30)return;
+      var r=Math.max(.4,2.8*sc);
+      var a=Math.min(.88,sc*2.1)*(0.65+Math.sin(p.ph)*.35);
+      var g=ctx.createRadialGradient(px,py,0,px,py,r*4);
+      g.addColorStop(0,'hsla('+p.hue+',92%,76%,'+a+')');
+      g.addColorStop(.5,'hsla('+p.hue+',92%,76%,'+(a*.3)+')');
+      g.addColorStop(1,'hsla('+p.hue+',92%,76%,0)');
+      ctx.beginPath();ctx.arc(px,py,r*4,0,6.28);ctx.fillStyle=g;ctx.fill();
+      proj2.push({px:px,py:py,a:a});
+    });
+
+    /* connection web */
+    ctx.lineWidth=.45;
+    var lim=Math.min(proj2.length,120); /* cap for perf */
+    for(var i=0;i<lim;i++){
+      for(var j=i+1;j<lim;j++){
+        var dx=proj2[i].px-proj2[j].px,dy=proj2[i].py-proj2[j].py;
+        var d=Math.sqrt(dx*dx+dy*dy);
+        if(d<95){
+          ctx.strokeStyle='rgba(96,165,250,'+((1-d/95)*Math.min(proj2[i].a,proj2[j].a)*.42)+')';
+          ctx.beginPath();ctx.moveTo(proj2[i].px,proj2[i].py);ctx.lineTo(proj2[j].px,proj2[j].py);ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+
+  /* ══════════════════════════════════════════
+     MOUSE-TRACKING 3D TILT
+     (disabled on touch screens)
+  ══════════════════════════════════════════ */
+  var isTouch=('ontouchstart' in window)||navigator.maxTouchPoints>0;
+  if(!isTouch){
+
+    function attachTilt(sel,maxDeg,pDist){
+      document.querySelectorAll(sel).forEach(function(el){
+        var rf=null;
+        el.addEventListener('mousemove',function(e){
+          if(rf)cancelAnimationFrame(rf);
+          rf=requestAnimationFrame(function(){
+            var r=el.getBoundingClientRect();
+            var dx=(e.clientX-r.left-r.width/2)/(r.width/2);
+            var dy=(e.clientY-r.top-r.height/2)/(r.height/2);
+            var sh='0 '+(22+Math.abs(dy)*26)+'px '+(55+Math.abs(dx)*35)+'px rgba(59,130,246,'+(0.07+Math.abs(dx)*.1)+')'
+                  +','+(-dx*10)+'px '+(-dy*10)+'px 35px rgba(139,92,246,0.09)'
+                  +',0 0 0 1px rgba(59,130,246,'+(0.06+Math.abs(dx)*.06)+')';
+            el.style.transform='perspective('+pDist+'px) rotateY('+(dx*maxDeg)+'deg) rotateX('+(-dy*maxDeg)+'deg) translateZ(18px) scale(1.03)';
+            el.style.boxShadow=sh;
+          });
+        });
+        el.addEventListener('mouseleave',function(){
+          if(rf)cancelAnimationFrame(rf);
+          el.style.transform='';el.style.boxShadow='';
+        });
+      });
+    }
+
+    /* hero device — extra dramatic */
+    (function(){
+      var dev=document.querySelector('.hero-3d-device');
+      if(!dev)return;
+      dev.addEventListener('mousemove',function(e){
+        var r=dev.getBoundingClientRect();
+        var dx=(e.clientX-r.left-r.width/2)/(r.width/2);
+        var dy=(e.clientY-r.top-r.height/2)/(r.height/2);
+        dev.style.animation='none';
+        dev.style.transform='rotateX('+(22-dy*8)+'deg) rotateY('+(-5+dx*8)+'deg) translateY(-8px)';
+        dev.style.boxShadow='0 80px 160px rgba(0,0,0,.9),0 0 0 1px rgba(59,130,246,.14),0 0 120px rgba(59,130,246,.2)';
+      });
+      dev.addEventListener('mouseleave',function(){
+        dev.style.animation='';dev.style.transform='';dev.style.boxShadow='';
+      });
+    }());
+
+    attachTilt('.price-card',   16, 900);
+    attachTilt('.view-card',    14, 800);
+    attachTilt('.prob-card',    13, 800);
+    attachTilt('.plat-card',    13, 800);
+    attachTilt('.impl-card',    12, 750);
+    attachTilt('.faq-item',      8, 800);
+    attachTilt('.sec-card',     10, 750);
+    attachTilt('.role-row',      8, 650);
+    attachTilt('.stat-item',     9, 500);
+    attachTilt('.vplayer',       7, 800);
+    attachTilt('.kboard-col',    8, 600);
+
+    /* ── Scroll parallax: hero 3D device tilts deeper as user scrolls ── */
+    var dev3d=document.querySelector('.hero-3d-device');
+    if(dev3d){
+      window.addEventListener('scroll',function(){
+        var sy=window.scrollY;
+        if(sy<600){
+          var t=sy/600;
+          dev3d.style.transform='rotateX('+(22+t*12)+'deg) rotateY('+((-5)-t*4)+'deg) scale('+(0.96-t*.1)+') translateY('+(t*50)+'px)';
+          dev3d.style.opacity=Math.max(0,1-t*.8);
+        } else {
+          dev3d.style.opacity=0;
+        }
+      },{passive:true});
+    }
+  }
+
 }());
 </script>
 </body>
