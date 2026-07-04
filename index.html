@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projiq — Project Management for Organizations</title>
 <meta name="description" content="Projiq — the project management platform organizations trust to align every team, sprint, and milestone on the Web.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 285 265'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%234F46E5'/><stop offset='1' stop-color='%2306B6D4'/></linearGradient></defs><path d='M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z' fill='url(%23g)'/><rect x='0' y='65' width='60' height='12' rx='6' fill='%234F46E5'/><rect x='0' y='100' width='60' height='12' rx='6' fill='%2306B6D4'/><rect x='0' y='135' width='60' height='12' rx='6' fill='%2310B981'/><path d='M140 105 L160 125 L205 80' fill='none' stroke='white' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 285 265'><rect width='285' height='265' rx='60' fill='%230A1628'/><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%234F46E5'/><stop offset='1' stop-color='%2306B6D4'/></linearGradient></defs><path d='M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z' fill='url(%23g)'/><rect x='0' y='65' width='60' height='12' rx='6' fill='%234F46E5'/><rect x='0' y='100' width='60' height='12' rx='6' fill='%2306B6D4'/><rect x='0' y='135' width='60' height='12' rx='6' fill='%2310B981'/><path d='M140 105 L160 125 L205 80' fill='none' stroke='white' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<meta name="theme-color" content="#020B18">
 <style>
 /* ─── RESET & VARS ─────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -780,6 +783,40 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
   #hero-canvas{display:none;}
   .hero-orbit-ring,.hero-orbit-ring-2{display:none;}
 }
+
+/* ─── MOBILE POLISH ─────────────────────────────────── */
+.mob-close{position:absolute;top:22px;right:22px;width:40px;height:40px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:50%;color:#94A3B8;font-size:22px;line-height:1;cursor:pointer;display:none;align-items:center;justify-content:center;}
+@media(max-width:768px){
+  .mob-close{display:flex;}
+  #cta{padding:72px 0;}
+  .cta-mark-wrap{width:80px;height:80px;border-radius:20px;margin-bottom:18px;}
+  .cta-sub{font-size:16px;}
+  .cta-btns{flex-direction:column;align-items:stretch;}
+  .cta-btns .btn{text-align:center;justify-content:center;}
+}
+@media(max-width:640px){
+  .testi-card{padding:20px 18px;}
+  .testi-metric-row{padding:18px 16px;}
+  .testi-metric{min-width:100px;padding:6px 10px;}
+  .testi-metric-num{font-size:20px;}
+}
+@media(max-width:560px){
+  .hero-btns{flex-direction:column;align-items:stretch;}
+  .hero-btns .btn{text-align:center;justify-content:center;}
+  .hero-logo-wrap svg{width:44px!important;height:41px!important;}
+  .hero-logo-name strong{font-size:18px;}
+  .hero-logo-name>span{font-size:11px;}
+  #hero{padding:80px 0 44px;}
+  .hero-sub{font-size:15px;margin-bottom:28px;}
+  .footer-top{grid-template-columns:1fr!important;}
+}
+@media(max-width:480px){
+  .price-card{padding:24px 18px!important;}
+}
+@media(max-width:400px){
+  .section-title{font-size:clamp(24px,7vw,36px);}
+  .hero-h1{font-size:clamp(34px,10vw,60px);}
+}
 </style>
 </head>
 <body>
@@ -838,6 +875,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
 
 <!-- ═══════════════ MOBILE NAV ═══════════════ -->
 <div class="mob-nav" id="mob-nav" role="dialog" aria-label="Mobile navigation">
+  <button class="mob-close" id="mob-close" aria-label="Close menu">&#x2715;</button>
   <a href="#features" class="mob-link">Features</a>
   <a href="#views" class="mob-link">Views</a>
   <a href="#platform" class="mob-link">Platform</a>
@@ -2287,6 +2325,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
   hamBtn.addEventListener('click',function(){mobNav.classList.contains('open')?closeM():openM();});
   mobNav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeM);});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeM();});
+  var mobClose=document.getElementById('mob-close');if(mobClose)mobClose.addEventListener('click',closeM);
 
   /* ══════════════════════════════════════════
      FAQ ACCORDION
