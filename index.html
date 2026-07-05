@@ -880,7 +880,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
       <a href="#security">Security</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
-      <a href="mailto:hello@projiq.app">Contact</a>
+      <a href="#" onclick="openContactModal('contact');return false;">Contact</a>
     </div>
     <div class="nav-cta">
       <a href="https://app.projiq.app/login" target="_blank" class="btn btn-ghost btn-sm">Sign In</a>
@@ -901,7 +901,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
   <a href="#security" class="mob-link">Security</a>
   <a href="#pricing" class="mob-link">Pricing</a>
   <a href="#faq" class="mob-link">FAQ</a>
-  <a href="mailto:hello@projiq.app" class="mob-link">Contact</a>
+  <a href="#" class="mob-link" onclick="openContactModal('contact');return false;">Contact</a>
   <div class="mob-nav-div"></div>
   <div class="mob-nav-cta">
     <a href="https://app.projiq.app/login" target="_blank" class="btn btn-ghost" style="text-align:center;justify-content:center;font-size:15px;">Sign In</a>
@@ -2233,13 +2233,53 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
       <p class="cta-sub">Let&rsquo;s get your organization aligned —<br>on the Web, from day one.</p>
       <div class="cta-btns">
         <a href="https://app.projiq.app/register-org?plan=professional" target="_blank" class="btn btn-primary" style="font-size:16px;padding:16px 36px;">Start Free Trial</a>
-        <a href="mailto:hello@projiq.app?subject=Demo%20Request%20—%20Projiq&body=Hi%2C%0A%0AI'd%20like%20to%20schedule%20a%20demo%20of%20Projiq%20for%20my%20organization.%0A%0AOrganization%3A%20%0ATeam%20size%3A%20%0ABest%20time%3A%20" class="btn btn-ghost" style="font-size:16px;padding:15px 36px;">Request a Demo</a>
+        <a href="#" onclick="openContactModal('demo');return false;" class="btn btn-ghost" style="font-size:16px;padding:15px 36px;">Request a Demo</a>
       </div>
       <p class="cta-note">14 days free &nbsp;·&nbsp; No credit card required &nbsp;·&nbsp; Full Professional access &nbsp;·&nbsp; Cancel any time</p>
-      <p style="margin-top:18px;font-size:13.5px;color:var(--muted);">Have questions? Reach us at &nbsp;<a href="mailto:hello@projiq.app" style="color:var(--accentL);text-decoration:none;font-weight:600;border-bottom:1px solid rgba(96,165,250,.35);padding-bottom:1px;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--accentL)'" onmouseout="this.style.borderColor='rgba(96,165,250,.35)'">hello@projiq.app</a></p>
+      <p style="margin-top:18px;font-size:13.5px;color:var(--muted);">Have questions? <a href="#" onclick="openContactModal('contact');return false;" style="color:var(--accentL);text-decoration:none;font-weight:600;border-bottom:1px solid rgba(96,165,250,.35);padding-bottom:1px;">Send us a message</a></p>
     </div>
   </div>
 </section>
+
+<!-- ═══════════════ CONTACT MODAL ═══════════════ -->
+<div id="contact-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(2,11,24,.82);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)closeContactModal()">
+  <div style="background:#0D1B36;border:1px solid rgba(148,163,184,.15);border-radius:20px;padding:40px;width:100%;max-width:520px;position:relative;box-shadow:0 32px 80px rgba(0,0,0,.6);">
+    <button onclick="closeContactModal()" style="position:absolute;top:16px;right:20px;background:none;border:none;color:rgba(148,163,184,.6);font-size:22px;cursor:pointer;line-height:1;padding:4px 8px;" aria-label="Close">&times;</button>
+    <div id="cm-icon" style="width:48px;height:48px;border-radius:14px;background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.25);display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:22px;">💬</div>
+    <h2 id="cm-title" style="font-size:22px;font-weight:800;color:#F1F5F9;margin:0 0 6px;letter-spacing:-.03em;">Get in touch</h2>
+    <p id="cm-sub" style="font-size:14px;color:rgba(148,163,184,.8);margin:0 0 28px;line-height:1.55;">We usually respond within a few hours.</p>
+
+    <div id="cm-success" style="display:none;text-align:center;padding:24px 0;">
+      <div style="font-size:40px;margin-bottom:12px;">✅</div>
+      <div style="font-size:17px;font-weight:700;color:#F1F5F9;margin-bottom:8px;">Message sent!</div>
+      <div style="font-size:14px;color:rgba(148,163,184,.8);">We'll be in touch shortly.</div>
+    </div>
+
+    <form id="cm-form" onsubmit="submitContactForm(event)" style="display:flex;flex-direction:column;gap:14px;">
+      <input type="hidden" id="cm-type" value="contact">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div>
+          <label style="display:block;font-size:11px;font-weight:700;color:rgba(148,163,184,.7);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Name *</label>
+          <input id="cm-name" type="text" required placeholder="Jane Smith" style="width:100%;background:#060E1C;border:1px solid rgba(148,163,184,.18);border-radius:9px;padding:11px 14px;font-size:14px;color:#F1F5F9;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='rgba(59,130,246,.6)'" onblur="this.style.borderColor='rgba(148,163,184,.18)'">
+        </div>
+        <div>
+          <label style="display:block;font-size:11px;font-weight:700;color:rgba(148,163,184,.7);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Email *</label>
+          <input id="cm-email" type="email" required placeholder="jane@company.com" style="width:100%;background:#060E1C;border:1px solid rgba(148,163,184,.18);border-radius:9px;padding:11px 14px;font-size:14px;color:#F1F5F9;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='rgba(59,130,246,.6)'" onblur="this.style.borderColor='rgba(148,163,184,.18)'">
+        </div>
+      </div>
+      <div>
+        <label style="display:block;font-size:11px;font-weight:700;color:rgba(148,163,184,.7);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Company / Organization</label>
+        <input id="cm-company" type="text" placeholder="Acme Corp" style="width:100%;background:#060E1C;border:1px solid rgba(148,163,184,.18);border-radius:9px;padding:11px 14px;font-size:14px;color:#F1F5F9;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='rgba(59,130,246,.6)'" onblur="this.style.borderColor='rgba(148,163,184,.18)'">
+      </div>
+      <div>
+        <label style="display:block;font-size:11px;font-weight:700;color:rgba(148,163,184,.7);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Message *</label>
+        <textarea id="cm-message" required rows="4" placeholder="Tell us about your team and what you're looking for…" style="width:100%;background:#060E1C;border:1px solid rgba(148,163,184,.18);border-radius:9px;padding:11px 14px;font-size:14px;color:#F1F5F9;outline:none;resize:vertical;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='rgba(59,130,246,.6)'" onblur="this.style.borderColor='rgba(148,163,184,.18)'"></textarea>
+      </div>
+      <div id="cm-error" style="display:none;font-size:13px;color:#F87171;padding:10px 14px;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);border-radius:8px;"></div>
+      <button type="submit" id="cm-submit" style="background:linear-gradient(90deg,#3B82F6,#6366F1);color:#fff;border:none;border-radius:10px;padding:14px 28px;font-size:15px;font-weight:700;cursor:pointer;transition:opacity .2s;">Send Message</button>
+    </form>
+  </div>
+</div>
 
 <!-- ═══════════════ FOOTER ═══════════════ -->
 <footer>
@@ -2565,6 +2605,83 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
   }
 
 }());
+
+/* ── Contact / Demo modal ── */
+function openContactModal(type) {
+  var modal = document.getElementById('contact-modal');
+  var title = document.getElementById('cm-title');
+  var sub   = document.getElementById('cm-sub');
+  var icon  = document.getElementById('cm-icon');
+  var msg   = document.getElementById('cm-message');
+  document.getElementById('cm-type').value = type;
+  if (type === 'demo') {
+    icon.textContent = '🚀';
+    title.textContent = 'Request a Demo';
+    sub.textContent = 'Tell us about your team and we\'ll schedule a personalized walkthrough.';
+    msg.placeholder = 'e.g. We have a 40-person engineering team and want to see how Projiq handles sprint planning…';
+  } else {
+    icon.textContent = '💬';
+    title.textContent = 'Get in touch';
+    sub.textContent = 'We usually respond within a few hours.';
+    msg.placeholder = 'How can we help?';
+  }
+  document.getElementById('cm-success').style.display = 'none';
+  document.getElementById('cm-form').style.display = 'flex';
+  document.getElementById('cm-error').style.display = 'none';
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  setTimeout(function(){ document.getElementById('cm-name').focus(); }, 80);
+}
+
+function closeContactModal() {
+  document.getElementById('contact-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeContactModal();
+});
+
+async function submitContactForm(e) {
+  e.preventDefault();
+  var btn  = document.getElementById('cm-submit');
+  var err  = document.getElementById('cm-error');
+  err.style.display = 'none';
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  try {
+    var apiBase = (location.hostname === 'projiq.app' || location.hostname === 'www.projiq.app')
+      ? 'https://api.projiq.app'
+      : 'http://localhost:5000';
+    var res = await fetch(apiBase + '/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name:    document.getElementById('cm-name').value.trim(),
+        email:   document.getElementById('cm-email').value.trim(),
+        company: document.getElementById('cm-company').value.trim(),
+        message: document.getElementById('cm-message').value.trim(),
+        type:    document.getElementById('cm-type').value,
+      }),
+    });
+    var data = await res.json();
+    if (res.ok && data.success) {
+      document.getElementById('cm-form').style.display = 'none';
+      document.getElementById('cm-success').style.display = 'block';
+      setTimeout(closeContactModal, 3000);
+    } else {
+      err.textContent = data.message || 'Something went wrong. Please try again.';
+      err.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+    }
+  } catch (_) {
+    err.textContent = 'Network error. Please check your connection and try again.';
+    err.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Send Message';
+  }
+}
 </script>
 </body>
 </html>
