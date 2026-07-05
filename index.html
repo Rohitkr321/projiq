@@ -37,10 +37,12 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 
 /* ─── BUTTONS ──────────────────────────────────────── */
 .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;border-radius:10px;font-weight:700;transition:all .2s;cursor:pointer;border:none;font-size:15px;}
-.btn-primary{padding:14px 30px;background:linear-gradient(90deg,var(--accent),var(--violet));color:#fff;box-shadow:0 4px 28px rgba(59,130,246,.38);}
-.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 40px rgba(59,130,246,.48);}
-.btn-ghost{padding:13px 28px;border:1px solid var(--border);background:rgba(8,18,40,.45);color:var(--text);}
-.btn-ghost:hover{border-color:var(--accent);color:var(--accentL);}
+.btn-primary{padding:14px 30px;background:linear-gradient(90deg,var(--accent),var(--violet));color:#fff;box-shadow:0 4px 28px rgba(59,130,246,.38);position:relative;overflow:hidden;}
+.btn-primary::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.15) 50%,transparent 100%);transform:translateX(-100%);transition:transform .5s ease;}
+.btn-primary:hover::after{transform:translateX(100%);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 44px rgba(59,130,246,.52);}
+.btn-ghost{padding:13px 28px;border:1px solid rgba(148,163,184,.18);background:rgba(8,18,40,.45);color:var(--text);}
+.btn-ghost:hover{border-color:rgba(96,165,250,.45);color:var(--accentL);background:rgba(59,130,246,.06);box-shadow:0 0 24px rgba(59,130,246,.1);}
 .btn-sm{font-size:13px;padding:9px 20px;border-radius:8px;}
 
 /* ─── CHIP ─────────────────────────────────────────── */
@@ -97,13 +99,27 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .hero-glow2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(59,130,246,.07) 0%,transparent 68%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;animation:breathe 7s ease-in-out infinite reverse;}
 @keyframes breathe{0%,100%{transform:translate(-50%,-50%) scale(1);}50%{transform:translate(-50%,-50%) scale(1.07);}}
 .hero-content{max-width:860px;text-align:center;margin:0 auto;position:relative;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid var(--border);border-radius:100px;font-size:12px;color:var(--muted);background:rgba(8,18,40,.55);margin-bottom:30px;}
-.live-dot{width:7px;height:7px;border-radius:50%;background:var(--success);animation:pulse 2s infinite;flex-shrink:0;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border:1px solid rgba(59,130,246,.22);border-radius:100px;font-size:12px;color:var(--text);background:rgba(59,130,246,.07);margin-bottom:28px;backdrop-filter:blur(8px);}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--success);animation:pulse 2s infinite;flex-shrink:0;box-shadow:0 0 6px var(--success);}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.72);}}
 .hero-h1{font-size:clamp(46px,8.5vw,96px);font-weight:900;letter-spacing:-.055em;line-height:.92;color:var(--strong);margin-bottom:26px;}
-.hero-h1 .gr{background:linear-gradient(135deg,#F1F5F9 0%,var(--accentL) 46%,var(--violet) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-h1 .gr{background:linear-gradient(135deg,#93C5FD 0%,#60A5FA 22%,#A78BFA 44%,#60A5FA 66%,#93C5FD 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradMove 5s linear infinite;}
+@keyframes gradMove{to{background-position:200% center;}}
+
+/* ─── ANNOUNCEMENT BAR ─────────────────────────────── */
+.nav-announce{background:linear-gradient(90deg,rgba(79,70,229,.08),rgba(6,182,212,.07),rgba(79,70,229,.08));border-bottom:1px solid rgba(79,70,229,.16);text-align:center;padding:8px 20px;font-size:12px;color:var(--muted);line-height:1.4;}
+.nav-announce strong{color:var(--text);}
+.nav-announce a{color:var(--accentL);font-weight:700;text-decoration:none;margin-left:6px;border-bottom:1px solid rgba(96,165,250,.35);padding-bottom:1px;}
+.nav-announce a:hover{color:var(--strong);border-bottom-color:var(--strong);}
+@media(max-width:480px){.nav-announce{font-size:10.5px;padding:7px 14px;}}
+
+/* ─── NAV ACTIVE LINK ──────────────────────────────── */
+.nav-links a.scroll-active{color:var(--strong);}
+.nav-links a.scroll-active::after{content:'';display:block;height:1px;background:var(--accent);margin-top:1px;border-radius:1px;}
 .hero-sub{font-size:clamp(16px,2.2vw,20px);color:var(--muted);line-height:1.65;margin-bottom:38px;max-width:640px;margin-left:auto;margin-right:auto;}
-.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:42px;}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:18px;}
+.hero-trust{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:28px;flex-wrap:wrap;}
+.hero-trust-text{font-size:12px;color:var(--muted);}
 .hero-plat{display:flex;align-items:center;gap:16px;justify-content:center;flex-wrap:wrap;}
 .plat-lbl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
 .plat-badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;}
@@ -850,8 +866,11 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
 
 <!-- ═══════════════ NAVIGATION ═══════════════ -->
 <nav class="nav">
+  <div class="nav-announce">
+    ✨ <strong>Now accepting organizations:</strong> Get your team on Projiq — one plan, unlimited collaboration.<a href="https://projiq.app/register-org?plan=professional" target="_blank">Start free →</a>
+  </div>
   <div class="nav-inner">
-    <a href="#hero" class="nav-logo">
+    <a href="/" class="nav-logo" id="nav-logo-home">
       <svg class="nav-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-label="Projiq mark"><use href="#projiq-p"/></svg><span class="nav-wordmark">Projiq<span class="nav-dot-app">.app</span></span>
     </a>
     <div class="nav-links">
@@ -909,10 +928,13 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
       <h1 class="hero-h1">
         The project platform<br><span class="gr">built for organizations.</span>
       </h1>
-      <p class="hero-sub">One subscription covers your entire organization — sprints, boards, roadmaps, and real-time collaboration — on every device your team uses.</p>
+      <p class="hero-sub">One plan covers your entire organization — sprints, boards, roadmaps, epics, and real-time collaboration for every team member.</p>
       <div class="hero-btns">
         <a href="https://projiq.app/register-org?plan=professional" target="_blank" class="btn btn-primary">Start Free Trial</a>
         <a href="#features" class="btn btn-ghost">Explore Features ↓</a>
+      </div>
+      <div class="hero-trust reveal d2">
+        <span class="hero-trust-text">No credit card required &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; Full access from day one</span>
       </div>
       <div class="hero-plat">
         <span class="plat-lbl">Available on</span>
@@ -1013,20 +1035,20 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
   <div class="container">
     <div class="stats-inner">
       <div class="stat-item">
-        <div class="stat-num">11</div>
+        <div class="stat-num" data-count="11">11</div>
         <div class="stat-lbl">Core modules</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">6</div>
+        <div class="stat-num" data-count="6">6</div>
         <div class="stat-lbl">Work views</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">5</div>
-        <div class="stat-lbl">Access roles</div>
+        <div class="stat-num" data-count="5">5</div>
+        <div class="stat-lbl">Permission roles</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">3</div>
-        <div class="stat-lbl">Platforms</div>
+        <div class="stat-num">1</div>
+        <div class="stat-lbl">Platform (Web)</div>
       </div>
       <div class="stat-item">
         <div class="stat-num">&lt;100ms</div>
@@ -1424,7 +1446,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
             </div>
           </div>
         </div>
-        <p class="gallery-caption" style="margin-top:14px;">Mobile app — available as add-on</p>
+        <p class="gallery-caption" style="margin-top:14px;">Mobile app — coming soon</p>
       </div>
 
     </div>
@@ -1868,14 +1890,14 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
         <div class="plat-icon" style="background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.2);">
           <svg viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="18" r="1" fill="var(--violet)" stroke="none"/></svg>
         </div>
-        <div class="plat-name">Mobile Add-on</div>
-        <div class="plat-desc">Need your team on the go? Add iOS &amp; Android access to any plan as an optional extra. Full feature parity — same boards, sprints, and live sync as the Web app, on every phone and tablet.</div>
-        <div class="plat-tags"><span class="chip chip-v">Optional add-on</span><span class="chip chip-v">iOS &amp; Android</span><span class="chip chip-v">Full parity</span></div>
+        <div class="plat-name">Mobile App <span style="font-size:10px;font-weight:700;background:rgba(245,158,11,.15);color:var(--amber);border:1px solid rgba(245,158,11,.25);border-radius:100px;padding:2px 9px;margin-left:6px;vertical-align:middle;">Coming Soon</span></div>
+        <div class="plat-desc">Native iOS &amp; Android apps are in development — the same boards, sprints, and real-time sync your team already knows from the Web app, now available on any phone or tablet.</div>
+        <div class="plat-tags"><span class="chip chip-v">In development</span><span class="chip chip-v">iOS &amp; Android</span><span class="chip chip-v">Full parity</span></div>
       </div>
     </div>
     <div class="live-bar reveal">
       <div class="live-dot"></div>
-      <div class="live-bar-text">Real-time WebSocket sync — every board, backlog, and issue updates the moment a change is made, on every device, for every user, in under 100ms.</div>
+      <div class="live-bar-text">Real-time WebSocket sync — every board, backlog, and issue updates the moment a change is made, for every user in your organization, in under 100ms.</div>
       <div class="live-bar-tags">
         <span class="chip chip-g">Socket.io</span>
         <span class="chip chip-b">Optimistic UI</span>
@@ -1948,7 +1970,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
           <tr><td>Release &amp; version management</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="cx">—</span></td><td><span class="cx">—</span></td></tr>
           <tr><td>Custom fields per project</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="cx">—</span></td></tr>
           <tr><td>Real-time WebSocket updates</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="lm">Limited</span></td><td><span class="cx">—</span></td></tr>
-          <tr><td>Mobile add-on (iOS &amp; Android)</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="lm">Add-on</span></td><td><span class="lm">Add-on</span></td><td><span class="cx">—</span></td></tr>
+          <tr><td>Mobile app (iOS &amp; Android)</td><td class="ours-col"><span class="lm">Coming Soon</span></td><td><span class="lm">Add-on</span></td><td><span class="lm">Add-on</span></td><td><span class="cx">—</span></td></tr>
           <tr><td>Per-organization pricing (no per-seat)</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="cx">—</span></td><td><span class="cx">—</span></td><td><span class="cx">—</span></td></tr>
           <tr><td>Dedicated onboarding &amp; support</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="cx">—</span></td><td><span class="cx">—</span></td><td><span class="cx">—</span></td></tr>
           <tr><td>Configured to your exact workflows</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="cx">—</span></td><td><span class="cx">—</span></td><td><span class="cx">—</span></td></tr>
@@ -2035,8 +2057,8 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="18.5" r=".8" fill="#fff" stroke="none"/></svg>
       </div>
       <div>
-        <div class="mob-addon-label">Mobile Add-on &mdash; iOS &amp; Android</div>
-        <div class="mob-addon-desc">Add native iOS &amp; Android app access to any plan. Full feature parity &mdash; same boards, sprints, and real-time sync on mobile.</div>
+        <div class="mob-addon-label">Mobile App &mdash; iOS &amp; Android <span style="font-size:10px;font-weight:700;background:rgba(245,158,11,.15);color:var(--amber);border:1px solid rgba(245,158,11,.25);border-radius:100px;padding:2px 8px;margin-left:6px;vertical-align:middle;">Coming Soon</span></div>
+        <div class="mob-addon-desc">Native iOS &amp; Android app access is in development — same boards, sprints, and real-time sync on mobile. Join the waitlist to be notified first.</div>
       </div>
       <div class="mob-addon-tiers">
         <div class="mob-addon-tier">
@@ -2136,7 +2158,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
           <span class="faq-q-text">Is pricing really per organization — not per seat?</span>
           <span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">Yes — <strong>completely</strong>. You pay one flat monthly fee for your entire organization. Every member you invite gets full Web access at no additional cost. Mobile access (iOS &amp; Android) is available as an optional add-on. Starter covers up to 30 members; Professional up to 150. No per-seat charges, ever.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Yes — <strong>completely</strong>. You pay one flat monthly fee for your entire organization. Every member you invite gets full Web access at no additional cost. A mobile app for iOS &amp; Android is in development and coming soon. Starter covers up to 30 members; Professional up to 150. No per-seat charges, ever.</div></div>
       </div>
 
       <div class="faq-item">
@@ -2152,7 +2174,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
           <span class="faq-q-text">Which browsers does Projiq support?</span>
           <span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">Projiq runs on <strong>Web</strong> — Chrome, Safari, Firefox, and Edge. No installation required. Real-time WebSocket sync keeps all browser sessions live in under 100ms. iOS &amp; Android mobile access is available as an optional add-on — see the pricing section for details.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Projiq runs on <strong>Web</strong> — Chrome, Safari, Firefox, and Edge. No installation required. Real-time WebSocket sync keeps all browser sessions live in under 100ms. Native iOS &amp; Android apps are in development and coming soon.</div></div>
       </div>
 
       <div class="faq-item">
@@ -2195,51 +2217,6 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
         <div class="faq-a"><div class="faq-a-inner"><strong>Yes — no lock-in, ever</strong>. Upgrade or downgrade your plan at any time from the billing settings. Cancel whenever you want; access continues until the end of your current billing period. All your data is retained for 90 days after cancellation so you can export everything.</div></div>
       </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ TESTIMONIALS ═══════════════ -->
-<section class="section-pad" style="background:var(--bg2);">
-  <div class="container">
-    <div class="reveal center">
-      <span class="ey">Trusted by Teams</span>
-      <h2 class="section-title">Organizations that run on <span class="gr">Projiq</span></h2>
-    </div>
-    <div class="testi-grid">
-      <div class="testi-card reveal d1">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"We replaced three separate tools with Projiq. Sprints, boards, and roadmaps in one place — our engineering team shipped 40% more stories in the first quarter."</p>
-        <div class="testi-author">
-          <div class="testi-av" style="background:linear-gradient(135deg,#3B82F6,#8B5CF6);">RK</div>
-          <div><strong>Rohit Kumar</strong><span>VP Engineering · General Aeronautics</span></div>
-        </div>
-      </div>
-      <div class="testi-card reveal d2">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Onboarding took less than a day. The role-based access is exactly what we needed for our client-facing projects. Our PMs won't go back."</p>
-        <div class="testi-author">
-          <div class="testi-av" style="background:linear-gradient(135deg,#10B981,#06B6D4);">SP</div>
-          <div><strong>Sara Patel</strong><span>Head of Product · CloudBridge Inc.</span></div>
-        </div>
-      </div>
-      <div class="testi-card reveal d3">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Real-time sprint tracking and the kanban board changed how our cross-functional teams collaborate. Projiq is the operating system for our projects."</p>
-        <div class="testi-author">
-          <div class="testi-av" style="background:linear-gradient(135deg,#F59E0B,#EF4444);">AM</div>
-          <div><strong>Alex Morgan</strong><span>CTO · Vertex Systems</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="testi-metric-row">
-      <div class="testi-metric"><span class="testi-metric-num">98%</span><span class="testi-metric-lbl">Customer satisfaction</span></div>
-      <div class="testi-metric-div"></div>
-      <div class="testi-metric"><span class="testi-metric-num">&lt;1h</span><span class="testi-metric-lbl">Average onboarding time</span></div>
-      <div class="testi-metric-div"></div>
-      <div class="testi-metric"><span class="testi-metric-num">4.9★</span><span class="testi-metric-lbl">Average rating</span></div>
-      <div class="testi-metric-div"></div>
-      <div class="testi-metric"><span class="testi-metric-num">No lock-in</span><span class="testi-metric-lbl">Cancel any time</span></div>
     </div>
   </div>
 </section>
@@ -2522,6 +2499,57 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
     attachTilt('.stat-item',     9, 500);
     attachTilt('.vplayer',       7, 800);
     attachTilt('.kboard-col',    8, 600);
+
+    /* ── Stats count-up on first scroll into view ── */
+    (function(){
+      var counters=document.querySelectorAll('.stat-num[data-count]');
+      var done=false;
+      var io=window.IntersectionObserver&&new IntersectionObserver(function(entries){
+        if(done)return;
+        var vis=entries.some(function(e){return e.isIntersecting;});
+        if(!vis)return;
+        done=true;
+        counters.forEach(function(el){
+          var target=parseInt(el.dataset.count,10);
+          var start=0,dur=900,t0=null;
+          function step(ts){
+            if(!t0)t0=ts;
+            var p=Math.min((ts-t0)/dur,1);
+            el.textContent=Math.round(p*target);
+            if(p<1)requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        });
+      },{threshold:0.3});
+      if(io){counters.forEach(function(el){io.observe(el);});}
+    }());
+
+    /* ── Logo: scroll to top, no hash in URL ── */
+    var logoHome=document.getElementById('nav-logo-home');
+    if(logoHome){
+      logoHome.addEventListener('click',function(e){
+        e.preventDefault();
+        window.scrollTo({top:0,behavior:'smooth'});
+        if(history.replaceState) history.replaceState(null,'',location.pathname+location.search);
+      });
+    }
+
+    /* ── Nav: highlight active section link on scroll ── */
+    (function(){
+      var secs=['features','views','platform','security','pricing','faq'];
+      var navAs=document.querySelectorAll('.nav-links a');
+      function setActive(){
+        var sy=window.scrollY+90;
+        var cur='';
+        secs.forEach(function(id){var el=document.getElementById(id);if(el&&el.offsetTop<=sy)cur=id;});
+        navAs.forEach(function(a){
+          var href=a.getAttribute('href')||'';
+          a.classList.toggle('scroll-active',href==='#'+cur&&cur!=='');
+        });
+      }
+      window.addEventListener('scroll',setActive,{passive:true});
+      setActive();
+    }());
 
     /* ── Scroll parallax: hero 3D device tilts deeper as user scrolls ── */
     var dev3d=document.querySelector('.hero-3d-device');
