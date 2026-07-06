@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Block the app and API subdomains (require login, not for indexing)
+Disallow: /app/
+
+Sitemap: https://projiq.app/sitemap.xml
