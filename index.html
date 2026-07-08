@@ -4,10 +4,81 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projiq — Project Management for Organizations</title>
-<meta name="description" content="Projiq — the project management platform organizations trust to align every team, sprint, and milestone on the Web.">
+<meta name="description" content="One plan covers your entire organization — sprints, boards, roadmaps, epics, and real-time collaboration for every team member. Invite-only, zero setup.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 285 265'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%234F46E5'/><stop offset='1' stop-color='%2306B6D4'/></linearGradient></defs><path d='M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z' fill='url(%23g)'/><rect x='0' y='65' width='60' height='12' rx='6' fill='%234F46E5'/><rect x='0' y='100' width='60' height='12' rx='6' fill='%2306B6D4'/><rect x='0' y='135' width='60' height='12' rx='6' fill='%2310B981'/><path d='M140 105 L160 125 L205 80' fill='none' stroke='white' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/></svg>">
 <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 285 265'><rect width='285' height='265' rx='60' fill='%230A1628'/><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%234F46E5'/><stop offset='1' stop-color='%2306B6D4'/></linearGradient></defs><path d='M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z' fill='url(%23g)'/><rect x='0' y='65' width='60' height='12' rx='6' fill='%234F46E5'/><rect x='0' y='100' width='60' height='12' rx='6' fill='%2306B6D4'/><rect x='0' y='135' width='60' height='12' rx='6' fill='%2310B981'/><path d='M140 105 L160 125 L205 80' fill='none' stroke='white' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/></svg>">
 <meta name="theme-color" content="#020B18">
+
+<!-- ── Open Graph (Facebook, LinkedIn, WhatsApp, Slack previews) ── -->
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://projiq.app/">
+<meta property="og:site_name"   content="Projiq">
+<meta property="og:title"       content="Projiq — Project Management for Organizations">
+<meta property="og:description" content="One plan covers your entire organization — sprints, boards, roadmaps, epics, and real-time collaboration for every team member. Invite-only, zero setup.">
+<meta property="og:image"       content="https://projiq.app/og.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt"   content="Projiq — Project Management Platform">
+<meta property="og:locale"      content="en_US">
+
+<!-- ── Twitter / X card ── -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:site"        content="@projiqapp">
+<meta name="twitter:title"       content="Projiq — Project Management for Organizations">
+<meta name="twitter:description" content="One plan covers your entire organization — sprints, boards, roadmaps, and real-time collaboration for every team member.">
+<meta name="twitter:image"       content="https://projiq.app/og.png">
+
+<!-- ── JSON-LD: Organization + WebSite structured data ── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://projiq.app/#organization",
+      "name": "Projiq",
+      "url": "https://projiq.app/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://projiq.app/og.png",
+        "width": 1200,
+        "height": 630
+      },
+      "sameAs": [
+        "https://linkedin.com/company/projiq"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://projiq.app/#website",
+      "url": "https://projiq.app/",
+      "name": "Projiq",
+      "description": "Project management platform for organizations — sprints, boards, roadmaps, and real-time collaboration.",
+      "publisher": { "@id": "https://projiq.app/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://projiq.app/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Projiq",
+      "url": "https://projiq.app/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web, Android, iOS",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Starter plan free, Pro and Enterprise plans available"
+      },
+      "description": "Full-stack project management platform for organizations — sprints, boards, epics, RBAC, and real-time collaboration.",
+      "publisher": { "@id": "https://projiq.app/#organization" }
+    }
+  ]
+}
+</script>
 <style>
 /* ─── RESET & VARS ─────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
