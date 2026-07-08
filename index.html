@@ -82,7 +82,7 @@
 <style>
 /* ─── RESET & VARS ─────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
 :root{
   --bg:#020B18; --bg2:#030E1E; --bg3:rgba(8,18,40,0.72);
   --border:rgba(59,130,246,0.12); --border2:rgba(255,255,255,0.07);
@@ -182,7 +182,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .nav-announce strong{color:var(--text);}
 .nav-announce a{color:var(--accentL);font-weight:700;text-decoration:none;margin-left:6px;border-bottom:1px solid rgba(96,165,250,.35);padding-bottom:1px;}
 .nav-announce a:hover{color:var(--strong);border-bottom-color:var(--strong);}
-@media(max-width:480px){.nav-announce{font-size:10.5px;padding:7px 14px;}}
+@media(max-width:480px){.nav-announce{font-size:10.5px;padding:6px 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}}
 
 /* ─── NAV ACTIVE LINK ──────────────────────────────── */
 .nav-links a.scroll-active{color:var(--strong);}
@@ -831,7 +831,8 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
 
   /* ── Nav: tighter ── */
   .nav-inner{height:56px;}
-  #hero{padding-top:80px;}
+  /* 56px nav-inner + ~28px announce bar = ~84px; give hero 96px to clear it */
+  #hero{padding-top:96px;}
 }
 
 @media(max-width:480px){
@@ -903,6 +904,48 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
 @media(max-width:400px){
   .section-title{font-size:clamp(24px,7vw,36px);}
   .hero-h1{font-size:clamp(34px,10vw,60px);}
+}
+
+/* ─── MOBILE OVERFLOW FIX ────────────────────────────────────────
+   Prevents horizontal scroll on all mobile devices / iOS Safari.
+   iOS requires overflow-x:hidden on BOTH html and body — body alone
+   is not enough and the user can still drag the page sideways.
+   ─────────────────────────────────────────────────────────────── */
+
+/* Contain the 900 px hero-glow so it doesn't widen the scroll area */
+@media(max-width:768px){
+  #hero{overflow:hidden;}
+
+  /* Safety cap on the device mock — block elements should already be
+     100 % wide, but this prevents any transform / content expansion */
+  .hero-3d-device{max-width:100%;}
+
+  /* live-bar: remove enforced min-width so the flex row doesn't bust
+     past the container edge on narrow phones */
+  .live-bar-text{min-width:0;}
+
+  /* Ensure every major section clips any decorative overflow */
+  #features,#views,#platform,#security,#pricing,#faq,#testimonials,
+  #implementation,#gallery{overflow:hidden;}
+}
+
+/* Very small phones (≤ 480 px, e.g. 320 px) */
+@media(max-width:480px){
+  /* Shrink container padding slightly so more content fits */
+  .container{padding:0 16px;}
+
+  /* Announcement bar (single-line, ~25px) + nav-inner (56px) = ~81px.
+     Keep hero content clear with 96px top padding. */
+  #hero{padding-top:96px;}
+
+  /* Testimonial metric chips: let them shrink, don't force 120 px */
+  .testi-metric{min-width:0;flex:1 1 auto;}
+
+  /* Security role badges: let them wrap naturally */
+  .role-badge{min-width:0;white-space:normal;}
+
+  /* Addon tier boxes: no forced minimum */
+  .mob-addon-tier{min-width:0;}
 }
 </style>
 
