@@ -1,12 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 285 285">
+  <!-- Dark navy background with rounded corners -->
+  <rect width="285" height="285" rx="56" fill="#0A1628"/>
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#4F46E5"/>
-      <stop offset="100%" stop-color="#06B6D4"/>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4F46E5"/>
+      <stop offset="1" stop-color="#06B6D4"/>
     </linearGradient>
   </defs>
-  <rect width="285" height="285" rx="58" fill="url(#bg)"/>
-  <g transform="translate(0,10)">
-    <path d="M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z" fill="white"/>
+  <g transform="translate(0 10)">
+    <path d="M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z" fill="url(#g)"/>
+    <rect x="0" y="65"  width="60" height="12" rx="6" fill="#4F46E5"/>
+    <rect x="0" y="100" width="60" height="12" rx="6" fill="#06B6D4"/>
+    <rect x="0" y="135" width="60" height="12" rx="6" fill="#10B981"/>
+    <path d="M140 105 L160 125 L205 80" fill="none" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>
