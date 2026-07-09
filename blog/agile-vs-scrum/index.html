@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agile vs Scrum: The Complete Guide for Engineering Teams (2026) | Projiq Blog</title>
+<meta name="description" content="Agile is a philosophy — Scrum is a framework. Understand the differences, when to use each, and how to apply them to real engineering teams without the theory overload.">
+<link rel="canonical" href="https://projiq.app/blog/agile-vs-scrum/">
+<meta property="og:title" content="Agile vs Scrum: The Complete Guide for Engineering Teams (2026)">
+<meta property="og:description" content="Agile is a philosophy — Scrum is a framework. Understand the differences, when to use each, and how to apply them to real engineering teams.">
+<meta property="og:image" content="https://projiq.app/og.png">
+<meta property="og:url" content="https://projiq.app/blog/agile-vs-scrum/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-05">
+<meta property="article:author" content="Projiq Team">
+<meta property="article:section" content="Agile">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agile vs Scrum: The Complete Guide (2026)">
+<meta name="twitter:image" content="https://projiq.app/og.png">
+<link rel="icon" href="/favicon.ico">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Agile vs Scrum: The Complete Guide for Engineering Teams (2026)","description":"Agile is a philosophy — Scrum is a framework. Understand the differences, when to use each, and how to apply them to real engineering teams.","author":{"@type":"Organization","name":"Projiq"},"publisher":{"@type":"Organization","name":"Projiq","logo":{"@type":"ImageObject","url":"https://projiq.app/og.png"}},"datePublished":"2026-07-05","dateModified":"2026-07-05","mainEntityOfPage":{"@type":"WebPage","@id":"https://projiq.app/blog/agile-vs-scrum/"},"image":"https://projiq.app/og.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://projiq.app"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://projiq.app/blog/"},{"@type":"ListItem","position":3,"name":"Agile vs Scrum","item":"https://projiq.app/blog/agile-vs-scrum/"}]}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#030812;color:#F1F5F9;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+.prog{position:fixed;top:60px;left:0;height:3px;background:linear-gradient(90deg,#8B5CF6,#3B82F6);width:0;z-index:300;transition:width .08s linear}
+
+.b-nav{position:sticky;top:0;z-index:200;background:rgba(3,8,18,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)}
+.b-nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center}
+.b-logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;color:#F1F5F9;flex-shrink:0}
+.b-logo-mark{width:28px;height:28px;background:linear-gradient(135deg,#3B82F6,#8B5CF6);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#fff;flex-shrink:0}
+.b-nav-links{display:flex;gap:28px;margin-left:auto;margin-right:28px}
+.b-nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
+.b-nav-links a:hover,.b-nav-links a.active{color:#F1F5F9}
+.b-nav-cta{background:linear-gradient(90deg,#3B82F6,#8B5CF6);color:#fff;padding:8px 20px;border-radius:9px;font-size:13px;font-weight:700;flex-shrink:0;transition:opacity .2s}
+.b-nav-cta:hover{opacity:.86}
+
+.b-crumb{max-width:1200px;margin:0 auto;padding:28px 24px 0;display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.35);flex-wrap:wrap}
+.b-crumb a{color:rgba(255,255,255,.38);transition:color .2s}
+.b-crumb a:hover{color:#60A5FA}
+.b-crumb-sep{color:rgba(255,255,255,.18)}
+
+.art-wrap{max-width:1200px;margin:0 auto;padding:32px 24px 0}
+.art-header{margin-bottom:44px}
+.art-cat{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;background:rgba(139,92,246,.11);border:1px solid rgba(139,92,246,.24);color:#A78BFA;margin-bottom:18px}
+.art-header h1{font-size:clamp(30px,4.5vw,50px);font-weight:900;line-height:1.15;letter-spacing:-1px;margin-bottom:22px}
+.art-meta{display:flex;align-items:center;gap:22px;color:rgba(255,255,255,.35);font-size:13px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap}
+
+.art-layout{display:grid;grid-template-columns:1fr 300px;gap:60px;align-items:start}
+
+.art-body{font-size:17px;line-height:1.80;color:rgba(255,255,255,.78);padding-bottom:60px}
+.art-body p{margin-bottom:22px}
+.art-body h2{font-size:26px;font-weight:800;color:#F1F5F9;margin:48px 0 16px;letter-spacing:-.3px;line-height:1.3}
+.art-body h3{font-size:19px;font-weight:700;color:#F1F5F9;margin:28px 0 12px;letter-spacing:-.1px}
+.art-body ul,.art-body ol{margin:0 0 22px 22px}
+.art-body li{margin-bottom:9px;color:rgba(255,255,255,.72)}
+.art-body ul li::marker{color:#8B5CF6}
+.art-body ol li::marker{color:#A78BFA;font-weight:700}
+.art-body strong{color:#F1F5F9;font-weight:700}
+.art-body a{color:#A78BFA;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(167,139,250,.4);transition:text-decoration-color .2s}
+.art-body a:hover{text-decoration-color:#A78BFA}
+blockquote{border-left:3px solid #8B5CF6;padding:16px 22px;background:rgba(139,92,246,.06);border-radius:0 10px 10px 0;margin:28px 0;font-style:italic;color:rgba(255,255,255,.72);font-size:16px}
+.tip-box{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.tip-box b{color:#34D399;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.warn-box{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.warn-box b{color:#FBBF24;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.link-box{background:rgba(139,92,246,.07);border:1px solid rgba(139,92,246,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.link-box b{color:#A78BFA;display:block;margin-bottom:8px;font-size:13px;font-weight:700}
+
+/* Comparison table */
+.cmp-table-wrap{overflow-x:auto;margin:28px 0;border-radius:12px;border:1px solid rgba(255,255,255,.07)}
+.cmp-table{width:100%;border-collapse:collapse;font-size:14px;min-width:580px}
+.cmp-table th{background:rgba(139,92,246,.10);color:#A78BFA;padding:12px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.cmp-table th:first-child{color:rgba(255,255,255,.45)}
+.cmp-table td{padding:12px 16px;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.68);vertical-align:top;line-height:1.5}
+.cmp-table td:first-child{color:rgba(255,255,255,.45);font-weight:600;white-space:nowrap;font-size:13px}
+.cmp-table tr:hover td{background:rgba(255,255,255,.02)}
+
+/* Two-column comparison boxes */
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0}
+.vs-box{background:rgba(10,22,40,.6);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:20px}
+.vs-box h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+.vs-box.agile h4{color:#3B82F6}
+.vs-box.scrum h4{color:#8B5CF6}
+.vs-box ul{margin-left:16px}
+.vs-box li{font-size:14px;color:rgba(255,255,255,.65);margin-bottom:7px}
+.vs-box ul li::marker{color:#4B5563}
+
+.art-cta{background:linear-gradient(135deg,rgba(139,92,246,.13),rgba(59,130,246,.08));border:1px solid rgba(139,92,246,.22);border-radius:16px;padding:36px;text-align:center;margin:44px 0}
+.art-cta h3{font-size:22px;font-weight:800;margin-bottom:10px}
+.art-cta p{color:rgba(255,255,255,.52);font-size:15px;margin-bottom:22px;line-height:1.6}
+.art-cta a{display:inline-block;background:linear-gradient(90deg,#8B5CF6,#3B82F6);color:#fff;padding:12px 28px;border-radius:9px;font-size:14px;font-weight:700;transition:opacity .2s}
+.art-cta a:hover{opacity:.86;text-decoration:none}
+
+.art-sidebar{position:sticky;top:80px}
+.sb-card{background:rgba(10,22,40,.8);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px;margin-bottom:18px}
+.sb-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.35);margin-bottom:16px}
+.toc-list{list-style:none;padding:0}
+.toc-list li{margin-bottom:9px}
+.toc-list a{font-size:13px;color:rgba(255,255,255,.45);display:block;padding-left:10px;border-left:1px solid rgba(255,255,255,.08);line-height:1.5;transition:color .18s,border-color .18s}
+.toc-list a:hover,.toc-list a.active{color:#A78BFA;border-left-color:#8B5CF6;text-decoration:none}
+.rel-post{display:flex;gap:11px;margin-bottom:13px;align-items:flex-start}
+.rel-icon{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px}
+.rel-post a{font-size:13px;font-weight:600;color:rgba(255,255,255,.65);line-height:1.4;transition:color .2s;display:block;margin-bottom:3px}
+.rel-post a:hover{color:#A78BFA;text-decoration:none}
+.rel-cat{font-size:11px;color:rgba(255,255,255,.28)}
+
+.b-footer{background:#020810;border-top:1px solid rgba(255,255,255,.07);padding:56px 24px 32px}
+.b-footer-inner{max-width:1200px;margin:0 auto}
+.b-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.b-footer-brand p{color:rgba(255,255,255,.38);font-size:13px;line-height:1.7;margin-top:14px;max-width:230px}
+.b-footer-col h5{color:#F1F5F9;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.b-footer-col a{display:block;color:rgba(255,255,255,.38);font-size:13px;margin-bottom:9px;transition:color .2s}
+.b-footer-col a:hover{color:#A78BFA}
+.b-footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.b-footer-copy{color:rgba(255,255,255,.22);font-size:12px}
+
+@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{display:none}.vs-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.b-nav-links{display:none}.art-header h1{font-size:28px}.art-body{font-size:16px}.b-footer-grid{grid-template-columns:1fr;gap:24px}}
+</style>
+</head>
+<body>
+
+<div class="prog" id="prog"></div>
+
+<nav class="b-nav">
+  <div class="b-nav-inner">
+    <a href="/" class="b-logo"><div class="b-logo-mark">P</div>Projiq</a>
+    <div class="b-nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/" class="active">Blog</a>
+    </div>
+    <a href="https://app.projiq.app/register-org" class="b-nav-cta">Get Started Free</a>
+  </div>
+</nav>
+
+<div class="b-crumb">
+  <a href="/">Home</a><span class="b-crumb-sep">›</span>
+  <a href="/blog/">Blog</a><span class="b-crumb-sep">›</span>
+  <span>Agile</span>
+</div>
+
+<div class="art-wrap">
+  <header class="art-header">
+    <span class="art-cat">Agile</span>
+    <h1>Agile vs Scrum: The Complete Guide for Engineering Teams (2026)</h1>
+    <div class="art-meta">
+      <span>✍ Projiq Team</span>
+      <span>📅 July 5, 2026</span>
+      <span>⏱ 9 min read</span>
+    </div>
+  </header>
+
+  <div class="art-layout">
+    <article class="art-body" id="article">
+
+      <p>"We're Agile" is one of the most misused phrases in software development. It usually means "we do standups and call them sprints" — which is neither Agile nor Scrum. Getting this distinction right matters because the framework you choose shapes how your team plans, prioritizes, retrospects, and ships.</p>
+
+      <p>This guide is the practical version: what each actually means, where they differ, when to use which, and how they combine in real engineering organizations.</p>
+
+      <h2 id="what-is-agile">What Is Agile?</h2>
+      <p>Agile is a <strong>philosophy</strong> — a set of values and principles for developing software, first articulated in the 2001 Agile Manifesto. It has no ceremonies, no roles, no prescribed cadence. The four core values are:</p>
+      <ol>
+        <li><strong>Individuals and interactions</strong> over processes and tools</li>
+        <li><strong>Working software</strong> over comprehensive documentation</li>
+        <li><strong>Customer collaboration</strong> over contract negotiation</li>
+        <li><strong>Responding to change</strong> over following a plan</li>
+      </ol>
+      <p>These values don't tell you how to structure a sprint, what to call team roles, or how long a release cycle should be. They're a mindset. "Agile" alone tells you <em>what to value</em>, not <em>what to do on Monday morning</em>.</p>
+
+      <blockquote>"The Agile Manifesto doesn't tell you how to run a standup. It tells you why the standup exists at all."</blockquote>
+
+      <p>Many teams claim to be Agile when they've actually implemented a specific framework — usually Scrum — without realizing the distinction. Recognizing that Agile is a philosophy is step one.</p>
+
+      <h2 id="what-is-scrum">What Is Scrum?</h2>
+      <p>Scrum is a <strong>framework</strong> — a concrete, prescriptive structure for implementing Agile values. It defines specific roles, events (ceremonies), and artifacts. The three roles are:</p>
+      <ul>
+        <li><strong>Product Owner:</strong> Owns the product backlog. Prioritizes what gets built and why. The single decision-maker on scope.</li>
+        <li><strong>Scrum Master:</strong> Facilitates the process. Removes blockers. Coaches the team on Scrum. Not a manager.</li>
+        <li><strong>Development Team:</strong> Cross-functional, self-organizing. Typically 3–9 people. Collectively responsible for delivery.</li>
+      </ul>
+      <p>The five events are:</p>
+      <ol>
+        <li><strong>Sprint:</strong> A fixed time-box (usually 2 weeks) during which the team produces a "done" increment.</li>
+        <li><strong>Sprint Planning:</strong> The team commits to work from the backlog that can be completed in the sprint.</li>
+        <li><strong>Daily Scrum:</strong> 15-minute standup. What did I do? What will I do? Any blockers?</li>
+        <li><strong>Sprint Review:</strong> The team demos completed work to stakeholders.</li>
+        <li><strong>Sprint Retrospective:</strong> The team reflects on its process and commits to one improvement.</li>
+      </ol>
+
+      <h2 id="key-differences">Key Differences</h2>
+      <p>Here's a direct comparison across the dimensions that matter most to engineering teams:</p>
+
+      <div class="cmp-table-wrap">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>Dimension</th>
+              <th>Agile</th>
+              <th>Scrum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>What it is</td><td>Philosophy / mindset</td><td>Framework / process</td></tr>
+            <tr><td>Prescribes roles?</td><td>No</td><td>Yes (PO, SM, Dev Team)</td></tr>
+            <tr><td>Prescribes cadence?</td><td>No</td><td>Yes (2-week sprints)</td></tr>
+            <tr><td>Prescribes ceremonies?</td><td>No</td><td>Yes (5 events)</td></tr>
+            <tr><td>Artifact ownership</td><td>Undefined</td><td>Product backlog, sprint backlog, increment</td></tr>
+            <tr><td>Can you "do" it?</td><td>You embody it</td><td>Yes — you implement it</td></tr>
+            <tr><td>Common misconception</td><td>Means no process</td><td>Means you're Agile</td></tr>
+            <tr><td>Works best for</td><td>Any team culture</td><td>Product development teams with defined scope</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="scrum-vs-kanban">Scrum vs Kanban (Both Are Agile)</h2>
+      <p>One thing that trips up many teams: both Scrum and Kanban are Agile frameworks, but they're structurally very different. Scrum is sprint-based; Kanban is flow-based.</p>
+
+      <div class="vs-grid">
+        <div class="vs-box scrum">
+          <h4>Scrum</h4>
+          <ul>
+            <li>Fixed sprint length (1–2 weeks)</li>
+            <li>Commit to sprint scope at planning</li>
+            <li>Work enters sprint at planning only</li>
+            <li>Velocity measured in story points</li>
+            <li>Roles required (PO, SM)</li>
+            <li>Great for product feature work</li>
+          </ul>
+        </div>
+        <div class="vs-box agile">
+          <h4>Kanban</h4>
+          <ul>
+            <li>No fixed iterations</li>
+            <li>Continuous flow of work</li>
+            <li>Work enters queue as it arrives</li>
+            <li>Cycle time is the key metric</li>
+            <li>No prescribed roles</li>
+            <li>Great for support, ops, or maintenance</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>Many mature engineering teams run hybrid: Scrum for product development (sprints, planning, retros) and Kanban for bug queues or support engineering. This is entirely valid.</p>
+
+      <h2 id="when-to-use">When to Use Each</h2>
+      <h3>Use Scrum when:</h3>
+      <ul>
+        <li>You're building a product with a backlog of features that need prioritization</li>
+        <li>You have a Product Owner who can set and communicate priorities</li>
+        <li>Your team needs rhythm and structure — especially if new to self-organization</li>
+        <li>Stakeholders want regular, predictable demo cadences</li>
+        <li>Team size is 4–9 people (Scrum breaks down below 3 and above 12)</li>
+      </ul>
+
+      <h3>Lean on Agile values (without Scrum) when:</h3>
+      <ul>
+        <li>Work is unpredictable and sprint planning isn't realistic (e.g., a DevOps or SRE team)</li>
+        <li>Your team is very early-stage and doesn't have a defined product yet</li>
+        <li>You're a solo founder or 2-person team — Scrum's overhead exceeds its value</li>
+        <li>Your team does maintenance/support and needs continuous flow (use Kanban instead)</li>
+      </ul>
+
+      <div class="warn-box">
+        <b>Common Mistake</b>
+        Scrum by the book with a team of 15+ people. When teams get too large, Scrum ceremonies become coordination overhead, not collaboration. Either split into smaller Scrum teams or move to Scaled Agile (SAFe, LeSS) — but don't try to run a 20-person Scrum team with a single Product Owner.
+      </div>
+
+      <h2 id="ceremonies">Running Scrum Ceremonies That Don't Feel Bureaucratic</h2>
+      <p>The biggest reason teams abandon Scrum is poorly run ceremonies. Here's how to run each one efficiently:</p>
+
+      <h3>Sprint Planning (60–90 min)</h3>
+      <p>The PO presents the top backlog items. The dev team asks questions, estimates (story points or t-shirt sizes), and commits to what can be done. The output is a sprint backlog with a sprint goal. Keep it to 90 minutes for a 2-week sprint — longer means insufficient backlog refinement.</p>
+
+      <h3>Daily Standup (15 min max)</h3>
+      <p>Three questions, time-boxed, standing up. The minute it becomes a status report to a manager instead of team coordination, it's broken. If blockers come up, take them offline — don't debug in standup.</p>
+
+      <h3>Sprint Review (45 min)</h3>
+      <p>Demo working software. Not a PowerPoint about what you planned to build — demo what actually works. Invite stakeholders. Collect feedback. This is where Agile's "customer collaboration" value shows up in practice.</p>
+
+      <h3>Sprint Retrospective (45 min)</h3>
+      <p>What went well? What could improve? What one change will we commit to next sprint? Format matters: rotate who facilitates to keep it fresh, and make the action item specific ("Update PR template to include a testing section" beats "communicate better").</p>
+
+      <h2 id="tooling">Tooling That Supports Scrum</h2>
+      <p>Scrum requires a few things from your project management tool: a backlog, sprint boards, the ability to move items between sprints, and a way to track velocity. Most legacy tools handle this — but with varying levels of friction.</p>
+      <p>Engineering teams specifically need:</p>
+      <ul>
+        <li>Kanban and sprint board views on the same data</li>
+        <li>Issue hierarchies: Epic → Story → Task → Subtask</li>
+        <li>Backlog management with drag-to-prioritize</li>
+        <li>Sprint velocity tracking without manual data entry</li>
+        <li>Real-time updates visible to the whole team</li>
+      </ul>
+
+      <div class="link-box">
+        <b>📌 Related: Comparing the tools</b>
+        Read our detailed breakdown of the <a href="/blog/best-project-management-software/">best project management software in 2026</a>, including how Jira, Linear, Asana, and Projiq each handle Scrum workflows.
+      </div>
+
+      <h2 id="agile-in-practice">What "Being Agile" Actually Looks Like in Practice</h2>
+      <p>Agile values, put into day-to-day behavior:</p>
+      <ul>
+        <li><strong>Scope can change between sprints.</strong> You don't apologize for it — you manage the backlog and re-prioritize.</li>
+        <li><strong>You ship something small every two weeks.</strong> Not something big every six months. The discipline of shippable increments exposes integration risk early.</li>
+        <li><strong>The team estimates, not the manager.</strong> Estimates created without the people doing the work aren't estimates — they're deadlines in disguise.</li>
+        <li><strong>Working software is the primary measure.</strong> A feature that's 80% built has 0% value delivered. Done means done and deployed.</li>
+        <li><strong>Retrospectives create real change.</strong> If nothing changes after a retro, it's not Agile — it's theater.</li>
+      </ul>
+
+      <blockquote>"Agility isn't about moving fast — it's about being able to change direction without losing momentum."</blockquote>
+
+      <h2 id="conclusion">The Bottom Line</h2>
+      <p>Agile is the why. Scrum is one of the hows. If your team is running sprints, planning poker, retrospectives, and standups — you're doing Scrum, which is an Agile framework. If your team values people over process, working software over documentation, and responds well to change — your team has Agile values, regardless of what framework they use.</p>
+      <p>Most healthy engineering teams use Scrum as a framework to express Agile values. They're not in conflict — they're complementary. The failure mode is following Scrum ceremonies rigidly without understanding the values underneath, which produces exactly the kind of bureaucratic overhead that Agile was designed to avoid.</p>
+      <p>Start with the values, implement the framework lightly, and iterate on your own process the same way you iterate on your product.</p>
+
+      <div class="art-cta">
+        <h3>Run Agile sprints with Projiq</h3>
+        <p>Backlog management, sprint boards, velocity tracking, and real-time team visibility — without the complexity of legacy tools.</p>
+        <a href="https://app.projiq.app/register-org?plan=starter">Start Free Trial</a>
+      </div>
+
+    </article>
+
+    <aside class="art-sidebar">
+      <div class="sb-card">
+        <h4>In this article</h4>
+        <ul class="toc-list">
+          <li><a href="#what-is-agile">What Is Agile?</a></li>
+          <li><a href="#what-is-scrum">What Is Scrum?</a></li>
+          <li><a href="#key-differences">Key Differences</a></li>
+          <li><a href="#scrum-vs-kanban">Scrum vs Kanban</a></li>
+          <li><a href="#when-to-use">When to Use Each</a></li>
+          <li><a href="#ceremonies">Running Ceremonies Well</a></li>
+          <li><a href="#tooling">Tooling for Scrum</a></li>
+          <li><a href="#agile-in-practice">Agile in Practice</a></li>
+          <li><a href="#conclusion">The Bottom Line</a></li>
+        </ul>
+      </div>
+
+      <div class="sb-card">
+        <h4>Related Articles</h4>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(6,182,212,.14);border:1px solid rgba(6,182,212,.25)">🌏</div>
+          <div>
+            <a href="/blog/how-to-manage-remote-teams/">How to Manage Remote Teams Effectively</a>
+            <span class="rel-cat">Remote Work</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(59,130,246,.14);border:1px solid rgba(59,130,246,.25)">🏆</div>
+          <div>
+            <a href="/blog/best-project-management-software/">Best Project Management Software in 2026</a>
+            <span class="rel-cat">Project Management</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sb-card">
+        <h4>Try Projiq Free</h4>
+        <p style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:14px;line-height:1.6">Sprint boards, backlog management, and velocity tracking — built for Scrum teams.</p>
+        <a href="https://app.projiq.app/register-org" style="display:block;background:linear-gradient(90deg,#8B5CF6,#3B82F6);color:#fff;text-align:center;padding:10px 16px;border-radius:8px;font-size:13px;font-weight:700;transition:opacity .2s" onmouseover="this.style.opacity='.86'" onmouseout="this.style.opacity='1'">Get Started Free</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="b-footer">
+  <div class="b-footer-inner">
+    <div class="b-footer-grid">
+      <div class="b-footer-brand">
+        <a href="/" class="b-logo"><div class="b-logo-mark">P</div>Projiq</a>
+        <p>Project management built for engineering organizations. Sprints, boards, timelines, and real-time collaboration.</p>
+      </div>
+      <div class="b-footer-col">
+        <h5>Product</h5>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#security">Security</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Blog</h5>
+        <a href="/blog/">All Articles</a>
+        <a href="/blog/how-to-manage-remote-teams/">Remote Teams Guide</a>
+        <a href="/blog/best-project-management-software/">Best PM Tools</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Get Started</h5>
+        <a href="https://app.projiq.app/register-org">Free Trial</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="https://app.projiq.app/login">Sign In</a>
+      </div>
+    </div>
+    <div class="b-footer-bottom">
+      <span class="b-footer-copy">© 2026 Projiq. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{
+  const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight);
+  prog.style.width=(p*100)+'%';
+  const headings=document.querySelectorAll('.art-body h2[id]');
+  const links=document.querySelectorAll('.toc-list a');
+  let cur='';
+  headings.forEach(h=>{if(window.scrollY>=h.offsetTop-100)cur=h.id});
+  links.forEach(a=>{
+    const active=a.getAttribute('href')==='#'+cur;
+    a.classList.toggle('active',active);
+  });
+},{passive:true});
+</script>
+</body>
+</html>
