@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Best AI Coding Tools for Engineering Teams in 2026: Copilot, Cursor, Claude &amp; More | Projiq Blog</title>
+<meta name="description" content="The complete guide to AI coding tools for engineering teams in 2026. We compare GitHub Copilot, Cursor, Claude Code, Tabnine, and Windsurf across speed, accuracy, pricing, and team fit.">
+<link rel="canonical" href="https://projiq.app/blog/best-ai-coding-tools/">
+<meta property="og:title" content="Best AI Coding Tools for Engineering Teams in 2026: Copilot, Cursor, Claude &amp; More">
+<meta property="og:description" content="GitHub Copilot vs Cursor vs Claude Code vs Windsurf — an honest comparison of the best AI coding tools for engineering teams in 2026.">
+<meta property="og:image" content="https://projiq.app/og.png">
+<meta property="og:url" content="https://projiq.app/blog/best-ai-coding-tools/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-09">
+<meta property="article:author" content="Projiq Team">
+<meta property="article:section" content="Productivity">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Best AI Coding Tools 2026: Copilot vs Cursor vs Claude Code">
+<meta name="twitter:image" content="https://projiq.app/og.png">
+<link rel="icon" href="/favicon.ico">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Best AI Coding Tools for Engineering Teams in 2026","description":"GitHub Copilot vs Cursor vs Claude Code vs Windsurf — an honest comparison of AI coding assistants for engineering teams.","author":{"@type":"Organization","name":"Projiq"},"publisher":{"@type":"Organization","name":"Projiq","logo":{"@type":"ImageObject","url":"https://projiq.app/og.png"}},"datePublished":"2026-07-09","dateModified":"2026-07-09","mainEntityOfPage":{"@type":"WebPage","@id":"https://projiq.app/blog/best-ai-coding-tools/"},"image":"https://projiq.app/og.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://projiq.app"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://projiq.app/blog/"},{"@type":"ListItem","position":3,"name":"Best AI Coding Tools 2026","item":"https://projiq.app/blog/best-ai-coding-tools/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the best AI coding tool in 2026?","acceptedAnswer":{"@type":"Answer","text":"For most engineering teams, Cursor is the best all-around AI coding tool in 2026 — it combines a full-featured editor with deep AI integration, multi-file context, and strong code generation. GitHub Copilot remains the best choice if your team is already on GitHub and wants the lowest-friction integration. Claude Code is the best for complex reasoning tasks, large refactors, and agentic coding workflows."}},{"@type":"Question","name":"Is GitHub Copilot worth it for a team?","acceptedAnswer":{"@type":"Answer","text":"Yes, for most teams. At $19/month per developer (Copilot Business), the productivity gains from autocomplete, test generation, and PR summaries typically deliver a positive ROI within the first week. Teams report 20–40% faster initial code drafting and significant time savings on boilerplate and repetitive code."}},{"@type":"Question","name":"What is the difference between Cursor and GitHub Copilot?","acceptedAnswer":{"@type":"Answer","text":"GitHub Copilot is a plugin that adds AI to your existing editor (VS Code, JetBrains, etc.). Cursor is a full editor built from scratch around AI — it's a fork of VS Code that deeply integrates AI at every level. Cursor handles multi-file context, large codebase understanding, and complex refactors better than Copilot. Copilot has less friction since developers can stay in their existing environment."}},{"@type":"Question","name":"What is vibe coding?","acceptedAnswer":{"@type":"Answer","text":"Vibe coding refers to the practice of building software primarily through natural language prompts to an AI — describing what you want in plain English and letting the AI write the code. The term was coined by Andrej Karpathy in 2025. It works well for prototyping, boilerplate generation, and less complex features, but still requires human engineers to review, test, and maintain the output."}},{"@type":"Question","name":"Can AI coding tools replace software engineers?","acceptedAnswer":{"@type":"Answer","text":"No — not in 2026, and not for complex production systems. AI coding tools significantly accelerate engineering work but require engineers to provide direction, review output, catch errors, make architectural decisions, and reason about system behaviour under edge cases. The best teams treat AI tools as a force multiplier: one senior engineer with AI tools can produce what previously required two engineers, but the senior engineer's judgment remains essential."}}]}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#030812;color:#F1F5F9;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+.prog{position:fixed;top:60px;left:0;height:3px;background:linear-gradient(90deg,#6366F1,#A78BFA,#06B6D4);width:0;z-index:300;transition:width .08s linear}
+
+.b-nav{position:sticky;top:0;z-index:200;background:rgba(3,8,18,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)}
+.b-nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center}
+.b-logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;color:#F1F5F9;flex-shrink:0}
+.b-logo-mark{flex-shrink:0;display:block;}.b-dot-app{color:#06B6D4;}
+.b-nav-links{display:flex;gap:28px;margin-left:auto;margin-right:28px}
+.b-nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
+.b-nav-links a:hover,.b-nav-links a.active{color:#F1F5F9}
+.b-nav-cta{background:linear-gradient(90deg,#3B82F6,#8B5CF6);color:#fff;padding:8px 20px;border-radius:9px;font-size:13px;font-weight:700;flex-shrink:0;transition:opacity .2s}
+.b-nav-cta:hover{opacity:.86}
+
+.b-crumb{max-width:1200px;margin:0 auto;padding:28px 24px 0;display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.35);flex-wrap:wrap}
+.b-crumb a{color:rgba(255,255,255,.38);transition:color .2s}
+.b-crumb a:hover{color:#818CF8}
+.b-crumb-sep{color:rgba(255,255,255,.18)}
+
+.art-wrap{max-width:1200px;margin:0 auto;padding:32px 24px 0}
+.art-header{margin-bottom:44px}
+.art-cat{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;background:rgba(99,102,241,.11);border:1px solid rgba(99,102,241,.28);color:#818CF8;margin-bottom:18px}
+.art-header h1{font-size:clamp(30px,4.5vw,50px);font-weight:900;line-height:1.15;letter-spacing:-1px;margin-bottom:22px}
+.art-meta{display:flex;align-items:center;gap:22px;color:rgba(255,255,255,.35);font-size:13px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap}
+
+.art-layout{display:grid;grid-template-columns:1fr 300px;gap:60px;align-items:start}
+
+.art-body{font-size:17px;line-height:1.80;color:rgba(255,255,255,.78);padding-bottom:60px}
+.art-body p{margin-bottom:22px}
+.art-body h2{font-size:26px;font-weight:800;color:#F1F5F9;margin:48px 0 16px;letter-spacing:-.3px;line-height:1.3}
+.art-body h3{font-size:19px;font-weight:700;color:#F1F5F9;margin:28px 0 12px;letter-spacing:-.1px}
+.art-body ul,.art-body ol{margin:0 0 22px 22px}
+.art-body li{margin-bottom:9px;color:rgba(255,255,255,.72)}
+.art-body ul li::marker{color:#6366F1}
+.art-body ol li::marker{color:#818CF8;font-weight:700}
+.art-body strong{color:#F1F5F9;font-weight:700}
+.art-body a{color:#818CF8;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(129,140,248,.4);transition:text-decoration-color .2s}
+.art-body a:hover{text-decoration-color:#818CF8}
+blockquote{border-left:3px solid #6366F1;padding:16px 22px;background:rgba(99,102,241,.06);border-radius:0 10px 10px 0;margin:28px 0;font-style:italic;color:rgba(255,255,255,.72);font-size:16px}
+.tip-box{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.tip-box b{color:#34D399;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.warn-box{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.warn-box b{color:#FBBF24;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.hot-box{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.22);border-radius:12px;padding:20px 22px;margin:28px 0}
+.hot-box b{color:#F87171;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+
+/* Tool cards */
+.tool-card{background:rgba(10,22,40,.75);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:30px;margin:36px 0;position:relative;overflow:hidden}
+.tool-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.tool-card.copilot::before{background:linear-gradient(90deg,#238636,#3FB950)}
+.tool-card.cursor::before{background:linear-gradient(90deg,#FF6B6B,#FFD93D)}
+.tool-card.claude::before{background:linear-gradient(90deg,#D4A574,#E8C4A0)}
+.tool-card.tabnine::before{background:linear-gradient(90deg,#7C3AED,#A78BFA)}
+.tool-card.windsurf::before{background:linear-gradient(90deg,#06B6D4,#3B82F6)}
+
+.tool-header{display:flex;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.tool-emoji{font-size:28px;width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tool-info h3{font-size:20px;font-weight:800;color:#F1F5F9;margin:0 0 4px;letter-spacing:-.2px}
+.tool-info .tool-tagline{font-size:13px;color:rgba(255,255,255,.42)}
+.tool-badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.3px;margin-left:auto}
+.badge-best{background:rgba(16,185,129,.14);border:1px solid rgba(16,185,129,.28);color:#34D399}
+.badge-runner{background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.25);color:#60A5FA}
+.badge-niche{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.45)}
+
+.tool-body p{font-size:15px;color:rgba(255,255,255,.65);line-height:1.72;margin-bottom:16px}
+.pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.pros,.cons{background:rgba(255,255,255,.03);border-radius:10px;padding:14px 16px}
+.pros h5{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#34D399;margin-bottom:10px}
+.cons h5{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#F87171;margin-bottom:10px}
+.pros ul,.cons ul{margin:0 0 0 14px}
+.pros li,.cons li{font-size:13px;color:rgba(255,255,255,.58);margin-bottom:6px}
+.pros ul li::marker{color:#34D399}
+.cons ul li::marker{color:#F87171}
+.tool-price{margin-top:16px;font-size:13px;color:rgba(255,255,255,.38);padding-top:14px;border-top:1px solid rgba(255,255,255,.06)}
+.tool-price strong{color:rgba(255,255,255,.65)}
+
+/* Comparison table */
+.cmp-table-wrap{overflow-x:auto;margin:28px 0;border-radius:12px;border:1px solid rgba(255,255,255,.07)}
+.cmp-table{width:100%;border-collapse:collapse;font-size:13px;min-width:680px}
+.cmp-table th{background:rgba(99,102,241,.10);color:#818CF8;padding:12px 14px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;white-space:nowrap}
+.cmp-table th:first-child{color:rgba(255,255,255,.45);min-width:160px}
+.cmp-table td{padding:11px 14px;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.65);vertical-align:middle;line-height:1.45;font-size:13px}
+.cmp-table td:first-child{color:rgba(255,255,255,.42);font-weight:600;font-size:12px;white-space:nowrap}
+.cmp-table tr:hover td{background:rgba(255,255,255,.02)}
+.check{color:#34D399}
+.cross{color:#F87171}
+.partial{color:#FBBF24}
+
+.verdict-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0}
+.verdict-card{background:rgba(10,22,40,.7);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:18px}
+.verdict-card .v-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px}
+.verdict-card .v-title{font-size:15px;font-weight:700;color:#F1F5F9;margin-bottom:6px}
+.verdict-card .v-desc{font-size:13px;color:rgba(255,255,255,.48);line-height:1.6}
+
+.art-cta{background:linear-gradient(135deg,rgba(99,102,241,.13),rgba(6,182,212,.08));border:1px solid rgba(99,102,241,.22);border-radius:16px;padding:36px;text-align:center;margin:44px 0}
+.art-cta h3{font-size:22px;font-weight:800;margin-bottom:10px}
+.art-cta p{color:rgba(255,255,255,.52);font-size:15px;margin-bottom:22px;line-height:1.6}
+.art-cta a{display:inline-block;background:linear-gradient(90deg,#6366F1,#06B6D4);color:#fff;padding:12px 28px;border-radius:9px;font-size:14px;font-weight:700;transition:opacity .2s}
+.art-cta a:hover{opacity:.86;text-decoration:none}
+
+.art-sidebar{position:sticky;top:80px}
+.sb-card{background:rgba(10,22,40,.8);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px;margin-bottom:18px}
+.sb-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.35);margin-bottom:16px}
+.toc-list{list-style:none;padding:0}
+.toc-list li{margin-bottom:9px}
+.toc-list a{font-size:13px;color:rgba(255,255,255,.45);display:block;padding-left:10px;border-left:1px solid rgba(255,255,255,.08);line-height:1.5;transition:color .18s,border-color .18s}
+.toc-list a:hover,.toc-list a.active{color:#818CF8;border-left-color:#6366F1;text-decoration:none}
+.rel-post{display:flex;gap:11px;margin-bottom:13px;align-items:flex-start}
+.rel-icon{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px}
+.rel-post a{font-size:13px;font-weight:600;color:rgba(255,255,255,.65);line-height:1.4;transition:color .2s;display:block;margin-bottom:3px}
+.rel-post a:hover{color:#818CF8;text-decoration:none}
+.rel-cat{font-size:11px;color:rgba(255,255,255,.28)}
+
+.b-footer{background:#020810;border-top:1px solid rgba(255,255,255,.07);padding:56px 24px 32px}
+.b-footer-inner{max-width:1200px;margin:0 auto}
+.b-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.b-footer-brand p{color:rgba(255,255,255,.38);font-size:13px;line-height:1.7;margin-top:14px;max-width:230px}
+.b-footer-col h5{color:#F1F5F9;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.b-footer-col a{display:block;color:rgba(255,255,255,.38);font-size:13px;margin-bottom:9px;transition:color .2s}
+.b-footer-col a:hover{color:#818CF8}
+.b-footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.b-footer-copy{color:rgba(255,255,255,.22);font-size:12px}
+
+@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{display:none}.pros-cons{grid-template-columns:1fr}.verdict-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.b-nav-links{display:none}.b-nav-cta{margin-left:auto}.art-header h1{font-size:28px}.art-body{font-size:16px}.b-footer-grid{grid-template-columns:1fr;gap:24px}.tool-card{padding:20px}.tool-header{gap:10px}}
+
+.faq-block{margin:44px 0}
+.faq-block h2{font-size:26px;font-weight:800;color:#F1F5F9;margin-bottom:22px;letter-spacing:-.3px}
+.faq-entry{border:1px solid rgba(255,255,255,.07);border-radius:12px;margin-bottom:10px;overflow:hidden;background:rgba(10,22,40,.6)}
+.faq-entry summary{padding:17px 22px;font-size:15px;font-weight:700;color:#F1F5F9;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4}
+.faq-entry summary::-webkit-details-marker{display:none}
+.faq-entry summary::after{content:'+';color:#818CF8;font-size:18px;font-weight:400;flex-shrink:0;transition:transform .2s}
+.faq-entry[open] summary::after{transform:rotate(45deg)}
+.faq-entry[open]{border-color:rgba(99,102,241,.22)}
+.faq-ans{padding:0 22px 18px;font-size:14px;color:rgba(255,255,255,.62);line-height:1.75}
+</style>
+</head>
+<body>
+
+<div class="prog" id="prog"></div>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4F46E5"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient><symbol id="projiq-p" viewBox="0 0 285 265"><path d="M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z" fill="url(#brand-grad)"/><rect x="0" y="65" width="60" height="12" rx="6" fill="#4F46E5"/><rect x="0" y="100" width="60" height="12" rx="6" fill="#06B6D4"/><rect x="0" y="135" width="60" height="12" rx="6" fill="#10B981"/><path d="M140 105 L160 125 L205 80" fill="none" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
+<nav class="b-nav">
+  <div class="b-nav-inner">
+    <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg>Projiq<span class="b-dot-app">.app</span></a>
+    <div class="b-nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/" class="active">Blog</a>
+    </div>
+    <a href="https://app.projiq.app/register-org" class="b-nav-cta">Get Started Free</a>
+  </div>
+</nav>
+
+<div class="b-crumb">
+  <a href="/">Home</a><span class="b-crumb-sep">›</span>
+  <a href="/blog/">Blog</a><span class="b-crumb-sep">›</span>
+  <span>Best AI Coding Tools 2026</span>
+</div>
+
+<div class="art-wrap">
+  <header class="art-header">
+    <span class="art-cat">Productivity</span>
+    <h1>Best AI Coding Tools for Engineering Teams in 2026: Copilot, Cursor, Claude &amp; More</h1>
+    <div class="art-meta">
+      <span>✍ Projiq Team</span>
+      <span>📅 July 9, 2026</span>
+      <span>⏱ 11 min read</span>
+    </div>
+  </header>
+
+  <div class="art-layout">
+    <article class="art-body" id="article">
+
+      <p>In 2024, AI coding tools were a novelty. In 2025, they became a competitive advantage. In 2026, engineering teams without them are simply slower. The question is no longer <em>whether</em> to adopt AI coding tools — it's <em>which ones</em> to standardize on across your team, and how to integrate them into your sprint workflow without creating chaos.</p>
+
+      <p>This guide covers the five most widely adopted AI coding tools in 2026 — GitHub Copilot, Cursor, Claude Code, Tabnine, and Windsurf — with honest assessments of where each excels, where each falls short, and which type of team each is best suited for.</p>
+
+      <div class="hot-box">
+        <b>🔥 Hot in 2026</b>
+        "Vibe coding" — building software primarily through natural language prompts — went from a fringe experiment to mainstream practice this year. Andrej Karpathy's viral tweet in early 2025 named the movement; by 2026 it's a legitimate approach for prototyping and internal tooling, though still requires strong engineering oversight for production systems.
+      </div>
+
+      <h2 id="what-to-look-for">What to Look For in an AI Coding Tool</h2>
+      <p>Not all AI coding tools are equal, and the best one for an individual developer isn't necessarily the best one for a 30-person engineering team. Evaluate tools across five dimensions:</p>
+      <ol>
+        <li><strong>Context window size</strong> — how much of your codebase can the AI "see" at once? Larger context = better multi-file understanding.</li>
+        <li><strong>Autocomplete quality</strong> — the inline suggestion speed and accuracy that defines your moment-to-moment coding feel.</li>
+        <li><strong>Agentic capability</strong> — can the AI autonomously execute multi-step tasks (write code, run tests, fix failures, open PRs)?</li>
+        <li><strong>Editor integration</strong> — does it work in your existing toolchain, or does it require switching editors?</li>
+        <li><strong>Team pricing</strong> — per-seat costs at your team's scale, and what's included at each tier.</li>
+      </ol>
+
+      <h2 id="copilot">GitHub Copilot</h2>
+
+      <div class="tool-card copilot">
+        <div class="tool-header">
+          <div class="tool-emoji" style="background:rgba(35,134,54,.12);border:1px solid rgba(35,134,54,.25)">🐙</div>
+          <div class="tool-info">
+            <h3>GitHub Copilot</h3>
+            <div class="tool-tagline">The market leader — deep GitHub integration, works everywhere</div>
+          </div>
+          <span class="tool-badge badge-best">Best for GitHub teams</span>
+        </div>
+        <div class="tool-body">
+          <p>GitHub Copilot is still the most widely deployed AI coding tool in enterprise engineering. Its biggest strength is how seamlessly it integrates into existing workflows — VS Code, JetBrains, Neovim, the GitHub web editor, and the GitHub PR interface all get native Copilot support. There's no new tool to learn; it meets engineers where they already are.</p>
+          <p>In 2026, Copilot has expanded far beyond autocomplete. <strong>Copilot Workspace</strong> lets you describe a feature in natural language and watch Copilot plan, implement, and open a PR — a genuine agentic workflow. <strong>Copilot Chat</strong> in the sidebar handles code explanation, refactoring suggestions, and test generation. <strong>Copilot PR summaries</strong> auto-generate PR descriptions from diffs — one of the most universally loved features among teams using it.</p>
+          <div class="pros-cons">
+            <div class="pros">
+              <h5>Pros</h5>
+              <ul>
+                <li>Works in every major editor</li>
+                <li>Deep GitHub PR integration</li>
+                <li>Excellent autocomplete speed</li>
+                <li>Auto PR summaries save real time</li>
+                <li>Copilot Workspace for full tasks</li>
+                <li>Enterprise SSO &amp; audit logs</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <h5>Cons</h5>
+              <ul>
+                <li>Weaker multi-file context than Cursor</li>
+                <li>Large codebase understanding lags</li>
+                <li>Chat UX less natural than Claude</li>
+                <li>Agentic features still maturing</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="tool-price"><strong>Pricing:</strong> Free (limited) · $10/mo individual · $19/user/mo Business · $39/user/mo Enterprise</div>
+      </div>
+
+      <h2 id="cursor">Cursor</h2>
+
+      <div class="tool-card cursor">
+        <div class="tool-header">
+          <div class="tool-emoji" style="background:rgba(255,107,107,.10);border:1px solid rgba(255,107,107,.22)">⚡</div>
+          <div class="tool-info">
+            <h3>Cursor</h3>
+            <div class="tool-tagline">The AI-native editor — best multi-file context of any tool</div>
+          </div>
+          <span class="tool-badge badge-best">Best overall 2026</span>
+        </div>
+        <div class="tool-body">
+          <p>Cursor is a fork of VS Code rebuilt from the ground up with AI as a first-class citizen. Where Copilot adds AI on top of an existing editor, Cursor designs the entire editing experience around AI interaction. The difference is immediately apparent: Cursor's <strong>multi-file context</strong> is the best in the market, making it dramatically better at large refactors, cross-file dependency understanding, and codebase-aware suggestions.</p>
+          <p>The killer feature is <strong>Cursor Composer</strong> — a multi-file editing mode where you describe a change in natural language and Cursor plans and executes it across multiple files simultaneously. For complex features, this can compress hours of work into minutes. Cursor also lets you choose your underlying model (GPT-4o, Claude Sonnet, Gemini) and switch per task, which gives power users meaningful flexibility.</p>
+          <div class="pros-cons">
+            <div class="pros">
+              <h5>Pros</h5>
+              <ul>
+                <li>Best multi-file understanding</li>
+                <li>Composer for large refactors</li>
+                <li>Choose your AI model per task</li>
+                <li>Full VS Code extension compatibility</li>
+                <li>Excellent tab completion feel</li>
+                <li>Growing fast — frequent updates</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <h5>Cons</h5>
+              <ul>
+                <li>Requires switching editors</li>
+                <li>No GitHub PR-level integration</li>
+                <li>Business/Enterprise plans pricier</li>
+                <li>Occasional context window limits</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="tool-price"><strong>Pricing:</strong> Free (limited) · $20/mo Pro · $40/user/mo Business</div>
+      </div>
+
+      <h2 id="claude-code">Claude Code</h2>
+
+      <div class="tool-card claude">
+        <div class="tool-header">
+          <div class="tool-emoji" style="background:rgba(212,165,116,.10);border:1px solid rgba(212,165,116,.22)">🤖</div>
+          <div class="tool-info">
+            <h3>Claude Code</h3>
+            <div class="tool-tagline">Anthropic's agentic CLI — best for complex reasoning and full-codebase tasks</div>
+          </div>
+          <span class="tool-badge badge-best">Best for agentic workflows</span>
+        </div>
+        <div class="tool-body">
+          <p>Claude Code is Anthropic's terminal-native coding agent. Unlike Copilot or Cursor, it doesn't live in an editor — it runs in your terminal with full access to your filesystem, Git, and shell. This makes it uniquely powerful for tasks that span entire codebases: migrating a schema across 40 files, writing and running a test suite from scratch, refactoring an entire module, or exploring an unfamiliar codebase and producing a detailed architectural map.</p>
+          <p>Claude Code's reasoning quality — powered by Claude Opus and Sonnet — is widely considered the strongest of any coding AI for complex, multi-step tasks. It doesn't just autocomplete; it <strong>plans, reasons, and executes</strong>. When the task involves understanding why something is broken (not just what to type), Claude Code consistently outperforms alternatives. The tradeoff: it's slower than inline autocomplete and has a steeper setup curve.</p>
+          <div class="pros-cons">
+            <div class="pros">
+              <h5>Pros</h5>
+              <ul>
+                <li>Best reasoning for complex tasks</li>
+                <li>Full filesystem + Git access</li>
+                <li>Handles entire codebase migrations</li>
+                <li>MCP integrations (Jira, GitHub, etc.)</li>
+                <li>Runs tests, fixes failures autonomously</li>
+                <li>IDE extensions (VS Code, JetBrains)</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <h5>Cons</h5>
+              <ul>
+                <li>No inline autocomplete</li>
+                <li>Terminal-first (not visual-first)</li>
+                <li>Token costs for heavy usage</li>
+                <li>Less immediate than editor tools</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="tool-price"><strong>Pricing:</strong> Included with Claude.ai Pro ($20/mo) or API usage-based (varies by model &amp; volume)</div>
+      </div>
+
+      <h2 id="tabnine">Tabnine</h2>
+
+      <div class="tool-card tabnine">
+        <div class="tool-header">
+          <div class="tool-emoji" style="background:rgba(124,58,237,.10);border:1px solid rgba(124,58,237,.22)">🛡️</div>
+          <div class="tool-info">
+            <h3>Tabnine</h3>
+            <div class="tool-tagline">The privacy-first option — local models, no code leaves your machine</div>
+          </div>
+          <span class="tool-badge badge-niche">Best for regulated industries</span>
+        </div>
+        <div class="tool-body">
+          <p>Tabnine was one of the first AI coding tools and has carved out a defensible position in regulated industries — fintech, healthcare, defence, and enterprises with strict data residency requirements. Its key differentiator: models can run entirely locally, meaning your code <strong>never leaves your machine or network</strong>. For teams subject to HIPAA, SOC 2, GDPR, or government compliance requirements, this matters enormously.</p>
+          <p>The trade-off is capability. Tabnine's local models are meaningfully weaker than cloud-hosted Claude or GPT-4o for complex reasoning and multi-file tasks. For basic autocomplete, boilerplate generation, and code completion in common languages, it's perfectly capable — but it won't match Cursor or Claude Code on sophisticated feature work.</p>
+          <div class="pros-cons">
+            <div class="pros">
+              <h5>Pros</h5>
+              <ul>
+                <li>Fully local — code never leaves machine</li>
+                <li>SOC 2, GDPR, HIPAA compliant</li>
+                <li>Fine-tune on your own codebase</li>
+                <li>Works in 15+ IDEs</li>
+                <li>Established enterprise contracts</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <h5>Cons</h5>
+              <ul>
+                <li>Weaker than cloud models for complex tasks</li>
+                <li>Local models require good hardware</li>
+                <li>No agentic / multi-file capabilities</li>
+                <li>Higher enterprise price for full features</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="tool-price"><strong>Pricing:</strong> Free (basic) · $12/user/mo Pro · $39/user/mo Enterprise (local models)</div>
+      </div>
+
+      <h2 id="windsurf">Windsurf (Codeium)</h2>
+
+      <div class="tool-card windsurf">
+        <div class="tool-header">
+          <div class="tool-emoji" style="background:rgba(6,182,212,.10);border:1px solid rgba(6,182,212,.22)">🏄</div>
+          <div class="tool-info">
+            <h3>Windsurf</h3>
+            <div class="tool-tagline">Codeium's AI editor — strong free tier, fast autocomplete</div>
+          </div>
+          <span class="tool-badge badge-runner">Best free option</span>
+        </div>
+        <div class="tool-body">
+          <p>Windsurf is Codeium's AI-native editor (similar to Cursor's approach) and has become the go-to choice for developers and teams who want a Cursor-like experience without the Cursor price tag. Its free tier is genuinely capable — unlimited autocomplete, code chat, and basic multi-file editing with no usage caps on the free plan.</p>
+          <p>The <strong>Cascade</strong> agent in Windsurf handles multi-step coding tasks and can autonomously navigate your codebase to implement features. For individual developers or early-stage teams with tight budgets, Windsurf delivers 80% of what Cursor does at a significantly lower cost — or free.</p>
+          <div class="pros-cons">
+            <div class="pros">
+              <h5>Pros</h5>
+              <ul>
+                <li>Generous free tier (no usage caps)</li>
+                <li>Cascade agent for multi-step tasks</li>
+                <li>Fast, accurate autocomplete</li>
+                <li>VS Code extension available too</li>
+                <li>Rapid feature development</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <h5>Cons</h5>
+              <ul>
+                <li>Smaller user base than Copilot/Cursor</li>
+                <li>Fewer enterprise compliance features</li>
+                <li>Context window smaller than Cursor</li>
+                <li>Less ecosystem maturity</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="tool-price"><strong>Pricing:</strong> Free (generous) · $15/mo Pro · $35/user/mo Teams</div>
+      </div>
+
+      <h2 id="comparison">Feature Comparison Table</h2>
+
+      <div class="cmp-table-wrap">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Copilot</th>
+              <th>Cursor</th>
+              <th>Claude Code</th>
+              <th>Tabnine</th>
+              <th>Windsurf</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Inline autocomplete</td><td class="check">✓ Excellent</td><td class="check">✓ Excellent</td><td class="cross">✗ None</td><td class="check">✓ Good</td><td class="check">✓ Very good</td></tr>
+            <tr><td>Multi-file context</td><td class="partial">~ Limited</td><td class="check">✓ Best-in-class</td><td class="check">✓ Full codebase</td><td class="cross">✗ Basic</td><td class="partial">~ Good</td></tr>
+            <tr><td>Agentic tasks</td><td class="partial">~ Workspace (beta)</td><td class="check">✓ Composer</td><td class="check">✓ Native agent</td><td class="cross">✗ No</td><td class="check">✓ Cascade</td></tr>
+            <tr><td>Works in existing editor</td><td class="check">✓ All major IDEs</td><td class="partial">~ Own editor (VS Code fork)</td><td class="check">✓ CLI + extension</td><td class="check">✓ 15+ IDEs</td><td class="partial">~ Own editor + extension</td></tr>
+            <tr><td>GitHub PR integration</td><td class="check">✓ Deep native</td><td class="cross">✗ No</td><td class="partial">~ Via MCP</td><td class="cross">✗ No</td><td class="cross">✗ No</td></tr>
+            <tr><td>Local / private model</td><td class="cross">✗ No</td><td class="cross">✗ No</td><td class="cross">✗ No</td><td class="check">✓ Yes</td><td class="cross">✗ No</td></tr>
+            <tr><td>Test generation</td><td class="check">✓ Yes</td><td class="check">✓ Yes</td><td class="check">✓ Yes + runs them</td><td class="partial">~ Basic</td><td class="check">✓ Yes</td></tr>
+            <tr><td>Code explanation / chat</td><td class="check">✓ Copilot Chat</td><td class="check">✓ Built-in</td><td class="check">✓ Excellent</td><td class="partial">~ Basic</td><td class="check">✓ Good</td></tr>
+            <tr><td>Enterprise SSO</td><td class="check">✓ Enterprise plan</td><td class="check">✓ Business plan</td><td class="check">✓ Available</td><td class="check">✓ Yes</td><td class="partial">~ Teams plan</td></tr>
+            <tr><td>Free tier available</td><td class="check">✓ Limited</td><td class="check">✓ Limited</td><td class="check">✓ With Claude.ai</td><td class="check">✓ Limited</td><td class="check">✓ Generous</td></tr>
+            <tr><td>Starting price/user/mo</td><td>$10 (individual)</td><td>$20 (Pro)</td><td>$20 (Claude Pro)</td><td>$12 (Pro)</td><td>Free / $15 Pro</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="which-tool">Which Tool Is Right for Your Team?</h2>
+
+      <div class="verdict-grid">
+        <div class="verdict-card">
+          <div class="v-label" style="color:#3FB950">Best overall team pick</div>
+          <div class="v-title">GitHub Copilot + Claude Code</div>
+          <div class="v-desc">Most engineering teams benefit from running both: Copilot for day-to-day autocomplete and PR workflows, Claude Code for complex reasoning tasks and large refactors. The combination covers both fast interactive coding and deep analysis work.</div>
+        </div>
+        <div class="verdict-card">
+          <div class="v-label" style="color:#FFD93D">Best for AI-forward teams</div>
+          <div class="v-title">Cursor</div>
+          <div class="v-desc">Teams willing to switch editors get the best multi-file AI experience available. If your team is already exploring "vibe coding" and AI-native workflows, Cursor's Composer is the most powerful tool for feature-level AI generation.</div>
+        </div>
+        <div class="verdict-card">
+          <div class="v-label" style="color:#A78BFA">Best for regulated industries</div>
+          <div class="v-title">Tabnine Enterprise</div>
+          <div class="v-desc">If your org operates under HIPAA, GDPR, or government data restrictions, Tabnine's local model option is the only production-safe choice. The capability tradeoff is real, but the compliance guarantee is worth it in regulated sectors.</div>
+        </div>
+        <div class="verdict-card">
+          <div class="v-label" style="color:#06B6D4">Best for tight budgets</div>
+          <div class="v-title">Windsurf (Free tier)</div>
+          <div class="v-desc">Early-stage startups or individual developers who can't justify $20/seat/month get genuinely capable AI coding on Windsurf's free plan. Upgrade to Cursor or Copilot when budget allows.</div>
+        </div>
+      </div>
+
+      <h2 id="sprint-workflow">Integrating AI Tools into Your Sprint Workflow</h2>
+      <p>AI coding tools deliver maximum value when teams build deliberate practices around them — not just letting individual developers use them ad hoc. Here's how high-performing teams integrate AI into their sprint process:</p>
+
+      <h3>Sprint Planning</h3>
+      <p>Use Claude Code or Copilot Chat to <strong>break down user stories into technical tasks</strong>. Paste the story and ask the AI to identify implementation steps, potential edge cases, and file locations likely to be affected. This shortens planning sessions and surfaces risks earlier.</p>
+
+      <h3>Development</h3>
+      <p>Use Cursor or Copilot for <strong>inline writing</strong> — autocomplete, boilerplate, and first drafts of new functions. Use Claude Code for <strong>the hard parts</strong>: complex logic, unfamiliar APIs, refactoring decisions that span multiple files, and when you're stuck and need deep reasoning rather than a quick suggestion.</p>
+
+      <h3>Code Review</h3>
+      <p>Copilot's PR summaries auto-generate description text from your diff — use this as a starting point but always humanise it. More importantly: use AI to <strong>pre-review your own PR before requesting human review</strong>. Ask Copilot Chat or Claude "What could go wrong in this change?" — it catches issues that are easy to miss after hours of coding.</p>
+
+      <h3>Testing</h3>
+      <p>Both Copilot and Cursor can generate unit tests from function signatures. Claude Code goes further — it can write tests, run them, read the failures, fix the code, and re-run, all autonomously. For new modules, use AI to generate your initial test suite, then review and extend the coverage manually.</p>
+
+      <div class="tip-box">
+        <b>Team tip</b>
+        Standardise on one primary tool across the team to keep tooling conversations simple. Allow individuals to run a secondary tool for specific use cases (e.g., everyone on Copilot, but engineers can also use Claude Code for complex tasks on their own initiative). Avoid the situation where some engineers use Cursor and others use Copilot — it creates friction in onboarding and pair programming.
+      </div>
+
+      <blockquote>"The teams getting the biggest productivity gains from AI aren't the ones using the most tools — they're the ones who've deliberately built habits and norms around one or two tools that fit their workflow."</blockquote>
+
+      <h2 id="risks">Real Risks to Manage</h2>
+      <p>AI coding tools are genuinely transformative, but engineering leaders need to manage real risks:</p>
+      <ul>
+        <li><strong>Over-trust.</strong> AI-generated code is often plausible but wrong in subtle ways. Code review remains non-negotiable — AI output needs the same review rigour as junior engineer output.</li>
+        <li><strong>IP and licensing.</strong> AI models trained on public code may generate outputs similar to licenced code. Most enterprise tools (Copilot Business, Tabnine) have indemnity policies; verify what yours covers.</li>
+        <li><strong>Security.</strong> AI tools sometimes suggest insecure patterns (hardcoded credentials, SQL concatenation, missing input validation). Run SAST tools in CI regardless of who — or what — wrote the code.</li>
+        <li><strong>Skill atrophy.</strong> Developers who use AI for everything without understanding the output risk losing the ability to reason about code independently. Encourage engineers to understand AI suggestions, not just accept them.</li>
+      </ul>
+
+      <p>Managing your AI tool stack is just one part of running a high-performance engineering team. See our guide on <a href="/blog/how-to-manage-remote-teams/">managing distributed engineering teams</a> and how to <a href="/blog/how-to-write-user-stories/">write user stories that keep AI-assisted sprints on track</a>.</p>
+
+      <div class="art-cta">
+        <h3>Track AI-powered sprints in Projiq</h3>
+        <p>As your team ships faster with AI tools, you need a project management platform that keeps up. Projiq's sprint boards, velocity tracking, and real-time collaboration are built for engineering organizations shipping at pace.</p>
+        <a href="https://app.projiq.app/register-org">Start Free — No Credit Card</a>
+      </div>
+
+      <div class="faq-block">
+        <h2>Frequently Asked Questions</h2>
+
+        <details class="faq-entry">
+          <summary>Is it safe to use AI coding tools with proprietary code?</summary>
+          <div class="faq-ans">It depends on the tool and plan. GitHub Copilot Business and Enterprise, Tabnine Enterprise, and Cursor Business all offer data privacy commitments that prevent your code from being used to train models. Free and individual tiers often don't have these protections. Always check the data processing terms for your specific plan before using AI tools with sensitive or proprietary codebases. For highly regulated environments (defence, healthcare, finance), Tabnine's local model option is the only option where code provably never leaves your network.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>How much faster do engineers work with AI coding tools?</summary>
+          <div class="faq-ans">Studies and team reports vary, but the most credible figures suggest 20–55% productivity improvement on tasks where AI assistance is most applicable — writing boilerplate, generating tests, writing documentation, and initial implementation of well-defined features. The improvement is smaller (5–15%) on complex architectural work, debugging subtle runtime behaviour, and tasks requiring deep domain knowledge. The ROI is real and measurable, but the "10× engineer" headline numbers are marketing.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>Should every developer on the team use the same AI tool?</summary>
+          <div class="faq-ans">For the primary coding assistant, yes — standardising reduces onboarding friction, makes pair programming smoother, and allows the team to build shared practices around one tool. For secondary tools (like using Claude Code for complex tasks alongside Copilot for autocomplete), individual choice is fine as long as it doesn't create tooling confusion or security policy gaps. Pick one standard tool, enforce it through onboarding, and allow flexibility at the margins.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What is vibe coding and should engineering teams adopt it?</summary>
+          <div class="faq-ans">Vibe coding refers to building software primarily through natural language descriptions, relying heavily on AI to write the actual code. It works well for prototyping, internal tools, scripts, and throwaway experiments. For production systems, it requires strong engineering oversight — AI-generated code needs review, testing, and architectural judgment that the AI itself can't reliably provide. Many high-performing teams use vibe coding to accelerate initial feature development and then rigorously review and refactor the output before it ships.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>Will AI coding tools make software engineers obsolete?</summary>
+          <div class="faq-ans">No — at least not in any timeframe that matters for current career decisions. AI tools make engineers significantly more productive, which means organizations can do more with fewer people — but the demand for software continues to grow faster than the supply of skilled engineers. What's changing is the skill mix: engineers who understand AI tools, can direct them effectively, and review their output critically are more valuable than those who can't. The job is evolving, not disappearing.</div>
+        </details>
+      </div>
+
+    </article>
+
+    <aside class="art-sidebar">
+      <div class="sb-card">
+        <h4>Contents</h4>
+        <ul class="toc-list">
+          <li><a href="#what-to-look-for">What to Look For</a></li>
+          <li><a href="#copilot">GitHub Copilot</a></li>
+          <li><a href="#cursor">Cursor</a></li>
+          <li><a href="#claude-code">Claude Code</a></li>
+          <li><a href="#tabnine">Tabnine</a></li>
+          <li><a href="#windsurf">Windsurf</a></li>
+          <li><a href="#comparison">Comparison Table</a></li>
+          <li><a href="#which-tool">Which Tool Fits?</a></li>
+          <li><a href="#sprint-workflow">Sprint Workflow</a></li>
+          <li><a href="#risks">Risks to Manage</a></li>
+        </ul>
+      </div>
+      <div class="sb-card">
+        <h4>Related Articles</h4>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(6,182,212,.13);border:1px solid rgba(6,182,212,.22)">🌍</div>
+          <div>
+            <a href="/blog/how-to-manage-remote-teams/">How to Manage Remote Engineering Teams</a>
+            <span class="rel-cat">Remote Work</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(139,92,246,.13);border:1px solid rgba(139,92,246,.22)">📖</div>
+          <div>
+            <a href="/blog/how-to-write-user-stories/">How to Write User Stories</a>
+            <span class="rel-cat">Scrum</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(59,130,246,.13);border:1px solid rgba(59,130,246,.22)">⚔️</div>
+          <div>
+            <a href="/blog/jira-vs-linear/">Jira vs Linear 2026</a>
+            <span class="rel-cat">Project Management</span>
+          </div>
+        </div>
+        <a href="https://app.projiq.app/register-org" style="display:block;background:linear-gradient(90deg,#6366F1,#06B6D4);color:#fff;text-align:center;padding:10px 16px;border-radius:8px;font-size:13px;font-weight:700;margin-top:6px;transition:opacity .2s" onmouseover="this.style.opacity='.86'" onmouseout="this.style.opacity='1'">Get Started Free</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="b-footer">
+  <div class="b-footer-inner">
+    <div class="b-footer-grid">
+      <div class="b-footer-brand">
+        <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg>Projiq<span class="b-dot-app">.app</span></a>
+        <p>Project management built for engineering organizations. Sprints, boards, timelines, and real-time collaboration — one plan for your whole org.</p>
+      </div>
+      <div class="b-footer-col">
+        <h5>Product</h5>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#security">Security</a>
+        <a href="https://app.projiq.app/login">Sign In</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Blog</h5>
+        <a href="/blog/">All Articles</a>
+        <a href="/blog/best-ai-coding-tools/">AI Coding Tools</a>
+        <a href="/blog/jira-vs-linear/">Jira vs Linear</a>
+        <a href="/blog/sprint-retrospective-templates/">Retro Templates</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Alternatives</h5>
+        <a href="/jira-alternative/">Jira Alternative</a>
+        <a href="/linear-alternative/">Linear Alternative</a>
+        <a href="/asana-alternative/">Asana Alternative</a>
+        <a href="https://app.projiq.app/register-org">Free Trial</a>
+      </div>
+    </div>
+    <div class="b-footer-bottom">
+      <span class="b-footer-copy">© 2026 Projiq. All rights reserved.</span>
+      <span class="b-footer-copy">Built for engineering organizations.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var prog=document.getElementById('prog');
+  window.addEventListener('scroll',function(){
+    var d=document.documentElement;
+    var pct=(d.scrollTop||document.body.scrollTop)/(d.scrollHeight-d.clientHeight||1)*100;
+    prog.style.width=Math.min(pct,100)+'%';
+  },{passive:true});
+  var links=document.querySelectorAll('.toc-list a');
+  var heads=Array.from(links).map(function(l){return document.querySelector(l.getAttribute('href'))}).filter(Boolean);
+  window.addEventListener('scroll',function(){
+    var top=window.scrollY+100;
+    var cur=heads[0];
+    heads.forEach(function(h){if(h.offsetTop<=top)cur=h;});
+    links.forEach(function(l){l.classList.toggle('active',l.getAttribute('href')==='#'+cur.id);});
+  },{passive:true});
+})();
+</script>
+</body>
+</html>

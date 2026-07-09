@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to Write User Stories: Complete Guide with Examples (2026) | Projiq Blog</title>
+<meta name="description" content="Learn how to write user stories that your engineering team can actually build. Covers the As a/I want/So that formula, acceptance criteria, INVEST criteria, epics vs stories, and anti-patterns to avoid.">
+<link rel="canonical" href="https://projiq.app/blog/how-to-write-user-stories/">
+<meta property="og:title" content="How to Write User Stories: Complete Guide with Examples (2026)">
+<meta property="og:description" content="The complete guide to writing user stories — the formula, acceptance criteria, INVEST criteria, real examples, and the anti-patterns that kill sprint velocity.">
+<meta property="og:image" content="https://projiq.app/og.png">
+<meta property="og:url" content="https://projiq.app/blog/how-to-write-user-stories/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-09">
+<meta property="article:author" content="Projiq Team">
+<meta property="article:section" content="Scrum">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Write User Stories: Complete Guide (2026) | Projiq Blog">
+<meta name="twitter:image" content="https://projiq.app/og.png">
+<link rel="icon" href="/favicon.ico">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to Write User Stories: Complete Guide with Examples (2026)","description":"The complete guide to writing effective user stories — the formula, acceptance criteria, INVEST criteria, examples, and anti-patterns to avoid.","author":{"@type":"Organization","name":"Projiq"},"publisher":{"@type":"Organization","name":"Projiq","logo":{"@type":"ImageObject","url":"https://projiq.app/og.png"}},"datePublished":"2026-07-09","dateModified":"2026-07-09","mainEntityOfPage":{"@type":"WebPage","@id":"https://projiq.app/blog/how-to-write-user-stories/"},"image":"https://projiq.app/og.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://projiq.app"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://projiq.app/blog/"},{"@type":"ListItem","position":3,"name":"How to Write User Stories","item":"https://projiq.app/blog/how-to-write-user-stories/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the user story format?","acceptedAnswer":{"@type":"Answer","text":"The standard user story format is: 'As a [type of user], I want [some goal], so that [some reason/benefit].' This three-part structure ensures every story captures who needs it (the user), what they need (the goal), and why they need it (the benefit). The 'so that' clause is the most commonly skipped — and it's often the most important part."}},{"@type":"Question","name":"What is the difference between a user story and an acceptance criterion?","acceptedAnswer":{"@type":"Answer","text":"A user story describes what a user needs and why — it's the requirement at a high level. Acceptance criteria describe the specific conditions that must be true for the story to be considered 'done.' A user story without acceptance criteria is ambiguous; acceptance criteria without a user story lack user context. Both are needed."}},{"@type":"Question","name":"What are the INVEST criteria for user stories?","acceptedAnswer":{"@type":"Answer","text":"INVEST is an acronym for the characteristics of a good user story: Independent (can be developed without depending on another story), Negotiable (details can be discussed), Valuable (delivers value to the user), Estimable (team can estimate the effort), Small (fits in a sprint), Testable (acceptance criteria exist and can be verified). Stories failing multiple INVEST criteria are good candidates for refinement."}},{"@type":"Question","name":"What is the difference between a user story and an epic?","acceptedAnswer":{"@type":"Answer","text":"An epic is a large body of work that is too big to complete in a single sprint. It groups together multiple related user stories that together deliver a significant capability or feature. For example, 'User Authentication' is an epic; 'As a user, I want to log in with my email and password' is a user story within that epic. Epics can span multiple sprints; user stories should fit within one."}},{"@type":"Question","name":"How long should a user story take to complete?","acceptedAnswer":{"@type":"Answer","text":"A well-sized user story should be completable within a single sprint by one or two developers. If a story consistently takes more than half a sprint for one person, it's probably too large and should be split. If a story takes less than half a day, it might be too small and should be combined with related stories. The goal is a size that allows meaningful progress to be reviewed at the sprint review."}}]}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#030812;color:#F1F5F9;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+.prog{position:fixed;top:60px;left:0;height:3px;background:linear-gradient(90deg,#8B5CF6,#A78BFA);width:0;z-index:300;transition:width .08s linear}
+
+.b-nav{position:sticky;top:0;z-index:200;background:rgba(3,8,18,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)}
+.b-nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center}
+.b-logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;color:#F1F5F9;flex-shrink:0}
+.b-logo-mark{flex-shrink:0;display:block;}.b-dot-app{color:#06B6D4;}
+.b-nav-links{display:flex;gap:28px;margin-left:auto;margin-right:28px}
+.b-nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
+.b-nav-links a:hover,.b-nav-links a.active{color:#F1F5F9}
+.b-nav-cta{background:linear-gradient(90deg,#3B82F6,#8B5CF6);color:#fff;padding:8px 20px;border-radius:9px;font-size:13px;font-weight:700;flex-shrink:0;transition:opacity .2s}
+.b-nav-cta:hover{opacity:.86}
+
+.b-crumb{max-width:1200px;margin:0 auto;padding:28px 24px 0;display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.35);flex-wrap:wrap}
+.b-crumb a{color:rgba(255,255,255,.38);transition:color .2s}
+.b-crumb a:hover{color:#A78BFA}
+.b-crumb-sep{color:rgba(255,255,255,.18)}
+
+.art-wrap{max-width:1200px;margin:0 auto;padding:32px 24px 0}
+.art-header{margin-bottom:44px}
+.art-cat{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;background:rgba(139,92,246,.11);border:1px solid rgba(139,92,246,.24);color:#A78BFA;margin-bottom:18px}
+.art-header h1{font-size:clamp(30px,4.5vw,50px);font-weight:900;line-height:1.15;letter-spacing:-1px;margin-bottom:22px}
+.art-meta{display:flex;align-items:center;gap:22px;color:rgba(255,255,255,.35);font-size:13px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap}
+
+.art-layout{display:grid;grid-template-columns:1fr 300px;gap:60px;align-items:start}
+
+.art-body{font-size:17px;line-height:1.80;color:rgba(255,255,255,.78);padding-bottom:60px}
+.art-body p{margin-bottom:22px}
+.art-body h2{font-size:26px;font-weight:800;color:#F1F5F9;margin:48px 0 16px;letter-spacing:-.3px;line-height:1.3}
+.art-body h3{font-size:19px;font-weight:700;color:#F1F5F9;margin:28px 0 12px;letter-spacing:-.1px}
+.art-body ul,.art-body ol{margin:0 0 22px 22px}
+.art-body li{margin-bottom:9px;color:rgba(255,255,255,.72)}
+.art-body ul li::marker{color:#8B5CF6}
+.art-body ol li::marker{color:#A78BFA;font-weight:700}
+.art-body strong{color:#F1F5F9;font-weight:700}
+.art-body a{color:#A78BFA;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(167,139,250,.4);transition:text-decoration-color .2s}
+.art-body a:hover{text-decoration-color:#A78BFA}
+blockquote{border-left:3px solid #8B5CF6;padding:16px 22px;background:rgba(139,92,246,.06);border-radius:0 10px 10px 0;margin:28px 0;font-style:italic;color:rgba(255,255,255,.72);font-size:16px}
+.tip-box{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.tip-box b{color:#34D399;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.warn-box{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.warn-box b{color:#FBBF24;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+
+.story-card{background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.18);border-radius:12px;padding:22px 24px;margin:20px 0;font-family:'Courier New',Courier,monospace;font-size:15px;line-height:1.8;color:rgba(255,255,255,.80)}
+.story-card .label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#A78BFA;margin-bottom:10px;display:block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+.story-card .as-a{color:#60A5FA}
+.story-card .i-want{color:#F1F5F9}
+.story-card .so-that{color:#34D399}
+
+.ac-box{background:rgba(10,22,40,.7);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:22px 24px;margin:20px 0}
+.ac-box .ac-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.38);margin-bottom:14px}
+.ac-box ol{margin:0 0 0 18px}
+.ac-box li{font-size:14px;color:rgba(255,255,255,.65);margin-bottom:8px;font-family:'Courier New',Courier,monospace}
+
+.invest-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:28px 0}
+.invest-item{background:rgba(10,22,40,.7);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:16px}
+.invest-item .letter{font-size:22px;font-weight:900;color:#A78BFA;margin-bottom:4px}
+.invest-item .word{font-size:12px;font-weight:700;color:#F1F5F9;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px}
+.invest-item p{font-size:13px;color:rgba(255,255,255,.52);line-height:1.6;margin:0}
+
+.anti-item{padding:16px 20px;border-left:3px solid rgba(248,113,113,.4);background:rgba(248,113,113,.04);border-radius:0 10px 10px 0;margin-bottom:12px}
+.anti-item .bad{font-size:13px;color:#F87171;font-style:italic;margin-bottom:6px;font-family:'Courier New',Courier,monospace}
+.anti-item .fix{font-size:13px;color:rgba(255,255,255,.58);line-height:1.6}
+
+.cmp-table-wrap{overflow-x:auto;margin:28px 0;border-radius:12px;border:1px solid rgba(255,255,255,.07)}
+.cmp-table{width:100%;border-collapse:collapse;font-size:14px;min-width:480px}
+.cmp-table th{background:rgba(139,92,246,.10);color:#A78BFA;padding:12px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.cmp-table th:first-child{color:rgba(255,255,255,.45)}
+.cmp-table td{padding:12px 16px;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.68);vertical-align:top;line-height:1.5}
+.cmp-table td:first-child{color:rgba(255,255,255,.45);font-weight:600;font-size:13px}
+.cmp-table tr:hover td{background:rgba(255,255,255,.02)}
+
+.art-cta{background:linear-gradient(135deg,rgba(139,92,246,.13),rgba(59,130,246,.08));border:1px solid rgba(139,92,246,.22);border-radius:16px;padding:36px;text-align:center;margin:44px 0}
+.art-cta h3{font-size:22px;font-weight:800;margin-bottom:10px}
+.art-cta p{color:rgba(255,255,255,.52);font-size:15px;margin-bottom:22px;line-height:1.6}
+.art-cta a{display:inline-block;background:linear-gradient(90deg,#8B5CF6,#3B82F6);color:#fff;padding:12px 28px;border-radius:9px;font-size:14px;font-weight:700;transition:opacity .2s}
+.art-cta a:hover{opacity:.86;text-decoration:none}
+
+.art-sidebar{position:sticky;top:80px}
+.sb-card{background:rgba(10,22,40,.8);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px;margin-bottom:18px}
+.sb-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.35);margin-bottom:16px}
+.toc-list{list-style:none;padding:0}
+.toc-list li{margin-bottom:9px}
+.toc-list a{font-size:13px;color:rgba(255,255,255,.45);display:block;padding-left:10px;border-left:1px solid rgba(255,255,255,.08);line-height:1.5;transition:color .18s,border-color .18s}
+.toc-list a:hover,.toc-list a.active{color:#A78BFA;border-left-color:#8B5CF6;text-decoration:none}
+.rel-post{display:flex;gap:11px;margin-bottom:13px;align-items:flex-start}
+.rel-icon{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px}
+.rel-post a{font-size:13px;font-weight:600;color:rgba(255,255,255,.65);line-height:1.4;transition:color .2s;display:block;margin-bottom:3px}
+.rel-post a:hover{color:#A78BFA;text-decoration:none}
+.rel-cat{font-size:11px;color:rgba(255,255,255,.28)}
+
+.b-footer{background:#020810;border-top:1px solid rgba(255,255,255,.07);padding:56px 24px 32px}
+.b-footer-inner{max-width:1200px;margin:0 auto}
+.b-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.b-footer-brand p{color:rgba(255,255,255,.38);font-size:13px;line-height:1.7;margin-top:14px;max-width:230px}
+.b-footer-col h5{color:#F1F5F9;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.b-footer-col a{display:block;color:rgba(255,255,255,.38);font-size:13px;margin-bottom:9px;transition:color .2s}
+.b-footer-col a:hover{color:#A78BFA}
+.b-footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.b-footer-copy{color:rgba(255,255,255,.22);font-size:12px}
+
+@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{display:none}.invest-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.b-nav-links{display:none}.b-nav-cta{margin-left:auto}.art-header h1{font-size:28px}.art-body{font-size:16px}.b-footer-grid{grid-template-columns:1fr;gap:24px}}
+
+.faq-block{margin:44px 0}
+.faq-block h2{font-size:26px;font-weight:800;color:#F1F5F9;margin-bottom:22px;letter-spacing:-.3px}
+.faq-entry{border:1px solid rgba(255,255,255,.07);border-radius:12px;margin-bottom:10px;overflow:hidden;background:rgba(10,22,40,.6)}
+.faq-entry summary{padding:17px 22px;font-size:15px;font-weight:700;color:#F1F5F9;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4}
+.faq-entry summary::-webkit-details-marker{display:none}
+.faq-entry summary::after{content:'+';color:#A78BFA;font-size:18px;font-weight:400;flex-shrink:0;transition:transform .2s}
+.faq-entry[open] summary::after{transform:rotate(45deg)}
+.faq-entry[open]{border-color:rgba(139,92,246,.22)}
+.faq-ans{padding:0 22px 18px;font-size:14px;color:rgba(255,255,255,.62);line-height:1.75}
+</style>
+</head>
+<body>
+
+<div class="prog" id="prog"></div>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4F46E5"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient><symbol id="projiq-p" viewBox="0 0 285 265"><path d="M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z" fill="url(#brand-grad)"/><rect x="0" y="65" width="60" height="12" rx="6" fill="#4F46E5"/><rect x="0" y="100" width="60" height="12" rx="6" fill="#06B6D4"/><rect x="0" y="135" width="60" height="12" rx="6" fill="#10B981"/><path d="M140 105 L160 125 L205 80" fill="none" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
+<nav class="b-nav">
+  <div class="b-nav-inner">
+    <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg>Projiq<span class="b-dot-app">.app</span></a>
+    <div class="b-nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/" class="active">Blog</a>
+    </div>
+    <a href="https://app.projiq.app/register-org" class="b-nav-cta">Get Started Free</a>
+  </div>
+</nav>
+
+<div class="b-crumb">
+  <a href="/">Home</a><span class="b-crumb-sep">›</span>
+  <a href="/blog/">Blog</a><span class="b-crumb-sep">›</span>
+  <span>How to Write User Stories</span>
+</div>
+
+<div class="art-wrap">
+  <header class="art-header">
+    <span class="art-cat">Scrum</span>
+    <h1>How to Write User Stories: Complete Guide with Examples (2026)</h1>
+    <div class="art-meta">
+      <span>✍ Projiq Team</span>
+      <span>📅 July 9, 2026</span>
+      <span>⏱ 9 min read</span>
+    </div>
+  </header>
+
+  <div class="art-layout">
+    <article class="art-body" id="article">
+
+      <p>User stories are the basic unit of work in Scrum. When written well, they give engineers clear context, help product owners prioritize meaningfully, and keep everyone aligned on <em>why</em> a feature exists. When written poorly, they cause scope creep, rework, and sprint failures.</p>
+
+      <p>This guide covers everything you need: the standard format, how to write acceptance criteria that actually work, the INVEST criteria for quality checking, real examples across different feature types, and the most common mistakes to avoid.</p>
+
+      <h2 id="what-is-a-user-story">What Is a User Story?</h2>
+      <p>A user story is a short, informal description of a feature from the perspective of the person who will use it. It's not a technical specification — it's a <strong>conversation starter</strong>. The story itself is a reminder to have a discussion, not a complete definition of what to build.</p>
+
+      <blockquote>"A user story is a placeholder for a conversation, not a substitute for one." — Ron Jeffries, one of the original Extreme Programming creators</blockquote>
+
+      <p>That distinction matters. Teams that treat user stories as complete requirements skip the conversation. Teams that understand them as placeholders stay flexible and collaborative throughout the sprint.</p>
+
+      <h2 id="the-formula">The Standard Formula</h2>
+      <p>The most widely used user story format is:</p>
+
+      <div class="story-card">
+        <span class="label">User Story Format</span>
+        <span class="as-a">As a [type of user],</span><br>
+        <span class="i-want">I want [some goal or action],</span><br>
+        <span class="so-that">so that [some benefit or reason].</span>
+      </div>
+
+      <p>Each part serves a specific purpose:</p>
+      <ul>
+        <li><strong>"As a [user]"</strong> — defines who needs this. Not "the system" or "we" — a real person with a role. Be specific: "admin user", "first-time visitor", "project manager", not just "user".</li>
+        <li><strong>"I want [goal]"</strong> — describes what they want to do or achieve. Focus on the goal, not the implementation.</li>
+        <li><strong>"So that [benefit]"</strong> — the most commonly skipped part. This is the <em>why</em> — what value does the user get? This is what helps engineers make good decisions when edge cases arise.</li>
+      </ul>
+
+      <div class="warn-box">
+        <b>The "so that" clause is not optional</b>
+        Teams that skip it lose the reasoning behind the feature. When an engineer hits an edge case mid-sprint and doesn't know the "why," they either over-build, under-build, or block waiting for clarification. The "so that" clause prevents all three.
+      </div>
+
+      <h2 id="examples">Real User Story Examples</h2>
+
+      <h3>Authentication</h3>
+      <div class="story-card">
+        <span class="label">✓ Good user story</span>
+        <span class="as-a">As a registered user,</span><br>
+        <span class="i-want">I want to log in with my email and password,</span><br>
+        <span class="so-that">so that I can access my personal dashboard and saved projects.</span>
+      </div>
+
+      <h3>Notifications</h3>
+      <div class="story-card">
+        <span class="label">✓ Good user story</span>
+        <span class="as-a">As a project manager,</span><br>
+        <span class="i-want">I want to receive an email notification when a task is overdue,</span><br>
+        <span class="so-that">so that I can follow up with the assignee before it blocks the sprint.</span>
+      </div>
+
+      <h3>Reporting</h3>
+      <div class="story-card">
+        <span class="label">✓ Good user story</span>
+        <span class="as-a">As an org admin,</span><br>
+        <span class="i-want">I want to export a sprint velocity report as a CSV,</span><br>
+        <span class="so-that">so that I can share team performance data with stakeholders in our quarterly review.</span>
+      </div>
+
+      <h2 id="acceptance-criteria">Acceptance Criteria</h2>
+      <p>Acceptance criteria are the specific conditions that must be true for a story to be accepted as "done." They bridge the gap between the story (what the user needs) and the definition of done (what the engineer built).</p>
+
+      <p>The most common format for acceptance criteria is <strong>Given / When / Then</strong> (also called Gherkin format):</p>
+
+      <div class="ac-box">
+        <div class="ac-title">Acceptance Criteria — Given / When / Then</div>
+        <ol>
+          <li>Given I am on the login page, when I enter a valid email and correct password and click "Sign In", then I am redirected to my dashboard.</li>
+          <li>Given I enter an incorrect password, when I click "Sign In", then I see an error message "Invalid email or password" and remain on the login page.</li>
+          <li>Given I have failed login 5 times, when I attempt a 6th login, then my account is temporarily locked and I receive an email with a reset link.</li>
+        </ol>
+      </div>
+
+      <div class="tip-box">
+        <b>How many acceptance criteria per story?</b>
+        Aim for 3–7 criteria per story. Fewer than 3 usually means the story is under-specified. More than 7 suggests the story is too large and should be split. Each criterion should be independently testable.
+      </div>
+
+      <h2 id="invest">The INVEST Criteria</h2>
+      <p>INVEST is a checklist for evaluating story quality. If a story fails multiple criteria, it should be refined before sprint planning.</p>
+
+      <div class="invest-grid">
+        <div class="invest-item">
+          <div class="letter">I</div>
+          <div class="word">Independent</div>
+          <p>Can be developed without blocking or being blocked by another story. Dependencies create queue risks.</p>
+        </div>
+        <div class="invest-item">
+          <div class="letter">N</div>
+          <div class="word">Negotiable</div>
+          <p>Details are open for discussion between the team and the product owner — not a locked spec.</p>
+        </div>
+        <div class="invest-item">
+          <div class="letter">V</div>
+          <div class="word">Valuable</div>
+          <p>Delivers clear value to a real user. If you can't identify the value, don't build it.</p>
+        </div>
+        <div class="invest-item">
+          <div class="letter">E</div>
+          <div class="word">Estimable</div>
+          <p>The team can estimate the effort. If they can't, there's not enough information yet.</p>
+        </div>
+        <div class="invest-item">
+          <div class="letter">S</div>
+          <div class="word">Small</div>
+          <p>Completable within a single sprint by one or two developers. Large stories should be split.</p>
+        </div>
+        <div class="invest-item">
+          <div class="letter">T</div>
+          <div class="word">Testable</div>
+          <p>Acceptance criteria exist and can be verified. If it can't be tested, it can't be done.</p>
+        </div>
+      </div>
+
+      <h2 id="epics-vs-stories">Epics vs User Stories vs Tasks</h2>
+
+      <div class="cmp-table-wrap">
+        <table class="cmp-table">
+          <thead>
+            <tr><th>Level</th><th>What it is</th><th>Time to complete</th><th>Example</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Epic</td><td>Large capability or theme</td><td>Multiple sprints</td><td>User Authentication</td></tr>
+            <tr><td>User Story</td><td>Specific user need</td><td>1 sprint or less</td><td>Login with email + password</td></tr>
+            <tr><td>Task</td><td>Technical step to complete a story</td><td>Hours to 1–2 days</td><td>Implement JWT token generation</td></tr>
+            <tr><td>Sub-task</td><td>Granular implementation detail</td><td>Under half a day</td><td>Write unit tests for auth middleware</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Epics are never directly worked on in a sprint. They're broken down into user stories, which are broken down into tasks. A healthy backlog has a clear hierarchy: 3–5 active epics, 10–20 ready stories per epic, and tasks created during sprint planning.</p>
+
+      <h2 id="anti-patterns">Common User Story Anti-Patterns</h2>
+      <p>These are the most common mistakes that cause stories to fail in the sprint:</p>
+
+      <div class="anti-item">
+        <div class="bad">"As a user, I want the system to process payments."</div>
+        <div class="fix"><strong>Problem:</strong> "User" is not specific enough, and "the system" is the implementor, not the person who benefits. <strong>Fix:</strong> "As a customer at checkout, I want to pay by credit card, so that I can complete my purchase without leaving the site."</div>
+      </div>
+
+      <div class="anti-item">
+        <div class="bad">"As an admin, I want a full audit trail of all user activity across the platform."</div>
+        <div class="fix"><strong>Problem:</strong> Way too large for one sprint — this is an epic. <strong>Fix:</strong> Break into stories: login/logout events, permission change events, data export events — each as a separate story.</div>
+      </div>
+
+      <div class="anti-item">
+        <div class="bad">"As a user, I want the page to load fast."</div>
+        <div class="fix"><strong>Problem:</strong> Not testable — "fast" is subjective. <strong>Fix:</strong> "As a user, I want the dashboard to load in under 2 seconds on a standard broadband connection, so that I don't lose context when switching between views."</div>
+      </div>
+
+      <div class="anti-item">
+        <div class="bad">"Implement Redis caching for the API endpoints."</div>
+        <div class="fix"><strong>Problem:</strong> This is a technical task, not a user story — there's no user or benefit named. Technical debt and infrastructure work should be tracked as tasks or tech-stories, not standard user stories. Mixing them makes the backlog harder to prioritize by user value.</div>
+      </div>
+
+      <h2 id="tips">Tips for Better Stories</h2>
+      <ul>
+        <li><strong>Write stories in refinement sessions, not solo.</strong> The conversation between product owner, engineers, and QA produces better stories than any individual can write alone.</li>
+        <li><strong>One user per story.</strong> If the same story uses "admin" and "regular user" interchangeably, split it — their needs and acceptance criteria are different.</li>
+        <li><strong>Avoid implementation details in the story.</strong> "I want a dropdown" prescribes the solution. "I want to filter results by category" lets the team find the best implementation.</li>
+        <li><strong>Add a "definition of done" link.</strong> Reference your team's global DoD (unit tests, code review, documentation) so engineers don't need to guess what "done" means.</li>
+        <li><strong>Review the "so that" clause with a skeptic.</strong> If someone reading the story can say "so what?" to the benefit, rewrite it.</li>
+      </ul>
+
+      <p>For context on the Scrum framework that user stories live within, read our guide on <a href="/blog/agile-vs-scrum/">Agile vs Scrum for engineering teams</a>. And if you're managing your stories in a tool, see our comparison of the <a href="/blog/best-project-management-software/">best project management software in 2026</a>.</p>
+
+      <div class="art-cta">
+        <h3>Track user stories in Projiq</h3>
+        <p>Projiq's sprint board lets you create, link, and track user stories with acceptance criteria, epics, and real-time collaboration — built for engineering organizations from day one.</p>
+        <a href="https://app.projiq.app/register-org">Start Free Trial</a>
+      </div>
+
+      <div class="faq-block">
+        <h2>Frequently Asked Questions</h2>
+
+        <details class="faq-entry">
+          <summary>Who should write user stories?</summary>
+          <div class="faq-ans">User stories are typically written by the Product Owner, but the best stories come from collaborative refinement sessions involving the whole team — engineers, QA, and the PO together. Engineers add technical context, QA identifies testability gaps, and the PO keeps the user perspective sharp. Stories written entirely in isolation by one person tend to have more gaps and require more clarification during the sprint.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>How do you split a user story that is too big?</summary>
+          <div class="faq-ans">The most effective splitting patterns are: (1) by workflow step — "login" and "logout" as separate stories rather than "authentication"; (2) by user type — "admin view" and "member view" as separate stories; (3) by happy path vs. edge cases — deliver the core flow first, then add error handling; (4) by data set — "filter by date" then "filter by assignee" as separate stories. Avoid splitting by technical layer (frontend/backend) — this breaks the "valuable" INVEST criterion.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>How do you estimate user stories?</summary>
+          <div class="faq-ans">Most teams use story points — a relative measure of effort, complexity, and uncertainty (not time). Common scales are Fibonacci (1, 2, 3, 5, 8, 13) or T-shirt sizes (S, M, L, XL). Planning Poker is the most common technique: everyone privately picks a number, reveals simultaneously, and discusses discrepancies. The goal is not to predict exact hours but to compare stories relative to each other and identify stories that are too uncertain to start.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What is the difference between a user story and a task?</summary>
+          <div class="faq-ans">A user story describes what a user needs — it's a functional requirement with user value. A task is a specific piece of technical work needed to complete a story — it has no direct user value on its own. "Login with email and password" is a user story. "Write JWT middleware" and "Create login form component" are tasks within that story. Tasks are typically created during sprint planning by the engineering team, not during backlog refinement.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>Should technical debt and infrastructure work be written as user stories?</summary>
+          <div class="faq-ans">Not as standard user stories — there's no real end-user who "wants" a database index or a CI pipeline upgrade. Instead, write them as "technical stories" or "enabler stories" with a business justification (e.g. "refactor auth middleware to support SSO integration in Q3"). This keeps them visible in the backlog, allows estimation and prioritization, and makes the business value clear to stakeholders who ask why engineering time is going to non-feature work.</div>
+        </details>
+      </div>
+
+    </article>
+
+    <aside class="art-sidebar">
+      <div class="sb-card">
+        <h4>Contents</h4>
+        <ul class="toc-list">
+          <li><a href="#what-is-a-user-story">What Is a User Story?</a></li>
+          <li><a href="#the-formula">The Standard Formula</a></li>
+          <li><a href="#examples">Real Examples</a></li>
+          <li><a href="#acceptance-criteria">Acceptance Criteria</a></li>
+          <li><a href="#invest">INVEST Criteria</a></li>
+          <li><a href="#epics-vs-stories">Epics vs Stories vs Tasks</a></li>
+          <li><a href="#anti-patterns">Anti-Patterns to Avoid</a></li>
+          <li><a href="#tips">Tips for Better Stories</a></li>
+        </ul>
+      </div>
+      <div class="sb-card">
+        <h4>Related Articles</h4>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(16,185,129,.13);border:1px solid rgba(16,185,129,.22)">🏃</div>
+          <div>
+            <a href="/blog/sprint-retrospective-templates/">7 Sprint Retrospective Templates</a>
+            <span class="rel-cat">Scrum</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(139,92,246,.13);border:1px solid rgba(139,92,246,.22)">⚡</div>
+          <div>
+            <a href="/blog/agile-vs-scrum/">Agile vs Scrum: Complete Guide</a>
+            <span class="rel-cat">Agile</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(59,130,246,.13);border:1px solid rgba(59,130,246,.22)">🏆</div>
+          <div>
+            <a href="/blog/best-project-management-software/">Best Project Management Software</a>
+            <span class="rel-cat">Project Management</span>
+          </div>
+        </div>
+        <a href="https://app.projiq.app/register-org" style="display:block;background:linear-gradient(90deg,#8B5CF6,#3B82F6);color:#fff;text-align:center;padding:10px 16px;border-radius:8px;font-size:13px;font-weight:700;margin-top:6px;transition:opacity .2s" onmouseover="this.style.opacity='.86'" onmouseout="this.style.opacity='1'">Get Started Free</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="b-footer">
+  <div class="b-footer-inner">
+    <div class="b-footer-grid">
+      <div class="b-footer-brand">
+        <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg>Projiq<span class="b-dot-app">.app</span></a>
+        <p>Project management built for engineering organizations. Sprints, boards, timelines, and real-time collaboration — one plan for your whole org.</p>
+      </div>
+      <div class="b-footer-col">
+        <h5>Product</h5>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#security">Security</a>
+        <a href="https://app.projiq.app/login">Sign In</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Blog</h5>
+        <a href="/blog/">All Articles</a>
+        <a href="/blog/how-to-write-user-stories/">User Stories</a>
+        <a href="/blog/sprint-retrospective-templates/">Retro Templates</a>
+        <a href="/blog/agile-vs-scrum/">Agile vs Scrum</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Alternatives</h5>
+        <a href="/jira-alternative/">Jira Alternative</a>
+        <a href="/linear-alternative/">Linear Alternative</a>
+        <a href="/asana-alternative/">Asana Alternative</a>
+        <a href="https://app.projiq.app/register-org">Free Trial</a>
+      </div>
+    </div>
+    <div class="b-footer-bottom">
+      <span class="b-footer-copy">© 2026 Projiq. All rights reserved.</span>
+      <span class="b-footer-copy">Built for engineering organizations.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var prog=document.getElementById('prog');
+  window.addEventListener('scroll',function(){
+    var d=document.documentElement;
+    var pct=(d.scrollTop||document.body.scrollTop)/(d.scrollHeight-d.clientHeight||1)*100;
+    prog.style.width=Math.min(pct,100)+'%';
+  },{passive:true});
+  var links=document.querySelectorAll('.toc-list a');
+  var heads=Array.from(links).map(function(l){return document.querySelector(l.getAttribute('href'))}).filter(Boolean);
+  window.addEventListener('scroll',function(){
+    var top=window.scrollY+100;
+    var cur=heads[0];
+    heads.forEach(function(h){if(h.offsetTop<=top)cur=h;});
+    links.forEach(function(l){l.classList.toggle('active',l.getAttribute('href')==='#'+cur.id);});
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
