@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kanban vs Scrum: Which Agile Framework Is Right for Your Team? (2026) | Projiq Blog</title>
+<meta name="description" content="Kanban vs Scrum — two Agile frameworks, two very different realities. Learn the key differences, when to use each, and how engineering teams decide in 2026.">
+<link rel="canonical" href="https://projiq.app/blog/kanban-vs-scrum/">
+<meta property="og:title" content="Kanban vs Scrum: Which Agile Framework Is Right for Your Team? (2026)">
+<meta property="og:description" content="Kanban vs Scrum — two Agile frameworks, two very different realities. Learn the key differences, when to use each, and how engineering teams decide in 2026.">
+<meta property="og:image" content="https://projiq.app/og.png">
+<meta property="og:url" content="https://projiq.app/blog/kanban-vs-scrum/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-09">
+<meta property="article:author" content="Projiq Team">
+<meta property="article:section" content="Agile">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kanban vs Scrum: Which Agile Framework Is Right for Your Team?">
+<meta name="twitter:image" content="https://projiq.app/og.png">
+<link rel="icon" href="/favicon.ico">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Kanban vs Scrum: Which Agile Framework Is Right for Your Team? (2026)","description":"Kanban vs Scrum — two Agile frameworks, two very different realities. Learn the key differences, when to use each, and how engineering teams decide in 2026.","author":{"@type":"Organization","name":"Projiq"},"publisher":{"@type":"Organization","name":"Projiq","logo":{"@type":"ImageObject","url":"https://projiq.app/og.png"}},"datePublished":"2026-07-09","dateModified":"2026-07-09","mainEntityOfPage":{"@type":"WebPage","@id":"https://projiq.app/blog/kanban-vs-scrum/"},"image":"https://projiq.app/og.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://projiq.app"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://projiq.app/blog/"},{"@type":"ListItem","position":3,"name":"Kanban vs Scrum","item":"https://projiq.app/blog/kanban-vs-scrum/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the main difference between Kanban and Scrum?","acceptedAnswer":{"@type":"Answer","text":"Scrum is a sprint-based framework with fixed time-boxes (typically 2 weeks), defined roles (Product Owner, Scrum Master, Development Team), and regular ceremonies. Kanban is a flow-based system with no fixed iterations — work flows continuously, limited only by WIP (work in progress) limits per column. Scrum plans capacity in advance; Kanban responds to incoming demand in real time."}},{"@type":"Question","name":"Can a team use both Kanban and Scrum?","acceptedAnswer":{"@type":"Answer","text":"Yes — this hybrid is called Scrumban. Many engineering organizations run Scrum for product feature development (sprints, planning, reviews, retrospectives) and Kanban for bug queues, support work, or DevOps pipelines where the unpredictable nature of the work makes sprint planning impractical. The two boards can coexist in the same tool."}},{"@type":"Question","name":"Is Kanban or Scrum better for software development?","acceptedAnswer":{"@type":"Answer","text":"Neither is universally better. Scrum works best for product teams with a clear backlog of features that need prioritization and regular stakeholder reviews. Kanban works best for operations, support, and platform teams where work arrives unpredictably and continuous flow matters more than sprint commitments. The most effective teams often use both simultaneously for different work streams."}},{"@type":"Question","name":"What are WIP limits in Kanban?","acceptedAnswer":{"@type":"Answer","text":"WIP (Work In Progress) limits cap how many items can be in a given column (stage) at once. For example, a WIP limit of 3 on the 'In Review' column means no new work enters review until something finishes. WIP limits force teams to complete before starting, expose bottlenecks, and reduce context switching. They are the single most impactful Kanban practice for most teams."}},{"@type":"Question","name":"What metrics does Kanban use?","acceptedAnswer":{"@type":"Answer","text":"The three primary Kanban metrics are: Cycle Time (how long a single item takes from start to done), Lead Time (how long from when a request is made to when it is delivered), and Throughput (how many items are completed per unit of time). These replace velocity and story points, which are Scrum-specific metrics. Teams track these on cumulative flow diagrams and cycle time scatter plots."}},{"@type":"Question","name":"How do I know if my team should switch from Scrum to Kanban?","acceptedAnswer":{"@type":"Answer","text":"Consider Kanban if: sprint planning consistently feels forced because work arrives mid-sprint, your team is regularly pulled off sprint work for urgent requests, you measure success by uninterrupted flow rather than sprint velocity, or your team is ops or support-focused. Consider staying on Scrum if you have a clear product backlog, stakeholders who benefit from regular sprint reviews, and work that can genuinely be planned two weeks ahead."}}]}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#030812;color:#F1F5F9;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+.prog{position:fixed;top:60px;left:0;height:3px;background:linear-gradient(90deg,#10B981,#06B6D4);width:0;z-index:300;transition:width .08s linear}
+
+.b-nav{position:sticky;top:0;z-index:200;background:rgba(3,8,18,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)}
+.b-nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center}
+.b-logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;color:#F1F5F9;flex-shrink:0}
+.b-logo-mark{flex-shrink:0;display:block;}.b-dot-app{color:#06B6D4;}
+.b-nav-links{display:flex;gap:28px;margin-left:auto;margin-right:28px}
+.b-nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
+.b-nav-links a:hover,.b-nav-links a.active{color:#F1F5F9}
+.b-nav-cta{background:linear-gradient(90deg,#3B82F6,#8B5CF6);color:#fff;padding:8px 20px;border-radius:9px;font-size:13px;font-weight:700;flex-shrink:0;transition:opacity .2s}
+.b-nav-cta:hover{opacity:.86}
+
+.b-crumb{max-width:1200px;margin:0 auto;padding:28px 24px 0;display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.35);flex-wrap:wrap}
+.b-crumb a{color:rgba(255,255,255,.38);transition:color .2s}
+.b-crumb a:hover{color:#34D399}
+.b-crumb-sep{color:rgba(255,255,255,.18)}
+
+.art-wrap{max-width:1200px;margin:0 auto;padding:32px 24px 0}
+.art-header{margin-bottom:44px}
+.art-cat{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;background:rgba(16,185,129,.11);border:1px solid rgba(16,185,129,.24);color:#34D399;margin-bottom:18px}
+.art-header h1{font-size:clamp(30px,4.5vw,50px);font-weight:900;line-height:1.15;letter-spacing:-1px;margin-bottom:22px}
+.art-meta{display:flex;align-items:center;gap:22px;color:rgba(255,255,255,.35);font-size:13px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap}
+
+.art-layout{display:grid;grid-template-columns:1fr 300px;gap:60px;align-items:start}
+
+.art-body{font-size:17px;line-height:1.80;color:rgba(255,255,255,.78);padding-bottom:60px}
+.art-body p{margin-bottom:22px}
+.art-body h2{font-size:26px;font-weight:800;color:#F1F5F9;margin:48px 0 16px;letter-spacing:-.3px;line-height:1.3}
+.art-body h3{font-size:19px;font-weight:700;color:#F1F5F9;margin:28px 0 12px;letter-spacing:-.1px}
+.art-body ul,.art-body ol{margin:0 0 22px 22px}
+.art-body li{margin-bottom:9px;color:rgba(255,255,255,.72)}
+.art-body ul li::marker{color:#10B981}
+.art-body ol li::marker{color:#34D399;font-weight:700}
+.art-body strong{color:#F1F5F9;font-weight:700}
+.art-body a{color:#34D399;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(52,211,153,.4);transition:text-decoration-color .2s}
+.art-body a:hover{text-decoration-color:#34D399}
+blockquote{border-left:3px solid #10B981;padding:16px 22px;background:rgba(16,185,129,.06);border-radius:0 10px 10px 0;margin:28px 0;font-style:italic;color:rgba(255,255,255,.72);font-size:16px}
+.tip-box{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.tip-box b{color:#34D399;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.warn-box{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.warn-box b{color:#FBBF24;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.link-box{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.link-box b{color:#34D399;display:block;margin-bottom:8px;font-size:13px;font-weight:700}
+
+.cmp-table-wrap{overflow-x:auto;margin:28px 0;border-radius:12px;border:1px solid rgba(255,255,255,.07)}
+.cmp-table{width:100%;border-collapse:collapse;font-size:14px;min-width:580px}
+.cmp-table th{background:rgba(16,185,129,.10);color:#34D399;padding:12px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.cmp-table th:first-child{color:rgba(255,255,255,.45)}
+.cmp-table td{padding:12px 16px;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.68);vertical-align:top;line-height:1.5}
+.cmp-table td:first-child{color:rgba(255,255,255,.45);font-weight:600;white-space:nowrap;font-size:13px}
+.cmp-table tr:hover td{background:rgba(255,255,255,.02)}
+.cmp-table .win-k{color:#F59E0B;font-weight:700}
+.cmp-table .win-s{color:#8B5CF6;font-weight:700}
+
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0}
+.vs-box{background:rgba(10,22,40,.6);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:20px}
+.vs-box h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+.vs-box.kanban{border-top:2px solid #F59E0B}
+.vs-box.kanban h4{color:#F59E0B}
+.vs-box.scrum{border-top:2px solid #8B5CF6}
+.vs-box.scrum h4{color:#8B5CF6}
+.vs-box ul{margin-left:16px}
+.vs-box li{font-size:14px;color:rgba(255,255,255,.65);margin-bottom:7px}
+.vs-box.kanban ul li::marker{color:#F59E0B}
+.vs-box.scrum ul li::marker{color:#8B5CF6}
+
+.wip-demo{display:flex;gap:10px;margin:24px 0;overflow-x:auto;padding-bottom:4px}
+.wip-col{flex:1;min-width:130px;background:rgba(10,22,40,.7);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px}
+.wip-col-head{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:rgba(255,255,255,.4);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.wip-limit{background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.3);color:#FBBF24;font-size:10px;padding:2px 6px;border-radius:6px}
+.wip-limit.full{background:rgba(239,68,68,.15);border-color:rgba(239,68,68,.3);color:#F87171}
+.wip-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:7px;padding:8px 10px;margin-bottom:7px;font-size:12px;color:rgba(255,255,255,.6);line-height:1.4}
+
+.art-cta{background:linear-gradient(135deg,rgba(16,185,129,.13),rgba(6,182,212,.08));border:1px solid rgba(16,185,129,.22);border-radius:16px;padding:36px;text-align:center;margin:44px 0}
+.art-cta h3{font-size:22px;font-weight:800;margin-bottom:10px}
+.art-cta p{color:rgba(255,255,255,.52);font-size:15px;margin-bottom:22px;line-height:1.6}
+.art-cta a{display:inline-block;background:linear-gradient(90deg,#10B981,#06B6D4);color:#fff;padding:12px 28px;border-radius:9px;font-size:14px;font-weight:700;transition:opacity .2s}
+.art-cta a:hover{opacity:.86;text-decoration:none}
+
+.art-sidebar{position:sticky;top:80px}
+.sb-card{background:rgba(10,22,40,.8);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px;margin-bottom:18px}
+.sb-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.35);margin-bottom:16px}
+.toc-list{list-style:none;padding:0}
+.toc-list li{margin-bottom:9px}
+.toc-list a{font-size:13px;color:rgba(255,255,255,.45);display:block;padding-left:10px;border-left:1px solid rgba(255,255,255,.08);line-height:1.5;transition:color .18s,border-color .18s}
+.toc-list a:hover,.toc-list a.active{color:#34D399;border-left-color:#10B981;text-decoration:none}
+.rel-post{display:flex;gap:11px;margin-bottom:13px;align-items:flex-start}
+.rel-icon{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px}
+.rel-post a{font-size:13px;font-weight:600;color:rgba(255,255,255,.65);line-height:1.4;transition:color .2s;display:block;margin-bottom:3px}
+.rel-post a:hover{color:#34D399;text-decoration:none}
+.rel-cat{font-size:11px;color:rgba(255,255,255,.28)}
+
+.b-footer{background:#020810;border-top:1px solid rgba(255,255,255,.07);padding:56px 24px 32px}
+.b-footer-inner{max-width:1200px;margin:0 auto}
+.b-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.b-footer-brand p{color:rgba(255,255,255,.38);font-size:13px;line-height:1.7;margin-top:14px;max-width:230px}
+.b-footer-col h5{color:#F1F5F9;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.b-footer-col a{display:block;color:rgba(255,255,255,.38);font-size:13px;margin-bottom:9px;transition:color .2s}
+.b-footer-col a:hover{color:#34D399}
+.b-footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.b-footer-copy{color:rgba(255,255,255,.22);font-size:12px}
+
+@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{display:none}.vs-grid{grid-template-columns:1fr}.wip-demo{flex-direction:column}}
+@media(max-width:600px){.b-nav-links{display:none}.b-nav-cta{margin-left:auto}.art-header h1{font-size:28px}.art-body{font-size:16px}.b-footer-grid{grid-template-columns:1fr;gap:24px}}
+.faq-block{margin:44px 0}
+.faq-block h2{font-size:26px;font-weight:800;color:#F1F5F9;margin-bottom:22px;letter-spacing:-.3px}
+.faq-entry{border:1px solid rgba(255,255,255,.07);border-radius:12px;margin-bottom:10px;overflow:hidden;background:rgba(10,22,40,.6)}
+.faq-entry summary{padding:17px 22px;font-size:15px;font-weight:700;color:#F1F5F9;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4}
+.faq-entry summary::-webkit-details-marker{display:none}
+.faq-entry summary::after{content:'+';color:#34D399;font-size:18px;font-weight:400;flex-shrink:0;transition:transform .2s}
+.faq-entry[open] summary::after{transform:rotate(45deg)}
+.faq-entry[open]{border-color:rgba(16,185,129,.22)}
+.faq-ans{padding:0 22px 18px;font-size:14px;color:rgba(255,255,255,.62);line-height:1.75}
+</style>
+</head>
+<body>
+
+<div class="prog" id="prog"></div>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4F46E5"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient><symbol id="projiq-p" viewBox="0 0 285 265"><path d="M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z" fill="url(#brand-grad)"/><rect x="0" y="65" width="60" height="12" rx="6" fill="#4F46E5"/><rect x="0" y="100" width="60" height="12" rx="6" fill="#06B6D4"/><rect x="0" y="135" width="60" height="12" rx="6" fill="#10B981"/><path d="M140 105 L160 125 L205 80" fill="none" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
+
+<nav class="b-nav">
+  <div class="b-nav-inner">
+    <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg>Projiq<span class="b-dot-app">.app</span></a>
+    <div class="b-nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/" class="active">Blog</a>
+    </div>
+    <a href="https://app.projiq.app/register-org" class="b-nav-cta">Get Started Free</a>
+  </div>
+</nav>
+
+<div class="b-crumb">
+  <a href="/">Home</a><span class="b-crumb-sep">›</span>
+  <a href="/blog/">Blog</a><span class="b-crumb-sep">›</span>
+  <span>Kanban vs Scrum</span>
+</div>
+
+<div class="art-wrap">
+  <header class="art-header">
+    <span class="art-cat">Agile</span>
+    <h1>Kanban vs Scrum: Which Agile Framework Is Right for Your Team?</h1>
+    <div class="art-meta">
+      <span>✍ Projiq Team</span>
+      <span>📅 July 9, 2026</span>
+      <span>⏱ 10 min read</span>
+    </div>
+  </header>
+
+  <div class="art-layout">
+    <article class="art-body" id="article">
+
+      <p>Ask ten engineers whether their team uses Kanban or Scrum and you'll get a dozen answers — most of them wrong. Teams that run two-week sprints and call the board a "Kanban board." Teams that use Jira with a backlog column and call it Kanban. Teams that think they use Scrum because they do standups.</p>
+
+      <p>The confusion matters because choosing the wrong framework for your work type isn't just a naming problem — it actively degrades team performance. Sprint planning is waste when work arrives unpredictably. WIP limits are meaningless when your backlog has fixed two-week windows.</p>
+
+      <p>This guide cuts through it: what Kanban and Scrum actually are, how they differ across every dimension that matters, when each wins, and when the answer is both.</p>
+
+      <h2 id="what-is-kanban">What Is Kanban?</h2>
+      <p>Kanban originated in Toyota's manufacturing floor in the 1950s as a pull-based production scheduling system. It entered software development via David Anderson's 2010 book, adapted for knowledge work. The core idea is deceptively simple: <strong>visualize your work, limit work in progress, and manage flow</strong>.</p>
+
+      <p>A software Kanban system has three defining properties:</p>
+      <ol>
+        <li><strong>Visualize the workflow.</strong> Every item of work is on a board with explicit columns representing each stage of production. Nothing is hidden in a manager's head or a spreadsheet.</li>
+        <li><strong>Limit WIP (Work In Progress).</strong> Each column has a cap — no new work enters until something exits. This is the mechanism that drives improvement. It's not a suggestion; it's a rule.</li>
+        <li><strong>Manage flow.</strong> The goal is items moving smoothly from left to right with low and predictable cycle times. Blockers and bottlenecks show up immediately as pileups in specific columns.</li>
+      </ol>
+
+      <p>Critically, Kanban prescribes <em>no ceremonies, no roles, no iteration lengths</em>. It's a method for managing and improving an existing workflow — you layer it onto whatever process you already have.</p>
+
+      <blockquote>"Kanban doesn't ask you to change what you do — it asks you to see what you do clearly enough to improve it."</blockquote>
+
+      <h3>What a Kanban board actually looks like</h3>
+      <p>Here's a typical engineering team's Kanban board with WIP limits enforced:</p>
+
+      <div class="wip-demo">
+        <div class="wip-col">
+          <div class="wip-col-head">Backlog <span class="wip-limit">∞</span></div>
+          <div class="wip-card">Add OAuth2 login</div>
+          <div class="wip-card">Mobile nav fix</div>
+          <div class="wip-card">Webhook retry logic</div>
+          <div class="wip-card">Rate limit refactor</div>
+        </div>
+        <div class="wip-col">
+          <div class="wip-col-head">In Progress <span class="wip-limit">WIP: 3</span></div>
+          <div class="wip-card">Search indexing bug</div>
+          <div class="wip-card">Payment gateway v2</div>
+          <div class="wip-card">API docs update</div>
+        </div>
+        <div class="wip-col">
+          <div class="wip-col-head">In Review <span class="wip-limit full">WIP: 2/2</span></div>
+          <div class="wip-card">CSV export feature</div>
+          <div class="wip-card">Auth token refresh</div>
+        </div>
+        <div class="wip-col">
+          <div class="wip-col-head">Done <span class="wip-limit">∞</span></div>
+          <div class="wip-card">User onboarding flow</div>
+          <div class="wip-card">Stripe webhook</div>
+        </div>
+      </div>
+
+      <p>When "In Review" hits its limit of 2, no one can start new work — they must first help clear the review backlog. This is the feedback mechanism that prevents "done but not reviewed" work from piling up invisibly.</p>
+
+      <h2 id="what-is-scrum">What Is Scrum?</h2>
+      <p>Scrum is a framework for developing complex products in iterative, time-boxed cycles called <strong>sprints</strong>. Unlike Kanban, it is explicitly prescriptive about roles, events, and artifacts. The 2020 Scrum Guide defines all three.</p>
+
+      <h3>The three roles</h3>
+      <ul>
+        <li><strong>Product Owner:</strong> Single accountable person for the product backlog. Decides what gets built and in what order. Not a committee.</li>
+        <li><strong>Scrum Master:</strong> Serves the team and organization. Coaches Scrum, removes impediments, facilitates events. Not a project manager.</li>
+        <li><strong>Developers:</strong> The people doing the work. Cross-functional, self-organizing, collectively accountable for each sprint goal. Typically 3–9 people.</li>
+      </ul>
+
+      <h3>The five events</h3>
+      <ol>
+        <li><strong>Sprint (1–4 weeks, usually 2):</strong> The container for all other events. A fixed window during which a potentially releasable increment is built.</li>
+        <li><strong>Sprint Planning (up to 8h for 4-week sprint):</strong> Team selects backlog items and creates a sprint backlog with a sprint goal.</li>
+        <li><strong>Daily Scrum (15 min):</strong> Inspect progress toward the sprint goal. Identify any impediments. Time-boxed.</li>
+        <li><strong>Sprint Review (up to 4h):</strong> Inspect the increment with stakeholders. Adapt the product backlog based on feedback.</li>
+        <li><strong>Sprint Retrospective (up to 3h):</strong> Inspect process and relationships. Identify one meaningful improvement.</li>
+      </ol>
+
+      <h3>The three artifacts</h3>
+      <ul>
+        <li><strong>Product Backlog:</strong> Ordered list of everything needed in the product. Only the PO can change the order.</li>
+        <li><strong>Sprint Backlog:</strong> The subset of product backlog items selected for this sprint plus the plan for delivering the increment.</li>
+        <li><strong>Increment:</strong> All completed product backlog items. Must meet the Definition of Done to count.</li>
+      </ul>
+
+      <h2 id="key-differences">Kanban vs Scrum: Side-by-Side Comparison</h2>
+
+      <div class="cmp-table-wrap">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>Dimension</th>
+              <th>Kanban</th>
+              <th>Scrum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Work structure</td>
+              <td>Continuous flow, no fixed iterations</td>
+              <td>Time-boxed sprints (1–4 weeks)</td>
+            </tr>
+            <tr>
+              <td>Planning cadence</td>
+              <td>On-demand — pull work when capacity exists</td>
+              <td>Sprint planning every 1–4 weeks</td>
+            </tr>
+            <tr>
+              <td>Commitment</td>
+              <td>No sprint commitment — team pulls next highest priority</td>
+              <td>Team commits to sprint goal at planning</td>
+            </tr>
+            <tr>
+              <td>WIP control</td>
+              <td class="win-k">Explicit WIP limits per column</td>
+              <td>Implicit — bounded by sprint capacity</td>
+            </tr>
+            <tr>
+              <td>Roles prescribed</td>
+              <td>None</td>
+              <td class="win-s">PO, Scrum Master, Developers</td>
+            </tr>
+            <tr>
+              <td>Ceremonies</td>
+              <td>Optional (Kanban meetings, replenishment)</td>
+              <td class="win-s">5 defined events</td>
+            </tr>
+            <tr>
+              <td>Primary metric</td>
+              <td class="win-k">Cycle time, throughput, lead time</td>
+              <td>Sprint velocity (story points/sprint)</td>
+            </tr>
+            <tr>
+              <td>Mid-cycle scope changes</td>
+              <td class="win-k">Welcome — pull next item any time</td>
+              <td>Discouraged within a sprint</td>
+            </tr>
+            <tr>
+              <td>Works best for</td>
+              <td class="win-k">Support, ops, maintenance, DevOps</td>
+              <td class="win-s">Product feature development</td>
+            </tr>
+            <tr>
+              <td>Estimation required</td>
+              <td>No</td>
+              <td>Yes (story points or right-sizing)</td>
+            </tr>
+            <tr>
+              <td>Release cadence</td>
+              <td class="win-k">Continuous — release when ready</td>
+              <td>End of sprint (or more frequently)</td>
+            </tr>
+            <tr>
+              <td>Adoption difficulty</td>
+              <td>Low — add columns and WIP limits to existing workflow</td>
+              <td>Medium — roles and ceremonies require org buy-in</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="when-kanban">When Kanban Wins</h2>
+      <p>Kanban outperforms Scrum in specific, predictable situations. These aren't edge cases — they're common in mature engineering organizations:</p>
+
+      <div class="vs-grid">
+        <div class="vs-box kanban">
+          <h4>Choose Kanban when...</h4>
+          <ul>
+            <li>Work arrives unpredictably (support tickets, incidents)</li>
+            <li>Priorities shift daily based on external events</li>
+            <li>Work items vary wildly in size (no meaningful estimation)</li>
+            <li>You have a DevOps or SRE team on-call rotation</li>
+            <li>The team is small (1–3 people) and sprint planning is overhead</li>
+            <li>You need to reduce time-to-first-response on requests</li>
+            <li>You want to identify bottlenecks through flow analysis</li>
+          </ul>
+        </div>
+        <div class="vs-box scrum">
+          <h4>Choose Scrum when...</h4>
+          <ul>
+            <li>You're building a product with a growing backlog of features</li>
+            <li>Stakeholders want regular, predictable demo cadences</li>
+            <li>The team needs structure to become self-organizing</li>
+            <li>Work can genuinely be planned 2 weeks in advance</li>
+            <li>You need velocity tracking for roadmap forecasting</li>
+            <li>Team is 4–9 people and cross-functional</li>
+            <li>You have or can hire a clear Product Owner</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <b>Rule of thumb</b>
+        If you can meaningfully fill a two-week sprint in planning, Scrum adds value. If your backlog is dominated by "things people send you that need a response this week," Kanban is the better fit. Most organizations eventually run both — Scrum for product, Kanban for operations.
+      </div>
+
+      <h2 id="metrics">The Metrics Tell Different Stories</h2>
+      <p>The choice of framework isn't just operational — it changes what you measure and optimize. This matters because metrics shape behavior, and you want behavior aligned with your work type.</p>
+
+      <h3>Kanban metrics</h3>
+      <ul>
+        <li><strong>Cycle Time:</strong> How long from "started" to "done." The lower and more consistent, the better. A high variance in cycle time means unpredictable delivery — often more concerning than a high average.</li>
+        <li><strong>Lead Time:</strong> How long from "requested" to "delivered." Includes wait time before work starts. This is what customers actually experience.</li>
+        <li><strong>Throughput:</strong> How many items completed per week. Combined with average cycle time, this tells you your team's sustainable delivery rate.</li>
+        <li><strong>Cumulative Flow Diagram (CFD):</strong> A stacked area chart showing items in each column over time. A widening band in any column indicates a bottleneck forming before your eyes.</li>
+      </ul>
+
+      <h3>Scrum metrics</h3>
+      <ul>
+        <li><strong>Velocity:</strong> Story points completed per sprint. Used to forecast how many sprints future features will take. Only meaningful when consistent (±20% variance is healthy).</li>
+        <li><strong>Sprint burndown:</strong> Work remaining vs. days elapsed in the sprint. A flat burndown mid-sprint signals blocked items.</li>
+        <li><strong>Sprint goal achievement rate:</strong> What percentage of sprints met their stated goal? More useful than raw velocity for diagnosing planning quality.</li>
+        <li><strong>Escaped defects:</strong> Bugs found after sprint review. Rising escaped defects indicate Definition of Done erosion.</li>
+      </ul>
+
+      <div class="warn-box">
+        <b>Don't cross the streams</b>
+        Using velocity as a Kanban metric, or cycle time as a Scrum optimization target, creates confused incentives. Story points don't belong on a Kanban board. Sprint velocity doesn't belong in a Kanban retrospective. Choose the metric set that matches your framework and optimize within it.
+      </div>
+
+      <h2 id="scrumban">Scrumban: When You Need Both</h2>
+      <p>Scrumban isn't a formal framework — it's an informal hybrid that emerged from teams who found pure Scrum too rigid for their mixed work type. The typical pattern:</p>
+
+      <ul>
+        <li><strong>Product feature work runs on Scrum:</strong> Sprint planning, sprint board, review, retrospective. Features are estimated in story points, tracked by velocity.</li>
+        <li><strong>Bug and support queues run on Kanban:</strong> Separate board with WIP limits. Items are pulled as capacity allows. No sprint commitment for bugs.</li>
+        <li><strong>Incidents bypass both:</strong> P0 incidents interrupt everything. They don't go on either board until post-mortem.</li>
+      </ul>
+
+      <p>The practical implementation in a tool like Projiq: two boards share the same project. The sprint board shows feature work. The Kanban board shows bugs and support tickets. Engineers work sprint items by default and pull Kanban items when blocked on sprint work or between tasks. Neither board interferes with the other's WIP limits or velocity.</p>
+
+      <blockquote>"The best framework is the one that matches your actual work type — not the one in the book you just read."</blockquote>
+
+      <h2 id="adoption">How to Adopt Each Framework Without Disrupting Your Team</h2>
+      <h3>Adopting Kanban</h3>
+      <p>Kanban's promise ("start with what you do now") makes it the lower-friction choice. The adoption sequence that works in practice:</p>
+      <ol>
+        <li><strong>Map your existing workflow as columns.</strong> Don't invent columns — observe how work actually moves and name the stages.</li>
+        <li><strong>Add WIP limits conservatively.</strong> Start at current average WIP + 1. Lower limits over time as the team builds the habit of finishing before starting.</li>
+        <li><strong>Hold a weekly flow review.</strong> Look at the CFD together. Identify which column is consistently filling up and what's causing it.</li>
+        <li><strong>Measure cycle time after 4 weeks.</strong> You need enough data to calculate a meaningful percentile. P85 cycle time is a practical delivery commitment: "We deliver 85% of items within X days."</li>
+      </ol>
+
+      <h3>Adopting Scrum</h3>
+      <p>Scrum adoption fails most often because teams skip the hardest part — clarifying who the Product Owner actually is. The adoption sequence:</p>
+      <ol>
+        <li><strong>Establish the Product Owner first.</strong> This is a full-time role in the spirit of Scrum. A committee PO, a part-time PO, or a PO who can't make scope decisions kills Scrum at the root.</li>
+        <li><strong>Start with one-week sprints.</strong> One-week sprints amplify feedback — if you're doing ceremonies wrong, you find out in 5 days, not 14. Switch to two weeks once the team has the rhythm.</li>
+        <li><strong>Write a Definition of Done before the first sprint starts.</strong> "Done" without a definition is meaningless. The DoD is what makes the increment real.</li>
+        <li><strong>Run every ceremony for the first six sprints before skipping any.</strong> Most teams think they can skip retrospectives. They're wrong. The retrospective is where process improvements happen — skipping it means nothing ever changes.</li>
+      </ol>
+
+      <div class="link-box">
+        <b>📌 Related reading</b>
+        See our guide to <a href="/blog/agile-vs-scrum/">Agile vs Scrum</a> for the philosophical difference between Agile as a mindset and Scrum as a framework — a distinction that matters before you adopt either. And for the complete playbook on <a href="/blog/sprint-retrospective-templates/">sprint retrospectives</a>, we've put together 7 ready-to-use formats.
+      </div>
+
+      <h2 id="common-mistakes">The 5 Most Common Mistakes Teams Make Choosing Between Them</h2>
+
+      <ol>
+        <li>
+          <strong>Using a sprint board and calling it Kanban.</strong>
+          A board with columns is not Kanban. Kanban requires WIP limits and flow management. Without WIP limits, you have a visual task manager — not a pull system. The missing WIP limits mean the bottleneck stays hidden.
+        </li>
+        <li>
+          <strong>Running Scrum with 15+ people without splitting teams.</strong>
+          Scrum degrades above 9 developers in a single team. Planning meetings become 3-hour negotiations. Standups become status reports. Split into 2–3 smaller Scrum teams first, then decide if you need a scaling framework (SAFe, LeSS, or Nexus).
+        </li>
+        <li>
+          <strong>Adding Kanban boards to a Scrum team "for flexibility."</strong>
+          Two separate systems tracking the same team's work creates coordination overhead and competing priorities. If you need more flexibility, use Scrumban explicitly — one system for features, one for bugs — but keep them clean and separate.
+        </li>
+        <li>
+          <strong>Skipping estimation entirely because "Kanban doesn't need story points."</strong>
+          True — Kanban doesn't need story points. But engineering leaders still need to answer "how long will this take?" Right-sizing (T-shirt sizes) or cycle time percentiles give you forecasting ability without story point ceremonies.
+        </li>
+        <li>
+          <strong>Switching frameworks because of tool constraints, not work type.</strong>
+          Your tool should serve your process, not determine it. If you're on Kanban because Jira's sprint planning is confusing, the problem is the tool. Projiq supports both simultaneously on the same project — you pick the framework for each work stream independently.
+        </li>
+      </ol>
+
+      <h2 id="tooling">Tooling for Kanban and Scrum in 2026</h2>
+      <p>Most project management tools in 2026 support both views on the same underlying data. The practical differences:</p>
+
+      <div class="cmp-table-wrap">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>Feature needed</th>
+              <th>For Kanban</th>
+              <th>For Scrum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Board view</td><td>Continuous board with WIP limits per column</td><td>Sprint board scoped to current sprint only</td></tr>
+            <tr><td>Planning</td><td>Replenishment queue — pull from top when capacity opens</td><td>Sprint backlog — commit items at planning meeting</td></tr>
+            <tr><td>Metrics dashboard</td><td>Cycle time histogram, CFD, throughput chart</td><td>Velocity chart, burndown chart, sprint goal tracker</td></tr>
+            <tr><td>Estimation</td><td>Optional (t-shirt sizes or none)</td><td>Required (story points or hours)</td></tr>
+            <tr><td>Multi-team support</td><td>Separate boards, shared backlog</td><td>Scaled Scrum: team-level + program-level boards</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Jira supports both but requires significant configuration and the UI is complex enough that teams often use the wrong board type without realizing it. Linear defaults to a Scrum-like sprint model with less Kanban flexibility. Projiq supports both board types natively on the same project — you can run your feature work on Scrum sprints and your bug queue on a Kanban board without switching tools or managing two separate projects.</p>
+
+      <div class="link-box">
+        <b>📌 Full tool comparison</b>
+        Read our <a href="/blog/best-project-management-software/">best project management software in 2026</a> breakdown and our <a href="/blog/jira-vs-linear/">Jira vs Linear</a> comparison for a detailed look at how these tools handle both frameworks.
+      </div>
+
+      <h2 id="conclusion">The Bottom Line</h2>
+      <p>Kanban and Scrum solve different problems. Scrum structures a product team's cadence, creates regular stakeholder touchpoints, and produces a predictable delivery rhythm. Kanban makes operational work visible, prevents overload, and optimizes flow for unpredictable incoming requests. Neither is universally superior — they're suited to different work types.</p>
+
+      <p>The practical answer for most engineering organizations in 2026: use Scrum for your product team running planned feature work, and Kanban for your DevOps, platform, or support team handling reactive work. Run them simultaneously in the same tool, keep the metrics separate, and don't let the Kanban board's urgent tickets hijack the sprint board's committed sprint goal.</p>
+
+      <p>If you're a team of 3 or fewer people doing a mix of everything: start with Kanban. It's lower overhead, easier to adopt, and gives you the visibility to improve your process week over week. You can always layer in sprint cadences when your team and backlog mature enough to support it.</p>
+
+      <section class="faq-block">
+        <h2>Frequently Asked Questions</h2>
+
+        <details class="faq-entry">
+          <summary>What is the main difference between Kanban and Scrum?</summary>
+          <div class="faq-ans">Scrum is a sprint-based framework with fixed time-boxes (typically 2 weeks), defined roles (Product Owner, Scrum Master, Development Team), and regular ceremonies. Kanban is a flow-based system with no fixed iterations — work flows continuously, limited only by WIP limits per column. Scrum plans capacity in advance; Kanban responds to incoming demand in real time.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>Can a team use both Kanban and Scrum?</summary>
+          <div class="faq-ans">Yes — this hybrid is called Scrumban. Many engineering organizations run Scrum for product feature development (sprints, planning, reviews, retrospectives) and Kanban for bug queues, support work, or DevOps pipelines where unpredictable work makes sprint planning impractical. The two boards can coexist in the same tool.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>Is Kanban or Scrum better for software development?</summary>
+          <div class="faq-ans">Neither is universally better. Scrum works best for product teams with a clear backlog of features that need prioritization and regular stakeholder reviews. Kanban works best for operations, support, and platform teams where work arrives unpredictably and continuous flow matters more than sprint commitments. Most mature teams run both simultaneously for different work streams.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What are WIP limits in Kanban?</summary>
+          <div class="faq-ans">WIP (Work In Progress) limits cap how many items can be in a given column (stage) at once. For example, a WIP limit of 3 on the "In Review" column means no new work enters review until something finishes. WIP limits force teams to complete before starting, expose bottlenecks, and reduce context switching — they are the single most impactful Kanban practice for most teams.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What metrics does Kanban use instead of velocity?</summary>
+          <div class="faq-ans">The three primary Kanban metrics are: Cycle Time (how long a single item takes from started to done), Lead Time (how long from when a request is made to when it is delivered), and Throughput (how many items are completed per unit of time). These replace velocity and story points. Teams track them on cumulative flow diagrams and cycle time scatter plots to identify bottlenecks and predict delivery dates.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>How do I know if my team should switch from Scrum to Kanban?</summary>
+          <div class="faq-ans">Consider Kanban if: sprint planning consistently feels forced because work arrives mid-sprint; your team is regularly pulled off sprint work for urgent requests; you measure success by uninterrupted flow rather than sprint velocity; or your team is ops or support-focused. Stay on Scrum if you have a clear product backlog, stakeholders who benefit from regular sprint reviews, and work that can genuinely be planned two weeks ahead.</div>
+        </details>
+      </section>
+
+      <div class="art-cta">
+        <h3>Run Kanban and Scrum side by side — in one tool</h3>
+        <p>Projiq supports sprint boards and Kanban boards on the same project. No switching tools, no duplicate data, no confusion about which system owns what.</p>
+        <a href="https://app.projiq.app/register-org">Start Free Trial</a>
+      </div>
+
+    </article>
+
+    <aside class="art-sidebar">
+      <div class="sb-card">
+        <h4>In this article</h4>
+        <ul class="toc-list">
+          <li><a href="#what-is-kanban">What Is Kanban?</a></li>
+          <li><a href="#what-is-scrum">What Is Scrum?</a></li>
+          <li><a href="#key-differences">Side-by-Side Comparison</a></li>
+          <li><a href="#when-kanban">When Kanban Wins</a></li>
+          <li><a href="#metrics">The Metrics</a></li>
+          <li><a href="#scrumban">Scrumban Hybrid</a></li>
+          <li><a href="#adoption">Adoption Guide</a></li>
+          <li><a href="#common-mistakes">Common Mistakes</a></li>
+          <li><a href="#tooling">Tooling in 2026</a></li>
+          <li><a href="#conclusion">The Bottom Line</a></li>
+        </ul>
+      </div>
+
+      <div class="sb-card">
+        <h4>Related Articles</h4>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(139,92,246,.14);border:1px solid rgba(139,92,246,.25)">⚡</div>
+          <div>
+            <a href="/blog/agile-vs-scrum/">Agile vs Scrum: The Complete Guide</a>
+            <span class="rel-cat">Agile</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(16,185,129,.14);border:1px solid rgba(16,185,129,.25)">📋</div>
+          <div>
+            <a href="/blog/sprint-retrospective-templates/">7 Sprint Retrospective Templates</a>
+            <span class="rel-cat">Scrum</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(59,130,246,.14);border:1px solid rgba(59,130,246,.25)">🏆</div>
+          <div>
+            <a href="/blog/best-project-management-software/">Best PM Tools in 2026</a>
+            <span class="rel-cat">Project Management</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sb-card">
+        <h4>Try Projiq Free</h4>
+        <p style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:14px;line-height:1.6">Kanban boards, sprint boards, and velocity tracking — all in one tool built for engineering teams.</p>
+        <a href="https://app.projiq.app/register-org" style="display:block;background:linear-gradient(90deg,#10B981,#06B6D4);color:#fff;text-align:center;padding:10px 16px;border-radius:8px;font-size:13px;font-weight:700;transition:opacity .2s" onmouseover="this.style.opacity='.86'" onmouseout="this.style.opacity='1'">Get Started Free</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="b-footer">
+  <div class="b-footer-inner">
+    <div class="b-footer-grid">
+      <div class="b-footer-brand">
+        <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg>Projiq<span class="b-dot-app">.app</span></a>
+        <p>Project management built for engineering organizations. Sprints, boards, timelines, and real-time collaboration.</p>
+      </div>
+      <div class="b-footer-col">
+        <h5>Product</h5>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#security">Security</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Blog</h5>
+        <a href="/blog/">All Articles</a>
+        <a href="/blog/agile-vs-scrum/">Agile vs Scrum</a>
+        <a href="/blog/sprint-retrospective-templates/">Retro Templates</a>
+        <a href="/blog/how-to-write-user-stories/">User Stories Guide</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Alternatives</h5>
+        <a href="/jira-alternative/">Jira Alternative</a>
+        <a href="/linear-alternative/">Linear Alternative</a>
+        <a href="/asana-alternative/">Asana Alternative</a>
+      </div>
+    </div>
+    <div class="b-footer-bottom">
+      <span class="b-footer-copy">© 2026 Projiq. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{
+  const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight);
+  prog.style.width=(p*100)+'%';
+  const headings=document.querySelectorAll('.art-body h2[id]');
+  const links=document.querySelectorAll('.toc-list a');
+  let cur='';
+  headings.forEach(h=>{if(window.scrollY>=h.offsetTop-100)cur=h.id});
+  links.forEach(a=>{
+    const active=a.getAttribute('href')==='#'+cur;
+    a.classList.toggle('active',active);
+  });
+},{passive:true});
+</script>
+</body>
+</html>
