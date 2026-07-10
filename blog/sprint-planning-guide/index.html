@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to Run an Effective Sprint Planning Meeting (2026 Guide) | Projiq Blog</title>
+<meta name="description" content="A step-by-step playbook for running sprint planning that results in a clear sprint goal, a committed team, and a backlog your engineers can actually execute against.">
+<link rel="canonical" href="https://projiq.app/blog/sprint-planning-guide/">
+<meta property="og:title" content="How to Run an Effective Sprint Planning Meeting (2026 Guide)">
+<meta property="og:description" content="A step-by-step playbook for sprint planning that results in a clear sprint goal, a committed team, and a sprint backlog your engineers can actually execute.">
+<meta property="og:image" content="https://projiq.app/og.png">
+<meta property="og:url" content="https://projiq.app/blog/sprint-planning-guide/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-10">
+<meta property="article:author" content="Projiq Team">
+<meta property="article:section" content="Scrum">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Run an Effective Sprint Planning Meeting (2026)">
+<meta name="twitter:description" content="Step-by-step playbook: sprint goal, capacity planning, backlog selection, and the two-part format that actually works.">
+<meta name="twitter:image" content="https://projiq.app/og.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to Run an Effective Sprint Planning Meeting (2026 Guide)","description":"A step-by-step playbook for running sprint planning that results in a clear sprint goal, a committed team, and a sprint backlog your engineers can actually execute against.","author":{"@type":"Organization","name":"Projiq"},"publisher":{"@type":"Organization","name":"Projiq","logo":{"@type":"ImageObject","url":"https://projiq.app/og.png"}},"datePublished":"2026-07-10","dateModified":"2026-07-10","mainEntityOfPage":{"@type":"WebPage","@id":"https://projiq.app/blog/sprint-planning-guide/"},"image":"https://projiq.app/og.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://projiq.app"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://projiq.app/blog/"},{"@type":"ListItem","position":3,"name":"Sprint Planning Guide","item":"https://projiq.app/blog/sprint-planning-guide/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How long should a sprint planning meeting be?","acceptedAnswer":{"@type":"Answer","text":"The Scrum Guide recommends a maximum of two hours of planning per week of sprint length. For a two-week sprint that means up to four hours — though most experienced teams complete effective planning in two to three hours. If your sprint planning consistently runs long, the usual cause is insufficient backlog refinement before the meeting, not insufficient time in the meeting itself."}},{"@type":"Question","name":"What is a sprint goal and how do you write a good one?","acceptedAnswer":{"@type":"Answer","text":"A sprint goal is a single, concise statement of what the team intends to achieve by the end of the sprint. A good sprint goal is outcome-oriented (what value will users get?), not output-oriented (what features will ship?). For example: 'Enable new users to complete onboarding without needing support' is a strong sprint goal. 'Build the onboarding wizard, update the welcome email, and fix three bugs' is a task list — not a goal. The sprint goal is what gives the team flexibility to negotiate scope if problems arise mid-sprint."}},{"@type":"Question","name":"What is the difference between sprint planning and backlog grooming?","acceptedAnswer":{"@type":"Answer","text":"Backlog grooming (or backlog refinement) is a preparatory activity that happens during the sprint, typically mid-sprint, where the Product Owner and team clarify, estimate, and prioritize upcoming backlog items. Sprint planning happens at the start of each sprint and uses the refined backlog to select what the team will work on. Grooming feeds sprint planning. Without regular grooming, sprint planning becomes slow and painful because the team has to stop and discuss every item from scratch."}},{"@type":"Question","name":"How do you estimate work during sprint planning?","acceptedAnswer":{"@type":"Answer","text":"The most common estimation approaches during sprint planning are story points (relative complexity using a Fibonacci scale: 1, 2, 3, 5, 8, 13) and T-shirt sizing (XS, S, M, L, XL). The key is that estimates are made by the people doing the work, not assigned by a manager. Planning Poker is a popular technique: each team member privately estimates, then reveals simultaneously to surface disagreement and discussion. If your team has refined stories before planning, estimation in the meeting should be a quick confirmation rather than a lengthy debate."}},{"@type":"Question","name":"What if the team can't agree on the sprint goal during planning?","acceptedAnswer":{"@type":"Answer","text":"Disagreement on the sprint goal usually signals one of two things: either the Product Owner hasn't done enough preparation to clearly articulate the highest-priority outcome, or the team has different assumptions about what 'done' means. The Scrum Master's job in this case is to timeBox the discussion (5-10 minutes), ask the Product Owner to restate the business objective in one sentence, and then ask the team what the smallest set of work is that would deliver that outcome. If consensus still can't be reached, the Product Owner has final authority on scope — but the team commits to a goal they helped shape, not one handed down to them."}},{"@type":"Question","name":"What happens if you skip sprint planning?","acceptedAnswer":{"@type":"Answer","text":"Skipping sprint planning is one of the most common causes of sprint failure. Without it, the team lacks a shared sprint goal, engineers pick work based on personal preference rather than team priority, stakeholders don't know what to expect, and mid-sprint surprises derail the whole sprint. Teams that skip planning to 'save time' almost always lose more time mid-sprint to confusion, context switching, and re-prioritization. Even a 60-minute planning session for a team that is well-prepared will pay for itself many times over."}},{"@type":"Question","name":"Who should attend sprint planning?","acceptedAnswer":{"@type":"Answer","text":"Three roles are required in sprint planning: the Product Owner (who presents the prioritized backlog and the proposed sprint goal), the Development Team (who selects the work and breaks it into tasks), and the Scrum Master (who facilitates and enforces the timebox). Other stakeholders — engineering managers, designers, QA leads — can attend but should not drive the conversation. Sprint planning is a team event, not a status report to management."}}]}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#030812;color:#F1F5F9;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+.prog{position:fixed;top:60px;left:0;height:3px;background:linear-gradient(90deg,#10B981,#3B82F6);width:0;z-index:300;transition:width .08s linear}
+
+.b-nav{position:sticky;top:0;z-index:200;background:rgba(3,8,18,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)}
+.b-nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center}
+.b-logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;color:#F1F5F9;flex-shrink:0}
+.b-logo-mark{flex-shrink:0;display:block;}.b-dot-app{color:#06B6D4;}
+.b-nav-links{display:flex;gap:28px;margin-left:auto;margin-right:28px}
+.b-nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
+.b-nav-links a:hover,.b-nav-links a.active{color:#F1F5F9}
+.b-nav-cta{background:linear-gradient(90deg,#3B82F6,#8B5CF6);color:#fff;padding:8px 20px;border-radius:9px;font-size:13px;font-weight:700;flex-shrink:0;transition:opacity .2s}
+.b-nav-cta:hover{opacity:.86}
+
+.b-crumb{max-width:1200px;margin:0 auto;padding:28px 24px 0;display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.35);flex-wrap:wrap}
+.b-crumb a{color:rgba(255,255,255,.38);transition:color .2s}
+.b-crumb a:hover{color:#34D399}
+.b-crumb-sep{color:rgba(255,255,255,.18)}
+
+.art-wrap{max-width:1200px;margin:0 auto;padding:32px 24px 0}
+.art-header{margin-bottom:44px}
+.art-cat{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;background:rgba(16,185,129,.11);border:1px solid rgba(16,185,129,.26);color:#34D399;margin-bottom:18px}
+.art-header h1{font-size:clamp(30px,4.5vw,50px);font-weight:900;line-height:1.15;letter-spacing:-1px;margin-bottom:22px}
+.art-meta{display:flex;align-items:center;gap:22px;color:rgba(255,255,255,.35);font-size:13px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap}
+
+.art-layout{display:grid;grid-template-columns:1fr 300px;gap:60px;align-items:start}
+
+.art-body{font-size:17px;line-height:1.80;color:rgba(255,255,255,.78);padding-bottom:60px}
+.art-body p{margin-bottom:22px}
+.art-body h2{font-size:26px;font-weight:800;color:#F1F5F9;margin:52px 0 16px;letter-spacing:-.3px;line-height:1.3}
+.art-body h3{font-size:19px;font-weight:700;color:#F1F5F9;margin:30px 0 12px;letter-spacing:-.1px}
+.art-body ul,.art-body ol{margin:0 0 22px 22px}
+.art-body li{margin-bottom:9px;color:rgba(255,255,255,.72)}
+.art-body ul li::marker{color:#10B981}
+.art-body ol li::marker{color:#34D399;font-weight:700}
+.art-body strong{color:#F1F5F9;font-weight:700}
+.art-body a{color:#34D399;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(52,211,153,.4);transition:text-decoration-color .2s}
+.art-body a:hover{text-decoration-color:#34D399}
+blockquote{border-left:3px solid #10B981;padding:16px 22px;background:rgba(16,185,129,.06);border-radius:0 10px 10px 0;margin:28px 0;font-style:italic;color:rgba(255,255,255,.72);font-size:16px}
+.tip-box{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.tip-box b{color:#34D399;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.warn-box{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.warn-box b{color:#FBBF24;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.link-box{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.link-box b{color:#34D399;display:block;margin-bottom:8px;font-size:13px;font-weight:700}
+
+/* Step cards */
+.step-list{list-style:none;margin:0 0 28px;padding:0;counter-reset:steps}
+.step-item{counter-increment:steps;display:flex;gap:18px;margin-bottom:20px;align-items:flex-start}
+.step-num{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:rgba(16,185,129,.14);border:1px solid rgba(16,185,129,.28);color:#34D399;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.step-body h4{font-size:15px;font-weight:700;color:#F1F5F9;margin-bottom:5px}
+.step-body p{font-size:14px;color:rgba(255,255,255,.58);margin-bottom:0;line-height:1.65}
+
+/* Two-part format boxes */
+.two-part{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0}
+.part-box{background:rgba(10,22,40,.7);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px}
+.part-box .part-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
+.part-box.part-what .part-label{color:#34D399}
+.part-box.part-how .part-label{color:#60A5FA}
+.part-box.part-what{border-color:rgba(16,185,129,.16)}
+.part-box.part-how{border-color:rgba(59,130,246,.16)}
+.part-box h4{font-size:15px;font-weight:700;color:#F1F5F9;margin-bottom:10px}
+.part-box ul{margin-left:16px}
+.part-box li{font-size:13px;color:rgba(255,255,255,.60);margin-bottom:7px}
+.part-box.part-what li::marker{color:#10B981}
+.part-box.part-how li::marker{color:#3B82F6}
+
+/* Comparison table */
+.cmp-table-wrap{overflow-x:auto;margin:28px 0;border-radius:12px;border:1px solid rgba(255,255,255,.07)}
+.cmp-table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+.cmp-table th{background:rgba(16,185,129,.10);color:#34D399;padding:12px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.cmp-table th:first-child{color:rgba(255,255,255,.45)}
+.cmp-table td{padding:12px 16px;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.65);vertical-align:top;line-height:1.5}
+.cmp-table td:first-child{color:rgba(255,255,255,.45);font-weight:600;white-space:nowrap;font-size:13px}
+.cmp-table tr:hover td{background:rgba(255,255,255,.02)}
+.cmp-table .good{color:#34D399}
+.cmp-table .bad{color:#F87171}
+
+/* Goal examples */
+.goal-examples{margin:28px 0}
+.goal-row{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
+.goal-badge{flex-shrink:0;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;padding:3px 8px;border-radius:6px;margin-top:3px}
+.goal-badge.good{background:rgba(16,185,129,.14);border:1px solid rgba(16,185,129,.26);color:#34D399}
+.goal-badge.bad{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.24);color:#F87171}
+.goal-text{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6}
+
+.art-cta{background:linear-gradient(135deg,rgba(16,185,129,.12),rgba(59,130,246,.07));border:1px solid rgba(16,185,129,.22);border-radius:16px;padding:36px;text-align:center;margin:44px 0}
+.art-cta h3{font-size:22px;font-weight:800;margin-bottom:10px}
+.art-cta p{color:rgba(255,255,255,.52);font-size:15px;margin-bottom:22px;line-height:1.6}
+.art-cta a{display:inline-block;background:linear-gradient(90deg,#10B981,#3B82F6);color:#fff;padding:12px 28px;border-radius:9px;font-size:14px;font-weight:700;transition:opacity .2s}
+.art-cta a:hover{opacity:.86;text-decoration:none}
+
+.art-sidebar{position:sticky;top:80px}
+.sb-card{background:rgba(10,22,40,.8);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px;margin-bottom:18px}
+.sb-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.35);margin-bottom:16px}
+.toc-list{list-style:none;padding:0}
+.toc-list li{margin-bottom:9px}
+.toc-list a{font-size:13px;color:rgba(255,255,255,.45);display:block;padding-left:10px;border-left:1px solid rgba(255,255,255,.08);line-height:1.5;transition:color .18s,border-color .18s}
+.toc-list a:hover,.toc-list a.active{color:#34D399;border-left-color:#10B981;text-decoration:none}
+.rel-post{display:flex;gap:11px;margin-bottom:13px;align-items:flex-start}
+.rel-icon{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px}
+.rel-post a{font-size:13px;font-weight:600;color:rgba(255,255,255,.65);line-height:1.4;transition:color .2s;display:block;margin-bottom:3px}
+.rel-post a:hover{color:#34D399;text-decoration:none}
+.rel-cat{font-size:11px;color:rgba(255,255,255,.28)}
+
+.b-footer{background:#020810;border-top:1px solid rgba(255,255,255,.07);padding:56px 24px 32px}
+.b-footer-inner{max-width:1200px;margin:0 auto}
+.b-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.b-footer-brand p{color:rgba(255,255,255,.38);font-size:13px;line-height:1.7;margin-top:14px;max-width:230px}
+.b-footer-col h5{color:#F1F5F9;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.b-footer-col a{display:block;color:rgba(255,255,255,.38);font-size:13px;margin-bottom:9px;transition:color .2s}
+.b-footer-col a:hover{color:#34D399}
+.b-footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.b-footer-copy{color:rgba(255,255,255,.22);font-size:12px}
+
+@media(max-width:900px){
+  .art-layout{grid-template-columns:1fr}
+  .art-sidebar{display:none}
+  .two-part{grid-template-columns:1fr}
+  .b-footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media(max-width:600px){
+  .b-nav-links{display:none}
+  .b-nav-cta{margin-left:auto}
+  .art-header h1{font-size:28px}
+  .art-body{font-size:16px}
+  .b-footer-grid{grid-template-columns:1fr;gap:24px}
+}
+
+.faq-block{margin:44px 0}
+.faq-block h2{font-size:26px;font-weight:800;color:#F1F5F9;margin-bottom:22px;letter-spacing:-.3px}
+.faq-entry{border:1px solid rgba(255,255,255,.07);border-radius:12px;margin-bottom:10px;overflow:hidden;background:rgba(10,22,40,.6)}
+.faq-entry summary{padding:17px 22px;font-size:15px;font-weight:700;color:#F1F5F9;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4}
+.faq-entry summary::-webkit-details-marker{display:none}
+.faq-entry summary::after{content:'+';color:#34D399;font-size:18px;font-weight:400;flex-shrink:0;transition:transform .2s}
+.faq-entry[open] summary::after{transform:rotate(45deg)}
+.faq-entry[open]{border-color:rgba(16,185,129,.24)}
+.faq-ans{padding:0 22px 18px;font-size:14px;color:rgba(255,255,255,.62);line-height:1.75}
+</style>
+</head>
+<body>
+
+<div class="prog" id="prog"></div>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4F46E5"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient><symbol id="projiq-p" viewBox="0 0 285 265"><path d="M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z" fill="url(#brand-grad)"/><rect x="0" y="65" width="60" height="12" rx="6" fill="#4F46E5"/><rect x="0" y="100" width="60" height="12" rx="6" fill="#06B6D4"/><rect x="0" y="135" width="60" height="12" rx="6" fill="#10B981"/><path d="M140 105 L160 125 L205 80" fill="none" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
+
+<nav class="b-nav">
+  <div class="b-nav-inner">
+    <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+    <div class="b-nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/" class="active">Blog</a>
+    </div>
+    <a href="https://app.projiq.app/register-org" class="b-nav-cta">Get Started Free</a>
+  </div>
+</nav>
+
+<nav class="b-crumb" aria-label="Breadcrumb">
+  <a href="/">Home</a><span class="b-crumb-sep">›</span>
+  <a href="/blog/">Blog</a><span class="b-crumb-sep">›</span>
+  <span>Sprint Planning Guide</span>
+</nav>
+
+<div class="art-wrap">
+  <header class="art-header">
+    <span class="art-cat">📋 Scrum</span>
+    <h1>How to Run an Effective Sprint Planning Meeting (2026 Guide)</h1>
+    <div class="art-meta">
+      <span>✍ Projiq Team</span>
+      <span>📅 Jul 10, 2026</span>
+      <span>⏱ 9 min read</span>
+      <span>🏷 Scrum, Agile, Engineering Leadership</span>
+    </div>
+  </header>
+
+  <div class="art-layout">
+    <article class="art-body">
+
+      <p>Bad sprint planning is one of the most expensive recurring costs in engineering. It shows up as mid-sprint scope changes, engineers working on the wrong thing, stakeholders surprised by what didn't ship, and a team that walks out of planning feeling uncertain rather than aligned.</p>
+
+      <p>The root cause is almost never the people. It's the process — or the lack of one. Sprint planning has a defined structure that, when followed, reliably produces a sprint goal the whole team believes in and a backlog they can actually execute against. When teams skip steps or run planning as a free-form discussion, they get none of those outcomes.</p>
+
+      <p>This guide gives you the exact playbook: who needs to be in the room, how long it should run, the two-part structure that makes it work, and the most common mistakes that derail even experienced Scrum teams.</p>
+
+      <h2 id="what-is-sprint-planning">What Is Sprint Planning?</h2>
+
+      <p>Sprint planning is the first event in each Scrum sprint. Its purpose is simple: the team decides <em>what</em> they will deliver in the upcoming sprint and <em>how</em> they will deliver it. The output is a sprint goal — a single sentence describing the sprint's intended outcome — and a sprint backlog: the set of stories, tasks, and bugs the team commits to completing.</p>
+
+      <blockquote>"The purpose of the Sprint Planning is to lay out the work to be performed for the Sprint. This resulting plan is created by the collaborative work of the entire Scrum Team." — The Scrum Guide, 2020</blockquote>
+
+      <p>Sprint planning is not a status meeting, not a sprint review, and not a backlog grooming session. It is the formal start of the sprint — the moment the team creates a shared commitment. That shared commitment is what makes the rest of the sprint coherent.</p>
+
+      <p>Sprint planning sits inside the broader <a href="/blog/agile-vs-scrum/">Scrum framework</a> alongside the daily standup, sprint review, and sprint retrospective. Of these five ceremonies, planning has the highest leverage: a poorly run planning meeting creates problems that compound across the entire two-week sprint. A well-run one creates clarity that compounds in the same direction.</p>
+
+      <h2 id="who-attends">Who Attends Sprint Planning?</h2>
+
+      <p>Three roles are required. Everyone else is optional.</p>
+
+      <div class="cmp-table-wrap">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>Role</th>
+              <th>Responsibility in Sprint Planning</th>
+              <th>Preparation Required</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Product Owner</td>
+              <td>Presents the prioritized backlog, proposes the sprint goal, answers questions about requirements and business value</td>
+              <td>Backlog fully groomed and prioritized; acceptance criteria on top items; sprint goal draft prepared in advance</td>
+            </tr>
+            <tr>
+              <td>Development Team</td>
+              <td>Selects which backlog items to pull into the sprint, estimates complexity, breaks stories into tasks, commits to the sprint goal</td>
+              <td>Know their individual capacity for the sprint; have reviewed top backlog items if grooming happened mid-sprint</td>
+            </tr>
+            <tr>
+              <td>Scrum Master</td>
+              <td>Facilitates the meeting, enforces the timebox, helps resolve disagreements, ensures the process is followed</td>
+              <td>Confirm attendees, book the room/call, have velocity data ready, review any blockers from last sprint</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Stakeholders — engineering managers, designers, QA leads — can attend as observers but should not drive the conversation. Sprint planning is a team event, not a reporting session. If an engineering manager is dominating sprint planning, that's a process smell worth addressing.</p>
+
+      <h2 id="how-long">How Long Should Sprint Planning Take?</h2>
+
+      <p>The Scrum Guide recommends a maximum of <strong>two hours of planning per week of sprint length</strong>. For a two-week sprint: up to four hours. For a one-week sprint: two hours.</p>
+
+      <p>In practice, most experienced teams complete effective planning in two to three hours for a two-week sprint. Teams that routinely hit the four-hour max usually have an upstream problem: insufficient backlog refinement. When stories arrive at sprint planning without clear acceptance criteria, without estimates, or with unresolved dependencies, the team spends planning time doing work that should have happened during grooming.</p>
+
+      <div class="tip-box">
+        <b>The sprint planning health signal</b>
+        If your planning consistently runs over time, the problem is almost never in the planning meeting itself — it's in the week before it. Invest in mid-sprint backlog grooming (typically 1 hour, mid-sprint) and your planning will become dramatically faster and more focused.
+      </div>
+
+      <h2 id="two-parts">The Two-Part Structure That Makes Sprint Planning Work</h2>
+
+      <p>The Scrum Guide divides sprint planning into two distinct parts. Most teams that struggle with sprint planning are either skipping Part 2 entirely or blending both parts together in a way that loses the clarity each part provides.</p>
+
+      <div class="two-part">
+        <div class="part-box part-what">
+          <div class="part-label">Part 1 — The What</div>
+          <h4>Sprint Goal &amp; Backlog Selection</h4>
+          <ul>
+            <li>Product Owner presents the sprint goal</li>
+            <li>Team reviews top backlog items</li>
+            <li>Questions on scope, acceptance criteria, dependencies</li>
+            <li>Team selects items based on capacity and velocity</li>
+            <li>Sprint goal is finalised with team input</li>
+          </ul>
+        </div>
+        <div class="part-box part-how">
+          <div class="part-label">Part 2 — The How</div>
+          <h4>Task Breakdown &amp; Commitment</h4>
+          <ul>
+            <li>Dev team breaks each story into tasks</li>
+            <li>Tasks estimated (hours or story points)</li>
+            <li>Dependencies and risks surfaced</li>
+            <li>Work assigned or left for team to self-organise</li>
+            <li>Team confirms the sprint commitment</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>Part 1 is Product-Owner-led. Part 2 is Development-Team-led — the Product Owner can remain in the room to answer questions, but should not be driving the task breakdown. This distinction matters: the team needs to own the <em>how</em>, not have it dictated to them, because they're the ones accountable for delivering it.</p>
+
+      <h2 id="preparation">How to Prepare for Sprint Planning</h2>
+
+      <p>The meeting itself is easy when the preparation is solid. Everything below should happen <em>before</em> sprint planning starts — not during it.</p>
+
+      <h3>Product Owner's pre-planning checklist</h3>
+      <ul>
+        <li><strong>Backlog is prioritized</strong> — the top 1.5× sprint's worth of stories are clearly ranked by business value</li>
+        <li><strong>Acceptance criteria are written</strong> — every story the PO expects to be in the sprint has clear, testable acceptance criteria</li>
+        <li><strong>Dependencies are identified</strong> — any external dependencies (other teams, third-party APIs, design assets) are flagged on the relevant stories</li>
+        <li><strong>Sprint goal is drafted</strong> — the PO comes with a proposed goal in one sentence; the team will refine it but shouldn't be inventing it from scratch</li>
+        <li><strong>Previous sprint review findings are incorporated</strong> — any feedback from the last sprint review that affects priority is already reflected in the backlog</li>
+      </ul>
+
+      <h3>Development team's pre-planning checklist</h3>
+      <ul>
+        <li><strong>Capacity is calculated</strong> — each team member knows how many days they're available this sprint (accounting for holidays, on-call rotations, planned time off)</li>
+        <li><strong>Top backlog items are familiar</strong> — if grooming happened mid-sprint, engineers have already seen and rough-estimated the top stories; planning is confirmation, not discovery</li>
+        <li><strong>Last sprint velocity is visible</strong> — the team knows their rolling average velocity and can use it to sanity-check their capacity estimate</li>
+      </ul>
+
+      <div class="warn-box">
+        <b>The most common failure mode</b>
+        The Product Owner brings stories to sprint planning that haven't been refined — missing acceptance criteria, ambiguous scope, no estimate. The team spends 30 minutes per story doing work that should have taken 5 minutes in a grooming session. Three stories in, you're two hours over time and the team is frustrated. Enforce a "definition of ready" for backlog items before planning.
+      </div>
+
+      <h2 id="step-by-step">Running the Meeting: Step-by-Step</h2>
+
+      <p>Here's the exact sequence for a two-week sprint with a team of 5–8 engineers. Adjust timing proportionally for longer or shorter sprints.</p>
+
+      <ol class="step-list">
+        <li class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Check-in &amp; velocity review (10 min)</h4>
+            <p>Start on time. Confirm who's present and note any absences that affect capacity. Scrum Master shares last sprint's velocity and the rolling 3-sprint average. Team confirms individual availability for the upcoming sprint.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Product Owner presents the sprint goal (15 min)</h4>
+            <p>PO explains the business context for this sprint: what problem are we solving, why now, what does success look like from the user's perspective? Then presents the proposed sprint goal — one sentence. Team asks clarifying questions. Goal is refined collaboratively.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Backlog item review &amp; selection (60–75 min)</h4>
+            <p>PO walks through the top backlog items in priority order. For each item: team asks questions, confirms the estimate is still valid, and decides whether to pull it into the sprint. The team pulls items until their capacity is filled — they do not pull more than they can deliver.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Task breakdown (30–45 min)</h4>
+            <p>For each selected story, the dev team breaks it into specific technical tasks — no more than one day of work each. This is Part 2 of sprint planning. The PO can stay for questions but does not lead. Tasks are added to the sprint board.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h4>Final commitment &amp; close (10 min)</h4>
+            <p>Team reviews the full sprint backlog. Does the work actually fit in the sprint? Are there any risks the team hasn't surfaced? Sprint goal is read aloud. Every team member verbally commits. Scrum Master formally closes planning.</p>
+          </div>
+        </li>
+      </ol>
+
+      <h2 id="sprint-goal">Writing a Sprint Goal That Actually Works</h2>
+
+      <p>The sprint goal is the single most important output of sprint planning, and the most commonly skipped. Teams that skip the sprint goal treat the sprint backlog as the plan — which means any scope change breaks the plan entirely. A sprint goal gives the team a north star that survives scope changes.</p>
+
+      <p>A good sprint goal is <strong>outcome-oriented</strong>, not output-oriented. It describes the value that will be delivered to users, not the list of features that will be built.</p>
+
+      <div class="goal-examples">
+        <div class="goal-row">
+          <span class="goal-badge good">Good</span>
+          <span class="goal-text">"Enable new users to complete onboarding and send their first message without contacting support."</span>
+        </div>
+        <div class="goal-row">
+          <span class="goal-badge bad">Bad</span>
+          <span class="goal-text">"Build onboarding wizard step 1–3, update welcome email template, fix message send validation bug."</span>
+        </div>
+        <div class="goal-row">
+          <span class="goal-badge good">Good</span>
+          <span class="goal-text">"Give engineering leads real-time visibility into team capacity so they can reassign work without a Slack thread."</span>
+        </div>
+        <div class="goal-row">
+          <span class="goal-badge bad">Bad</span>
+          <span class="goal-text">"Add dashboard, workload view, and drag-and-drop task assignment."</span>
+        </div>
+        <div class="goal-row">
+          <span class="goal-badge good">Good</span>
+          <span class="goal-text">"Reduce checkout abandonment by fixing the three most common drop-off points identified in last sprint's analytics."</span>
+        </div>
+        <div class="goal-row">
+          <span class="goal-badge bad">Bad</span>
+          <span class="goal-text">"Fix address validation, improve payment error messages, add order summary page."</span>
+        </div>
+      </div>
+
+      <p>The practical value of a well-written goal: when something unexpected happens mid-sprint — a prod incident, a priority pull from a stakeholder — the team can evaluate the change against the sprint goal rather than debating the entire backlog. "Does this serve the sprint goal?" is a much cleaner decision filter than "which of these 12 stories do we drop?"</p>
+
+      <div class="tip-box">
+        <b>The sprint goal test</b>
+        A sprint goal passes if: (1) a non-technical stakeholder understands it, (2) it's achievable even if 1–2 stories slip, and (3) you could answer "did we achieve the sprint goal?" on demo day without looking at the backlog. If it fails any of these, rewrite it.
+      </div>
+
+      <h2 id="mistakes">Common Sprint Planning Mistakes to Avoid</h2>
+
+      <h3>Overcommitting based on optimism, not data</h3>
+      <p>The most common sprint planning mistake. The team is excited, the backlog is full, and everything feels achievable — until Wednesday of week two when it clearly isn't. Use your actual velocity, not your aspirational velocity. If your rolling 3-sprint average is 32 story points, don't plan 48 because "this sprint feels cleaner." Velocity exists for exactly this reason: to protect the team from itself.</p>
+
+      <h3>No sprint goal — just a list of stories</h3>
+      <p>A backlog is not a plan. When the sprint has no unifying goal, every story is equally important, which means nothing is. The first thing that gets cut when a priority conflict emerges is whatever the team argued about least in planning. A sprint goal pre-answers the question "what do we protect if something has to give?"</p>
+
+      <h3>Skipping Part 2 (task breakdown)</h3>
+      <p>Teams that don't break stories into tasks in sprint planning are pushing that work into the sprint itself — where it will be done under pressure, one story at a time, by whoever picks up the card next. Breaking stories into tasks during planning surfaces hidden complexity, reveals dependencies between team members, and produces a sprint board that's actually useful to look at on a daily basis.</p>
+
+      <h3>The Product Owner dictating the plan</h3>
+      <p>Sprint planning is a collaborative event. The Product Owner owns the <em>what</em> — the priority and goal — but the development team owns the <em>how</em> and the commitment. If the Product Owner is telling the team which stories to pull and how long they'll take, the team loses ownership of the sprint. Engineers who don't own their commitments don't protect them.</p>
+
+      <h3>Not accounting for non-feature work</h3>
+      <p>Every sprint has overhead that doesn't appear in the backlog: code reviews, unplanned support requests, deployment and infrastructure work, on-call rotations, 1:1s, all-hands meetings. If your capacity calculation counts 10 engineers × 10 days × 8 hours and ignores all of this, you're planning with fake numbers. Most teams find that 60–75% of theoretical capacity is available for planned feature work. Calibrate against your actual data.</p>
+
+      <p>After every sprint, run a tight retrospective to see if your planning assumptions held up. Use <a href="/blog/sprint-retrospective-templates/">structured retrospective templates</a> specifically designed to surface planning accuracy issues — the "What slowed us down?" question often reveals the same planning anti-patterns sprint after sprint.</p>
+
+      <h2 id="estimation">Estimation During Sprint Planning</h2>
+
+      <p>Estimation is the part of sprint planning that causes the most debate. Here's what actually works at scale:</p>
+
+      <p><strong>Story points with Planning Poker</strong> is still the most widely used approach and works well for teams that have been together long enough to calibrate their scale. Each team member estimates privately using a Fibonacci sequence (1, 2, 3, 5, 8, 13, 21), reveals simultaneously, and discusses when there's significant disagreement. The discussion — not the number itself — is the value. Disagreement on estimates almost always reveals a missing assumption about scope or complexity.</p>
+
+      <p><strong>T-shirt sizing</strong> (XS/S/M/L/XL) is faster for teams with a large backlog to estimate, or for teams where engineering and non-engineering stakeholders collaborate on estimation. It's less precise but lower friction.</p>
+
+      <p><strong>No estimates (a.k.a. #NoEstimates)</strong> works for mature teams with very homogenous backlog items — typically small-batch delivery teams with high deployment frequency. If you're tracking <a href="/blog/dora-metrics/">DORA metrics</a> and your lead time is measured in hours, not weeks, you may not need story point estimation at all — throughput (stories per week) is a better planning signal.</p>
+
+      <div class="tip-box">
+        <b>Estimation rule of thumb</b>
+        If a story is estimated at 13 points or higher, it almost certainly needs to be broken into smaller stories before planning. Large estimates are a proxy for large ambiguity — and large ambiguity in sprint planning becomes large scope creep in sprint execution. Use the planning meeting itself to split any story over 8 points.
+      </div>
+
+      <p>Whatever approach you use, the key principle is the same: estimates must be made by the people doing the work, not assigned by a manager. Engineers who don't participate in estimation don't own the estimate — and don't feel accountable to it.</p>
+
+      <h2 id="tools">Tools for Sprint Planning</h2>
+
+      <p>The best sprint planning tool is one where the team can see the backlog, the sprint board, velocity history, and capacity in one place — without switching between four different apps mid-meeting.</p>
+
+      <p>If you're comparing tools for your planning workflow, our <a href="/blog/best-project-management-software/">guide to the best project management software</a> covers how Jira, Linear, Asana, and Projiq compare on the specific features that matter for sprint ceremonies: backlog management, sprint boards, velocity tracking, and team capacity views.</p>
+
+      <p>For sprint planning specifically, look for tools that support:</p>
+      <ul>
+        <li><strong>Drag-to-sprint:</strong> move backlog items into the sprint in one gesture</li>
+        <li><strong>Capacity display:</strong> show team member availability alongside the sprint workload</li>
+        <li><strong>Story point totals:</strong> running total of committed points vs. velocity target visible during planning</li>
+        <li><strong>Sprint goal field:</strong> a dedicated place to write and display the sprint goal — not just a description field in a ticket</li>
+        <li><strong>Dependency linking:</strong> flag when one story blocks another so the team can sequence work correctly</li>
+      </ul>
+
+      <div class="art-cta">
+        <h3>Sprint planning is easier when your tools work together</h3>
+        <p>Projiq gives your team a sprint board, backlog, velocity history, and capacity view in one place — so planning is a conversation, not a spreadsheet exercise.</p>
+        <a href="https://app.projiq.app/register-org">Start Free — No Credit Card</a>
+      </div>
+
+      <div class="faq-block">
+        <h2 id="faq">Frequently Asked Questions</h2>
+
+        <details class="faq-entry">
+          <summary>How long should a sprint planning meeting be?</summary>
+          <div class="faq-ans">The Scrum Guide recommends a maximum of two hours of planning per week of sprint length. For a two-week sprint that means up to four hours — though most experienced teams complete effective planning in two to three hours. If your sprint planning consistently runs long, the usual cause is insufficient backlog refinement before the meeting, not insufficient time in the meeting itself. Fix the grooming process, not the planning timebox.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What is a sprint goal and how do you write one?</summary>
+          <div class="faq-ans">A sprint goal is a single, concise statement of the outcome the team intends to deliver by the end of the sprint. A good sprint goal is outcome-oriented, not output-oriented. "Enable new users to complete onboarding without needing support" is a strong sprint goal. "Build the onboarding wizard, update the welcome email, and fix three bugs" is a task list, not a goal. The sprint goal is what gives the team flexibility to negotiate scope when problems arise mid-sprint — any scope decision can be evaluated against "does this serve the sprint goal?"</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What's the difference between sprint planning and backlog grooming?</summary>
+          <div class="faq-ans">Backlog grooming (or backlog refinement) is a preparatory activity that happens during the sprint, typically mid-sprint. The Product Owner and team clarify, estimate, and prioritize upcoming backlog items so they're "ready" for the next sprint planning. Sprint planning uses the refined backlog to select what the team will work on in the next sprint. Grooming feeds planning — without regular grooming, sprint planning becomes slow and painful because the team has to do discovery work in real time during the meeting.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>How do you estimate work during sprint planning?</summary>
+          <div class="faq-ans">The most common approach is story points using Planning Poker: team members estimate privately using a Fibonacci scale (1, 2, 3, 5, 8, 13), reveal simultaneously, and discuss when estimates diverge significantly. T-shirt sizing (XS through XL) is a faster alternative for large backlogs. The key principle regardless of method: estimates must be made by the people doing the work, not assigned by a manager. Engineers who don't own the estimate won't protect it. For teams with mature delivery pipelines tracking DORA metrics, throughput (stories per week) can replace story points entirely.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What if the team can't agree on the sprint goal?</summary>
+          <div class="faq-ans">Disagreement on the sprint goal usually signals one of two things: either the Product Owner hasn't done enough preparation to articulate the highest-priority outcome clearly, or the team has different assumptions about what "done" means for the sprint. The Scrum Master should timebox the discussion (5–10 minutes), ask the PO to restate the business objective in one sentence, then ask the team what the smallest set of work is that would achieve that outcome. If consensus still can't be reached, the Product Owner has final authority on priority and scope — but the team should be shaping the goal, not having it handed down.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>Who should attend sprint planning?</summary>
+          <div class="faq-ans">Three roles are required: the Product Owner (presents the backlog and proposed sprint goal), the Development Team (selects work and commits to the sprint goal), and the Scrum Master (facilitates and enforces the timebox). Other stakeholders can attend as observers but should not drive the conversation. Sprint planning is a team commitment event, not a reporting session — if external attendees are routinely influencing what goes into the sprint, the team's autonomy and accountability are compromised.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What happens if you skip sprint planning?</summary>
+          <div class="faq-ans">Without sprint planning, the team lacks a shared sprint goal, engineers pick work based on personal preference rather than team priority, stakeholders don't know what to expect at the end of the sprint, and mid-sprint surprises derail everything because there's no shared commitment to protect. Teams that skip planning to save time almost always lose more time mid-sprint to confusion, context switching, and re-prioritization. Even a 60-minute planning session for a well-prepared team pays for itself many times over in reduced mid-sprint chaos.</div>
+        </details>
+
+      </div>
+
+    </article>
+
+    <aside class="art-sidebar">
+      <div class="sb-card">
+        <h4>Table of Contents</h4>
+        <ul class="toc-list" id="toc">
+          <li><a href="#what-is-sprint-planning">What Is Sprint Planning?</a></li>
+          <li><a href="#who-attends">Who Attends</a></li>
+          <li><a href="#how-long">How Long It Should Take</a></li>
+          <li><a href="#two-parts">The Two-Part Structure</a></li>
+          <li><a href="#preparation">How to Prepare</a></li>
+          <li><a href="#step-by-step">Running the Meeting</a></li>
+          <li><a href="#sprint-goal">Writing the Sprint Goal</a></li>
+          <li><a href="#mistakes">Common Mistakes</a></li>
+          <li><a href="#estimation">Estimation</a></li>
+          <li><a href="#tools">Tools</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="sb-card">
+        <h4>Related Articles</h4>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.20)">🏃</div>
+          <div>
+            <a href="/blog/sprint-retrospective-templates/">7 Sprint Retrospective Templates</a>
+            <span class="rel-cat">Scrum</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.20)">📖</div>
+          <div>
+            <a href="/blog/how-to-write-user-stories/">How to Write User Stories</a>
+            <span class="rel-cat">Scrum</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.20)">📈</div>
+          <div>
+            <a href="/blog/dora-metrics/">DORA Metrics Explained</a>
+            <span class="rel-cat">Productivity</span>
+          </div>
+        </div>
+      </div>
+      <div class="sb-card" style="background:linear-gradient(135deg,rgba(16,185,129,.10),rgba(59,130,246,.06));border-color:rgba(16,185,129,.20)">
+        <h4>Try Projiq Free</h4>
+        <p style="font-size:13px;color:rgba(255,255,255,.50);line-height:1.6;margin-bottom:14px">Sprint boards, backlog management, and velocity tracking — one flat price for your whole org.</p>
+        <a href="https://app.projiq.app/register-org" style="display:block;background:linear-gradient(90deg,#10B981,#3B82F6);color:#fff;text-align:center;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:700;transition:opacity .2s" onmouseover="this.style.opacity='.86'" onmouseout="this.style.opacity='1'">Get Started Free</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="b-footer">
+  <div class="b-footer-inner">
+    <div class="b-footer-grid">
+      <div class="b-footer-brand">
+        <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+        <p>Project management built for engineering organizations. Sprints, boards, timelines, and real-time collaboration.</p>
+      </div>
+      <div class="b-footer-col">
+        <h5>Product</h5>
+        <a href="/#features">Features</a>
+        <a href="/#views">Views</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#security">Security</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Blog</h5>
+        <a href="/blog/">All Articles</a>
+        <a href="/blog/sprint-planning-guide/">Sprint Planning</a>
+        <a href="/blog/sprint-retrospective-templates/">Retrospectives</a>
+        <a href="/blog/dora-metrics/">DORA Metrics</a>
+        <a href="/blog/kanban-vs-scrum/">Kanban vs Scrum</a>
+        <a href="/blog/agile-vs-scrum/">Agile vs Scrum</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Alternatives</h5>
+        <a href="/jira-alternative/">Jira Alternative</a>
+        <a href="/linear-alternative/">Linear Alternative</a>
+        <a href="/asana-alternative/">Asana Alternative</a>
+        <a href="https://app.projiq.app/register-org">Get Started Free</a>
+      </div>
+    </div>
+    <div class="b-footer-bottom">
+      <span class="b-footer-copy">© 2026 Projiq. All rights reserved.</span>
+      <a href="https://www.linkedin.com/company/porjiq-app/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.38);font-size:12px;transition:color .2s" onmouseover="this.style.color='#34D399'" onmouseout="this.style.color='rgba(255,255,255,.38)'"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+      <span class="b-footer-copy">Built for engineering teams.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const prog = document.getElementById('prog');
+  function updateProg(){
+    const s = document.documentElement;
+    const pct = s.scrollTop / (s.scrollHeight - s.clientHeight) * 100;
+    prog.style.width = Math.min(pct,100) + '%';
+  }
+  window.addEventListener('scroll', updateProg, {passive:true});
+
+  const headings = document.querySelectorAll('.art-body h2[id], .faq-block h2[id]');
+  const links = document.querySelectorAll('#toc a');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        links.forEach(l => l.classList.remove('active'));
+        const a = document.querySelector('#toc a[href="#'+e.target.id+'"]');
+        if(a) a.classList.add('active');
+      }
+    });
+  },{rootMargin:'-20% 0px -70% 0px'});
+  headings.forEach(h => obs.observe(h));
+})();
+</script>
+</body>
+</html>

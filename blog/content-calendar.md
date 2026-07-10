@@ -19,7 +19,7 @@ Always pick the next `pending` entry in order.
 | 4 | done | how to write user stories | How to Write User Stories: Complete Guide with Examples | /blog/how-to-write-user-stories/ |
 | 5 | done | kanban vs scrum | Kanban vs Scrum: Which Agile Framework Is Right for Your Team? | /blog/kanban-vs-scrum/ |
 | 6 | done | dora metrics | DORA Metrics Explained: How to Measure Engineering Team Performance | /blog/dora-metrics/ |
-| 7 | pending | sprint planning meeting | How to Run an Effective Sprint Planning Meeting (2026 Guide) | /blog/sprint-planning-guide/ |
+| 7 | done | sprint planning meeting | How to Run an Effective Sprint Planning Meeting (2026 Guide) | /blog/sprint-planning-guide/ |
 | 8 | pending | product roadmap template | How to Build a Product Roadmap Your Engineers Will Actually Follow | /blog/product-roadmap-guide/ |
 | 9 | pending | technical debt | Technical Debt: How to Identify, Prioritize, and Pay It Down | /blog/technical-debt-management/ |
 | 10 | pending | okrs for engineering teams | OKRs for Engineering Teams: A Practical Guide with Real Examples | /blog/okrs-for-engineering-teams/ |
