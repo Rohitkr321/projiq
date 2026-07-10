@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DORA Metrics Explained: How to Measure Engineering Team Performance | Projiq Blog</title>
+<meta name="description" content="DORA metrics — Deployment Frequency, Lead Time, Change Failure Rate, and MTTR — are the four proven measures of software delivery performance. Learn what they are, how to track them, and how to improve.">
+<link rel="canonical" href="https://projiq.app/blog/dora-metrics/">
+<meta property="og:title" content="DORA Metrics Explained: How to Measure Engineering Team Performance">
+<meta property="og:description" content="The four DORA metrics every engineering leader should track: Deployment Frequency, Lead Time for Changes, Change Failure Rate, and MTTR.">
+<meta property="og:image" content="https://projiq.app/og.png">
+<meta property="og:url" content="https://projiq.app/blog/dora-metrics/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-10">
+<meta property="article:author" content="Projiq Team">
+<meta property="article:section" content="Productivity">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DORA Metrics Explained (2026): The Complete Guide">
+<meta name="twitter:description" content="Deployment Frequency, Lead Time, Change Failure Rate, and MTTR — what they measure, how to track them, and what good looks like.">
+<meta name="twitter:image" content="https://projiq.app/og.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"DORA Metrics Explained: How to Measure Engineering Team Performance","description":"The four DORA metrics — Deployment Frequency, Lead Time for Changes, Change Failure Rate, and MTTR — are the proven measures of software delivery performance. Learn what they are, how to track them, and how to improve your scores.","author":{"@type":"Organization","name":"Projiq"},"publisher":{"@type":"Organization","name":"Projiq","logo":{"@type":"ImageObject","url":"https://projiq.app/og.png"}},"datePublished":"2026-07-10","dateModified":"2026-07-10","mainEntityOfPage":{"@type":"WebPage","@id":"https://projiq.app/blog/dora-metrics/"},"image":"https://projiq.app/og.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://projiq.app"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://projiq.app/blog/"},{"@type":"ListItem","position":3,"name":"DORA Metrics","item":"https://projiq.app/blog/dora-metrics/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does DORA stand for in software engineering?","acceptedAnswer":{"@type":"Answer","text":"DORA stands for DevOps Research and Assessment. It was a research program founded by Dr. Nicole Forsgren, Jez Humble, and Gene Kim that studied software delivery performance across thousands of organizations. Google acquired the DORA team in 2018. Their research — summarised in the book Accelerate and the annual State of DevOps Report — identified four key metrics that predict both delivery performance and organizational outcomes."}},{"@type":"Question","name":"What are the four DORA metrics?","acceptedAnswer":{"@type":"Answer","text":"The four core DORA metrics are: (1) Deployment Frequency — how often you deploy to production; (2) Lead Time for Changes — how long it takes from code commit to production; (3) Change Failure Rate — what percentage of deployments cause a production incident; and (4) Mean Time to Restore (MTTR) — how quickly you recover when something goes wrong."}},{"@type":"Question","name":"What is a good DORA score for a startup?","acceptedAnswer":{"@type":"Answer","text":"For an early-stage startup, targeting 'High' performer benchmarks is realistic and appropriate: deploying 1–7 times per week, lead time of 1 day to 1 week, change failure rate under 10%, and MTTR under 1 day. Chasing 'Elite' benchmarks prematurely can distract from product–market fit work. Focus first on making deployments routine and reversible, then optimise the metrics over time."}},{"@type":"Question","name":"Do DORA metrics work for monolith architectures?","acceptedAnswer":{"@type":"Answer","text":"Yes, DORA metrics apply to monoliths, microservices, and everything in between — though the benchmarks are harder to hit with a monolith. A monolith that deploys weekly can still track lead time, change failure rate, and MTTR meaningfully. The metrics are about delivery process maturity, not architecture. Many teams use DORA trending data to justify migrating toward smaller, independently deployable services."}},{"@type":"Question","name":"How often should I review DORA metrics with my team?","acceptedAnswer":{"@type":"Answer","text":"Most teams review DORA metrics monthly for trend analysis and quarterly for strategic planning. Weekly review is useful for Lead Time and Deployment Frequency during active improvement initiatives. Avoid daily DORA reviews — the metrics are lagging indicators and need enough data to smooth out noise. The best cadence is to surface DORA data in your retrospectives so the team can connect metric changes to specific process experiments."}},{"@type":"Question","name":"Can DORA metrics be gamed?","acceptedAnswer":{"@type":"Answer","text":"Yes, and this is a real risk. Common ways teams game DORA metrics include: counting hotfixes as separate planned deployments to inflate Deployment Frequency; marking rollbacks as 'planned' rather than failures to lower Change Failure Rate; closing incidents before the system is actually stable to reduce MTTR. The remedy is to define your measurement criteria precisely before you start, automate data collection from objective sources (CI/CD pipelines, incident tools), and use the metrics for team improvement rather than manager reporting."}},{"@type":"Question","name":"What is the fifth DORA metric?","acceptedAnswer":{"@type":"Answer","text":"In the 2021 State of DevOps Report, DORA added a fifth metric called Reliability, which measures operational performance — whether your service is meeting its SLOs (Service Level Objectives). This metric acknowledges that delivery speed is meaningless if the service is unreliable. While the four original metrics measure how fast and safely you ship, Reliability measures what users actually experience after you ship."}}]}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#030812;color:#F1F5F9;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+.prog{position:fixed;top:60px;left:0;height:3px;background:linear-gradient(90deg,#6366F1,#06B6D4);width:0;z-index:300;transition:width .08s linear}
+
+.b-nav{position:sticky;top:0;z-index:200;background:rgba(3,8,18,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)}
+.b-nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center}
+.b-logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;color:#F1F5F9;flex-shrink:0}
+.b-logo-mark{flex-shrink:0;display:block;}.b-dot-app{color:#06B6D4;}
+.b-nav-links{display:flex;gap:28px;margin-left:auto;margin-right:28px}
+.b-nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
+.b-nav-links a:hover,.b-nav-links a.active{color:#F1F5F9}
+.b-nav-cta{background:linear-gradient(90deg,#3B82F6,#8B5CF6);color:#fff;padding:8px 20px;border-radius:9px;font-size:13px;font-weight:700;flex-shrink:0;transition:opacity .2s}
+.b-nav-cta:hover{opacity:.86}
+
+.b-crumb{max-width:1200px;margin:0 auto;padding:28px 24px 0;display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.35);flex-wrap:wrap}
+.b-crumb a{color:rgba(255,255,255,.38);transition:color .2s}
+.b-crumb a:hover{color:#818CF8}
+.b-crumb-sep{color:rgba(255,255,255,.18)}
+
+.art-wrap{max-width:1200px;margin:0 auto;padding:32px 24px 0}
+.art-header{margin-bottom:44px}
+.art-cat{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;background:rgba(99,102,241,.11);border:1px solid rgba(99,102,241,.26);color:#818CF8;margin-bottom:18px}
+.art-header h1{font-size:clamp(30px,4.5vw,50px);font-weight:900;line-height:1.15;letter-spacing:-1px;margin-bottom:22px}
+.art-meta{display:flex;align-items:center;gap:22px;color:rgba(255,255,255,.35);font-size:13px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap}
+
+.art-layout{display:grid;grid-template-columns:1fr 300px;gap:60px;align-items:start}
+
+.art-body{font-size:17px;line-height:1.80;color:rgba(255,255,255,.78);padding-bottom:60px}
+.art-body p{margin-bottom:22px}
+.art-body h2{font-size:26px;font-weight:800;color:#F1F5F9;margin:52px 0 16px;letter-spacing:-.3px;line-height:1.3}
+.art-body h3{font-size:19px;font-weight:700;color:#F1F5F9;margin:30px 0 12px;letter-spacing:-.1px}
+.art-body ul,.art-body ol{margin:0 0 22px 22px}
+.art-body li{margin-bottom:9px;color:rgba(255,255,255,.72)}
+.art-body ul li::marker{color:#6366F1}
+.art-body ol li::marker{color:#818CF8;font-weight:700}
+.art-body strong{color:#F1F5F9;font-weight:700}
+.art-body a{color:#818CF8;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(129,140,248,.4);transition:text-decoration-color .2s}
+.art-body a:hover{text-decoration-color:#818CF8}
+blockquote{border-left:3px solid #6366F1;padding:16px 22px;background:rgba(99,102,241,.07);border-radius:0 10px 10px 0;margin:28px 0;font-style:italic;color:rgba(255,255,255,.72);font-size:16px}
+.tip-box{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.tip-box b{color:#34D399;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.warn-box{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.warn-box b{color:#FBBF24;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.link-box{background:rgba(99,102,241,.07);border:1px solid rgba(99,102,241,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.link-box b{color:#818CF8;display:block;margin-bottom:8px;font-size:13px;font-weight:700}
+
+/* Metric cards */
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0}
+.metric-card{background:rgba(10,22,40,.7);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:24px}
+.metric-card .mc-icon{font-size:28px;margin-bottom:12px}
+.metric-card h4{font-size:15px;font-weight:800;color:#F1F5F9;margin-bottom:6px}
+.metric-card .mc-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:2px 8px;border-radius:100px;margin-bottom:12px;display:inline-block}
+.metric-card p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.65;margin-bottom:0}
+.mc-throughput .mc-tag{background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.24);color:#818CF8}
+.mc-stability .mc-tag{background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.24);color:#34D399}
+.mc-throughput{border-color:rgba(99,102,241,.15)}
+.mc-stability{border-color:rgba(16,185,129,.15)}
+
+/* Comparison table */
+.cmp-table-wrap{overflow-x:auto;margin:28px 0;border-radius:12px;border:1px solid rgba(255,255,255,.07)}
+.cmp-table{width:100%;border-collapse:collapse;font-size:14px;min-width:640px}
+.cmp-table th{background:rgba(99,102,241,.10);color:#818CF8;padding:12px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.cmp-table th:first-child{color:rgba(255,255,255,.45)}
+.cmp-table td{padding:12px 16px;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.68);vertical-align:top;line-height:1.5}
+.cmp-table td:first-child{font-weight:700;white-space:nowrap;font-size:13px}
+.cmp-table tr:hover td{background:rgba(255,255,255,.02)}
+.tier-elite td:first-child{color:#34D399}
+.tier-high td:first-child{color:#60A5FA}
+.tier-medium td:first-child{color:#FBBF24}
+.tier-low td:first-child{color:#F87171}
+
+/* Tool table */
+.tool-table-wrap{overflow-x:auto;margin:28px 0;border-radius:12px;border:1px solid rgba(255,255,255,.07)}
+.tool-table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px}
+.tool-table th{background:rgba(99,102,241,.10);color:#818CF8;padding:12px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.tool-table td{padding:12px 16px;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.65);vertical-align:top;line-height:1.5}
+.tool-table td:first-child{color:rgba(255,255,255,.45);font-weight:600;font-size:13px;white-space:nowrap}
+.tool-table tr:hover td{background:rgba(255,255,255,.02)}
+
+/* Improvement grid */
+.improve-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0}
+.improve-card{background:rgba(10,22,40,.7);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:18px 20px}
+.improve-card h4{font-size:13px;font-weight:700;color:#F1F5F9;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.improve-card ul{margin:0 0 0 16px}
+.improve-card li{font-size:13px;color:rgba(255,255,255,.55);margin-bottom:6px}
+.improve-card li::marker{color:#6366F1}
+
+.art-cta{background:linear-gradient(135deg,rgba(99,102,241,.13),rgba(6,182,212,.07));border:1px solid rgba(99,102,241,.22);border-radius:16px;padding:36px;text-align:center;margin:44px 0}
+.art-cta h3{font-size:22px;font-weight:800;margin-bottom:10px}
+.art-cta p{color:rgba(255,255,255,.52);font-size:15px;margin-bottom:22px;line-height:1.6}
+.art-cta a{display:inline-block;background:linear-gradient(90deg,#6366F1,#06B6D4);color:#fff;padding:12px 28px;border-radius:9px;font-size:14px;font-weight:700;transition:opacity .2s}
+.art-cta a:hover{opacity:.86;text-decoration:none}
+
+.art-sidebar{position:sticky;top:80px}
+.sb-card{background:rgba(10,22,40,.8);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px;margin-bottom:18px}
+.sb-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.35);margin-bottom:16px}
+.toc-list{list-style:none;padding:0}
+.toc-list li{margin-bottom:9px}
+.toc-list a{font-size:13px;color:rgba(255,255,255,.45);display:block;padding-left:10px;border-left:1px solid rgba(255,255,255,.08);line-height:1.5;transition:color .18s,border-color .18s}
+.toc-list a:hover,.toc-list a.active{color:#818CF8;border-left-color:#6366F1;text-decoration:none}
+.rel-post{display:flex;gap:11px;margin-bottom:13px;align-items:flex-start}
+.rel-icon{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px}
+.rel-post a{font-size:13px;font-weight:600;color:rgba(255,255,255,.65);line-height:1.4;transition:color .2s;display:block;margin-bottom:3px}
+.rel-post a:hover{color:#818CF8;text-decoration:none}
+.rel-cat{font-size:11px;color:rgba(255,255,255,.28)}
+
+.b-footer{background:#020810;border-top:1px solid rgba(255,255,255,.07);padding:56px 24px 32px}
+.b-footer-inner{max-width:1200px;margin:0 auto}
+.b-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.b-footer-brand p{color:rgba(255,255,255,.38);font-size:13px;line-height:1.7;margin-top:14px;max-width:230px}
+.b-footer-col h5{color:#F1F5F9;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.b-footer-col a{display:block;color:rgba(255,255,255,.38);font-size:13px;margin-bottom:9px;transition:color .2s}
+.b-footer-col a:hover{color:#818CF8}
+.b-footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.b-footer-copy{color:rgba(255,255,255,.22);font-size:12px}
+
+@media(max-width:900px){
+  .art-layout{grid-template-columns:1fr}
+  .art-sidebar{display:none}
+  .metric-grid{grid-template-columns:1fr 1fr}
+  .improve-grid{grid-template-columns:1fr 1fr}
+  .b-footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media(max-width:600px){
+  .b-nav-links{display:none}
+  .b-nav-cta{margin-left:auto}
+  .art-header h1{font-size:28px}
+  .art-body{font-size:16px}
+  .metric-grid{grid-template-columns:1fr}
+  .improve-grid{grid-template-columns:1fr}
+  .b-footer-grid{grid-template-columns:1fr;gap:24px}
+}
+
+.faq-block{margin:44px 0}
+.faq-block h2{font-size:26px;font-weight:800;color:#F1F5F9;margin-bottom:22px;letter-spacing:-.3px}
+.faq-entry{border:1px solid rgba(255,255,255,.07);border-radius:12px;margin-bottom:10px;overflow:hidden;background:rgba(10,22,40,.6)}
+.faq-entry summary{padding:17px 22px;font-size:15px;font-weight:700;color:#F1F5F9;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4}
+.faq-entry summary::-webkit-details-marker{display:none}
+.faq-entry summary::after{content:'+';color:#818CF8;font-size:18px;font-weight:400;flex-shrink:0;transition:transform .2s}
+.faq-entry[open] summary::after{transform:rotate(45deg)}
+.faq-entry[open]{border-color:rgba(99,102,241,.24)}
+.faq-ans{padding:0 22px 18px;font-size:14px;color:rgba(255,255,255,.62);line-height:1.75}
+</style>
+</head>
+<body>
+
+<div class="prog" id="prog"></div>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4F46E5"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient><symbol id="projiq-p" viewBox="0 0 285 265"><path d="M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z" fill="url(#brand-grad)"/><rect x="0" y="65" width="60" height="12" rx="6" fill="#4F46E5"/><rect x="0" y="100" width="60" height="12" rx="6" fill="#06B6D4"/><rect x="0" y="135" width="60" height="12" rx="6" fill="#10B981"/><path d="M140 105 L160 125 L205 80" fill="none" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
+
+<nav class="b-nav">
+  <div class="b-nav-inner">
+    <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg>Projiq<span class="b-dot-app">.app</span></a>
+    <div class="b-nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/" class="active">Blog</a>
+    </div>
+    <a href="https://app.projiq.app/register-org" class="b-nav-cta">Get Started Free</a>
+  </div>
+</nav>
+
+<nav class="b-crumb" aria-label="Breadcrumb">
+  <a href="/">Home</a><span class="b-crumb-sep">›</span>
+  <a href="/blog/">Blog</a><span class="b-crumb-sep">›</span>
+  <span>DORA Metrics</span>
+</nav>
+
+<div class="art-wrap">
+  <header class="art-header">
+    <span class="art-cat">📈 Productivity</span>
+    <h1>DORA Metrics Explained: How to Measure Engineering Team Performance</h1>
+    <div class="art-meta">
+      <span>✍ Projiq Team</span>
+      <span>📅 Jul 10, 2026</span>
+      <span>⏱ 10 min read</span>
+      <span>🏷 Engineering Leadership, DevOps</span>
+    </div>
+  </header>
+
+  <div class="art-layout">
+    <article class="art-body">
+
+      <p>Ask ten engineering managers how they measure team performance and you will get ten different answers — story points per sprint, lines of code, features shipped, PR count. Most of these metrics have serious problems: they can be gamed, they measure activity rather than outcomes, and they offer no way to compare across teams or organizations.</p>
+
+      <p>DORA metrics are different. They emerged from seven years of rigorous research across tens of thousands of organizations and engineers, and they are the closest thing the software industry has to a universal benchmark for delivery performance. They measure <em>what actually matters</em>: how fast you ship, how reliably you ship, and how quickly you recover when things go wrong.</p>
+
+      <p>This guide explains exactly what the four core DORA metrics are, how to calculate each one, where your team likely stands against industry benchmarks, and — most importantly — how to improve without gaming the numbers.</p>
+
+      <h2 id="what-are-dora">What Are DORA Metrics?</h2>
+
+      <p>DORA stands for <strong>DevOps Research and Assessment</strong>. The program was founded by Dr. Nicole Forsgren, Jez Humble, and Gene Kim — the same people who co-authored the book <em>Accelerate: The Science of Lean Software and DevOps</em> (2018). Google acquired the DORA research team in 2018 and has continued publishing the annual State of DevOps Report ever since.</p>
+
+      <p>The research asked a fundamental question: what does high-performing software delivery actually look like, and can we measure it objectively? Starting in 2014, the team surveyed over 33,000 professionals across industries, company sizes, and geographies. The result was a statistically validated set of capabilities and metrics that predict both delivery performance and broader organizational outcomes — including profitability, market share, and employee satisfaction.</p>
+
+      <blockquote>"Our data shows that elite software delivery performance is achievable by any organization — large or small, in any industry — and that it predicts better organizational outcomes." — Nicole Forsgren, <em>Accelerate</em></blockquote>
+
+      <p>The research identified <strong>four core metrics</strong> that capture everything meaningful about software delivery. They split cleanly into two categories:</p>
+
+      <div class="metric-grid">
+        <div class="metric-card mc-throughput">
+          <div class="mc-icon">🚀</div>
+          <h4>Deployment Frequency</h4>
+          <span class="mc-tag">Throughput</span>
+          <p>How often code changes are deployed to production. Measures team agility and CI/CD pipeline maturity.</p>
+        </div>
+        <div class="metric-card mc-throughput">
+          <div class="mc-icon">⏱</div>
+          <h4>Lead Time for Changes</h4>
+          <span class="mc-tag">Throughput</span>
+          <p>Time from first code commit to that code running in production. Measures end-to-end delivery speed.</p>
+        </div>
+        <div class="metric-card mc-stability">
+          <div class="mc-icon">🛡</div>
+          <h4>Change Failure Rate</h4>
+          <span class="mc-tag">Stability</span>
+          <p>Percentage of deployments that cause a production failure. Measures delivery quality and risk management.</p>
+        </div>
+        <div class="metric-card mc-stability">
+          <div class="mc-icon">🔧</div>
+          <h4>Mean Time to Restore</h4>
+          <span class="mc-tag">Stability</span>
+          <p>How quickly you recover from production failures. Measures operational resilience and observability maturity.</p>
+        </div>
+      </div>
+
+      <p>In 2021, the State of DevOps Report added a fifth metric — <strong>Reliability</strong> — which measures whether your service is meeting its SLOs (Service Level Objectives). While the four original metrics measure how well you deliver, Reliability measures what users actually experience after delivery. We'll focus on the four core metrics in this guide, as they are the most universally applicable and actionable.</p>
+
+      <h2 id="four-metrics">The Four Core DORA Metrics Explained</h2>
+
+      <h3>1. Deployment Frequency (DF)</h3>
+
+      <p>Deployment Frequency measures how often your team successfully releases code to production. It is the simplest DORA metric to understand and often the most revealing — teams that ship infrequently usually ship infrequently <em>for a reason</em>: large batch sizes, manual gates, fear of breaking things, or missing automation.</p>
+
+      <p><strong>How to calculate it:</strong> Count production deployments in a given period. <code>DF = COUNT(production_deployments) / days_in_period</code>. Report it as deployments per day or per week depending on your current frequency.</p>
+
+      <div class="tip-box">
+        <b>Important distinction</b>
+        Deployment Frequency counts <em>production</em> deployments, not merges to main and not staging deployments. If you release every two weeks from a release branch, your DF is 0.07/day regardless of how many commits hit main during the sprint. Track the right thing.
+      </div>
+
+      <p>The research finding that surprises most teams: elite performers deploy <em>multiple times per day</em> while experiencing <em>lower</em> failure rates than teams that deploy monthly. The reason is batch size — more frequent deploys mean smaller, easier-to-review, easier-to-rollback changes. Infrequent, large releases concentrate risk.</p>
+
+      <h3>2. Lead Time for Changes (LTC)</h3>
+
+      <p>Lead Time for Changes measures the end-to-end time from when a developer's first commit reaches the repository to when that code is serving production traffic. This is a measure of your entire delivery pipeline — code review speed, CI pipeline duration, testing time, deployment gates, and release processes all contribute to it.</p>
+
+      <p><strong>How to calculate it:</strong> For each deployment, find the timestamp of the earliest commit included in it, and subtract from the deployment timestamp. Average across all deployments in the period. <code>LTC = avg(deploy_time − first_commit_time)</code>.</p>
+
+      <div class="warn-box">
+        <b>Common confusion</b>
+        Lead Time for Changes is <strong>not</strong> the same as cycle time or feature delivery time. LTC starts at the first commit, not at feature request or ticket creation. A ticket might sit in the backlog for two weeks before anyone touches it — that wait time is not captured by LTC. If you want to measure the full idea-to-production time, that's a separate metric (sometimes called "flow time").
+      </div>
+
+      <p>Lead time is a diagnostic metric. When it's long, it tells you <em>something</em> is slow — but not what. Is it code review bottleneck? A flaky test suite that runs for 45 minutes? A manual sign-off gate? A weekly release window? Breaking down lead time into sub-stages (time-in-review, CI duration, time-waiting-for-deploy) reveals where to focus.</p>
+
+      <h3>3. Change Failure Rate (CFR)</h3>
+
+      <p>Change Failure Rate is the percentage of deployments that result in a production failure — an incident, rollback, hotfix, or degraded service state. It is the primary quality signal in the DORA framework and measures your team's ability to deliver changes that are stable and reliable.</p>
+
+      <p><strong>How to calculate it:</strong> <code>CFR = (failed_deployments / total_deployments) × 100</code>. A "failed deployment" is one that required a rollback, an emergency hotfix, or triggered a P1/P2 incident within a defined window (usually 24–48 hours of the deploy).</p>
+
+      <p>The counterintuitive finding from the research: teams with the <em>highest</em> deployment frequency tend to have the <em>lowest</em> change failure rates. Small, frequent changes are individually lower-risk than large, infrequent batches. When you ship 20 changes in one deploy, diagnosing which one caused the outage is significantly harder than a deploy with two changes.</p>
+
+      <div class="tip-box">
+        <b>How to define "failure"</b>
+        Define your failure criteria before you start measuring. Common definitions: any P1 or P2 incident that opens within 48 hours of a deploy; any rollback within 24 hours; any hotfix pushed within 1 hour of a deploy. The exact cutoff matters less than consistency — pick one and stick with it across the team.
+      </div>
+
+      <h3>4. Mean Time to Restore (MTTR)</h3>
+
+      <p>Mean Time to Restore — sometimes called Mean Time to Recovery — measures how quickly your team detects and resolves production incidents. It is a measure of operational resilience: how good are your monitoring and alerting, how practiced is your incident response, how clear are your runbooks, and how empowered is your on-call rotation to take decisive action?</p>
+
+      <p><strong>How to calculate it:</strong> <code>MTTR = avg(incident_resolved_time − incident_detected_time)</code>. Use your incident management system (PagerDuty, Opsgenie, Incident.io) as the source of truth — detection time is when the alert fired or the incident was opened, resolution time is when the service returned to normal SLO.</p>
+
+      <p>MTTR depends heavily on three capabilities: <strong>observability</strong> (can you tell something is wrong, and where?), <strong>incident process</strong> (can you coordinate response quickly?), and <strong>reversibility</strong> (can you roll back or feature-flag the bad change immediately?). Teams with mature MTTR invest heavily in all three.</p>
+
+      <h2 id="performance-tiers">DORA Performance Tiers: Where Does Your Team Stand?</h2>
+
+      <p>The State of DevOps Report classifies organizations into four performance tiers based on their DORA metric values. These tiers are derived from cluster analysis of the survey data — teams naturally cluster into these groups rather than being placed into arbitrary buckets.</p>
+
+      <div class="cmp-table-wrap">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>Tier</th>
+              <th>Deployment Frequency</th>
+              <th>Lead Time for Changes</th>
+              <th>Change Failure Rate</th>
+              <th>MTTR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tier-elite">
+              <td>⚡ Elite</td>
+              <td>On demand (multiple/day)</td>
+              <td>&lt; 1 hour</td>
+              <td>0–5%</td>
+              <td>&lt; 1 hour</td>
+            </tr>
+            <tr class="tier-high">
+              <td>🔵 High</td>
+              <td>1/day to 1/week</td>
+              <td>1 day to 1 week</td>
+              <td>5–10%</td>
+              <td>&lt; 1 day</td>
+            </tr>
+            <tr class="tier-medium">
+              <td>🟡 Medium</td>
+              <td>1/week to 1/month</td>
+              <td>1 week to 1 month</td>
+              <td>10–15%</td>
+              <td>1 day to 1 week</td>
+            </tr>
+            <tr class="tier-low">
+              <td>🔴 Low</td>
+              <td>&lt; 1/month</td>
+              <td>1 month to 6 months</td>
+              <td>&gt; 15%</td>
+              <td>&gt; 1 week</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>The gap between Elite and Low performers is staggering. According to the 2023 State of DevOps Report, Elite performers deploy <strong>208× more frequently</strong> than Low performers, have <strong>106× faster lead time</strong>, and restore service <strong>2,604× faster</strong>. These are not incremental differences — they represent fundamentally different ways of working.</p>
+
+      <p>Most organizations sit in the Medium tier. Moving from Medium to High is achievable in 6–12 months with focused investment. Moving from High to Elite typically takes 1–2 years and requires cultural shifts alongside technical ones — particularly around ownership, trust, and deployment automation.</p>
+
+      <blockquote>Elite performance is not about working harder. It is about removing the friction that prevents teams from moving fast safely — smaller batches, better automation, and trust in the team's ability to detect and fix problems quickly.</blockquote>
+
+      <h2 id="how-to-measure">How to Measure Each DORA Metric</h2>
+
+      <p>You don't need a dedicated observability platform to start measuring DORA metrics. Many teams begin with a simple spreadsheet and graduate to automated tooling once the habits are in place.</p>
+
+      <h3>Tools and data sources</h3>
+
+      <div class="tool-table-wrap">
+        <table class="tool-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Data Source</th>
+              <th>Dedicated Tools</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Deployment Frequency</td>
+              <td>CI/CD pipeline logs (GitHub Actions, GitLab CI, Jenkins, CircleCI)</td>
+              <td>LinearB, Swarmia, Jellyfish, Google Cloud's DORA Toolkit, Four Keys (open-source)</td>
+            </tr>
+            <tr>
+              <td>Lead Time for Changes</td>
+              <td>Git log (first commit timestamp) + deployment pipeline (completion timestamp)</td>
+              <td>LinearB, Swarmia, Faros AI, DX Data</td>
+            </tr>
+            <tr>
+              <td>Change Failure Rate</td>
+              <td>Incident management (PagerDuty, Opsgenie, Incident.io) correlated with deploy timestamps</td>
+              <td>Cortex, LinearB, Rootly</td>
+            </tr>
+            <tr>
+              <td>MTTR</td>
+              <td>Incident management system: alert-opened timestamp vs. incident-resolved timestamp</td>
+              <td>PagerDuty, Opsgenie, Incident.io, Blameless</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>The four maturity stages of DORA measurement</h3>
+
+      <ol>
+        <li><strong>Ad hoc:</strong> Someone counts deployments manually at the end of the month. No formal tracking. This is where most teams start — and that's fine.</li>
+        <li><strong>Tracked:</strong> A shared spreadsheet or Notion doc where deployments and incidents are logged. Requires discipline but gives you trend data within weeks.</li>
+        <li><strong>Automated:</strong> CI/CD system pushes deployment events to a dashboard automatically. Incident data flows from your on-call tool. Metrics update in real time.</li>
+        <li><strong>Optimized:</strong> DORA metrics are surfaced in sprint reviews and retrospectives. The team runs experiments specifically targeting metric improvement. Metrics influence architecture and process decisions.</li>
+      </ol>
+
+      <div class="tip-box">
+        <b>Start simple</b>
+        Google's <a href="https://github.com/GoogleCloudPlatform/fourkeys" style="color:#34D399;text-decoration-color:rgba(52,211,153,.4)">Four Keys project</a> (open-source) connects to your GitHub, GitLab, or Cloud Build and generates a DORA dashboard in a few hours. It's an excellent starting point that gets you to "Automated" without buying anything.
+      </div>
+
+      <h2 id="improving-scores">How to Improve Your DORA Metrics</h2>
+
+      <p>Each DORA metric responds to specific interventions. The good news is that improvements compound: faster lead time enables more frequent deployments, which produce smaller changesets, which reduce failure rates, which increase team confidence to deploy again. The virtuous cycle is real — once you break through the fear of frequent deploys, everything gets easier.</p>
+
+      <div class="improve-grid">
+        <div class="improve-card">
+          <h4>🚀 Deployment Frequency</h4>
+          <ul>
+            <li>Build a fully automated CI/CD pipeline — zero manual deploy steps</li>
+            <li>Adopt trunk-based development and kill long-lived feature branches</li>
+            <li>Use feature flags to decouple deploy from release</li>
+            <li>Make deployments boring: one-click, runbook-free, routine</li>
+            <li>Set a team norm: every PR ships to staging automatically</li>
+          </ul>
+        </div>
+        <div class="improve-card">
+          <h4>⏱ Lead Time for Changes</h4>
+          <ul>
+            <li>Fix your CI pipeline — aim for under 10 minutes for the core test suite</li>
+            <li>Establish a PR size norm (under 400 lines of change per PR is a good target)</li>
+            <li>Create a code review SLA — e.g., first review within 4 business hours</li>
+            <li>Parallelize CI stages: lint, unit, integration can often run concurrently</li>
+            <li>Eliminate manual approval gates except for genuinely high-risk paths</li>
+          </ul>
+        </div>
+        <div class="improve-card">
+          <h4>🛡 Change Failure Rate</h4>
+          <ul>
+            <li>Add canary deployments or blue/green releases for high-traffic services</li>
+            <li>Invest in integration and end-to-end test coverage, not just unit tests</li>
+            <li>Make rollback a first-class operation — every deploy must be reversible in under 5 minutes</li>
+            <li>Use feature flags to roll out changes to 1% → 10% → 100% of traffic</li>
+            <li>Hold blameless post-mortems after every P1/P2 and fix the systemic cause</li>
+          </ul>
+        </div>
+        <div class="improve-card">
+          <h4>🔧 Mean Time to Restore</h4>
+          <ul>
+            <li>Define SLOs and set alerts before SLO budgets are exhausted — not after</li>
+            <li>Write runbooks for the top 10 most common failure modes and keep them current</li>
+            <li>Practice incident response with game days and chaos engineering</li>
+            <li>Empower on-call engineers to rollback without asking for permission</li>
+            <li>Instrument your services with distributed tracing, not just logs</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>When planning improvements, work on one metric at a time. The most common mistake is running simultaneous initiatives across all four metrics — teams lose focus and nothing improves decisively. Choose the metric that most limits your team right now, run a 90-day experiment targeting it specifically, and review the result in your <a href="/blog/sprint-retrospective-templates/">sprint retrospectives</a> before moving on.</p>
+
+      <h2 id="common-pitfalls">Common Mistakes When Implementing DORA Metrics</h2>
+
+      <h3>Mistake 1: Using DORA metrics to compare teams</h3>
+      <p>This is the most damaging misuse of the framework. DORA metrics are designed for teams to measure their own improvement over time. Comparing Team A's deployment frequency to Team B's ignores context completely: Team A might deploy a critical payments service with strict change-management requirements, while Team B deploys a marketing microservice with zero compliance burden. Cross-team comparison creates pressure to game numbers rather than improve genuinely.</p>
+
+      <h3>Mistake 2: Only measuring the easy metrics</h3>
+      <p>Deployment Frequency is trivial to instrument from CI/CD logs. Change Failure Rate and MTTR require correlating deployment and incident data, which is harder. Teams that skip CFR and MTTR get a dangerously incomplete picture — a team can deploy 20 times per day with a 40% failure rate and look impressive on one metric while being operationally catastrophic on the others.</p>
+
+      <h3>Mistake 3: Gaming the numbers</h3>
+      <p>Gaming is surprisingly common once DORA metrics are tied to performance reviews. Common forms: labelling rollbacks as "planned" to avoid the CFR counter; closing incidents before service is actually stable; splitting one PR into multiple micro-commits to inflate deployment count. The remedy is to automate data collection from objective, non-human sources — CI/CD systems, incident management tools — and to be explicit that these metrics are for improvement, not evaluation.</p>
+
+      <div class="warn-box">
+        <b>Warning sign</b>
+        If a team's DORA metrics improve dramatically in the 4 weeks after you announce they'll be reported to leadership, treat that as a red flag, not a success. Sustainable improvement is gradual. Sudden step-changes usually mean measurement gaming, not genuine process change.
+      </div>
+
+      <h3>Mistake 4: Ignoring the fifth metric — Reliability</h3>
+      <p>Shipping fast and shipping reliably matters — but if you're burning through your error budget and users are experiencing failures, deployment speed is an empty victory. Make sure your SLO health is visible alongside the four DORA metrics. A team hitting Elite on all four throughput and stability metrics but missing their availability SLO every month hasn't actually won anything.</p>
+
+      <h2 id="dora-vs-other">DORA Metrics vs Other Engineering Metrics</h2>
+
+      <p>DORA metrics don't replace other team-level metrics — they complement them. Here's how they relate to the measurements you're likely already tracking:</p>
+
+      <p><strong>Velocity (story points per sprint)</strong> is an internal planning aid — it tells you how much work a team can pull into a sprint, not how quickly that work reaches users or how reliably it works. Velocity is a predictability metric. DORA metrics are delivery performance metrics. You need both, but DORA tells you far more about team health.</p>
+
+      <p><strong>Cycle time</strong> (in a Kanban context) covers the full journey from "in progress" to "done." Lead Time for Changes is narrower — it starts at the first commit, not at ticket creation, and ends at production, not at the pull request being merged. <a href="/blog/agile-vs-scrum/">Agile teams</a> often track cycle time alongside DORA Lead Time to get a complete picture.</p>
+
+      <p><strong>Code coverage percentage</strong> is a quality proxy, not a delivery performance indicator. High test coverage does not guarantee low change failure rate — it depends entirely on what the tests cover and how well they simulate production conditions. Coverage is useful for identifying untested surface area; DORA CFR tells you whether your actual delivery process is failing.</p>
+
+      <p><strong>SPACE metrics</strong> (Satisfaction, Performance, Activity, Communication, Efficiency) — introduced by GitHub and Microsoft Research in 2021 — focus on individual developer experience and productivity. DORA focuses on team-level delivery outcomes. They are complementary: SPACE tells you how engineers feel; DORA tells you what they actually ship.</p>
+
+      <p>If you're choosing where to start, begin with DORA. It has the strongest research backing, the clearest benchmarks, and the most actionable lever points. Once you have DORA instrumented and stable, layer in SPACE surveys to understand the human factors driving your metric trends.</p>
+
+      <p>For engineering leaders comparing tool options, understanding your DORA metrics should inform your <a href="/blog/best-project-management-software/">choice of project management software</a> — platforms that give you sprint visibility, deployment integrations, and incident tracking in one place make DORA data collection significantly easier.</p>
+
+      <div class="art-cta">
+        <h3>Track delivery performance alongside your sprints</h3>
+        <p>Projiq brings sprint boards, Kanban, and team visibility into one platform — so the work your team does and the velocity at which it ships are always in context together.</p>
+        <a href="https://app.projiq.app/register-org">Start Free — No Credit Card</a>
+      </div>
+
+      <div class="faq-block">
+        <h2 id="faq">Frequently Asked Questions</h2>
+
+        <details class="faq-entry">
+          <summary>What does DORA stand for in software engineering?</summary>
+          <div class="faq-ans">DORA stands for DevOps Research and Assessment. It was a research program founded by Dr. Nicole Forsgren, Jez Humble, and Gene Kim — co-authors of the book <em>Accelerate</em>. Google acquired the DORA team in 2018. Their multi-year research, published annually in the State of DevOps Report, identified four key metrics that statistically predict software delivery performance and organizational outcomes: Deployment Frequency, Lead Time for Changes, Change Failure Rate, and Mean Time to Restore.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What are the four DORA metrics?</summary>
+          <div class="faq-ans">The four core DORA metrics are: (1) <strong>Deployment Frequency</strong> — how often you deploy to production; (2) <strong>Lead Time for Changes</strong> — how long from first commit to code running in production; (3) <strong>Change Failure Rate</strong> — what percentage of deployments cause a production incident; and (4) <strong>Mean Time to Restore (MTTR)</strong> — how quickly your team recovers when production fails. In 2021, a fifth metric — Reliability (SLO adherence) — was added to the framework.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What is a good DORA score for a startup?</summary>
+          <div class="faq-ans">For an early-stage startup, the "High" performer tier is a realistic and appropriate target: deploying 1–7 times per week, lead time of 1 day to 1 week, change failure rate under 10%, and MTTR under 24 hours. Chasing Elite benchmarks before you have product–market fit is a distraction — the investment in CI/CD automation, feature flagging, and observability that Elite requires is significant. Get to High first, then optimise. Most importantly, establish a consistent measurement practice so you can actually see your baseline before setting targets.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>Do DORA metrics work for monolith architectures?</summary>
+          <div class="faq-ans">Yes. DORA metrics apply to any software delivery process regardless of architecture. A monolith will naturally have longer lead times and lower deployment frequency than a microservices architecture — the deployment unit is larger and riskier. But the metrics still give you meaningful trend data, and improving them on a monolith often reveals exactly which constraints (long test suites, manual sign-offs, large PR sizes) would most benefit from architectural changes. Many teams use DORA trend data to make the case for breaking apart a monolith or introducing feature flags.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>How often should I review DORA metrics with my team?</summary>
+          <div class="faq-ans">Most teams benefit from monthly trend reviews for strategic discussion and quarterly reviews for planning. Weekly check-ins are useful during active improvement initiatives — for example, if you're targeting Lead Time specifically, weekly data helps you see whether a process change is working. Avoid daily DORA reviews: the metrics are lagging indicators and need enough data points to smooth out noise. The ideal integration point is your <a href="/blog/sprint-retrospective-templates/" style="color:#818CF8">sprint retrospectives</a> — surface DORA data there so the team can connect metric changes to specific experiments they ran.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>Can DORA metrics be gamed?</summary>
+          <div class="faq-ans">Yes, and this is a real risk — especially if DORA scores are tied to performance reviews or team rankings. Common gaming patterns: counting hotfixes as separate planned deployments to inflate Deployment Frequency; marking rollbacks as "planned changes" to lower Change Failure Rate; closing incidents before the system is fully stable to shrink MTTR; or splitting PRs into tiny commits to make lead time look shorter. The remedies are: automate data collection from objective, non-human sources (your CI/CD system and incident tool, not self-reported forms); define "failure" criteria precisely before you start measuring; and make clear to the team that these metrics exist for improvement, not judgement.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What is the fifth DORA metric?</summary>
+          <div class="faq-ans">In the 2021 State of DevOps Report, DORA added <strong>Reliability</strong> as a fifth metric. Reliability measures operational performance — specifically, whether your service is meeting its defined SLOs (Service Level Objectives). The original four metrics measure how fast and safely you <em>deliver</em>; Reliability measures what users actually <em>experience</em> after delivery. A team can achieve Elite on all four delivery metrics while still failing its reliability SLO if, for example, their architecture has availability issues unrelated to the deployment process itself.</div>
+        </details>
+
+      </div>
+
+    </article>
+
+    <aside class="art-sidebar">
+      <div class="sb-card">
+        <h4>Table of Contents</h4>
+        <ul class="toc-list" id="toc">
+          <li><a href="#what-are-dora">What Are DORA Metrics?</a></li>
+          <li><a href="#four-metrics">The Four Core Metrics</a></li>
+          <li><a href="#performance-tiers">Performance Tiers</a></li>
+          <li><a href="#how-to-measure">How to Measure</a></li>
+          <li><a href="#improving-scores">How to Improve</a></li>
+          <li><a href="#common-pitfalls">Common Pitfalls</a></li>
+          <li><a href="#dora-vs-other">DORA vs Other Metrics</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="sb-card">
+        <h4>Related Articles</h4>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.20)">🔀</div>
+          <div>
+            <a href="/blog/kanban-vs-scrum/">Kanban vs Scrum: Which Framework Is Right?</a>
+            <span class="rel-cat">Agile</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.20)">🏃</div>
+          <div>
+            <a href="/blog/sprint-retrospective-templates/">7 Sprint Retrospective Templates</a>
+            <span class="rel-cat">Scrum</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.20)">⚔️</div>
+          <div>
+            <a href="/blog/jira-vs-linear/">Jira vs Linear: Which Is Better?</a>
+            <span class="rel-cat">Project Management</span>
+          </div>
+        </div>
+      </div>
+      <div class="sb-card" style="background:linear-gradient(135deg,rgba(99,102,241,.10),rgba(6,182,212,.06));border-color:rgba(99,102,241,.20)">
+        <h4>Try Projiq Free</h4>
+        <p style="font-size:13px;color:rgba(255,255,255,.50);line-height:1.6;margin-bottom:14px">Sprint boards, Kanban, roadmaps, and team analytics — one flat price for your whole org.</p>
+        <a href="https://app.projiq.app/register-org" style="display:block;background:linear-gradient(90deg,#6366F1,#06B6D4);color:#fff;text-align:center;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:700;transition:opacity .2s" onmouseover="this.style.opacity='.86'" onmouseout="this.style.opacity='1'">Get Started Free</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="b-footer">
+  <div class="b-footer-inner">
+    <div class="b-footer-grid">
+      <div class="b-footer-brand">
+        <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg>Projiq<span class="b-dot-app">.app</span></a>
+        <p>Project management built for engineering organizations. Sprints, boards, timelines, and real-time collaboration.</p>
+      </div>
+      <div class="b-footer-col">
+        <h5>Product</h5>
+        <a href="/#features">Features</a>
+        <a href="/#views">Views</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#security">Security</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Blog</h5>
+        <a href="/blog/">All Articles</a>
+        <a href="/blog/dora-metrics/">DORA Metrics</a>
+        <a href="/blog/kanban-vs-scrum/">Kanban vs Scrum</a>
+        <a href="/blog/agile-vs-scrum/">Agile vs Scrum</a>
+        <a href="/blog/jira-vs-linear/">Jira vs Linear</a>
+        <a href="/blog/best-project-management-software/">Best PM Tools</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Alternatives</h5>
+        <a href="/jira-alternative/">Jira Alternative</a>
+        <a href="/linear-alternative/">Linear Alternative</a>
+        <a href="/asana-alternative/">Asana Alternative</a>
+        <a href="https://app.projiq.app/register-org">Get Started Free</a>
+      </div>
+    </div>
+    <div class="b-footer-bottom">
+      <span class="b-footer-copy">© 2026 Projiq. All rights reserved.</span>
+      <a href="https://www.linkedin.com/company/porjiq-app/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.38);font-size:12px;transition:color .2s" onmouseover="this.style.color='#818CF8'" onmouseout="this.style.color='rgba(255,255,255,.38)'"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+      <span class="b-footer-copy">Built for engineering teams.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const prog = document.getElementById('prog');
+  function updateProg(){
+    const s = document.documentElement;
+    const pct = s.scrollTop / (s.scrollHeight - s.clientHeight) * 100;
+    prog.style.width = Math.min(pct,100) + '%';
+  }
+  window.addEventListener('scroll', updateProg, {passive:true});
+
+  const headings = document.querySelectorAll('.art-body h2[id], .faq-block h2[id]');
+  const links = document.querySelectorAll('#toc a');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        links.forEach(l => l.classList.remove('active'));
+        const a = document.querySelector('#toc a[href="#'+e.target.id+'"]');
+        if(a) a.classList.add('active');
+      }
+    });
+  },{rootMargin:'-20% 0px -70% 0px'});
+  headings.forEach(h => obs.observe(h));
+})();
+</script>
+</body>
+</html>
