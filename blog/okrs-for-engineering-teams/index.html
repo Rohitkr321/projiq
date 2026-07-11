@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OKRs for Engineering Teams: A Practical Guide with Real Examples (2026) | Projiq Blog</title>
+<meta name="description" content="Most engineering OKR programs fail because KRs are tasks in disguise and objectives are too vague to drive decisions. Learn how to write, cascade, track, and grade OKRs that actually align engineering teams around outcomes.">
+<link rel="canonical" href="https://projiq.app/blog/okrs-for-engineering-teams/">
+<meta property="og:title" content="OKRs for Engineering Teams: A Practical Guide with Real Examples (2026)">
+<meta property="og:description" content="Engineering OKRs fail when KRs are tasks in disguise. Here's how to write, cascade, and grade OKRs that actually align engineering around outcomes.">
+<meta property="og:image" content="https://projiq.app/og.png">
+<meta property="og:url" content="https://projiq.app/blog/okrs-for-engineering-teams/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-11">
+<meta property="article:author" content="Projiq Team">
+<meta property="article:section" content="Productivity">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OKRs for Engineering Teams: Practical Guide with Real Examples (2026)">
+<meta name="twitter:image" content="https://projiq.app/og.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"OKRs for Engineering Teams: A Practical Guide with Real Examples (2026)","description":"Most engineering OKR programs fail because KRs are tasks in disguise and objectives are too vague to drive decisions. This guide shows how to write, cascade, track, and grade OKRs that actually work for engineering teams.","author":{"@type":"Organization","name":"Projiq"},"publisher":{"@type":"Organization","name":"Projiq","logo":{"@type":"ImageObject","url":"https://projiq.app/og.png"}},"datePublished":"2026-07-11","dateModified":"2026-07-11","mainEntityOfPage":{"@type":"WebPage","@id":"https://projiq.app/blog/okrs-for-engineering-teams/"},"image":"https://projiq.app/og.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://projiq.app"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://projiq.app/blog/"},{"@type":"ListItem","position":3,"name":"OKRs for Engineering Teams","item":"https://projiq.app/blog/okrs-for-engineering-teams/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does OKR stand for?","acceptedAnswer":{"@type":"Answer","text":"OKR stands for Objectives and Key Results. Objectives are qualitative, aspirational statements of what you want to achieve — memorable and directional. Key Results are quantitative, time-bound measurements that tell you whether you achieved the objective. The framework was developed at Intel by Andy Grove and popularized at Google by John Doerr, who introduced it in 1999. Today it's used by teams ranging from early-stage startups to Amazon, LinkedIn, and Twitter."}},{"@type":"Question","name":"How are OKRs different from traditional goal-setting?","acceptedAnswer":{"@type":"Answer","text":"Traditional goal-setting (like SMART goals or annual performance targets) tends to be top-down, annual, and tied to performance reviews — which makes people set conservative goals they're sure to hit. OKRs are designed to be ambitious (a 70% achievement rate is considered success), transparent (visible to the whole organization, not just managers), and separated from compensation to encourage honest grading. The cadence is quarterly, not annual, which allows much faster course-correction."}},{"@type":"Question","name":"How many OKRs should an engineering team have?","acceptedAnswer":{"@type":"Answer","text":"Two to three Objectives per team per quarter, with three to four Key Results per Objective. That's a maximum of 9–12 Key Results per team. More than this and focus disappears — teams end up with a long list of metrics they're supposed to move, none of which get sufficient attention. If you have ten Objectives, you have zero focus. If your list is too long, ask: what would we drop if we had half the people? The items that survive that cut are your real OKRs."}},{"@type":"Question","name":"Should individual engineers have OKRs?","acceptedAnswer":{"@type":"Answer","text":"Individual OKRs work for some roles (engineering managers, tech leads, staff engineers) but are generally counterproductive for individual contributors. Engineering output is highly collaborative — a feature ships because a team of five worked together, not because one person's OKR said so. Individual OKRs tend to drive siloed behavior and inhibit the helping, reviewing, and mentoring that makes teams effective. Most successful OKR implementations set OKRs at the team level and let team members contribute to team OKRs as part of their daily work, rather than tracking individual metrics."}},{"@type":"Question","name":"What happens if an engineering team misses an OKR?","acceptedAnswer":{"@type":"Answer","text":"A score of 0.4–0.6 (missing by 40–60%) on an ambitious OKR is acceptable and expected. The goal is not a 1.0 — it's honest grading and learning. When a team consistently scores 1.0, their OKRs aren't ambitious enough. When a team consistently scores below 0.3, either the goals were unrealistic or there's an execution problem that needs diagnosis. The OKR retrospective at the end of each quarter — what did we learn, what was wrong with the goal, what was wrong with the execution — is where the real value is generated."}},{"@type":"Question","name":"How do engineering OKRs connect to the product roadmap?","acceptedAnswer":{"@type":"Answer","text":"OKRs define the outcomes you're pursuing this quarter; the roadmap defines the initiatives and features you believe will achieve those outcomes. The connection is explicit: each roadmap theme or feature initiative should map to at least one OKR, and each OKR should have at least one roadmap initiative supporting it. If you have a roadmap item with no corresponding OKR, ask whether it's truly a priority. If you have an OKR with no roadmap initiative, ask how you expect to achieve it."}},{"@type":"Question","name":"What is the difference between OKRs and KPIs?","acceptedAnswer":{"@type":"Answer","text":"KPIs (Key Performance Indicators) are health metrics you track continuously — API uptime, error rate, deploy frequency, customer satisfaction score. They tell you whether operations are running normally. OKRs are improvement goals for a specific quarter — they describe a step change from the current state to a better one. You don't set an OKR to 'maintain 99.9% uptime' — that's a KPI. You set an OKR to 'achieve 99.99% uptime for the first time' or 'reduce MTTR from 4 hours to under 45 minutes.' Both matter: KPIs are the baseline health signal; OKRs are the ambitious improvement targets."}}]}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#030812;color:#F1F5F9;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+.prog{position:fixed;top:60px;left:0;height:3px;background:linear-gradient(90deg,#6366F1,#8B5CF6);width:0;z-index:300;transition:width .08s linear}
+
+.b-nav{position:sticky;top:0;z-index:200;background:rgba(3,8,18,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)}
+.b-nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center}
+.b-logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;color:#F1F5F9;flex-shrink:0}
+.b-logo-mark{flex-shrink:0;display:block;}.b-dot-app{color:#06B6D4;}
+.b-nav-links{display:flex;gap:28px;margin-left:auto;margin-right:28px}
+.b-nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
+.b-nav-links a:hover,.b-nav-links a.active{color:#F1F5F9}
+.b-nav-cta{background:linear-gradient(90deg,#6366F1,#8B5CF6);color:#fff;padding:8px 20px;border-radius:9px;font-size:13px;font-weight:700;flex-shrink:0;transition:opacity .2s}
+.b-nav-cta:hover{opacity:.86}
+
+.b-crumb{max-width:1200px;margin:0 auto;padding:28px 24px 0;display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.35);flex-wrap:wrap}
+.b-crumb a{color:rgba(255,255,255,.38);transition:color .2s}
+.b-crumb a:hover{color:#818CF8}
+.b-crumb-sep{color:rgba(255,255,255,.18)}
+
+.art-wrap{max-width:1200px;margin:0 auto;padding:32px 24px 0}
+.art-header{margin-bottom:44px}
+.art-cat{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;background:rgba(99,102,241,.11);border:1px solid rgba(99,102,241,.26);color:#818CF8;margin-bottom:18px}
+.art-header h1{font-size:clamp(30px,4.5vw,50px);font-weight:900;line-height:1.15;letter-spacing:-1px;margin-bottom:22px}
+.art-meta{display:flex;align-items:center;gap:22px;color:rgba(255,255,255,.35);font-size:13px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap}
+
+.art-layout{display:grid;grid-template-columns:1fr 300px;gap:60px;align-items:start}
+
+.art-body{min-width:0;overflow-wrap:break-word;word-break:break-word;font-size:17px;line-height:1.80;color:rgba(255,255,255,.78);padding-bottom:60px}
+.art-body p{margin-bottom:22px}
+.art-body h2{font-size:26px;font-weight:800;color:#F1F5F9;margin:48px 0 16px;letter-spacing:-.3px;line-height:1.3}
+.art-body h3{font-size:19px;font-weight:700;color:#F1F5F9;margin:28px 0 12px;letter-spacing:-.1px}
+.art-body ul,.art-body ol{margin:0 0 22px 22px}
+.art-body li{margin-bottom:9px;color:rgba(255,255,255,.72)}
+.art-body ul li::marker{color:#6366F1}
+.art-body ol li::marker{color:#818CF8;font-weight:700}
+.art-body strong{color:#F1F5F9;font-weight:700}
+.art-body a{color:#818CF8;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(129,140,248,.4);transition:text-decoration-color .2s}
+.art-body a:hover{text-decoration-color:#818CF8}
+blockquote{border-left:3px solid #6366F1;padding:16px 22px;background:rgba(99,102,241,.06);border-radius:0 10px 10px 0;margin:28px 0;font-style:italic;color:rgba(255,255,255,.72);font-size:16px}
+.tip-box{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.tip-box b{color:#34D399;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.warn-box{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.warn-box b{color:#FBBF24;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.link-box{background:rgba(99,102,241,.07);border:1px solid rgba(99,102,241,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.link-box b{color:#818CF8;display:block;margin-bottom:8px;font-size:13px;font-weight:700}
+
+.cmp-table-wrap{overflow-x:auto;margin:28px 0;border-radius:12px;border:1px solid rgba(255,255,255,.07)}
+.cmp-table{width:100%;border-collapse:collapse;font-size:14px;min-width:580px}
+.cmp-table th{background:rgba(99,102,241,.10);color:#818CF8;padding:12px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.cmp-table th:first-child{color:rgba(255,255,255,.45)}
+.cmp-table td{padding:12px 16px;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.68);vertical-align:top;line-height:1.5}
+.cmp-table td:first-child{color:rgba(255,255,255,.45);font-weight:600;white-space:nowrap;font-size:13px}
+.cmp-table tr:hover td{background:rgba(255,255,255,.02)}
+
+.okr-card{background:rgba(10,22,40,.6);border:1px solid rgba(99,102,241,.18);border-radius:14px;padding:22px 24px;margin:16px 0}
+.okr-card-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:#818CF8;margin-bottom:8px}
+.okr-obj{font-size:16px;font-weight:700;color:#F1F5F9;margin-bottom:14px;line-height:1.4}
+.okr-kr-list{list-style:none;padding:0;margin:0}
+.okr-kr-list li{font-size:13px;color:rgba(255,255,255,.65);padding:7px 0 7px 18px;position:relative;border-top:1px solid rgba(255,255,255,.05);line-height:1.5}
+.okr-kr-list li:first-child{border-top:none}
+.okr-kr-list li::before{content:'KR';position:absolute;left:0;top:8px;font-size:9px;font-weight:800;color:#6366F1;letter-spacing:.4px}
+
+.grade-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}
+.grade-box{background:rgba(10,22,40,.6);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:16px;text-align:center}
+.grade-score{font-size:22px;font-weight:900;margin-bottom:4px}
+.grade-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:rgba(255,255,255,.38)}
+.grade-desc{font-size:12px;color:rgba(255,255,255,.48);margin-top:6px;line-height:1.4}
+.grade-box.great .grade-score{color:#34D399}
+.grade-box.ok .grade-score{color:#FBBF24}
+.grade-box.low .grade-score{color:#F87171}
+.grade-box.rethink .grade-score{color:rgba(255,255,255,.30)}
+
+.art-cta{background:linear-gradient(135deg,rgba(99,102,241,.13),rgba(139,92,246,.08));border:1px solid rgba(99,102,241,.22);border-radius:16px;padding:36px;text-align:center;margin:44px 0}
+.art-cta h3{font-size:22px;font-weight:800;margin-bottom:10px}
+.art-cta p{color:rgba(255,255,255,.52);font-size:15px;margin-bottom:22px;line-height:1.6}
+.art-cta a{display:inline-block;background:linear-gradient(90deg,#6366F1,#8B5CF6);color:#fff;padding:12px 28px;border-radius:9px;font-size:14px;font-weight:700;transition:opacity .2s}
+.art-cta a:hover{opacity:.86;text-decoration:none}
+
+.art-sidebar{position:sticky;top:80px}
+.sb-card{background:rgba(10,22,40,.8);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px;margin-bottom:18px}
+.sb-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.35);margin-bottom:16px}
+.toc-list{list-style:none;padding:0}
+.toc-list li{margin-bottom:9px}
+.toc-list a{font-size:13px;color:rgba(255,255,255,.45);display:block;padding-left:10px;border-left:1px solid rgba(255,255,255,.08);line-height:1.5;transition:color .18s,border-color .18s}
+.toc-list a:hover,.toc-list a.active{color:#818CF8;border-left-color:#6366F1;text-decoration:none}
+.rel-post{display:flex;gap:11px;margin-bottom:13px;align-items:flex-start}
+.rel-icon{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px}
+.rel-post a{font-size:13px;font-weight:600;color:rgba(255,255,255,.65);line-height:1.4;transition:color .2s;display:block;margin-bottom:3px}
+.rel-post a:hover{color:#818CF8;text-decoration:none}
+.rel-cat{font-size:11px;color:rgba(255,255,255,.28)}
+
+.b-footer{background:#020810;border-top:1px solid rgba(255,255,255,.07);padding:56px 24px 32px}
+.b-footer-inner{max-width:1200px;margin:0 auto}
+.b-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.b-footer-brand p{color:rgba(255,255,255,.38);font-size:13px;line-height:1.7;margin-top:14px;max-width:230px}
+.b-footer-col h5{color:#F1F5F9;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.b-footer-col a{display:block;color:rgba(255,255,255,.38);font-size:13px;margin-bottom:9px;transition:color .2s}
+.b-footer-col a:hover{color:#818CF8}
+.b-footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.b-footer-copy{color:rgba(255,255,255,.22);font-size:12px}
+
+@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{display:none}.grade-grid{grid-template-columns:repeat(2,1fr)}.b-footer-grid{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:600px){.b-nav-links{display:none}.b-nav-cta{margin-left:auto}.art-header h1{font-size:28px}.art-body{min-width:0;overflow-wrap:break-word;word-break:break-word;font-size:16px}.grade-grid{grid-template-columns:1fr 1fr}.b-footer-grid{grid-template-columns:1fr;gap:24px}}
+
+.faq-block{margin:44px 0}
+.faq-block h2{font-size:26px;font-weight:800;color:#F1F5F9;margin-bottom:22px;letter-spacing:-.3px}
+.faq-entry{border:1px solid rgba(255,255,255,.07);border-radius:12px;margin-bottom:10px;overflow:hidden;background:rgba(10,22,40,.6)}
+.faq-entry summary{padding:17px 22px;font-size:15px;font-weight:700;color:#F1F5F9;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4}
+.faq-entry summary::-webkit-details-marker{display:none}
+.faq-entry summary::after{content:'+';color:#818CF8;font-size:18px;font-weight:400;flex-shrink:0;transition:transform .2s}
+.faq-entry[open] summary::after{transform:rotate(45deg)}
+.faq-entry[open]{border-color:rgba(99,102,241,.24)}
+.faq-ans{padding:0 22px 18px;font-size:14px;color:rgba(255,255,255,.62);line-height:1.75}
+</style>
+</head>
+<body>
+
+<div class="prog" id="prog"></div>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4F46E5"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient><symbol id="projiq-p" viewBox="0 0 285 265"><path d="M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z" fill="url(#brand-grad)"/><rect x="0" y="65" width="60" height="12" rx="6" fill="#4F46E5"/><rect x="0" y="100" width="60" height="12" rx="6" fill="#06B6D4"/><rect x="0" y="135" width="60" height="12" rx="6" fill="#10B981"/><path d="M140 105 L160 125 L205 80" fill="none" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
+
+<nav class="b-nav">
+  <div class="b-nav-inner">
+    <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+    <div class="b-nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/" class="active">Blog</a>
+    </div>
+    <a href="https://app.projiq.app/register-org" class="b-nav-cta">Get Started Free</a>
+  </div>
+</nav>
+
+<div class="b-crumb">
+  <a href="/">Home</a><span class="b-crumb-sep">›</span>
+  <a href="/blog/">Blog</a><span class="b-crumb-sep">›</span>
+  <span>OKRs for Engineering Teams</span>
+</div>
+
+<div class="art-wrap">
+  <header class="art-header">
+    <span class="art-cat">Productivity</span>
+    <h1>OKRs for Engineering Teams: A Practical Guide with Real Examples</h1>
+    <div class="art-meta">
+      <span>✍ Projiq Team</span>
+      <span>📅 July 11, 2026</span>
+      <span>⏱ 10 min read</span>
+    </div>
+  </header>
+
+  <div class="art-layout">
+    <article class="art-body" id="article">
+
+      <p>OKRs promised to align engineering teams around outcomes rather than output. In practice, most engineering OKR programs collapse into one of two failure modes: generic company OKRs that have nothing to do with how engineering actually works, or hyper-technical OKRs that make sense to engineers but communicate nothing to anyone outside the team.</p>
+
+      <p>The result is the same in both cases: a quarterly ritual that generates a slide deck, consumes several hours of meetings, and is quietly ignored for the remaining eleven weeks. This guide is the practical version — how to write engineering OKRs that are specific enough to drive daily decisions, measurable enough to grade honestly, and meaningful enough to connect engineering work to business outcomes.</p>
+
+      <h2 id="what-are-okrs">What Are OKRs — and Why Engineering Is Different</h2>
+
+      <p>OKRs (Objectives and Key Results) were developed at Intel by Andy Grove and popularized at Google by John Doerr in 1999. The structure is deliberately simple:</p>
+
+      <ul>
+        <li><strong>Objective:</strong> A qualitative, aspirational statement of what you want to achieve. Memorable, directional, and inspiring. It answers: "Where are we going?"</li>
+        <li><strong>Key Results:</strong> Quantitative, time-bound measurements that tell you whether you achieved the objective. Each KR is a metric that moves from a current state to a target state. They answer: "How will we know we got there?"</li>
+      </ul>
+
+      <p>The most important rule: <strong>Key Results are not tasks.</strong> "Ship the new auth system by September" is a task. "Reduce auth-related support tickets from 40/week to under 10/week" is a Key Result. One measures activity; the other measures outcome. This distinction is the most common failure point for engineering OKRs, and we'll return to it repeatedly.</p>
+
+      <p>Engineering teams face specific OKR challenges that product or sales teams don't:</p>
+
+      <ul>
+        <li><strong>Output ≠ outcome lag.</strong> A feature ships in Q3 but its impact on retention doesn't appear in data until Q4. Engineering OKRs need to account for this lag, or teams get punished for correct decisions that take time to validate.</li>
+        <li><strong>Invisible work is real work.</strong> Infrastructure improvements, test coverage, refactoring, CI/CD optimization — these have enormous long-term value but no direct user-facing output. OKRs that only reflect user-visible features will systematically underinvest in the engineering foundations that make velocity possible.</li>
+        <li><strong>Dependency density.</strong> Engineering teams are tightly coupled — platform work blocks product work, which blocks data work. OKRs that ignore dependencies create perverse incentives where teams race toward their own metrics without enabling the teams that depend on them.</li>
+      </ul>
+
+      <h2 id="why-okrs-fail">Why Engineering OKRs Fail</h2>
+
+      <p>Before writing a single OKR, understand the patterns that guarantee failure:</p>
+
+      <p><strong>Key Results that are tasks.</strong> The most common mistake. "Launch the new dashboard," "Complete the API migration," "Finish the design system" — these are all tasks with binary outcomes (done or not done), not metrics that move along a scale. If your KR can be answered with "yes" or "no," it's a task in disguise.</p>
+
+      <p><strong>Objectives so vague they don't drive decisions.</strong> "Improve engineering quality" or "Become a better engineering team" sound like OKRs but aren't. A good objective generates obvious implied priorities. "Make our platform so reliable that reliability is never the reason we lose a deal" generates clear priorities. "Improve engineering quality" generates nothing.</p>
+
+      <p><strong>No connection to the product roadmap.</strong> OKRs that float above the actual work plan get ignored in daily execution. If the roadmap is full of features and the OKRs are about reliability and developer experience, the roadmap wins every sprint. OKRs and the roadmap must be explicitly aligned — each roadmap initiative should support at least one OKR.</p>
+
+      <p><strong>Grading on effort, not outcomes.</strong> "We worked really hard on this, so we'll give ourselves a 0.8." This eliminates the honest feedback loop that makes OKRs valuable. The grade reflects whether the metric moved, period. A team that worked hard and the metric didn't move gets a low grade — and then asks why the metric didn't move. That investigation is the value.</p>
+
+      <p><strong>Too many OKRs.</strong> Two or three Objectives per team per quarter, three to four Key Results each. That's the limit. When teams have ten OKRs, every sprint planning meeting becomes a negotiation over which OKRs to prioritize — defeating the entire purpose.</p>
+
+      <div class="warn-box">
+        <b>The 70% Rule</b>
+        In the OKR framework, a grade of 0.7 (70% achievement) on an ambitious goal is considered excellent. If you're consistently scoring 1.0, your OKRs are not ambitious enough — you set targets you knew you'd hit. If you're consistently below 0.3, either the goals were unrealistic or there's an execution problem. The sweet spot signals genuine stretch and honest grading.
+      </div>
+
+      <h2 id="how-to-write">How to Write Engineering OKRs That Work</h2>
+
+      <h3>Writing objectives that generate clarity</h3>
+
+      <p>A good objective passes the "generates obvious implied priorities" test. Write the objective, then ask: given this, what work is clearly important? What work is clearly not? If the objective doesn't help you make those distinctions, it needs to be sharpened.</p>
+
+      <p>Good engineering objectives tend to be:</p>
+      <ul>
+        <li>Specific enough that a new engineer would understand what the team is optimizing for</li>
+        <li>Ambitious enough that achieving it would genuinely change the product or team</li>
+        <li>Timebound implicitly (achievable in a quarter, not in a year or a decade)</li>
+      </ul>
+
+      <p>Examples of weak vs. strong objectives:</p>
+
+      <ul>
+        <li><strong>Weak:</strong> "Improve platform performance" → <strong>Strong:</strong> "Make our API feel instant — fast enough that latency is never a customer complaint"</li>
+        <li><strong>Weak:</strong> "Improve developer experience" → <strong>Strong:</strong> "Build the development environment engineers brag about to candidates"</li>
+        <li><strong>Weak:</strong> "Reduce technical debt" → <strong>Strong:</strong> "Eliminate the reliability problems that are derailing two sprints per quarter"</li>
+      </ul>
+
+      <h3>Writing Key Results that measure outcomes</h3>
+
+      <p>Apply three tests to every Key Result before finalizing it:</p>
+
+      <ol>
+        <li><strong>The "not a task" test.</strong> Does it describe a metric state (something you measure) or an activity (something you do)? If it's an activity, reframe it as the outcome you expect that activity to produce.</li>
+        <li><strong>The "so what" test.</strong> Why does this metric matter? If the answer reveals a real business or engineering outcome, it's a good KR. If the answer is "I don't know, it just seems like a good thing to track," it doesn't belong.</li>
+        <li><strong>The "movable" test.</strong> Can the metric actually change in a quarter? Some metrics are too slow-moving to be useful quarterly KRs (annual revenue, multi-year retention). Others move too fast to be meaningful signals. Quarterly KRs should have reasonable sensitivity to the work happening this quarter.</li>
+      </ol>
+
+      <blockquote>"The key question for any Key Result is not 'did we do the work?' but 'did the metric move?' If your answer to the second question is 'we don't know,' your Key Result isn't measurable enough."</blockquote>
+
+      <h2 id="okr-examples">Real OKR Examples for Engineering Teams</h2>
+
+      <p>Here are concrete OKR sets for different engineering team types, following the principles above:</p>
+
+      <div class="okr-card">
+        <div class="okr-card-label">Platform / Infrastructure Team</div>
+        <div class="okr-obj">Make our infrastructure so reliable and observable that on-call is boring</div>
+        <ul class="okr-kr-list">
+          <li>Reduce mean time to detect (MTTD) production incidents from 18 minutes to under 5 minutes</li>
+          <li>Achieve zero incidents with MTTR greater than 2 hours (currently averaging 3.5 hours)</li>
+          <li>Instrument 100% of critical service paths with structured logs and dashboards (currently at 62%)</li>
+        </ul>
+      </div>
+
+      <div class="okr-card">
+        <div class="okr-card-label">Product Engineering Team</div>
+        <div class="okr-obj">Ship a mobile experience that earns our first significant App Store rating</div>
+        <ul class="okr-kr-list">
+          <li>Achieve App Store rating ≥ 4.3 stars by end of quarter (currently 3.6)</li>
+          <li>Reduce mobile crash rate from 2.1% to under 0.5% of sessions</li>
+          <li>Reduce time to first meaningful interaction from 4.2s to under 1.8s on a mid-range Android device</li>
+        </ul>
+      </div>
+
+      <div class="okr-card">
+        <div class="okr-card-label">Developer Experience / Platform Team</div>
+        <div class="okr-obj">Build a development environment that accelerates every engineer, not just the team leads</div>
+        <ul class="okr-kr-list">
+          <li>Reduce CI build time from 44 minutes to under 12 minutes (p50, measured on main branch)</li>
+          <li>Reduce time from code commit to production deploy from 3.5 hours to under 30 minutes</li>
+          <li>Achieve 85% satisfaction on the quarterly developer experience survey (baseline: 51%)</li>
+        </ul>
+      </div>
+
+      <div class="okr-card">
+        <div class="okr-card-label">Engineering — Security Focus</div>
+        <div class="okr-obj">Reach a security posture where no known critical vulnerability goes unaddressed within 48 hours</div>
+        <ul class="okr-kr-list">
+          <li>Reduce mean time to patch critical CVEs from 19 days to under 48 hours</li>
+          <li>Achieve 100% coverage of secret scanning across all repositories (currently at 40%)</li>
+          <li>Complete SOC 2 Type II audit with zero critical findings</li>
+        </ul>
+      </div>
+
+      <p>Notice what's consistent across these examples: each Objective describes an ambitious but believable destination, and each Key Result has a current baseline and a target — making honest grading unambiguous at the end of the quarter.</p>
+
+      <h2 id="cascading-okrs">How to Cascade OKRs from Company to Engineering</h2>
+
+      <p>The cascade isn't a waterfall — it's a conversation. The failure mode is leadership defining company OKRs in isolation, then breaking them into department OKRs, which get broken into team OKRs, until individual contributors receive a list of metrics they had no input on and don't understand the context for.</p>
+
+      <p>The better model:</p>
+
+      <ol>
+        <li><strong>Company OKRs are published.</strong> Leadership shares the company's 2–3 objectives for the quarter — the business outcomes the whole company is optimizing for.</li>
+        <li><strong>Teams draft their own OKRs bottom-up.</strong> Engineering leads ask: given the company objectives, what engineering outcomes would most accelerate them? What engineering obstacles are blocking them? What engineering investments would generate disproportionate leverage?</li>
+        <li><strong>Alignment review.</strong> Teams present their draft OKRs alongside the company OKRs. The question is: does this engineering OKR contribute to at least one company objective? Does any company objective have no engineering OKR supporting it?</li>
+        <li><strong>Negotiate gaps and overlaps.</strong> If two teams have OKRs that conflict (both claim 40% of the platform team's capacity), resolve the dependency before the quarter starts, not in week seven.</li>
+      </ol>
+
+      <p>The comparison table below illustrates how a company-level objective cascades to product and engineering OKRs:</p>
+
+      <div class="cmp-table-wrap">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>Level</th>
+              <th>Objective</th>
+              <th>Sample Key Results</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Company</td><td>Become the project management tool enterprises choose over Jira</td><td>Win 15 enterprise deals (≥50 seats) this quarter; achieve NPS ≥ 45 among enterprise segment</td></tr>
+            <tr><td>Product</td><td>Ship the enterprise features that remove us from every shortlist elimination</td><td>SSO, audit logs, and SAML launched to GA; enterprise trial-to-paid conversion from 8% to 22%</td></tr>
+            <tr><td>Engineering — Platform</td><td>Build the auth architecture that makes enterprise security requirements easy to ship</td><td>Auth service migration complete; SSO integration time for new IdPs reduced from 3 weeks to 3 days</td></tr>
+            <tr><td>Engineering — Product</td><td>Deliver enterprise UI features with zero critical bugs at launch</td><td>Audit log feature shipped with 95%+ test coverage; zero Sev-1 bugs in first 30 days post-launch</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Each level's OKRs support the level above it, and engineering leads contributed to defining their own OKRs rather than receiving them pre-formed. This is the condition for genuine buy-in.</p>
+
+      <h2 id="running-the-cycle">How to Run the OKR Cycle</h2>
+
+      <h3>Setting phase (weeks 1–2 of the quarter)</h3>
+      <p>Draft OKRs in week one. Run alignment review in week two. Finalize and publish before the quarter is 10% complete. OKRs set in week four are already stale. Common setting mistakes: involving too many people (only team leads and their manager should set team OKRs), spending weeks wordsmithing (imperfect OKRs this week beat perfect OKRs next month), and setting OKRs in isolation from the sprint plan (the roadmap and the OKRs must be read together).</p>
+
+      <h3>Tracking phase (weekly through the quarter)</h3>
+      <p>Replace status meetings with confidence check-ins. Each team reviews their OKRs weekly and updates a confidence score (1–10) for each Key Result — not "are we done?" but "how confident are we that we'll hit this by quarter end?" A dropping confidence score is the trigger for a conversation, not a crisis. Early warning beats end-of-quarter surprises.</p>
+
+      <p>Use your <a href="/blog/sprint-retrospective-templates/">sprint retrospectives</a> as a natural checkpoint for OKR progress. The retro is already the right forum for honest conversation about what's working and what's not — adding OKR confidence scores to the retro agenda takes two minutes and keeps them visible without adding another meeting.</p>
+
+      <h3>Mid-quarter check (week 6)</h3>
+      <p>A structured mid-quarter health check for all OKRs. For each KR: what's the current metric value, what's the confidence score, and what's the path to the target? This is the right moment to adjust — not cancel — OKRs where the original target was clearly miscalibrated. Adjusting a metric based on new data is acceptable; abandoning a goal because it's hard is not.</p>
+
+      <h3>Grading and retrospective (weeks 12–13)</h3>
+      <p>Grade each Key Result on a 0.0–1.0 scale based purely on metric movement. Then run a retrospective: for each KR that scored below 0.5, ask (a) was the target wrong, (b) was the execution wrong, or (c) did circumstances change? The answer determines whether you reset the same goal next quarter, reframe it, or retire it. For KRs that scored 1.0, ask whether the target was too conservative.</p>
+
+      <div class="grade-grid">
+        <div class="grade-box great">
+          <div class="grade-score">0.7–1.0</div>
+          <div class="grade-label">Excellent</div>
+          <div class="grade-desc">Ambitious goal, strong execution. If consistently 1.0, raise the bar next quarter.</div>
+        </div>
+        <div class="grade-box ok">
+          <div class="grade-score">0.4–0.6</div>
+          <div class="grade-label">Acceptable</div>
+          <div class="grade-desc">Meaningful progress on a hard goal. Investigate blockers but don't panic.</div>
+        </div>
+        <div class="grade-box low">
+          <div class="grade-score">0.1–0.3</div>
+          <div class="grade-label">Concerning</div>
+          <div class="grade-desc">Goal was wrong, execution failed, or circumstances changed. Diagnose before repeating.</div>
+        </div>
+        <div class="grade-box rethink">
+          <div class="grade-score">0.0</div>
+          <div class="grade-label">Rethink</div>
+          <div class="grade-desc">No meaningful progress. Was this ever a real priority? Be honest.</div>
+        </div>
+      </div>
+
+      <h2 id="okrs-vs-kpis">OKRs vs. KPIs: Knowing the Difference</h2>
+
+      <p>One of the most persistent confusions in engineering goal-setting: what belongs in an OKR vs. what belongs in a KPI dashboard. They serve different purposes and should be managed differently.</p>
+
+      <p><strong>KPIs (Key Performance Indicators)</strong> are health metrics you track continuously, regardless of quarter. API uptime, error rate, deploy frequency, customer satisfaction score, security incident count — these tell you whether your system is operating normally. They have alert thresholds, not quarterly targets. A KPI doesn't go away when the quarter ends; it just keeps running.</p>
+
+      <p><strong>OKRs</strong> are improvement goals for a specific quarter — they describe a step change from the current state to a better one. You don't set an OKR to "maintain 99.9% uptime" — that's a KPI. You set an OKR to "achieve 99.99% uptime for the first time" or "reduce MTTR from 4 hours to under 45 minutes." Once achieved, that target becomes the new KPI baseline.</p>
+
+      <p>The relationship: KPIs tell you where you are. OKRs tell you where you're going. When a KPI degrades badly enough to threaten the business, it can become an OKR to recover it. When an OKR is achieved and becomes the new normal, it becomes a KPI to maintain. They're complementary, not competing.</p>
+
+      <p>DORA metrics (Deployment Frequency, Lead Time, Change Failure Rate, MTTR) are a perfect example of this relationship — they start as OKRs for teams building engineering discipline, then become KPIs once the targets are reached. See our breakdown of <a href="/blog/dora-metrics/">DORA metrics for engineering teams</a> for how to use them as KR baselines.</p>
+
+      <h2 id="connecting-to-work">Connecting OKRs to Daily Engineering Work</h2>
+
+      <p>The most common feedback from engineers about OKRs: "they have nothing to do with my actual work." This is an alignment failure, not an OKR failure. The fix is a clear chain from OKR to roadmap to sprint to task.</p>
+
+      <p>Each OKR should map to at least one initiative on the product or engineering roadmap. Each roadmap initiative maps to at least one epic in your issue tracker. Each epic contains the user stories and tasks that actually get planned into sprints. With this chain in place, any engineer can navigate from any sprint task up to the OKR it supports — and understand why the work matters.</p>
+
+      <p>When translating roadmap items into sprint work, the OKR context directly shapes story acceptance criteria. A story supporting "reduce time to first meaningful interaction" has different acceptance criteria than a story supporting "eliminate auth-related support tickets." See our guide on <a href="/blog/how-to-write-user-stories/">writing effective user stories</a> for how to carry OKR intent through to story definitions.</p>
+
+      <p>Building good stories also requires good sprint planning — with OKR-aligned capacity allocation that protects time for the work that actually moves the metrics, not just the work that feels urgent. See our <a href="/blog/sprint-planning-guide/">sprint planning guide</a> for that step.</p>
+
+      <div class="tip-box">
+        <b>Practical Setup</b>
+        Add a custom field to your issue tracker for "OKR" or "Key Result" and require it for all epics. This makes it trivially easy to filter your backlog by OKR, see which OKRs have sprint coverage, and spot OKRs that nobody is actually working on. Invisible OKRs are unachieved OKRs.
+      </div>
+
+      <div class="art-cta">
+        <h3>Track OKRs and sprints in the same place with Projiq</h3>
+        <p>Projiq connects your quarterly OKRs to your sprint backlog — label epics and stories by OKR, see which goals have sprint coverage, and grade your quarter with real metric data instead of gut feel.</p>
+        <a href="https://app.projiq.app/register-org">Start Free — No Credit Card Required</a>
+      </div>
+
+      <div class="faq-block">
+        <h2 id="faq">Frequently Asked Questions</h2>
+
+        <details class="faq-entry">
+          <summary>What does OKR stand for?</summary>
+          <div class="faq-ans">OKR stands for Objectives and Key Results. Objectives are qualitative, aspirational statements of what you want to achieve — memorable and directional. Key Results are quantitative, time-bound measurements that define what achievement looks like. The framework was developed at Intel by Andy Grove and brought to Google by John Doerr in 1999. It's since been adopted by companies ranging from early-stage startups to Amazon, Twitter, and LinkedIn as a way to align teams around outcomes rather than output.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>How are OKRs different from traditional goal-setting?</summary>
+          <div class="faq-ans">Traditional goal frameworks like SMART goals or annual performance targets tend to be top-down, annual, and tied to compensation — which creates incentives to set conservative targets you're sure to hit. OKRs are designed differently: they're ambitious by design (a 70% achievement rate is considered success, not failure), transparent (visible to the whole organization, not just managers), quarterly (fast enough to course-correct), and separated from compensation (so teams grade honestly). The quarterly cadence is the most underappreciated feature — annual goals become obsolete within months; quarterly OKRs stay relevant.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>How many OKRs should an engineering team have?</summary>
+          <div class="faq-ans">Two to three Objectives per team per quarter, with three to four Key Results per Objective. That's a maximum of 9–12 Key Results total for the team. More than this and focus disappears — teams end up with a sprawling list of metrics they're nominally tracking, none of which receive sufficient attention to actually move. If your list is too long, apply the constraint: what would you drop if you had half the engineering capacity? The items that survive that question are your real OKRs. Everything else is a wish list that belongs in the backlog, not in the OKR document.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>Should individual engineers have OKRs?</summary>
+          <div class="faq-ans">Individual OKRs work well for engineering managers, tech leads, and staff engineers with defined scope — roles where individual contribution to business outcomes is traceable. For individual contributors, team-level OKRs are almost always better. Engineering output is highly collaborative: a feature ships because five people worked together effectively, not because one person's OKR said to ship it. Individual OKRs tend to drive siloed behavior, reduce knowledge sharing, and inhibit the helping and reviewing that makes teams high-performing. Set OKRs at the team level and let individual contributions happen naturally within that shared direction.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What happens if an engineering team misses an OKR?</summary>
+          <div class="faq-ans">A score of 0.4–0.6 on an ambitious OKR is acceptable and expected — it signals genuine stretch with imperfect execution. The learning comes from the grading retrospective: was the target wrong (set too ambitiously, or based on incorrect assumptions), was execution wrong (team focused on the wrong work, or capacity was consumed by unplanned incidents), or did circumstances change (a dependency blocked, a business priority shifted)? Each of those has a different response. What never produces learning is grading on effort instead of metric movement — "we worked hard so we'll give ourselves a 0.8." Honest grading, even on disappointing results, is what makes OKRs worth running.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>How do engineering OKRs connect to the product roadmap?</summary>
+          <div class="faq-ans">OKRs define the outcomes you're pursuing this quarter; the product roadmap defines the initiatives and features you believe will achieve those outcomes. The connection should be explicit: each roadmap initiative should support at least one OKR Key Result, and each OKR should have at least one roadmap initiative behind it. If you have a roadmap item with no corresponding OKR, ask whether it's truly a priority this quarter. If you have an OKR with no roadmap initiative, ask how you expect to move the metric. Misalignment between OKRs and the roadmap is one of the clearest predictors of OKR failure — teams work the roadmap, not the OKRs, when the two diverge.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What is the difference between OKRs and KPIs?</summary>
+          <div class="faq-ans">KPIs are health metrics you track continuously — API uptime, error rate, deploy frequency, customer NPS. They tell you whether operations are running normally and have alert thresholds rather than quarterly targets. OKRs are improvement goals — they describe a step change from current state to a better one. You don't set an OKR to "maintain 99.9% uptime" — that's a KPI. You set an OKR to "achieve 99.99% uptime for the first time" or "reduce MTTR from 4 hours to under 45 minutes." Once an OKR is achieved and the new state is the norm, it becomes a KPI to maintain. KPIs tell you where you are; OKRs tell you where you're going — they're complementary, not competing.</div>
+        </details>
+      </div>
+
+    </article>
+
+    <aside class="art-sidebar">
+      <div class="sb-card">
+        <h4>Table of Contents</h4>
+        <ul class="toc-list">
+          <li><a href="#what-are-okrs">What Are OKRs?</a></li>
+          <li><a href="#why-okrs-fail">Why OKRs Fail</a></li>
+          <li><a href="#how-to-write">How to Write OKRs</a></li>
+          <li><a href="#okr-examples">Real OKR Examples</a></li>
+          <li><a href="#cascading-okrs">Cascading from Company</a></li>
+          <li><a href="#running-the-cycle">Running the OKR Cycle</a></li>
+          <li><a href="#okrs-vs-kpis">OKRs vs. KPIs</a></li>
+          <li><a href="#connecting-to-work">Connecting to Daily Work</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="sb-card">
+        <h4>Related Posts</h4>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(99,102,241,.12);">📈</div>
+          <div>
+            <a href="/blog/dora-metrics/">DORA Metrics Explained</a>
+            <span class="rel-cat">Productivity</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(59,130,246,.12);">🗺️</div>
+          <div>
+            <a href="/blog/product-roadmap-guide/">How to Build a Product Roadmap</a>
+            <span class="rel-cat">Product Management</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(16,185,129,.12);">🏃</div>
+          <div>
+            <a href="/blog/sprint-retrospective-templates/">Sprint Retrospective Templates</a>
+            <span class="rel-cat">Scrum</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="b-footer">
+  <div class="b-footer-inner">
+    <div class="b-footer-grid">
+      <div class="b-footer-brand">
+        <a href="/" class="b-logo"><svg class="b-logo-mark" width="24" height="22" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+        <p>Modern project management for engineering teams. Built for speed, clarity, and developer workflow.</p>
+      </div>
+      <div class="b-footer-col">
+        <h5>Blog</h5>
+        <a href="/blog/agile-vs-scrum/">Agile vs Scrum</a>
+        <a href="/blog/kanban-vs-scrum/">Kanban vs Scrum</a>
+        <a href="/blog/jira-vs-linear/">Jira vs Linear</a>
+        <a href="/blog/sprint-retrospective-templates/">Retro Templates</a>
+        <a href="/blog/how-to-write-user-stories/">User Stories</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Alternatives</h5>
+        <a href="/jira-alternative/">Jira Alternative</a>
+        <a href="/linear-alternative/">Linear Alternative</a>
+        <a href="/asana-alternative/">Asana Alternative</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Product</h5>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="https://app.projiq.app/register-org">Get Started</a>
+      </div>
+    </div>
+    <div class="b-footer-bottom">
+      <span class="b-footer-copy">© 2026 Projiq. All rights reserved.</span>
+      <span class="b-footer-copy">Built for engineering teams that ship.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var prog=document.getElementById('prog');
+  function update(){
+    var st=window.scrollY;
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    prog.style.width=(h>0?Math.min(100,st/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  var links=document.querySelectorAll('.toc-list a');
+  var headings=document.querySelectorAll('#article h2[id]');
+  function highlight(){
+    var st=window.scrollY+80;
+    var active=null;
+    headings.forEach(function(h){if(h.offsetTop<=st)active=h.id;});
+    links.forEach(function(a){
+      a.classList.toggle('active',a.getAttribute('href')==='#'+active);
+    });
+  }
+  window.addEventListener('scroll',highlight,{passive:true});
+  highlight();
+})();
+</script>
+</body>
+</html>
