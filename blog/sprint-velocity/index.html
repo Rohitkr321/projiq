@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sprint Velocity: What It Is, How to Measure It, and Why It Matters (2026) | Projiq Blog</title>
+<meta name="description" content="Sprint velocity is a planning tool, not a performance score. Learn how to calculate it, what good velocity looks like, why it fluctuates, and the anti-patterns that make it useless.">
+<link rel="canonical" href="https://projiq.app/blog/sprint-velocity/">
+<meta property="og:title" content="Sprint Velocity: What It Is, How to Measure It, and Why It Matters (2026)">
+<meta property="og:description" content="Velocity is a planning compass, not a performance score. Here's how to measure it correctly, use it for sprint planning, and avoid the anti-patterns that destroy it.">
+<meta property="og:image" content="https://projiq.app/og.png">
+<meta property="og:url" content="https://projiq.app/blog/sprint-velocity/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-12">
+<meta property="article:author" content="Projiq Team">
+<meta property="article:section" content="Scrum">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sprint Velocity: How to Measure It and Why It Matters (2026)">
+<meta name="twitter:image" content="https://projiq.app/og.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/favicon-192.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Sprint Velocity: What It Is, How to Measure It, and Why It Matters (2026)","description":"Sprint velocity is a planning tool, not a performance score. Learn how to calculate it, what good velocity looks like, why it fluctuates, and the anti-patterns that make it useless.","author":{"@type":"Organization","name":"Projiq"},"publisher":{"@type":"Organization","name":"Projiq","logo":{"@type":"ImageObject","url":"https://projiq.app/favicon-192.png"}},"datePublished":"2026-07-12","dateModified":"2026-07-12","mainEntityOfPage":{"@type":"WebPage","@id":"https://projiq.app/blog/sprint-velocity/"},"image":"https://projiq.app/og.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://projiq.app"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://projiq.app/blog/"},{"@type":"ListItem","position":3,"name":"Sprint Velocity","item":"https://projiq.app/blog/sprint-velocity/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is sprint velocity in Scrum?","acceptedAnswer":{"@type":"Answer","text":"Sprint velocity is the total number of story points (or equivalent estimation units) that a Scrum team completes in a single sprint. Only items that fully satisfy the Definition of Done are counted — partially completed work contributes zero. Velocity is tracked over multiple sprints and averaged (typically across the last 3–5 sprints) to produce a planning velocity that the team uses to decide how much work to commit to in the next sprint."}},{"@type":"Question","name":"What is a good sprint velocity?","acceptedAnswer":{"@type":"Answer","text":"There is no universal good velocity — story point scales are defined per team, so numbers cannot be compared across teams. What matters is consistency and predictability within a single team. A mature Scrum team should be able to reliably commit to within 10–15% of their average velocity. Sprint-to-sprint variability of ±20% is normal; variability of ±50% or more signals a systemic problem with estimation, interruptions, or team stability."}},{"@type":"Question","name":"How many sprints does it take to establish a team velocity?","acceptedAnswer":{"@type":"Answer","text":"Most Scrum practitioners recommend using 3–5 completed sprints before treating velocity as a reliable planning input. The first sprint is almost always an outlier — teams are calibrating their story point scale and getting familiar with the work context. By sprint 3 or 4, most teams have a stable enough baseline to plan against. If you are forced to plan before 3 sprints, add a 30–40% buffer to whatever you estimate as initial capacity."}},{"@type":"Question","name":"Should sprint velocity increase every sprint?","acceptedAnswer":{"@type":"Answer","text":"No — consistent velocity is better than growing velocity. Pressure to increase velocity every sprint leads to inflation (teams assign larger point values to the same work), cherry-picking (teams only pull easy stories to hit the number), and burnout. For a stable, mature team, velocity should be relatively flat. Genuine productivity gains show up as completing higher-value work at the same velocity, not as a larger number. New teams will see natural growth over the first few months as they calibrate their estimates and learn the codebase — but this levels off."}},{"@type":"Question","name":"Can you compare sprint velocity between teams?","acceptedAnswer":{"@type":"Answer","text":"No. Story point scales are defined independently by each team. A 5-point story on Team A might represent two days of work; on Team B it might be half a day. The numbers are meaningful only within a single team's history. Comparing velocity across teams is one of the most common Scrum anti-patterns and often triggers the dysfunctional behaviors — score inflation, cherry-picking, sandbagging — that make the metric useless within the team that 'loses' the comparison."}},{"@type":"Question","name":"What is the difference between velocity and capacity?","acceptedAnswer":{"@type":"Answer","text":"Capacity is the raw available time your team has in a sprint — usually expressed in developer-days or person-hours. Velocity is the historical track record of how many story points your team completes in a sprint. Capacity changes every sprint based on PTO, holidays, and team size. Velocity is the stable baseline you adjust based on capacity changes. The planning formula: if next sprint capacity is 80% of your normal full-team capacity, target 80% of your average velocity."}},{"@type":"Question","name":"What should you do when velocity drops suddenly?","acceptedAnswer":{"@type":"Answer","text":"First, diagnose before reacting. A single low-velocity sprint is rarely a crisis — check for unplanned interrupt work, team absence, a sprint with an unusual amount of carry-over from the previous sprint, or a legitimate but unusual spike in complexity. Use the sprint retrospective to surface the real cause. If velocity drops for 2–3 consecutive sprints, investigate systemic causes: technical debt slowing delivery, chronic interrupt work (support tickets, urgent bugs), estimation drift, or team morale issues. Do not respond to a velocity drop by pressuring the team to 'work harder' — that rarely identifies the real problem and usually makes it worse."}}]}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#030812;color:#F1F5F9;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+.prog{position:fixed;top:60px;left:0;height:3px;background:linear-gradient(90deg,#0EA5E9,#06B6D4);width:0;z-index:300;transition:width .08s linear}
+
+.b-nav{position:sticky;top:0;z-index:200;background:rgba(3,8,18,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)}
+.b-nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center}
+.b-logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;color:#F1F5F9;flex-shrink:0}
+.b-logo-mark{flex-shrink:0;display:block;}.b-dot-app{color:#06B6D4;}
+.b-nav-links{display:flex;gap:28px;margin-left:auto;margin-right:28px}
+.b-nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
+.b-nav-links a:hover,.b-nav-links a.active{color:#F1F5F9}
+.b-nav-cta{background:linear-gradient(90deg,#0EA5E9,#06B6D4);color:#fff;padding:8px 20px;border-radius:9px;font-size:13px;font-weight:700;flex-shrink:0;transition:opacity .2s}
+.b-nav-cta:hover{opacity:.86}
+
+.b-crumb{max-width:1200px;margin:0 auto;padding:28px 24px 0;display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.35);flex-wrap:wrap}
+.b-crumb a{color:rgba(255,255,255,.38);transition:color .2s}
+.b-crumb a:hover{color:#38BDF8}
+.b-crumb-sep{color:rgba(255,255,255,.18)}
+
+.art-wrap{max-width:1200px;margin:0 auto;padding:32px 24px 0}
+.art-header{margin-bottom:44px}
+.art-cat{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;background:rgba(14,165,233,.11);border:1px solid rgba(14,165,233,.26);color:#38BDF8;margin-bottom:18px}
+.art-header h1{font-size:clamp(30px,4.5vw,50px);font-weight:900;line-height:1.15;letter-spacing:-1px;margin-bottom:22px}
+.art-meta{display:flex;align-items:center;gap:22px;color:rgba(255,255,255,.35);font-size:13px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap}
+
+.art-layout{display:grid;grid-template-columns:1fr 300px;gap:60px;align-items:start}
+
+.art-body{min-width:0;overflow-wrap:break-word;word-break:break-word;font-size:17px;line-height:1.80;color:rgba(255,255,255,.78);padding-bottom:60px}
+.art-body p{margin-bottom:22px}
+.art-body h2{font-size:26px;font-weight:800;color:#F1F5F9;margin:48px 0 16px;letter-spacing:-.3px;line-height:1.3}
+.art-body h3{font-size:19px;font-weight:700;color:#F1F5F9;margin:28px 0 12px;letter-spacing:-.1px}
+.art-body ul,.art-body ol{margin:0 0 22px 22px}
+.art-body li{margin-bottom:9px;color:rgba(255,255,255,.72)}
+.art-body ul li::marker{color:#0EA5E9}
+.art-body ol li::marker{color:#38BDF8;font-weight:700}
+.art-body strong{color:#F1F5F9;font-weight:700}
+.art-body a{color:#38BDF8;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(56,189,248,.4);transition:text-decoration-color .2s}
+.art-body a:hover{text-decoration-color:#38BDF8}
+blockquote{border-left:3px solid #0EA5E9;padding:16px 22px;background:rgba(14,165,233,.06);border-radius:0 10px 10px 0;margin:28px 0;font-style:italic;color:rgba(255,255,255,.72);font-size:16px}
+.tip-box{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.tip-box b{color:#34D399;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.warn-box{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.warn-box b{color:#FBBF24;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+
+.cmp-table-wrap{overflow-x:auto;margin:28px 0;border-radius:12px;border:1px solid rgba(255,255,255,.07)}
+.cmp-table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+.cmp-table th{background:rgba(14,165,233,.10);color:#38BDF8;padding:12px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.cmp-table th:first-child{color:rgba(255,255,255,.45)}
+.cmp-table td{padding:12px 16px;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.68);vertical-align:top;line-height:1.5}
+.cmp-table td:first-child{color:rgba(255,255,255,.45);font-weight:600;white-space:nowrap;font-size:13px}
+.cmp-table tr:hover td{background:rgba(255,255,255,.02)}
+
+.velocity-table-wrap{overflow-x:auto;margin:28px 0;border-radius:12px;border:1px solid rgba(14,165,233,.15)}
+.velocity-table{width:100%;border-collapse:collapse;font-size:14px;min-width:480px}
+.velocity-table thead tr{background:rgba(14,165,233,.10)}
+.velocity-table th{color:#38BDF8;padding:11px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.velocity-table td{padding:11px 16px;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.72);font-size:14px}
+.velocity-table td.sprint{color:rgba(255,255,255,.40);font-weight:600}
+.velocity-table td.pts{font-weight:700;color:#38BDF8;font-variant-numeric:tabular-nums}
+.velocity-table td.avg{font-weight:700;color:#34D399;font-variant-numeric:tabular-nums}
+.velocity-table tr:last-child td{border-bottom:none}
+
+.formula-box{background:rgba(14,165,233,.07);border:1px solid rgba(14,165,233,.20);border-radius:12px;padding:20px 24px;margin:24px 0;font-family:ui-monospace,'Cascadia Code','Fira Code',monospace;font-size:15px;color:#F1F5F9;text-align:center;letter-spacing:.02em}
+.formula-box span{color:#38BDF8;font-weight:700}
+
+.anti-card{background:rgba(10,22,40,.7);border:1px solid rgba(239,68,68,.14);border-radius:12px;padding:18px 20px;margin:14px 0}
+.anti-card .anti-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:#F87171;margin-bottom:6px}
+.anti-card .anti-title{font-size:15px;font-weight:700;color:#F1F5F9;margin-bottom:7px}
+.anti-card .anti-body{font-size:13px;color:rgba(255,255,255,.60);line-height:1.6}
+.anti-card .anti-fix{font-size:13px;color:#34D399;margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.06)}
+.anti-card .anti-fix::before{content:'✓ Fix: ';font-weight:700}
+
+.art-cta{background:linear-gradient(135deg,rgba(14,165,233,.13),rgba(6,182,212,.08));border:1px solid rgba(14,165,233,.22);border-radius:16px;padding:36px;text-align:center;margin:44px 0}
+.art-cta h3{font-size:22px;font-weight:800;margin-bottom:10px}
+.art-cta p{color:rgba(255,255,255,.52);font-size:15px;margin-bottom:22px;line-height:1.6}
+.art-cta a{display:inline-block;background:linear-gradient(90deg,#0EA5E9,#06B6D4);color:#fff;padding:12px 28px;border-radius:9px;font-size:14px;font-weight:700;transition:opacity .2s}
+.art-cta a:hover{opacity:.86;text-decoration:none}
+
+.art-sidebar{position:sticky;top:80px}
+.sb-card{background:rgba(10,22,40,.8);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px;margin-bottom:18px}
+.sb-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.35);margin-bottom:16px}
+.toc-list{list-style:none;padding:0}
+.toc-list li{margin-bottom:9px}
+.toc-list a{font-size:13px;color:rgba(255,255,255,.45);display:block;padding-left:10px;border-left:1px solid rgba(255,255,255,.08);line-height:1.5;transition:color .18s,border-color .18s}
+.toc-list a:hover,.toc-list a.active{color:#38BDF8;border-left-color:#0EA5E9;text-decoration:none}
+.rel-post{display:flex;gap:11px;margin-bottom:13px;align-items:flex-start}
+.rel-icon{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px}
+.rel-post a{font-size:13px;font-weight:600;color:rgba(255,255,255,.65);line-height:1.4;transition:color .2s;display:block;margin-bottom:3px}
+.rel-post a:hover{color:#38BDF8;text-decoration:none}
+.rel-cat{font-size:11px;color:rgba(255,255,255,.28)}
+
+.b-footer{background:#020810;border-top:1px solid rgba(255,255,255,.07);padding:56px 24px 32px}
+.b-footer-inner{max-width:1200px;margin:0 auto}
+.b-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.b-footer-brand p{color:rgba(255,255,255,.38);font-size:13px;line-height:1.7;margin-top:14px;max-width:230px}
+.b-footer-col h5{color:#F1F5F9;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.b-footer-col a{display:block;color:rgba(255,255,255,.38);font-size:13px;margin-bottom:9px;transition:color .2s}
+.b-footer-col a:hover{color:#38BDF8}
+.b-footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.b-footer-copy{color:rgba(255,255,255,.22);font-size:12px}
+
+@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{display:none}.b-footer-grid{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:600px){.b-nav-links{display:none}.b-nav-cta{margin-left:auto}.art-header h1{font-size:28px}.art-body{min-width:0;overflow-wrap:break-word;word-break:break-word;font-size:16px}.b-footer-grid{grid-template-columns:1fr;gap:24px}}
+
+.faq-block{margin:44px 0}
+.faq-block h2{font-size:26px;font-weight:800;color:#F1F5F9;margin-bottom:22px;letter-spacing:-.3px}
+.faq-entry{border:1px solid rgba(255,255,255,.07);border-radius:12px;margin-bottom:10px;overflow:hidden;background:rgba(10,22,40,.6)}
+.faq-entry summary{padding:17px 22px;font-size:15px;font-weight:700;color:#F1F5F9;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4}
+.faq-entry summary::-webkit-details-marker{display:none}
+.faq-entry summary::after{content:'+';color:#38BDF8;font-size:18px;font-weight:400;flex-shrink:0;transition:transform .2s}
+.faq-entry[open] summary::after{transform:rotate(45deg)}
+.faq-entry[open]{border-color:rgba(14,165,233,.24)}
+.faq-ans{padding:0 22px 18px;font-size:14px;color:rgba(255,255,255,.62);line-height:1.75}
+</style>
+</head>
+<body>
+
+<div class="prog" id="prog"></div>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4F46E5"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient><symbol id="projiq-p" viewBox="0 0 285 265"><path d="M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z" fill="url(#brand-grad)"/><rect x="0" y="65" width="60" height="12" rx="6" fill="#4F46E5"/><rect x="0" y="100" width="60" height="12" rx="6" fill="#06B6D4"/><rect x="0" y="135" width="60" height="12" rx="6" fill="#10B981"/><path d="M140 105 L160 125 L205 80" fill="none" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
+
+<nav class="b-nav">
+  <div class="b-nav-inner">
+    <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+    <div class="b-nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/" class="active">Blog</a>
+    </div>
+    <a href="https://app.projiq.app/register-org" class="b-nav-cta">Get Started Free</a>
+  </div>
+</nav>
+
+<div class="b-crumb">
+  <a href="/">Home</a><span class="b-crumb-sep">›</span>
+  <a href="/blog/">Blog</a><span class="b-crumb-sep">›</span>
+  <span>Sprint Velocity</span>
+</div>
+
+<div class="art-wrap">
+  <header class="art-header">
+    <span class="art-cat">Scrum</span>
+    <h1>Sprint Velocity: What It Is, How to Measure It, and Why It Matters</h1>
+    <div class="art-meta">
+      <span>✍ Projiq Team</span>
+      <span>📅 July 12, 2026</span>
+      <span>⏱ 10 min read</span>
+    </div>
+  </header>
+
+  <div class="art-layout">
+    <article class="art-body" id="article">
+
+      <p>Sprint velocity is one of the most watched numbers in Scrum — and one of the most abused. Teams treat it like a performance score, managers compare it across teams, and the pressure to grow it every sprint turns an honest planning tool into a game that everyone loses.</p>
+
+      <p>Velocity is a planning compass. Its only job is to tell a team how much work they can reliably commit to in the next sprint, based on what they actually finished in the last few. Used for that purpose, it makes planning more realistic and gradually replaces optimistic guessing with calibrated confidence. Used as a management lever, it produces all the behaviors — point inflation, cherry-picking, sandbagging — that make it useless for the thing it was designed to do.</p>
+
+      <p>This guide explains what velocity actually is, how to measure it correctly, what causes it to fluctuate, and — critically — what you should never use it for.</p>
+
+      <h2 id="what-is-velocity">What Is Sprint Velocity?</h2>
+
+      <p>Sprint velocity is the <strong>total story points completed by a team in a single sprint</strong>. "Completed" has a precise meaning here: an item counts only if it fully satisfies your team's <strong>Definition of Done</strong> at the end of the sprint. Partially done work — 90% finished, code-complete but not tested, done but waiting for design sign-off — contributes exactly zero to velocity.</p>
+
+      <p>That binary rule is not arbitrary. Velocity exists to create a predictable planning baseline. The moment you start crediting partial work, the number becomes disconnected from shipped output, and forecasting breaks down.</p>
+
+      <div class="formula-box">
+        <span>Velocity</span> = sum of story points of all items meeting Definition of Done at sprint end
+      </div>
+
+      <p>A few properties worth being explicit about:</p>
+
+      <ul>
+        <li><strong>Velocity is measured per sprint.</strong> One number per sprint, period.</li>
+        <li><strong>It is team-specific.</strong> Story point scales are relative and defined independently by each team. A "5" on Team A means nothing on Team B.</li>
+        <li><strong>Average velocity is your planning input.</strong> Rolling average over the last 3–5 sprints, not a single sprint or a theoretical maximum.</li>
+        <li><strong>Story points are not hours.</strong> They encode complexity, uncertainty, and effort together. Converting them to hours destroys their value.</li>
+        <li><strong>Velocity measures completed value, not activity.</strong> A sprint where the team worked hard but finished nothing has a velocity of zero.</li>
+      </ul>
+
+      <h3>Story points and velocity: the relationship</h3>
+
+      <p>Story points are relative estimates — they express how complex a piece of work is compared to a reference story the team agrees on. The most common scale is Fibonacci (1, 2, 3, 5, 8, 13, 21) because the gaps between values force honest acknowledgment that larger items are inherently harder to estimate precisely.</p>
+
+      <p>Velocity emerges naturally from consistent story point usage over time. A team that estimates honestly and tracks what they finish ends up with a velocity that reflects their actual throughput. The number doesn't need to be managed — it just needs to be measured honestly.</p>
+
+      <h2 id="how-to-calculate">How to Calculate Sprint Velocity</h2>
+
+      <p>The mechanics are simple. At the end of the sprint, look at your board. For every item in the Done column that fully satisfies your Definition of Done, record its story point value. Sum them. That's your sprint velocity.</p>
+
+      <p>The planning velocity is a rolling average of recent sprints. Most teams use 3–5 sprints. Too few and you're over-indexing on recent flukes; too many and you're including old data from when the team or codebase was different.</p>
+
+      <div class="velocity-table-wrap">
+        <table class="velocity-table">
+          <thead>
+            <tr>
+              <th>Sprint</th>
+              <th>Items Completed</th>
+              <th>Points Completed</th>
+              <th>3-Sprint Rolling Avg</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="sprint">Sprint 1</td><td>6</td><td class="pts">34</td><td class="avg">—</td></tr>
+            <tr><td class="sprint">Sprint 2</td><td>8</td><td class="pts">41</td><td class="avg">—</td></tr>
+            <tr><td class="sprint">Sprint 3</td><td>7</td><td class="pts">38</td><td class="avg">37.7</td></tr>
+            <tr><td class="sprint">Sprint 4</td><td>9</td><td class="pts">44</td><td class="avg">41.0</td></tr>
+            <tr><td class="sprint">Sprint 5</td><td>6</td><td class="pts">36</td><td class="avg">39.3</td></tr>
+            <tr><td class="sprint">Sprint 6</td><td>8</td><td class="pts">42</td><td class="avg">40.7</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>In this example, the team's planning velocity heading into Sprint 7 is approximately <strong>40 points</strong> (using a 3-sprint rolling average of Sprints 4–6). That's the number they should plan against — not 44 (their best sprint), not 34 (their worst), not 50 (what the product owner would like).</p>
+
+      <div class="tip-box">
+        <b>Calibration Tip</b>
+        For new teams without sprint history, start conservative. Estimate capacity by counting available developer-days and multiplying by a conservative points-per-day factor based on your first estimation session. After 3 real sprints, replace that estimate with actual velocity data. Don't commit to more than 70% of your guessed capacity in your first sprint.
+      </div>
+
+      <h2 id="what-good-looks-like">What "Good" Velocity Actually Looks Like</h2>
+
+      <p>The most common mistake teams make is trying to define a target velocity or compare their number to other teams. Neither is meaningful. Story point scales are team-defined and non-transferable. A team averaging 80 points per sprint is not twice as productive as a team averaging 40 — they just calibrate their scale differently.</p>
+
+      <p>Within a single team, here is what healthy velocity looks like:</p>
+
+      <ul>
+        <li><strong>Consistent:</strong> sprint-to-sprint variability of ±15–20% is normal. Variability of ±50% or more points to systemic problems — unstable team composition, chronic interrupt work, or unreliable estimation.</li>
+        <li><strong>Predictable:</strong> the team can commit to within 10–15% of average velocity and reliably deliver. Predictability is the goal, not growth.</li>
+        <li><strong>Stable for mature teams:</strong> a team that has been together for 6+ months and knows its codebase should have a relatively flat velocity. Genuine productivity gains show up as delivering higher-value work at the same velocity, not as a larger number.</li>
+        <li><strong>Growing modestly for new teams:</strong> newly formed teams will see velocity grow during the first 3–6 months as they calibrate their estimate scale and learn the codebase. This growth is real, but it levels off.</li>
+      </ul>
+
+      <blockquote>"A team with a stable velocity of 35 that consistently delivers everything they commit to is more valuable than a team with a 'growing' velocity of 60 that ships 60% of what they plan every sprint."</blockquote>
+
+      <h2 id="why-velocity-changes">Why Velocity Fluctuates Between Sprints</h2>
+
+      <p>Every experienced Scrum Master has fielded the question: "Why did our velocity drop last sprint?" The honest answer is almost always one of eight causes — most of which are expected and healthy, not alarming:</p>
+
+      <h3>1. Team composition changes</h3>
+      <p>PTO, sick leave, parental leave, new joiners, or engineers moving between teams all change the available capacity. A sprint where one of five developers is absent for three days is 12% below full capacity — and velocity should be proportionally lower. This is not a problem; it's expected. Factor it in during sprint planning.</p>
+
+      <h3>2. Estimation drift</h3>
+      <p>As teams learn more about a product domain, their intuitive sense of complexity changes. A story that was "5 points of uncertainty" early on might be "3 points of well-understood work" six months later. Recalibration is healthy but produces apparent velocity changes that have nothing to do with actual productivity. Periodic re-estimation of reference stories helps keep the scale anchored.</p>
+
+      <h3>3. Carry-over from the previous sprint</h3>
+      <p>Items that were almost done at the end of Sprint N and get finished at the start of Sprint N+1 count toward Sprint N+1's velocity, not Sprint N's. This creates a systematic low-velocity sprint followed by a high-velocity sprint for the same actual output. It's an accounting artifact, not a productivity signal.</p>
+
+      <h3>4. Unplanned interrupt work</h3>
+      <p>Production incidents, urgent customer escalations, and security patches consume capacity without appearing in the sprint plan. If your team regularly experiences interrupt work that isn't allocated for in planning, velocity will be consistently lower than planned — and the right fix is to explicitly reserve a "buffer" in each sprint for known interrupt categories, not to plan higher to compensate.</p>
+
+      <h3>5. Technical debt and infrastructure work</h3>
+      <p>Refactoring, dependency upgrades, and CI/CD improvements are typically underestimated in story points because teams instinctively calibrate complexity against feature work. Infrastructure work is often genuinely harder than its point value suggests, which depresses velocity relative to plans. The solution is better calibration, not avoidance.</p>
+
+      <h3>6. New team members ramping up</h3>
+      <p>A new engineer joining an existing team reduces velocity for 4–8 weeks during onboarding — not just their own contribution, but through the time senior engineers spend on pairing, code review, and context-sharing. This is an investment with a real payoff, but it should be planned for explicitly.</p>
+
+      <h3>7. External dependencies blocking completion</h3>
+      <p>Stories blocked by another team's API, a design review that didn't happen, or a stakeholder sign-off that was delayed don't count toward velocity even if the code is written. Blocked items are some of the most corrosive velocity signals because the team did the work but gets no credit. Surface blockers early and split work to avoid partial completion being the common case.</p>
+
+      <h3>8. Definition of Done evolving</h3>
+      <p>When a team raises the bar on their Definition of Done — adding automated tests, requiring accessibility checks, mandating documentation — the same features now take more work to complete. Velocity will temporarily drop, then stabilize at a new baseline that reflects higher-quality output. This is healthy, but the velocity drop will look alarming to anyone measuring velocity without understanding the DoD change.</p>
+
+      <div class="warn-box">
+        <b>When to Actually Worry</b>
+        A single low-velocity sprint almost never warrants concern. Two consecutive low-velocity sprints are worth a retrospective discussion. Three or more consecutive sprints trending down, with no obvious capacity or DoD explanation, signal a systemic problem: mounting technical debt, chronic interrupt work, or a team morale issue that's suppressing focus. Diagnose the root cause before adjusting the plan.
+      </div>
+
+      <h2 id="velocity-for-planning">How to Use Velocity for Sprint Planning</h2>
+
+      <p>The right use of velocity is narrow and specific: <strong>deciding how many story points to commit to in the upcoming sprint</strong>. Everything else is a misuse.</p>
+
+      <h3>The basic planning formula</h3>
+
+      <p>Start with your rolling average velocity (last 3–5 sprints). Adjust for known capacity changes. That's your sprint commitment target.</p>
+
+      <div class="formula-box">
+        Adjusted target = (<span>available team-days</span> / <span>full-capacity team-days</span>) × <span>avg velocity</span>
+      </div>
+
+      <p><strong>Example:</strong> Your team of 5 engineers averages 48 points at full capacity (10 working days each = 50 team-days). Next sprint, one engineer is on PTO for 4 days. Available capacity = 46 team-days. Adjusted target = (46 / 50) × 48 = <strong>44 points</strong>.</p>
+
+      <p>Pull stories from the top of the prioritized backlog until you reach that target. Stop there. Do not fill up to the maximum because the sprint feels "light" — the point of velocity-based planning is to commit to what you can reliably deliver, not to maximize utilization.</p>
+
+      <h3>Forecasting future releases</h3>
+
+      <p>Velocity also enables release forecasting: if a feature set has been estimated at 200 story points and your team's average velocity is 40 points, you can forecast approximately 5 sprints (10 weeks for 2-week sprints) to complete it. Add a confidence interval based on velocity variability — if your velocity ranges from 34 to 48, your range is 4–6 sprints.</p>
+
+      <p>This kind of probabilistic forecasting is far more honest than "we'll be done in 10 weeks" — it communicates the range of likely outcomes rather than false precision.</p>
+
+      <div class="tip-box">
+        <b>Leave a Buffer</b>
+        A practical rule: never plan to more than 85–90% of your average velocity. The remaining 10–15% absorbs unexpected complexity, small interruptions, and the natural variance in how stories play out versus how they were estimated. Teams that plan to 100% of average velocity miss their commitment roughly half the time — because average means half the sprints were below it.
+      </div>
+
+      <p>Good sprint planning goes hand-in-hand with well-written, consistently sized user stories. If your story points are inconsistent because stories themselves aren't well-scoped, velocity loses its forecasting value. See our guide on <a href="/blog/how-to-write-user-stories/">how to write user stories with consistent sizing</a> for the foundation that makes velocity reliable.</p>
+
+      <h2 id="anti-patterns">Velocity Anti-Patterns to Avoid</h2>
+
+      <p>The following patterns are common, tempting, and corrosive. Each one makes velocity progressively less useful as a planning tool.</p>
+
+      <div class="anti-card">
+        <div class="anti-label">Anti-Pattern 1</div>
+        <div class="anti-title">Managing to the velocity number</div>
+        <div class="anti-body">Setting a target velocity ("we need to hit 60 points this sprint") and measuring team performance against it. This immediately incentivizes point inflation — teams start estimating stories higher to hit the number without doing more work. Within a few sprints, the metric is meaningless.</div>
+        <div class="anti-fix">Use velocity to inform planning, not to evaluate performance. If you want to measure performance, use outcome metrics like feature adoption, customer NPS, or bug escape rate.</div>
+      </div>
+
+      <div class="anti-card">
+        <div class="anti-label">Anti-Pattern 2</div>
+        <div class="anti-title">Comparing velocity across teams</div>
+        <div class="anti-body">Team A averages 55 points; Team B averages 35. Team B must be underperforming. This conclusion is almost certainly wrong — the teams have different story point scales, different domain complexity, different codebase ages. Cross-team velocity comparison is meaningless by construction.</div>
+        <div class="anti-fix">If you need to compare team productivity, use throughput (items per sprint) or outcome metrics. Even then, context matters: a team working on legacy infrastructure will always look "slower" than a team building new features on clean APIs.</div>
+      </div>
+
+      <div class="anti-card">
+        <div class="anti-label">Anti-Pattern 3</div>
+        <div class="anti-title">Counting partially done work</div>
+        <div class="anti-body">"We're 90% done — let's count it as 80% of the points." This breaks the binary rule that makes velocity a reliable baseline. If partial work counts, teams will consistently over-report velocity and under-deliver against commitments.</div>
+        <div class="anti-fix">Items either meet the Definition of Done or they don't. Carry unfinished work to the next sprint and count it there when it's actually done. This creates an honest record of what was actually shipped.</div>
+      </div>
+
+      <div class="anti-card">
+        <div class="anti-label">Anti-Pattern 4</div>
+        <div class="anti-title">Growing velocity as a success metric</div>
+        <div class="anti-body">Treating "velocity increased 20% this quarter" as evidence that the team is more productive. Velocity can grow for three reasons: the team is doing more work, the team is estimating higher, or the team is pulling easier stories. Only the first is genuine productivity growth, and you can't tell which is happening from velocity alone.</div>
+        <div class="anti-fix">Celebrate delivering high-value outcomes, not growing a number. If velocity grows while shipping quality features that move business metrics, that's worth noting. If velocity grows while customer satisfaction stagnates, look at what changed.</div>
+      </div>
+
+      <div class="anti-card">
+        <div class="anti-label">Anti-Pattern 5</div>
+        <div class="anti-title">Cherry-picking stories to protect velocity</div>
+        <div class="anti-body">Pulling smaller, "safe" stories into the sprint specifically to ensure a high velocity number, while deprioritizing the valuable but risky work that the product actually needs. This produces a team with high velocity and low impact.</div>
+        <div class="anti-fix">Prioritize by value, not by story size. If the most important item this sprint is a complex 13-point story, pull it regardless of what it does to your velocity number. Use sprint retrospectives to learn from complexity surprises rather than avoiding them.</div>
+      </div>
+
+      <p>The sprint retrospective is the right place to surface velocity anti-patterns before they become cultural norms. See our <a href="/blog/sprint-retrospective-templates/">sprint retrospective templates</a> for structured formats that surface these dynamics without blame.</p>
+
+      <h2 id="vs-other-metrics">Velocity vs. Throughput vs. Cycle Time</h2>
+
+      <p>Velocity is one of three common engineering productivity metrics — and it's worth being precise about what each one measures, because they answer different questions.</p>
+
+      <div class="cmp-table-wrap">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Definition</th>
+              <th>Unit</th>
+              <th>Best for</th>
+              <th>Limitation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Velocity</td>
+              <td>Story points completed per sprint</td>
+              <td>Points / sprint</td>
+              <td>Sprint capacity planning, release forecasting</td>
+              <td>Non-comparable across teams; depends on estimation discipline</td>
+            </tr>
+            <tr>
+              <td>Throughput</td>
+              <td>Number of items completed per sprint</td>
+              <td>Items / sprint</td>
+              <td>Simpler alternative when story points aren't used; consistent item sizing helps</td>
+              <td>Doesn't account for item complexity; a sprint of 10 trivial bugs looks the same as 10 major features</td>
+            </tr>
+            <tr>
+              <td>Cycle Time</td>
+              <td>Time from "In Progress" to "Done" per item</td>
+              <td>Days / item</td>
+              <td>Identifying bottlenecks, improving flow, detecting WIP accumulation</td>
+              <td>Doesn't capture team-level output; a fast cycle time on low-value items is still low value</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>These metrics complement rather than replace each other. Velocity tells you what to plan; throughput tells you how many items flow through; cycle time tells you where items are getting stuck. Engineering teams that track all three have a much richer picture of how work is actually moving than teams that fixate on velocity alone.</p>
+
+      <p>For teams wanting a deeper data-driven view of engineering performance, <a href="/blog/dora-metrics/">DORA metrics</a> add a fourth lens — deployment frequency, lead time, change failure rate, and MTTR — that velocity and throughput don't capture at all.</p>
+
+      <p>And for understanding how velocity fits into the full Scrum operating model — including how to structure the planning sessions that use velocity as an input — see our deep dive on <a href="/blog/agile-vs-scrum/">Agile vs. Scrum</a> for the conceptual foundation.</p>
+
+      <div class="art-cta">
+        <h3>Track velocity automatically in Projiq</h3>
+        <p>Projiq calculates sprint velocity from your board in real time — no spreadsheets, no manual counting. See your rolling average, plan your next sprint with confidence, and spot velocity trends before they become problems.</p>
+        <a href="https://app.projiq.app/register-org">Start Free — No Credit Card Required</a>
+      </div>
+
+      <div class="faq-block">
+        <h2 id="faq">Frequently Asked Questions</h2>
+
+        <details class="faq-entry">
+          <summary>What is sprint velocity in Scrum?</summary>
+          <div class="faq-ans">Sprint velocity is the total story points completed by a Scrum team in a single sprint — counting only items that fully satisfy the Definition of Done. It's tracked over multiple sprints and averaged to produce a planning velocity: the number a team uses to decide how much work to commit to in the next sprint. Velocity is a planning tool, not a performance score.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What is a good sprint velocity?</summary>
+          <div class="faq-ans">There is no universal good velocity — story point scales are defined per team and cannot be compared across teams. Within a single team, good velocity looks like consistency (±20% sprint-to-sprint variance), predictability (reliably within 10–15% of average), and stability for mature teams. A team averaging 35 points and consistently delivering everything they plan is more effective than a team averaging 60 that routinely misses commitments.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>How many sprints does it take to establish velocity?</summary>
+          <div class="faq-ans">Most practitioners recommend 3–5 completed sprints before treating velocity as a reliable planning input. Sprint 1 is almost always an outlier — teams are calibrating their story point scale and learning the work context. By Sprint 3 or 4, most teams have enough data for a useful baseline. If you must plan before 3 sprints, add a 30–40% buffer to whatever you estimate as initial capacity.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>Should sprint velocity increase every sprint?</summary>
+          <div class="faq-ans">No. Consistent, predictable velocity is more valuable than growing velocity. Pressure to increase velocity every sprint reliably produces inflation, cherry-picking, and sandbagging — all of which make the metric useless. New teams will see natural growth during the first few months as estimation calibrates and the codebase becomes familiar. Mature teams should expect roughly flat velocity. Real productivity gains show up as higher-impact outcomes at the same velocity, not a larger number.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>Can you compare sprint velocity between teams?</summary>
+          <div class="faq-ans">No — and attempting it is one of the most destructive Scrum anti-patterns. Story point scales are defined independently by each team. A 5-point story on Team A might represent two days of work; on Team B it might be half a day. The numbers carry no shared meaning across teams. Cross-team velocity comparison reliably triggers score inflation and sandbagging in whichever team "loses" the comparison.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What is the difference between velocity and capacity?</summary>
+          <div class="faq-ans">Capacity is the raw available time your team has in a sprint, usually expressed in developer-days. It changes every sprint based on PTO, holidays, and team size changes. Velocity is the historical track record of story points completed per sprint — your stable baseline. The two work together: take your average velocity, adjust it proportionally for any capacity difference from the baseline sprint, and that's your target commitment for the upcoming sprint.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What should you do when velocity drops suddenly?</summary>
+          <div class="faq-ans">Diagnose before reacting. A single low-velocity sprint is rarely a crisis — check for unplanned interrupt work, team absence, carry-over from the previous sprint, or unusual complexity. Use the sprint retrospective to surface the real cause. If velocity drops for 2–3 consecutive sprints with no obvious capacity explanation, investigate systemic causes: technical debt accumulation, chronic interrupt work, estimation drift, or morale issues. Never respond to a velocity drop by pressuring the team to work faster — that treats a symptom while the cause continues.</div>
+        </details>
+      </div>
+
+    </article>
+
+    <aside class="art-sidebar">
+      <div class="sb-card">
+        <h4>Table of Contents</h4>
+        <ul class="toc-list">
+          <li><a href="#what-is-velocity">What Is Sprint Velocity?</a></li>
+          <li><a href="#how-to-calculate">How to Calculate It</a></li>
+          <li><a href="#what-good-looks-like">What Good Velocity Looks Like</a></li>
+          <li><a href="#why-velocity-changes">Why Velocity Fluctuates</a></li>
+          <li><a href="#velocity-for-planning">Using Velocity for Planning</a></li>
+          <li><a href="#anti-patterns">Anti-Patterns to Avoid</a></li>
+          <li><a href="#vs-other-metrics">Velocity vs. Other Metrics</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="sb-card">
+        <h4>Related Posts</h4>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(139,92,246,.12);">🔄</div>
+          <div>
+            <a href="/blog/agile-vs-scrum/">Agile vs Scrum: Complete Guide</a>
+            <span class="rel-cat">Agile</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(16,185,129,.12);">🏃</div>
+          <div>
+            <a href="/blog/sprint-retrospective-templates/">Sprint Retrospective Templates</a>
+            <span class="rel-cat">Scrum</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(99,102,241,.12);">📈</div>
+          <div>
+            <a href="/blog/dora-metrics/">DORA Metrics Explained</a>
+            <span class="rel-cat">Productivity</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="b-footer">
+  <div class="b-footer-inner">
+    <div class="b-footer-grid">
+      <div class="b-footer-brand">
+        <a href="/" class="b-logo"><svg class="b-logo-mark" width="24" height="22" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+        <p>Modern project management for engineering teams. Built for speed, clarity, and developer workflow.</p>
+      </div>
+      <div class="b-footer-col">
+        <h5>Blog</h5>
+        <a href="/blog/agile-vs-scrum/">Agile vs Scrum</a>
+        <a href="/blog/kanban-vs-scrum/">Kanban vs Scrum</a>
+        <a href="/blog/jira-vs-linear/">Jira vs Linear</a>
+        <a href="/blog/sprint-retrospective-templates/">Retro Templates</a>
+        <a href="/blog/how-to-write-user-stories/">User Stories</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Alternatives</h5>
+        <a href="/jira-alternative/">Jira Alternative</a>
+        <a href="/linear-alternative/">Linear Alternative</a>
+        <a href="/asana-alternative/">Asana Alternative</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Product</h5>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="https://app.projiq.app/register-org">Get Started</a>
+      </div>
+    </div>
+    <div class="b-footer-bottom">
+      <span class="b-footer-copy">© 2026 Projiq. All rights reserved.</span>
+      <span class="b-footer-copy">Built for engineering teams that ship.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var prog=document.getElementById('prog');
+  function update(){
+    var st=window.scrollY;
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    prog.style.width=(h>0?Math.min(100,st/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  var links=document.querySelectorAll('.toc-list a');
+  var headings=document.querySelectorAll('#article h2[id]');
+  function highlight(){
+    var st=window.scrollY+80;
+    var active=null;
+    headings.forEach(function(h){if(h.offsetTop<=st)active=h.id;});
+    links.forEach(function(a){
+      a.classList.toggle('active',a.getAttribute('href')==='#'+active);
+    });
+  }
+  window.addEventListener('scroll',highlight,{passive:true});
+  highlight();
+})();
+</script>
+</body>
+</html>

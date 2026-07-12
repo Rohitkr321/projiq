@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Engineering Team Structures: Squads, Tribes, and Guilds Explained (2026) | Projiq Blog</title>
+<meta name="description" content="Squads, tribes, guilds, stream-aligned teams, platform teams — what they mean, when each model works, and how to avoid the restructuring mistakes that slow teams down instead of speeding them up.">
+<link rel="canonical" href="https://projiq.app/blog/engineering-team-structure/">
+<meta property="og:title" content="Engineering Team Structures: Squads, Tribes, and Guilds Explained (2026)">
+<meta property="og:description" content="Squads, tribes, guilds, stream-aligned teams — what each model means, which one fits your stage, and the restructuring mistakes that slow teams down instead of speeding them up.">
+<meta property="og:image" content="https://projiq.app/og.png">
+<meta property="og:url" content="https://projiq.app/blog/engineering-team-structure/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-12">
+<meta property="article:author" content="Projiq Team">
+<meta property="article:section" content="Engineering">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Engineering Team Structures: Squads, Tribes, Guilds Explained (2026)">
+<meta name="twitter:image" content="https://projiq.app/og.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/favicon-192.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Engineering Team Structures: Squads, Tribes, and Guilds Explained (2026)","description":"Squads, tribes, guilds, stream-aligned teams — what each model means, which one fits your stage, and the restructuring mistakes that slow teams down.","author":{"@type":"Organization","name":"Projiq"},"publisher":{"@type":"Organization","name":"Projiq","logo":{"@type":"ImageObject","url":"https://projiq.app/favicon-192.png"}},"datePublished":"2026-07-12","dateModified":"2026-07-12","mainEntityOfPage":{"@type":"WebPage","@id":"https://projiq.app/blog/engineering-team-structure/"},"image":"https://projiq.app/og.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://projiq.app"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://projiq.app/blog/"},{"@type":"ListItem","position":3,"name":"Engineering Team Structure","item":"https://projiq.app/blog/engineering-team-structure/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a squad in engineering?","acceptedAnswer":{"@type":"Answer","text":"A squad is a small, cross-functional, autonomous team — typically 6–10 people — that owns a specific product area or user journey end-to-end. The squad contains all the roles needed to design, build, test, and ship: engineers, a product manager, and often a designer. The concept was popularized by Spotify's engineering model but has been adopted widely across the industry. Squads operate like small startups: they set their own goals, choose their own tools, and are accountable for outcomes in their domain."}},{"@type":"Question","name":"What is the Spotify model?","acceptedAnswer":{"@type":"Answer","text":"The Spotify model is an organizational structure for scaling engineering teams that groups people into four units: Squads (small cross-functional teams owning a product area), Tribes (collections of squads working in related areas, typically under 150 people), Chapters (groups of people with the same skill — all iOS engineers, all QA engineers — that span squads within a tribe), and Guilds (informal, company-wide communities of interest around a topic like security or accessibility). Spotify themselves have noted that the model evolved significantly from its published form, and it should be treated as inspiration rather than a blueprint to copy exactly."}},{"@type":"Question","name":"What is the difference between a chapter and a guild?","acceptedAnswer":{"@type":"Answer","text":"A Chapter is a formal structure within a tribe — all engineers with the same specialty (e.g., all backend engineers in the Payments tribe) who report to a Chapter Lead and meet regularly for skill development and practice alignment. Chapters are bounded within a tribe. A Guild is an informal, self-organizing community of interest that spans the entire company — anyone interested in a topic (machine learning, accessibility, API design) can join. Guilds have no formal authority or reporting structure; they exist purely for knowledge sharing and cross-team alignment."}},{"@type":"Question","name":"What are Team Topologies?","acceptedAnswer":{"@type":"Answer","text":"Team Topologies is a framework for organizing engineering teams by Matthew Skelton and Manuel Pais (published 2019). It defines four fundamental team types: Stream-aligned teams (own an end-to-end product or service stream, the most common type), Platform teams (build and maintain internal platforms that other teams consume), Enabling teams (temporary teams that help stream-aligned teams adopt new capabilities), and Complicated-subsystem teams (own a part of the system requiring deep specialist knowledge). The framework also defines three interaction modes between teams: Collaboration, X-as-a-Service, and Facilitating."}},{"@type":"Question","name":"How many engineers should be in a squad?","acceptedAnswer":{"@type":"Answer","text":"Most practitioners recommend 5–8 engineers per squad, based on research into team cognitive load and communication overhead. Jeff Bezos's 'two-pizza rule' (a team that can be fed with two pizzas) suggests 6–8 people. Above 10 people, coordination overhead starts to compound and the team's ability to act autonomously degrades. Below 4 engineers, the squad lacks resilience to absences and may struggle to handle the full breadth of work in its domain without constant external help."}},{"@type":"Question","name":"When should a startup switch from functional teams to product squads?","acceptedAnswer":{"@type":"Answer","text":"The typical inflection point is around 15–25 engineers. Below 15, a single cross-functional team or simple functional split works fine — the communication overhead of maintaining squad boundaries isn't worth it at that scale. Above 25, a flat functional structure creates too many dependencies and bottlenecks. The most reliable signal that it's time to restructure is when work regularly stalls because multiple teams need to coordinate changes to the same part of the system — that coordination cost is what squad autonomy is designed to eliminate."}},{"@type":"Question","name":"What is Conway's Law and why does it matter for team structure?","acceptedAnswer":{"@type":"Answer","text":"Conway's Law (1967) states that organizations design systems that mirror their own communication structures. In practice, this means if your backend team and frontend team are separate organizations with their own managers and roadmaps, your architecture will develop a strong backend-frontend boundary — whether that's the right technical design or not. The inverse — sometimes called the 'Inverse Conway Maneuver' — is to design your team structure around the architecture you want, not the one you have. If you want a microservices architecture with independent deployability, structure your teams so each one owns a specific service end-to-end."}},{"@type":"Question","name":"Should platform teams charge other teams for their services?","acceptedAnswer":{"@type":"Answer","text":"Internal chargeback models for platform teams are rarely effective at the scales most companies operate. When platform teams 'charge' stream-aligned teams for their infrastructure, it creates adversarial dynamics, discourages adoption of platform capabilities, and generates accounting overhead without meaningful accountability. Most successful platform teams operate on a product model instead: they treat stream-aligned teams as customers, measure developer satisfaction and adoption as their KPIs, and iterate on their offerings based on those signals — not internal billing cycles."}}]}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#030812;color:#F1F5F9;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+.prog{position:fixed;top:60px;left:0;height:3px;background:linear-gradient(90deg,#F97316,#FB923C);width:0;z-index:300;transition:width .08s linear}
+
+.b-nav{position:sticky;top:0;z-index:200;background:rgba(3,8,18,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)}
+.b-nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center}
+.b-logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;color:#F1F5F9;flex-shrink:0}
+.b-logo-mark{flex-shrink:0;display:block;}.b-dot-app{color:#06B6D4;}
+.b-nav-links{display:flex;gap:28px;margin-left:auto;margin-right:28px}
+.b-nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
+.b-nav-links a:hover,.b-nav-links a.active{color:#F1F5F9}
+.b-nav-cta{background:linear-gradient(90deg,#F97316,#FB923C);color:#fff;padding:8px 20px;border-radius:9px;font-size:13px;font-weight:700;flex-shrink:0;transition:opacity .2s}
+.b-nav-cta:hover{opacity:.86}
+
+.b-crumb{max-width:1200px;margin:0 auto;padding:28px 24px 0;display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.35);flex-wrap:wrap}
+.b-crumb a{color:rgba(255,255,255,.38);transition:color .2s}
+.b-crumb a:hover{color:#FB923C}
+.b-crumb-sep{color:rgba(255,255,255,.18)}
+
+.art-wrap{max-width:1200px;margin:0 auto;padding:32px 24px 0}
+.art-header{margin-bottom:44px}
+.art-cat{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;background:rgba(249,115,22,.11);border:1px solid rgba(249,115,22,.26);color:#FB923C;margin-bottom:18px}
+.art-header h1{font-size:clamp(30px,4.5vw,50px);font-weight:900;line-height:1.15;letter-spacing:-1px;margin-bottom:22px}
+.art-meta{display:flex;align-items:center;gap:22px;color:rgba(255,255,255,.35);font-size:13px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap}
+
+.art-layout{display:grid;grid-template-columns:1fr 300px;gap:60px;align-items:start}
+
+.art-body{min-width:0;overflow-wrap:break-word;word-break:break-word;font-size:17px;line-height:1.80;color:rgba(255,255,255,.78);padding-bottom:60px}
+.art-body p{margin-bottom:22px}
+.art-body h2{font-size:26px;font-weight:800;color:#F1F5F9;margin:48px 0 16px;letter-spacing:-.3px;line-height:1.3}
+.art-body h3{font-size:19px;font-weight:700;color:#F1F5F9;margin:28px 0 12px;letter-spacing:-.1px}
+.art-body ul,.art-body ol{margin:0 0 22px 22px}
+.art-body li{margin-bottom:9px;color:rgba(255,255,255,.72)}
+.art-body ul li::marker{color:#F97316}
+.art-body ol li::marker{color:#FB923C;font-weight:700}
+.art-body strong{color:#F1F5F9;font-weight:700}
+.art-body a{color:#FB923C;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(251,146,60,.4);transition:text-decoration-color .2s}
+.art-body a:hover{text-decoration-color:#FB923C}
+blockquote{border-left:3px solid #F97316;padding:16px 22px;background:rgba(249,115,22,.06);border-radius:0 10px 10px 0;margin:28px 0;font-style:italic;color:rgba(255,255,255,.72);font-size:16px}
+.tip-box{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.tip-box b{color:#34D399;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.warn-box{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.warn-box b{color:#FBBF24;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+
+.cmp-table-wrap{overflow-x:auto;margin:28px 0;border-radius:12px;border:1px solid rgba(255,255,255,.07)}
+.cmp-table{width:100%;border-collapse:collapse;font-size:14px;min-width:580px}
+.cmp-table th{background:rgba(249,115,22,.10);color:#FB923C;padding:12px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.cmp-table th:first-child{color:rgba(255,255,255,.45)}
+.cmp-table td{padding:12px 16px;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.68);vertical-align:top;line-height:1.5}
+.cmp-table td:first-child{color:rgba(255,255,255,.45);font-weight:600;white-space:nowrap;font-size:13px}
+.cmp-table tr:hover td{background:rgba(255,255,255,.02)}
+
+.unit-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+.unit-card{background:rgba(10,22,40,.7);border:1px solid rgba(249,115,22,.14);border-radius:12px;padding:18px 20px}
+.unit-card .unit-name{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:#FB923C;margin-bottom:4px}
+.unit-card .unit-title{font-size:16px;font-weight:700;color:#F1F5F9;margin-bottom:8px}
+.unit-card .unit-desc{font-size:13px;color:rgba(255,255,255,.58);line-height:1.6}
+.unit-card .unit-size{display:inline-block;margin-top:10px;font-size:11px;font-weight:700;background:rgba(249,115,22,.10);border:1px solid rgba(249,115,22,.20);border-radius:100px;padding:2px 10px;color:#FB923C}
+
+.tt-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+.tt-card{background:rgba(10,22,40,.7);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:18px 20px}
+.tt-card .tt-badge{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;border-radius:100px;padding:2px 8px;display:inline-block;margin-bottom:8px}
+.tt-card.stream .tt-badge{background:rgba(16,185,129,.12);color:#34D399;border:1px solid rgba(16,185,129,.22)}
+.tt-card.platform .tt-badge{background:rgba(99,102,241,.12);color:#818CF8;border:1px solid rgba(99,102,241,.22)}
+.tt-card.enabling .tt-badge{background:rgba(14,165,233,.12);color:#38BDF8;border:1px solid rgba(14,165,233,.22)}
+.tt-card.subsystem .tt-badge{background:rgba(245,158,11,.12);color:#FBBF24;border:1px solid rgba(245,158,11,.22)}
+.tt-card .tt-name{font-size:15px;font-weight:700;color:#F1F5F9;margin-bottom:7px}
+.tt-card .tt-desc{font-size:13px;color:rgba(255,255,255,.58);line-height:1.6}
+.tt-card .tt-ex{font-size:12px;color:rgba(255,255,255,.35);margin-top:8px;font-style:italic}
+
+.stage-table-wrap{overflow-x:auto;margin:24px 0;border-radius:12px;border:1px solid rgba(255,255,255,.07)}
+.stage-table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px}
+.stage-table th{background:rgba(249,115,22,.08);color:#FB923C;padding:11px 14px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;text-align:left}
+.stage-table td{padding:11px 14px;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.68);vertical-align:top;line-height:1.5;font-size:13px}
+.stage-table td:first-child{color:rgba(255,255,255,.90);font-weight:700;font-size:13px;white-space:nowrap}
+.stage-table tr:hover td{background:rgba(255,255,255,.02)}
+
+.art-cta{background:linear-gradient(135deg,rgba(249,115,22,.13),rgba(251,146,60,.08));border:1px solid rgba(249,115,22,.22);border-radius:16px;padding:36px;text-align:center;margin:44px 0}
+.art-cta h3{font-size:22px;font-weight:800;margin-bottom:10px}
+.art-cta p{color:rgba(255,255,255,.52);font-size:15px;margin-bottom:22px;line-height:1.6}
+.art-cta a{display:inline-block;background:linear-gradient(90deg,#F97316,#FB923C);color:#fff;padding:12px 28px;border-radius:9px;font-size:14px;font-weight:700;transition:opacity .2s}
+.art-cta a:hover{opacity:.86;text-decoration:none}
+
+.art-sidebar{position:sticky;top:80px}
+.sb-card{background:rgba(10,22,40,.8);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px;margin-bottom:18px}
+.sb-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.35);margin-bottom:16px}
+.toc-list{list-style:none;padding:0}
+.toc-list li{margin-bottom:9px}
+.toc-list a{font-size:13px;color:rgba(255,255,255,.45);display:block;padding-left:10px;border-left:1px solid rgba(255,255,255,.08);line-height:1.5;transition:color .18s,border-color .18s}
+.toc-list a:hover,.toc-list a.active{color:#FB923C;border-left-color:#F97316;text-decoration:none}
+.rel-post{display:flex;gap:11px;margin-bottom:13px;align-items:flex-start}
+.rel-icon{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px}
+.rel-post a{font-size:13px;font-weight:600;color:rgba(255,255,255,.65);line-height:1.4;transition:color .2s;display:block;margin-bottom:3px}
+.rel-post a:hover{color:#FB923C;text-decoration:none}
+.rel-cat{font-size:11px;color:rgba(255,255,255,.28)}
+
+.b-footer{background:#020810;border-top:1px solid rgba(255,255,255,.07);padding:56px 24px 32px}
+.b-footer-inner{max-width:1200px;margin:0 auto}
+.b-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.b-footer-brand p{color:rgba(255,255,255,.38);font-size:13px;line-height:1.7;margin-top:14px;max-width:230px}
+.b-footer-col h5{color:#F1F5F9;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.b-footer-col a{display:block;color:rgba(255,255,255,.38);font-size:13px;margin-bottom:9px;transition:color .2s}
+.b-footer-col a:hover{color:#FB923C}
+.b-footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.b-footer-copy{color:rgba(255,255,255,.22);font-size:12px}
+
+@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{display:none}.unit-grid{grid-template-columns:1fr}.tt-grid{grid-template-columns:1fr}.b-footer-grid{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:600px){.b-nav-links{display:none}.b-nav-cta{margin-left:auto}.art-header h1{font-size:28px}.art-body{min-width:0;overflow-wrap:break-word;word-break:break-word;font-size:16px}.b-footer-grid{grid-template-columns:1fr;gap:24px}}
+
+.faq-block{margin:44px 0}
+.faq-block h2{font-size:26px;font-weight:800;color:#F1F5F9;margin-bottom:22px;letter-spacing:-.3px}
+.faq-entry{border:1px solid rgba(255,255,255,.07);border-radius:12px;margin-bottom:10px;overflow:hidden;background:rgba(10,22,40,.6)}
+.faq-entry summary{padding:17px 22px;font-size:15px;font-weight:700;color:#F1F5F9;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4}
+.faq-entry summary::-webkit-details-marker{display:none}
+.faq-entry summary::after{content:'+';color:#FB923C;font-size:18px;font-weight:400;flex-shrink:0;transition:transform .2s}
+.faq-entry[open] summary::after{transform:rotate(45deg)}
+.faq-entry[open]{border-color:rgba(249,115,22,.24)}
+.faq-ans{padding:0 22px 18px;font-size:14px;color:rgba(255,255,255,.62);line-height:1.75}
+</style>
+</head>
+<body>
+
+<div class="prog" id="prog"></div>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4F46E5"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient><symbol id="projiq-p" viewBox="0 0 285 265"><path d="M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z" fill="url(#brand-grad)"/><rect x="0" y="65" width="60" height="12" rx="6" fill="#4F46E5"/><rect x="0" y="100" width="60" height="12" rx="6" fill="#06B6D4"/><rect x="0" y="135" width="60" height="12" rx="6" fill="#10B981"/><path d="M140 105 L160 125 L205 80" fill="none" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
+
+<nav class="b-nav">
+  <div class="b-nav-inner">
+    <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+    <div class="b-nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/" class="active">Blog</a>
+    </div>
+    <a href="https://app.projiq.app/register-org" class="b-nav-cta">Get Started Free</a>
+  </div>
+</nav>
+
+<div class="b-crumb">
+  <a href="/">Home</a><span class="b-crumb-sep">›</span>
+  <a href="/blog/">Blog</a><span class="b-crumb-sep">›</span>
+  <span>Engineering Team Structure</span>
+</div>
+
+<div class="art-wrap">
+  <header class="art-header">
+    <span class="art-cat">Engineering</span>
+    <h1>Engineering Team Structures: Squads, Tribes, and Guilds Explained</h1>
+    <div class="art-meta">
+      <span>✍ Projiq Team</span>
+      <span>📅 July 12, 2026</span>
+      <span>⏱ 11 min read</span>
+    </div>
+  </header>
+
+  <div class="art-layout">
+    <article class="art-body" id="article">
+
+      <p>How you organize your engineering teams is one of the highest-leverage decisions a growing tech company makes — and one of the least reversible. Get it right and teams ship independently, communication is cheap, and ownership is clear. Get it wrong and you end up with a coordination tax that compounds every quarter: every feature needs four teams, every decision needs three meetings, and no one is quite sure who owns the broken thing in production.</p>
+
+      <p>The vocabulary has exploded in recent years. Squads, tribes, guilds, chapters, stream-aligned teams, platform teams, enabling teams — each term comes from a specific model with specific assumptions about how organizations should work. This guide cuts through the terminology to explain what each model actually means, where it works, where it fails, and how to avoid the most common restructuring trap: copying Spotify's org chart without understanding the culture and constraints that made it work for Spotify.</p>
+
+      <h2 id="why-structure-matters">Why Team Structure Is an Architectural Decision</h2>
+
+      <p>Conway's Law (1967) states that organizations design systems that mirror their own communication structures. If your backend team and your frontend team are separate departments with separate managers and separate roadmaps, your system will develop a strong backend-frontend boundary — regardless of whether that's the right technical design. The split will show up in your APIs, your deployment pipelines, and your incident response.</p>
+
+      <p>This cuts both ways. The <strong>Inverse Conway Maneuver</strong> — deliberately designing your team structure around the architecture you want — is one of the most powerful tools available to engineering leaders. Before you restructure, ask: what system boundaries and ownership model are we trying to create? The team structure should follow that answer, not precede it.</p>
+
+      <blockquote>"Any organization that designs a system will produce a design whose structure is a copy of the organization's communication structure." — Melvin Conway, 1967</blockquote>
+
+      <p>Team structure also sets the upper bound on cognitive load. Each team can only hold so much context — about the codebase they own, the customers they serve, the systems they depend on. When a team's ownership domain grows too large, delivery slows because engineers spend more time context-switching than building. When it's too narrow, teams spend all their time coordinating with other teams rather than shipping autonomously. Structure is fundamentally a cognitive load management problem.</p>
+
+      <h2 id="spotify-model">The Spotify Model: Squads, Tribes, Chapters, and Guilds</h2>
+
+      <p>The Spotify model emerged from a 2012 blog post by Henrik Kniberg and Anders Ivarsson describing how Spotify organized its engineering teams at the time. It became enormously influential — and enormously misapplied. Understanding it requires understanding what it actually says, what it doesn't say, and how Spotify itself has evolved away from it.</p>
+
+      <h3>The four units</h3>
+
+      <div class="unit-grid">
+        <div class="unit-card">
+          <div class="unit-name">Primary Unit</div>
+          <div class="unit-title">Squad</div>
+          <div class="unit-desc">A small, cross-functional, autonomous team owning a specific product area or user journey end-to-end. Contains all the skills needed to design, build, test, and operate its domain without external dependencies.</div>
+          <span class="unit-size">5–10 people</span>
+        </div>
+        <div class="unit-card">
+          <div class="unit-name">Group of Squads</div>
+          <div class="unit-title">Tribe</div>
+          <div class="unit-desc">A collection of squads working on related areas of the product, under a Tribe Lead. Tribes are bounded by Dunbar's number — the cognitive limit on the number of people with whom one can maintain stable social relationships.</div>
+          <span class="unit-size">40–150 people</span>
+        </div>
+        <div class="unit-card">
+          <div class="unit-name">Skill Community</div>
+          <div class="unit-title">Chapter</div>
+          <div class="unit-desc">A formal group of people with the same specialty (all iOS engineers, all data engineers) within a tribe. The Chapter Lead is a line manager for chapter members and is responsible for skill development and practice standards.</div>
+          <span class="unit-size">3–12 people</span>
+        </div>
+        <div class="unit-card">
+          <div class="unit-name">Interest Community</div>
+          <div class="unit-title">Guild</div>
+          <div class="unit-desc">An informal, self-organizing community of interest that spans the entire company — anyone can join. No formal authority or reporting structure. Exists purely for knowledge sharing, cross-squad alignment, and advancing a topic company-wide.</div>
+          <span class="unit-size">Any size</span>
+        </div>
+      </div>
+
+      <h3>The autonomy-alignment tension</h3>
+
+      <p>The core idea the Spotify model tries to solve is the tension between autonomy and alignment. Squads need autonomy to move fast and make local decisions without bottlenecks. But complete autonomy produces incoherence — squads that drift in different technical directions, duplicate each other's work, or solve the same problem five different ways.</p>
+
+      <p>Chapters and guilds are the alignment mechanisms. Chapters ensure practice standards (coding standards, security practices, testing requirements) propagate across squads without becoming central mandates. Guilds create informal networks that spread knowledge and surface cross-squad concerns before they become production incidents.</p>
+
+      <h3>What Spotify didn't publish — and later acknowledged</h3>
+
+      <p>The 2012 blog post was a snapshot of a specific moment in Spotify's growth, not a prescriptive playbook. Several things worth knowing:</p>
+
+      <ul>
+        <li>Squads frequently failed to achieve true autonomy in practice — most features touched multiple squads, requiring significant cross-squad coordination.</li>
+        <li>Chapter Leads holding both line management and technical leadership responsibilities created role confusion that many organizations never resolved cleanly.</li>
+        <li>Spotify themselves have significantly evolved their structure since 2012 and have explicitly noted that the model shouldn't be copied wholesale.</li>
+        <li>The model worked in the context of Spotify's culture, scale (~1,000 engineers at the time of publication), and product domain. The same structure applied to a 40-person startup or a 10,000-person enterprise produces very different results.</li>
+      </ul>
+
+      <div class="warn-box">
+        <b>The Spotify Model Trap</b>
+        The most common mistake organizations make is copying the vocabulary — squads, tribes, guilds — without the underlying principles: genuine team autonomy, end-to-end ownership, and strong engineering culture. Renaming your feature teams "squads" and your departments "tribes" does not create the organizational properties the model is designed to produce. Structure follows culture, not the other way around.
+      </div>
+
+      <h2 id="team-topologies">Team Topologies: A More Principled Framework</h2>
+
+      <p>Published in 2019 by Matthew Skelton and Manuel Pais, <em>Team Topologies</em> offers a more rigorous and prescriptive framework than the Spotify model. It defines <strong>four fundamental team types</strong> and <strong>three interaction modes</strong> between them — and argues that every engineering organization should be able to describe itself in these terms.</p>
+
+      <h3>The four team types</h3>
+
+      <div class="tt-grid">
+        <div class="tt-card stream">
+          <div class="tt-badge">Most Common</div>
+          <div class="tt-name">Stream-Aligned Team</div>
+          <div class="tt-desc">Owns a continuous flow of work aligned to a product stream, user journey, or business capability. Cross-functional, end-to-end ownership. The dominant team type in most organizations — all other team types exist to serve stream-aligned teams.</div>
+          <div class="tt-ex">Examples: Checkout team, Mobile app team, Search team</div>
+        </div>
+        <div class="tt-card platform">
+          <div class="tt-badge">Enabler</div>
+          <div class="tt-name">Platform Team</div>
+          <div class="tt-desc">Builds and maintains an internal platform — a curated set of tools, APIs, and services — that stream-aligned teams consume. Goal: reduce the cognitive load on stream-aligned teams by abstracting away infrastructure complexity.</div>
+          <div class="tt-ex">Examples: Developer platform team, Data platform team, Security platform</div>
+        </div>
+        <div class="tt-card enabling">
+          <div class="tt-badge">Temporary</div>
+          <div class="tt-name">Enabling Team</div>
+          <div class="tt-desc">A temporary team of specialists that helps stream-aligned teams adopt new capabilities or practices. Works alongside teams for a bounded period, then disengages. Not a permanent support function — the goal is to build capability, not create dependency.</div>
+          <div class="tt-ex">Examples: DevOps enablement, Accessibility specialists, API migration guides</div>
+        </div>
+        <div class="tt-card subsystem">
+          <div class="tt-badge">Specialist</div>
+          <div class="tt-name">Complicated-Subsystem Team</div>
+          <div class="tt-desc">Owns a part of the system requiring deep specialist knowledge that most engineers don't have. Treats stream-aligned teams as customers. Justified only when the subsystem genuinely requires specialist depth — overuse creates silos.</div>
+          <div class="tt-ex">Examples: Recommendation engine, Real-time video processing, Cryptography library</div>
+        </div>
+      </div>
+
+      <h3>The three interaction modes</h3>
+
+      <p>Team Topologies also defines how teams should interact — and argues that most teams should default to one primary mode, with others used sparingly:</p>
+
+      <ul>
+        <li><strong>Collaboration:</strong> two teams work closely together on a shared problem for a bounded period. High bandwidth, high cognitive load. Use for discovery and innovation, not ongoing operations.</li>
+        <li><strong>X-as-a-Service:</strong> one team provides a clearly defined service consumed by another with minimal interaction. Low cognitive load. This is the target steady state for platform teams serving stream-aligned teams.</li>
+        <li><strong>Facilitating:</strong> an enabling team works with a stream-aligned team to help them acquire a new capability, then steps back. Time-bounded by design.</li>
+      </ul>
+
+      <p>The power of the framework is in what it discourages: permanent collaboration between teams (a sign that ownership boundaries are wrong), ad-hoc X-as-a-Service relationships with no clear API (a sign that a platform team is needed), and enabling teams that never disengage (a sign they've become a permanent dependency rather than a capability builder).</p>
+
+      <h2 id="functional-vs-feature">Functional vs. Feature Teams: The Classic Trade-off</h2>
+
+      <p>Before either of those models existed, engineering organizations were organized in one of two basic ways — and the choice between them still underlies every more complex structure.</p>
+
+      <div class="cmp-table-wrap">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>Dimension</th>
+              <th>Functional Teams</th>
+              <th>Feature (Cross-functional) Teams</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Organized by</td><td>Skill: Frontend, Backend, QA, DevOps</td><td>Outcome: Checkout, Onboarding, Search</td></tr>
+            <tr><td>Strength</td><td>Deep specialization, clear skill development paths</td><td>End-to-end ownership, fast delivery of user-facing value</td></tr>
+            <tr><td>Weakness</td><td>High coordination overhead; every feature needs all teams</td><td>Risk of duplicated infrastructure, inconsistent practices</td></tr>
+            <tr><td>Dependency model</td><td>Sequential handoffs (design → backend → frontend → QA)</td><td>Parallel work within the team, minimal external handoffs</td></tr>
+            <tr><td>Best for</td><td>Early-stage teams (&lt;15 engineers), deep technical domains</td><td>Product companies shipping user-facing features at scale</td></tr>
+            <tr><td>Scales to</td><td>Poorly — coordination cost grows quadratically</td><td>Well — adding a new squad adds capacity without adding coordination</td></tr>
+            <tr><td>Conway's Law risk</td><td>Architecture mirrors team splits (hard backend/frontend boundaries)</td><td>Architecture mirrors product domain (feature-aligned services)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Most mature engineering organizations land somewhere between these two poles. The dominant pattern: <strong>cross-functional squads for product development</strong> (feature teams), with <strong>functional chapters or communities of practice</strong> maintaining skill standards and preventing practice fragmentation across squads. This is essentially what both the Spotify model and Team Topologies recommend at the team level.</p>
+
+      <h2 id="choosing-structure">Choosing the Right Structure for Your Stage</h2>
+
+      <p>No single structure is right for every organization. The right structure depends on your scale, your product complexity, the maturity of your engineering practices, and — critically — the organizational culture you're building toward. Here is a practical guide by stage:</p>
+
+      <div class="stage-table-wrap">
+        <table class="stage-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>Engineers</th>
+              <th>Recommended Structure</th>
+              <th>Key Signal to Restructure</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Seed / early</td>
+              <td>1–8</td>
+              <td>One flat team. Everyone works on everything. No formal structure needed.</td>
+              <td>Work regularly blocks because the same two people are needed on every task simultaneously.</td>
+            </tr>
+            <tr>
+              <td>Series A</td>
+              <td>8–20</td>
+              <td>Light functional split (backend/frontend/platform) or 2 cross-functional tracks.</td>
+              <td>Features regularly stall waiting on another team's availability. PRs queue for days.</td>
+            </tr>
+            <tr>
+              <td>Series B</td>
+              <td>20–60</td>
+              <td>2–5 product squads + nascent platform team. Introduce chapters or CoPs for standards.</td>
+              <td>Squads are unblocked but infrastructure is becoming a drag shared by everyone and owned by no one.</td>
+            </tr>
+            <tr>
+              <td>Series C+</td>
+              <td>60–200</td>
+              <td>Full squad/tribe model or Team Topologies approach. Dedicated platform and enabling teams.</td>
+              <td>Tribes are forming naturally around product areas anyway. Formalize and give them ownership.</td>
+            </tr>
+            <tr>
+              <td>Scale</td>
+              <td>200+</td>
+              <td>Multiple tribes, strong platform org, domain-specific enabling teams. Explicit interaction modes.</td>
+              <td>Cross-tribe coordination is becoming a full-time job. Need formal governance without creating bureaucracy.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tip-box">
+        <b>The Two-Pizza Test Still Works</b>
+        For individual squad sizing, Jeff Bezos's two-pizza rule (6–8 people) holds up well. Below 4, you lack resilience to absences and can't cover the full breadth of a product domain. Above 10, communication overhead compounds and autonomy degrades. Aim for 5–8 engineers plus a product manager and often a designer. If a squad needs more than that, the domain it owns is probably too broad — split it.
+      </div>
+
+      <p>The best structures create clear ownership boundaries that minimize the coordination tax between teams. This connects directly to how you set goals at the team level. Teams with vague ownership tend to have vague OKRs; teams with clear domain boundaries can set specific, measurable objectives. See our guide on <a href="/blog/okrs-for-engineering-teams/">OKRs for engineering teams</a> for how to connect team structure to goal-setting.</p>
+
+      <h2 id="common-mistakes">Common Mistakes When Restructuring Engineering Teams</h2>
+
+      <h3>Restructuring to solve a culture problem</h3>
+      <p>If your engineering culture is poor — low trust, poor communication, misaligned incentives — restructuring won't fix it. The dysfunction will reproduce in the new structure. Address the culture first, or restructure alongside genuine culture work, not instead of it.</p>
+
+      <h3>Creating squads without true autonomy</h3>
+      <p>The defining property of a squad is end-to-end ownership — the ability to take a feature from idea to production without external dependencies. If a squad still needs to wait on a central QA team to test their features, a central ops team to deploy, or a central security team to approve, they are not a squad — they are a development silo with extra vocabulary. True squad autonomy requires investing in CI/CD, automated testing, feature flags, and observability before reorganizing around squads.</p>
+
+      <h3>Building platform teams too early</h3>
+      <p>Platform teams are expensive — they don't ship features, they build infrastructure that enables other teams to ship features faster. At small scale, this trade-off isn't worth it. Below ~30 engineers, shared infrastructure is often better handled by a "platform chapter" (a working group of engineers from across teams who share platform work part-time) than a dedicated platform team. Form a dedicated platform team when the shared infrastructure burden is consuming more than 20–30% of multiple product teams' capacity.</p>
+
+      <h3>Over-indexing on the model, under-investing in the interfaces</h3>
+      <p>The structure is less important than the interfaces between teams. Clear ownership documentation, internal API contracts, published SLOs, and explicit "team APIs" (how to ask for help, how long to expect for a response, what is and isn't in scope) matter more than which model you've chosen. Teams that have great interfaces work well together regardless of org chart. Teams with poor interfaces create coordination debt regardless of how carefully they've been organized.</p>
+
+      <h3>Restructuring too frequently</h3>
+      <p>Every restructure carries a significant hidden cost: the 3–6 month performance trough as teams re-form, re-establish trust, learn new domain boundaries, and figure out how to work together. If you restructure annually — or more often — you spend more time in the trough than at peak performance. Restructure deliberately and selectively, and measure the cost honestly. Use <a href="/blog/dora-metrics/">DORA metrics</a> to baseline before restructuring and measure recovery after — it takes longer than most people expect.</p>
+
+      <h2 id="principles">Principles That Work Across Any Structure</h2>
+
+      <p>The specific model — Spotify, Team Topologies, functional, or feature — matters less than whether certain foundational properties are present. These work regardless of what you call your teams:</p>
+
+      <ul>
+        <li><strong>Clear, written ownership.</strong> Every service, codebase, and on-call rotation has a named team. No shared ownership without an explicit decision about who coordinates it.</li>
+        <li><strong>Team APIs.</strong> Every team publishes: what they own, what they don't own, how to request things from them, and how long to expect. This reduces the coordination overhead that makes inter-team work frustrating.</li>
+        <li><strong>Minimal viable process.</strong> Each team chooses the process that works for them. Teams doing <a href="/blog/agile-vs-scrum/">Scrum or Agile</a> ceremonies should do so because it helps them, not because it's mandated. Standardize outcomes, not methods.</li>
+        <li><strong>Explicit cognitive load management.</strong> Regularly ask: is any team trying to own too much? Are engineers context-switching across too many systems? Reduce scope before adding people — more engineers on an overstretched team usually makes things worse initially.</li>
+        <li><strong>Make structure changes visible.</strong> When team ownership changes, announce it broadly, update documentation immediately, and allow 4–6 weeks of dual-ownership transition before cutting over. Silent restructures create confusion that costs far more than the announcement.</li>
+      </ul>
+
+      <div class="art-cta">
+        <h3>Give every squad its own workspace in Projiq</h3>
+        <p>Projiq's org-level workspace gives each squad its own board, backlog, and sprint while letting leadership see across teams in one view. No per-seat pricing — your whole engineering org, one flat price.</p>
+        <a href="https://app.projiq.app/register-org">Start Free — No Credit Card Required</a>
+      </div>
+
+      <div class="faq-block">
+        <h2 id="faq">Frequently Asked Questions</h2>
+
+        <details class="faq-entry">
+          <summary>What is a squad in engineering?</summary>
+          <div class="faq-ans">A squad is a small, cross-functional, autonomous team — typically 6–10 people — that owns a specific product area or user journey end-to-end. It contains all the roles needed to design, build, test, and ship: engineers, a product manager, and often a designer. Squads operate like small startups: they set their own goals, choose their own tools, and are accountable for outcomes in their domain. The concept was popularized by Spotify's engineering model but is now widely used across the industry.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What is the Spotify model?</summary>
+          <div class="faq-ans">The Spotify model is an organizational structure for scaling engineering teams built around four units: Squads (small cross-functional teams owning a product area), Tribes (collections of squads in related areas, capped around 150 people), Chapters (skill-based groups within a tribe that maintain practice standards), and Guilds (informal company-wide communities of interest). It was described in a 2012 blog post and became widely influential — though Spotify themselves have noted the model evolved significantly and shouldn't be copied wholesale without adapting it to your own context and culture.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What is the difference between a chapter and a guild?</summary>
+          <div class="faq-ans">A Chapter is formal — it exists within a tribe, has a Chapter Lead who acts as a line manager, and meets regularly to align on practice standards for a specific skill (all backend engineers in the Payments tribe, for example). A Guild is informal — it's a self-organizing community of interest that spans the entire company, has no formal authority, and exists purely for knowledge sharing. Anyone can join a guild; chapters are determined by your role and tribe.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What are Team Topologies?</summary>
+          <div class="faq-ans">Team Topologies is a framework by Matthew Skelton and Manuel Pais (2019) that defines four fundamental engineering team types: Stream-aligned (owns a product stream end-to-end), Platform (builds internal developer platforms), Enabling (temporarily helps teams adopt new capabilities), and Complicated-subsystem (owns deeply specialist system components). It also defines three interaction modes between teams — Collaboration, X-as-a-Service, and Facilitating — and argues organizations should be intentional about which mode each team pair uses.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>How many engineers should be in a squad?</summary>
+          <div class="faq-ans">5–8 engineers is the widely accepted range, derived from research into team cognitive load and Bezos's two-pizza rule. Below 4, squads lack resilience and often need to pull in engineers from other teams to cover their domain. Above 10, communication overhead increases and autonomous decision-making degrades. If a squad needs more than 8–10 engineers to cover its domain, the domain is likely too broad and should be split into two squads.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>When should a startup switch from functional to squad-based teams?</summary>
+          <div class="faq-ans">The typical inflection point is 15–25 engineers. Below 15, a single cross-functional team or light functional split works fine — the overhead of maintaining squad boundaries isn't worth it. Above 25, a flat functional structure creates coordination bottlenecks that compound with each new feature area. The clearest signal it's time: work regularly stalls because multiple teams need to coordinate changes to the same system, and that coordination overhead is consuming more than 20% of team capacity.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What is Conway's Law and why does it matter for team structure?</summary>
+          <div class="faq-ans">Conway's Law (1967) states that organizations design systems mirroring their own communication structures. Practically: if your backend and frontend teams are separate organizations with different managers, your architecture will develop a hard backend/frontend boundary — whether that's the right design or not. The Inverse Conway Maneuver uses this deliberately: design your team structure around the architecture you want, and the architecture will follow. If you want independently deployable microservices, organize teams so each one owns a specific service end-to-end.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>Should platform teams charge other teams for their services?</summary>
+          <div class="faq-ans">Internal chargeback models for platform teams rarely work well. They create adversarial dynamics, discourage adoption of platform capabilities, and add accounting overhead without meaningful accountability. The better model: platform teams operate like internal product teams, treating stream-aligned teams as customers and measuring success by developer satisfaction and adoption metrics, not billing cycles.</div>
+        </details>
+      </div>
+
+    </article>
+
+    <aside class="art-sidebar">
+      <div class="sb-card">
+        <h4>Table of Contents</h4>
+        <ul class="toc-list">
+          <li><a href="#why-structure-matters">Why Structure Is Architectural</a></li>
+          <li><a href="#spotify-model">The Spotify Model</a></li>
+          <li><a href="#team-topologies">Team Topologies</a></li>
+          <li><a href="#functional-vs-feature">Functional vs. Feature Teams</a></li>
+          <li><a href="#choosing-structure">Choosing by Stage</a></li>
+          <li><a href="#common-mistakes">Common Mistakes</a></li>
+          <li><a href="#principles">Principles That Work Anywhere</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="sb-card">
+        <h4>Related Posts</h4>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(99,102,241,.12);">🎯</div>
+          <div>
+            <a href="/blog/okrs-for-engineering-teams/">OKRs for Engineering Teams</a>
+            <span class="rel-cat">Productivity</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(99,102,241,.12);">📈</div>
+          <div>
+            <a href="/blog/dora-metrics/">DORA Metrics Explained</a>
+            <span class="rel-cat">Productivity</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(139,92,246,.12);">🔄</div>
+          <div>
+            <a href="/blog/agile-vs-scrum/">Agile vs Scrum: Complete Guide</a>
+            <span class="rel-cat">Agile</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="b-footer">
+  <div class="b-footer-inner">
+    <div class="b-footer-grid">
+      <div class="b-footer-brand">
+        <a href="/" class="b-logo"><svg class="b-logo-mark" width="24" height="22" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+        <p>Modern project management for engineering teams. Built for speed, clarity, and developer workflow.</p>
+      </div>
+      <div class="b-footer-col">
+        <h5>Blog</h5>
+        <a href="/blog/agile-vs-scrum/">Agile vs Scrum</a>
+        <a href="/blog/kanban-vs-scrum/">Kanban vs Scrum</a>
+        <a href="/blog/sprint-retrospective-templates/">Retro Templates</a>
+        <a href="/blog/dora-metrics/">DORA Metrics</a>
+        <a href="/blog/engineering-team-structure/">Team Structure</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Alternatives</h5>
+        <a href="/jira-alternative/">Jira Alternative</a>
+        <a href="/linear-alternative/">Linear Alternative</a>
+        <a href="/asana-alternative/">Asana Alternative</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Product</h5>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="https://app.projiq.app/register-org">Get Started</a>
+      </div>
+    </div>
+    <div class="b-footer-bottom">
+      <span class="b-footer-copy">© 2026 Projiq. All rights reserved.</span>
+      <span class="b-footer-copy">Built for engineering teams that ship.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var prog=document.getElementById('prog');
+  function update(){
+    var st=window.scrollY;
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    prog.style.width=(h>0?Math.min(100,st/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  var links=document.querySelectorAll('.toc-list a');
+  var headings=document.querySelectorAll('#article h2[id]');
+  function highlight(){
+    var st=window.scrollY+80;
+    var active=null;
+    headings.forEach(function(h){if(h.offsetTop<=st)active=h.id;});
+    links.forEach(function(a){
+      a.classList.toggle('active',a.getAttribute('href')==='#'+active);
+    });
+  }
+  window.addEventListener('scroll',highlight,{passive:true});
+  highlight();
+})();
+</script>
+</body>
+</html>

@@ -23,8 +23,8 @@ Always pick the next `pending` entry in order.
 | 8 | done | product roadmap template | How to Build a Product Roadmap Your Engineers Will Actually Follow | /blog/product-roadmap-guide/ |
 | 9 | done | technical debt | Technical Debt: How to Identify, Prioritize, and Pay It Down | /blog/technical-debt-management/ |
 | 10 | done | okrs for engineering teams | OKRs for Engineering Teams: A Practical Guide with Real Examples | /blog/okrs-for-engineering-teams/ |
-| 11 | pending | sprint velocity | Sprint Velocity: What It Is, How to Measure It, and Why It Matters | /blog/sprint-velocity/ |
-| 12 | pending | engineering team structure | Engineering Team Structures: Squads, Tribes, and Guilds Explained | /blog/engineering-team-structure/ |
+| 11 | done | sprint velocity | Sprint Velocity: What It Is, How to Measure It, and Why It Matters | /blog/sprint-velocity/ |
+| 12 | done | engineering team structure | Engineering Team Structures: Squads, Tribes, and Guilds Explained | /blog/engineering-team-structure/ |
 | 13 | pending | story points estimation | Story Points vs Hours: How to Estimate User Stories Accurately | /blog/story-points-estimation/ |
 | 14 | pending | definition of done | Definition of Done vs Acceptance Criteria: What's the Difference? | /blog/definition-of-done/ |
 | 15 | pending | scrum ceremonies | Scrum Ceremonies: A Complete Guide to All 5 Events | /blog/scrum-ceremonies/ |
