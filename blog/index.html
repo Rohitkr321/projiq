@@ -19,6 +19,8 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#030812">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Projiq Blog","description":"Expert guides on Agile, Scrum, Kanban, sprint planning, remote teams, and engineering productivity.","url":"https://projiq.app/blog/","publisher":{"@type":"Organization","name":"Projiq","url":"https://projiq.app","logo":{"@type":"ImageObject","url":"https://projiq.app/og.png"}}}</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -51,6 +53,16 @@ a{color:inherit;text-decoration:none}
 .cat-pill.active{background:rgba(59,130,246,.14);border-color:rgba(59,130,246,.40);color:#60A5FA}
 .pill-count{background:rgba(255,255,255,.08);border-radius:100px;padding:1px 7px;font-size:10px;font-weight:700;min-width:18px;text-align:center}
 .cat-pill.active .pill-count{background:rgba(59,130,246,.22)}
+
+/* ── Search ── */
+.search-wrap{max-width:1200px;margin:0 auto;padding:0 24px 28px;display:flex;justify-content:flex-end}
+.search-box{position:relative;width:260px}
+.search-box input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:9px 14px 9px 36px;font-size:13px;color:#F1F5F9;outline:none;transition:border-color .18s,background .18s;font-family:inherit}
+.search-box input::placeholder{color:rgba(255,255,255,.28)}
+.search-box input:focus{border-color:rgba(59,130,246,.40);background:rgba(255,255,255,.07)}
+.search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.30);pointer-events:none;width:14px;height:14px}
+.no-results{text-align:center;padding:72px 24px;color:rgba(255,255,255,.35);font-size:15px;display:none;line-height:1.7}
+.no-results strong{color:rgba(255,255,255,.55);display:block;font-size:18px;margin-bottom:8px}
 
 /* ── Posts section ── */
 .posts-section{max-width:1200px;margin:0 auto;padding:0 24px 80px}
@@ -148,6 +160,7 @@ a{color:inherit;text-decoration:none}
       <a href="/#features">Features</a>
       <a href="/#pricing">Pricing</a>
       <a href="/blog/" class="active">Blog</a>
+      <a href="/changelog/">Changelog</a>
     </div>
     <a href="https://app.projiq.app/register-org" class="b-nav-cta">Get Started Free</a>
   </div>
@@ -160,15 +173,22 @@ a{color:inherit;text-decoration:none}
     <p>In-depth guides on Agile, Scrum, Kanban, and engineering productivity — written by the team building Projiq.</p>
   </section>
 
+  <div class="search-wrap">
+    <div class="search-box">
+      <svg class="search-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="13.5" y1="13.5" x2="18" y2="18"/></svg>
+      <input type="search" id="blog-search" placeholder="Search articles…" oninput="applyFilters()" autocomplete="off" aria-label="Search articles">
+    </div>
+  </div>
+
   <div class="cat-filter">
     <button class="cat-pill active" onclick="filterCat('all',this)">All Articles <span class="pill-count">18</span></button>
-    <button class="cat-pill" onclick="filterCat('Agile',this)">Agile <span class="pill-count">3</span></button>
-    <button class="cat-pill" onclick="filterCat('Scrum',this)">Scrum <span class="pill-count">7</span></button>
-    <button class="cat-pill" onclick="filterCat('Project Management',this)">Project Management <span class="pill-count">2</span></button>
+    <a href="/blog/agile/" class="cat-pill">Agile <span class="pill-count">2</span></a>
+    <a href="/blog/scrum/" class="cat-pill">Scrum <span class="pill-count">7</span></a>
+    <a href="/blog/project-management/" class="cat-pill">Project Management <span class="pill-count">2</span></a>
     <button class="cat-pill" onclick="filterCat('Product Management',this)">Product Management <span class="pill-count">1</span></button>
-    <button class="cat-pill" onclick="filterCat('Engineering',this)">Engineering <span class="pill-count">2</span></button>
+    <a href="/blog/engineering/" class="cat-pill">Engineering <span class="pill-count">2</span></a>
     <button class="cat-pill" onclick="filterCat('Remote Work',this)">Remote Work <span class="pill-count">1</span></button>
-    <button class="cat-pill" onclick="filterCat('Productivity',this)">Productivity <span class="pill-count">3</span></button>
+    <a href="/blog/productivity/" class="cat-pill">Productivity <span class="pill-count">3</span></a>
   </div>
 
   <section class="posts-section">
@@ -449,7 +469,6 @@ a{color:inherit;text-decoration:none}
       <a href="/blog/scrum-ceremonies/" class="post-card" data-cat="Scrum">
         <div class="card-top" style="background:linear-gradient(135deg,rgba(132,204,22,.18),rgba(163,230,53,.10))">
           <div class="card-icon" style="background:rgba(132,204,22,.12);border:1px solid rgba(132,204,22,.26)">🗓️</div>
-          <span class="card-badge new">New</span>
         </div>
         <div class="card-body">
           <span class="card-cat" style="background:rgba(132,204,22,.10);border:1px solid rgba(132,204,22,.24);color:#A3E635">Scrum</span>
@@ -462,6 +481,27 @@ a{color:inherit;text-decoration:none}
         </div>
       </a>
 
+      <a href="/blog/engineering-manager-vs-tech-lead/" class="post-card" data-cat="Engineering">
+        <div class="card-top" style="background:linear-gradient(135deg,rgba(147,51,234,.18),rgba(192,132,252,.10))">
+          <div class="card-icon" style="background:rgba(147,51,234,.14);border:1px solid rgba(147,51,234,.28)">🏛️</div>
+          <span class="card-badge new">New</span>
+        </div>
+        <div class="card-body">
+          <span class="card-cat" style="background:rgba(147,51,234,.11);border:1px solid rgba(147,51,234,.26);color:#C084FC">Engineering</span>
+          <h3>Engineering Manager vs Tech Lead: Roles, Differences, and When You Need Both</h3>
+          <p>Two of the most confused roles in software engineering — clarified. What each owns, how they collaborate, and the TLM trap that burns people out.</p>
+          <div class="card-foot">
+            <div class="card-meta"><span>Jul 13, 2026</span><span>11 min</span></div>
+            <span class="card-read">Read →</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <div id="no-results" class="no-results">
+      <strong>No articles found</strong>
+      Try a different search term or browse all categories.
     </div>
   </section>
 
@@ -488,6 +528,7 @@ a{color:inherit;text-decoration:none}
         <a href="/#views">Views</a>
         <a href="/#pricing">Pricing</a>
         <a href="/#security">Security</a>
+        <a href="/changelog/">Changelog</a>
       </div>
       <div class="b-footer-col">
         <h5>Blog</h5>
@@ -514,20 +555,41 @@ a{color:inherit;text-decoration:none}
 </footer>
 
 <script>
+var currentCat = 'all';
+
 function filterCat(cat, btn) {
   document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
+  currentCat = cat;
+  applyFilters();
+}
 
-  const featured = document.getElementById('featured');
-  const cards = document.querySelectorAll('#post-grid .post-card');
+function applyFilters() {
+  var q = (document.getElementById('blog-search').value || '').toLowerCase().trim();
+  var featured = document.getElementById('featured');
+  var cards = document.querySelectorAll('#post-grid .post-card');
+  var noResults = document.getElementById('no-results');
 
-  if (cat === 'all') {
-    featured.style.display = '';
-    cards.forEach(c => c.classList.remove('hidden'));
-  } else {
-    featured.style.display = featured.dataset.cat === cat ? '' : 'none';
-    cards.forEach(c => c.classList.toggle('hidden', c.dataset.cat !== cat));
+  function matchesCat(el) { return currentCat === 'all' || el.dataset.cat === currentCat; }
+  function matchesSearch(el) {
+    if (!q) return true;
+    var h = el.querySelector('h2,h3');
+    var p = el.querySelector('p');
+    var text = ((h ? h.textContent : '') + ' ' + (p ? p.textContent : '')).toLowerCase();
+    return text.includes(q);
   }
+
+  var featVisible = matchesCat(featured) && matchesSearch(featured);
+  featured.style.display = featVisible ? '' : 'none';
+
+  var anyVisible = featVisible;
+  cards.forEach(function(c) {
+    var show = matchesCat(c) && matchesSearch(c);
+    c.classList.toggle('hidden', !show);
+    if (show) anyVisible = true;
+  });
+
+  noResults.style.display = anyVisible ? 'none' : 'block';
 }
 </script>
 </body>

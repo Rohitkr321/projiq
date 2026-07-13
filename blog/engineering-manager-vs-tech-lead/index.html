@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Engineering Manager vs Tech Lead: Roles, Differences, and When You Need Both | Projiq Blog</title>
+<meta name="description" content="Engineering Manager and Tech Lead are two of the most confused roles in software engineering. Here's exactly what each does, how they differ, and when you need both on a team.">
+<link rel="canonical" href="https://projiq.app/blog/engineering-manager-vs-tech-lead/">
+<meta property="og:title" content="Engineering Manager vs Tech Lead: Roles, Differences, and When You Need Both">
+<meta property="og:description" content="Engineering Manager and Tech Lead are two of the most confused roles in software engineering. Here's exactly what each does, how they differ, and when you need both.">
+<meta property="og:image" content="https://projiq.app/og.png">
+<meta property="og:url" content="https://projiq.app/blog/engineering-manager-vs-tech-lead/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-13">
+<meta property="article:author" content="Projiq Team">
+<meta property="article:section" content="Engineering">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Engineering Manager vs Tech Lead: Roles, Differences, and When You Need Both">
+<meta name="twitter:description" content="Two of the most confused roles in software engineering — clarified once and for all.">
+<meta name="twitter:image" content="https://projiq.app/og.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#030812">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Engineering Manager vs Tech Lead: Roles, Differences, and When You Need Both","description":"Engineering Manager and Tech Lead are two of the most confused roles in software engineering. Here's exactly what each does, how they differ, and when you need both on a team.","author":{"@type":"Organization","name":"Projiq"},"publisher":{"@type":"Organization","name":"Projiq","logo":{"@type":"ImageObject","url":"https://projiq.app/og.png"}},"datePublished":"2026-07-13","dateModified":"2026-07-13","mainEntityOfPage":{"@type":"WebPage","@id":"https://projiq.app/blog/engineering-manager-vs-tech-lead/"},"image":"https://projiq.app/og.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://projiq.app"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://projiq.app/blog/"},{"@type":"ListItem","position":3,"name":"Engineering Manager vs Tech Lead","item":"https://projiq.app/blog/engineering-manager-vs-tech-lead/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the difference between an Engineering Manager and a Tech Lead?","acceptedAnswer":{"@type":"Answer","text":"An Engineering Manager is a people manager responsible for the career growth, performance, and wellbeing of their direct reports. A Tech Lead is a senior individual contributor who owns technical direction — architecture decisions, code quality, and technical mentorship — while still writing code. The EM focuses on the people and process; the TL focuses on the technology."}},{"@type":"Question","name":"Does an Engineering Manager need to know how to code?","acceptedAnswer":{"@type":"Answer","text":"An Engineering Manager needs enough technical depth to evaluate tradeoffs, participate in architecture discussions, and earn the respect of their team — but they do not need to actively write production code. Most EMs coded earlier in their careers. The threshold is roughly: can you recognize good vs. bad technical decisions? You do not need to make them yourself."}},{"@type":"Question","name":"What is a Tech Lead Manager (TLM)?","acceptedAnswer":{"@type":"Answer","text":"A Tech Lead Manager combines both roles: they own technical decisions AND manage a small team (typically 3–6 engineers). This is common at companies like Google and Meta. It works at small scale but becomes unsustainable as the team grows past 6 or 7 engineers, because both roles are full-time jobs. Most TLMs eventually choose one track as their team scales."}},{"@type":"Question","name":"Is a Tech Lead the same as a Senior Engineer?","acceptedAnswer":{"@type":"Answer","text":"Not exactly. A Senior Engineer is an individual contributor level. A Tech Lead is a role — often filled by a Senior or Staff engineer — that adds cross-team coordination and ownership of technical direction on top of the IC responsibilities. You can be a Senior Engineer without being a Tech Lead, and some Staff Engineers are not Tech Leads on any specific team."}},{"@type":"Question","name":"When should a startup hire its first Engineering Manager?","acceptedAnswer":{"@type":"Answer","text":"A common rule of thumb: once your engineering team hits 6–8 people, the CEO or CTO can no longer give every engineer the 1:1 attention they need for career development. That is when a dedicated Engineering Manager adds real value. Before that threshold, a Tech Lead plus an engaged founder or CTO usually covers the bases."}},{"@type":"Question","name":"Can a Tech Lead become an Engineering Manager?","acceptedAnswer":{"@type":"Answer","text":"Yes, and this is one of the most common paths into engineering management. Tech Leads who discover they derive more energy from growing people than from solving technical problems make natural EMs. The transition requires a deliberate shift: less time coding, more time in 1:1s and cross-functional meetings, and measuring success through the output of the team rather than personal technical contribution."}}]}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#030812;color:#F1F5F9;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+.prog{position:fixed;top:60px;left:0;height:3px;background:linear-gradient(90deg,#9333EA,#C084FC);width:0;z-index:300;transition:width .08s linear}
+
+.b-nav{position:sticky;top:0;z-index:200;background:rgba(3,8,18,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)}
+.b-nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center}
+.b-logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;color:#F1F5F9;flex-shrink:0}
+.b-logo-mark{flex-shrink:0;display:block}.b-dot-app{color:#06B6D4}
+.b-nav-links{display:flex;gap:28px;margin-left:auto;margin-right:28px}
+.b-nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
+.b-nav-links a:hover,.b-nav-links a.active{color:#F1F5F9}
+.b-nav-cta{background:linear-gradient(90deg,#3B82F6,#8B5CF6);color:#fff;padding:8px 20px;border-radius:9px;font-size:13px;font-weight:700;flex-shrink:0;transition:opacity .2s}
+.b-nav-cta:hover{opacity:.86}
+
+.b-crumb{max-width:1200px;margin:0 auto;padding:28px 24px 0;display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.35);flex-wrap:wrap}
+.b-crumb a{color:rgba(255,255,255,.38);transition:color .2s}
+.b-crumb a:hover{color:#C084FC}
+.b-crumb-sep{color:rgba(255,255,255,.18)}
+
+.art-wrap{max-width:1200px;margin:0 auto;padding:32px 24px 0}
+.art-header{margin-bottom:44px}
+.art-cat{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;background:rgba(147,51,234,.13);border:1px solid rgba(147,51,234,.28);color:#C084FC;margin-bottom:18px}
+.art-header h1{font-size:clamp(30px,4.5vw,50px);font-weight:900;line-height:1.12;letter-spacing:-1px;margin-bottom:22px}
+.art-meta{display:flex;align-items:center;gap:22px;color:rgba(255,255,255,.35);font-size:13px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap}
+
+.art-layout{display:grid;grid-template-columns:1fr 300px;gap:60px;align-items:start}
+
+.art-body{min-width:0;overflow-wrap:break-word;word-break:break-word;font-size:17px;line-height:1.80;color:rgba(255,255,255,.78);padding-bottom:60px}
+.art-body p{margin-bottom:22px}
+.art-body h2{font-size:26px;font-weight:800;color:#F1F5F9;margin:52px 0 16px;letter-spacing:-.3px;line-height:1.3}
+.art-body h3{font-size:19px;font-weight:700;color:#F1F5F9;margin:30px 0 12px;letter-spacing:-.1px}
+.art-body ul,.art-body ol{margin:0 0 22px 22px}
+.art-body li{margin-bottom:9px;color:rgba(255,255,255,.72)}
+.art-body ul li::marker{color:#9333EA}
+.art-body ol li::marker{color:#C084FC;font-weight:700}
+.art-body strong{color:#F1F5F9;font-weight:700}
+.art-body a{color:#C084FC;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(192,132,252,.4);transition:text-decoration-color .2s}
+.art-body a:hover{text-decoration-color:#C084FC}
+blockquote{border-left:3px solid #9333EA;padding:16px 22px;background:rgba(147,51,234,.07);border-radius:0 10px 10px 0;margin:28px 0;font-style:italic;color:rgba(255,255,255,.72);font-size:16px}
+.tip-box{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.tip-box b{color:#34D399;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.warn-box{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.warn-box b{color:#FBBF24;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.link-box{background:rgba(147,51,234,.07);border:1px solid rgba(147,51,234,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.link-box b{color:#C084FC;display:block;margin-bottom:8px;font-size:13px;font-weight:700}
+
+/* Role cards */
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:28px 0}
+.role-card{border-radius:14px;padding:24px;border:1px solid}
+.role-card.em-card{background:rgba(147,51,234,.07);border-color:rgba(147,51,234,.22)}
+.role-card.tl-card{background:rgba(6,182,212,.07);border-color:rgba(6,182,212,.22)}
+.role-card h4{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;margin-bottom:14px}
+.role-card.em-card h4{color:#C084FC}
+.role-card.tl-card h4{color:#22D3EE}
+.role-card ul{margin-left:18px}
+.role-card li{font-size:14px;color:rgba(255,255,255,.65);margin-bottom:8px;line-height:1.5}
+.role-card ul li::marker{color:rgba(255,255,255,.25)}
+
+/* Day in the life table */
+.day-table-wrap{overflow-x:auto;margin:28px 0;border-radius:12px;border:1px solid rgba(255,255,255,.07)}
+.day-table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+.day-table th{padding:12px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.day-table th:nth-child(1){background:rgba(255,255,255,.04);color:rgba(255,255,255,.35)}
+.day-table th:nth-child(2){background:rgba(6,182,212,.09);color:#22D3EE}
+.day-table th:nth-child(3){background:rgba(147,51,234,.09);color:#C084FC}
+.day-table td{padding:11px 16px;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.62);vertical-align:top;line-height:1.5;font-size:13.5px}
+.day-table td:first-child{color:rgba(255,255,255,.38);font-weight:600;font-size:12.5px;white-space:nowrap}
+.day-table tr:hover td{background:rgba(255,255,255,.02)}
+
+/* Comparison table */
+.cmp-table-wrap{overflow-x:auto;margin:28px 0;border-radius:12px;border:1px solid rgba(255,255,255,.07)}
+.cmp-table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+.cmp-table th{background:rgba(147,51,234,.10);color:#C084FC;padding:12px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.cmp-table th:first-child{color:rgba(255,255,255,.40);background:rgba(255,255,255,.04)}
+.cmp-table td{padding:12px 16px;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.68);vertical-align:top;line-height:1.5}
+.cmp-table td:first-child{color:rgba(255,255,255,.45);font-weight:600;white-space:nowrap;font-size:13px}
+.cmp-table tr:hover td{background:rgba(255,255,255,.02)}
+.tag-yes{color:#34D399;font-weight:700}
+.tag-no{color:#F87171;font-weight:700}
+.tag-some{color:#FBBF24;font-weight:700}
+
+/* Scale diagram */
+.scale-bar{display:flex;border-radius:10px;overflow:hidden;height:42px;margin:20px 0 8px;font-size:12px;font-weight:700}
+.scale-seg{display:flex;align-items:center;justify-content:center;flex:1;letter-spacing:.3px}
+.scale-seg.tl{background:rgba(6,182,212,.18);color:#22D3EE;border:1px solid rgba(6,182,212,.25)}
+.scale-seg.both{background:rgba(147,51,234,.18);color:#C084FC;border:1px solid rgba(147,51,234,.25)}
+.scale-seg.em{background:rgba(59,130,246,.18);color:#60A5FA;border:1px solid rgba(59,130,246,.25)}
+.scale-label{display:flex;font-size:11px;color:rgba(255,255,255,.30);gap:2px;margin-bottom:20px}
+.scale-label span{flex:1;text-align:center}
+
+/* Path blocks */
+.path-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:28px 0}
+.path-block{background:rgba(10,22,40,.6);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:20px}
+.path-block h4{font-size:13px;font-weight:700;margin-bottom:12px}
+.path-block.tl-path h4{color:#22D3EE}
+.path-block.em-path h4{color:#C084FC}
+.path-step{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;font-size:13.5px;color:rgba(255,255,255,.62);line-height:1.5}
+.path-num{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0;margin-top:1px}
+.tl-path .path-num{background:rgba(6,182,212,.18);color:#22D3EE;border:1px solid rgba(6,182,212,.26)}
+.em-path .path-num{background:rgba(147,51,234,.18);color:#C084FC;border:1px solid rgba(147,51,234,.26)}
+
+.art-cta{background:linear-gradient(135deg,rgba(147,51,234,.13),rgba(59,130,246,.08));border:1px solid rgba(147,51,234,.22);border-radius:16px;padding:36px;text-align:center;margin:44px 0}
+.art-cta h3{font-size:22px;font-weight:800;margin-bottom:10px}
+.art-cta p{color:rgba(255,255,255,.52);font-size:15px;margin-bottom:22px;line-height:1.6}
+.art-cta a{display:inline-block;background:linear-gradient(90deg,#9333EA,#3B82F6);color:#fff;padding:12px 28px;border-radius:9px;font-size:14px;font-weight:700;transition:opacity .2s}
+.art-cta a:hover{opacity:.86;text-decoration:none}
+
+.art-sidebar{position:sticky;top:80px}
+.sb-card{background:rgba(10,22,40,.8);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px;margin-bottom:18px}
+.sb-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.35);margin-bottom:16px}
+.toc-list{list-style:none;padding:0}
+.toc-list li{margin-bottom:9px}
+.toc-list a{font-size:13px;color:rgba(255,255,255,.45);display:block;padding-left:10px;border-left:1px solid rgba(255,255,255,.08);line-height:1.5;transition:color .18s,border-color .18s}
+.toc-list a:hover,.toc-list a.active{color:#C084FC;border-left-color:#9333EA;text-decoration:none}
+.rel-post{display:flex;gap:11px;margin-bottom:13px;align-items:flex-start}
+.rel-icon{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px}
+.rel-post a{font-size:13px;font-weight:600;color:rgba(255,255,255,.65);line-height:1.4;transition:color .2s;display:block;margin-bottom:3px}
+.rel-post a:hover{color:#C084FC;text-decoration:none}
+.rel-cat{font-size:11px;color:rgba(255,255,255,.28)}
+
+.b-footer{background:#020810;border-top:1px solid rgba(255,255,255,.07);padding:56px 24px 32px}
+.b-footer-inner{max-width:1200px;margin:0 auto}
+.b-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.b-footer-brand p{color:rgba(255,255,255,.38);font-size:13px;line-height:1.7;margin-top:14px;max-width:230px}
+.b-footer-col h5{color:#F1F5F9;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.b-footer-col a{display:block;color:rgba(255,255,255,.38);font-size:13px;margin-bottom:9px;transition:color .2s}
+.b-footer-col a:hover{color:#C084FC}
+.b-footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.b-footer-copy{color:rgba(255,255,255,.22);font-size:12px}
+
+.faq-block{margin:44px 0}
+.faq-block h2{font-size:26px;font-weight:800;color:#F1F5F9;margin-bottom:22px;letter-spacing:-.3px}
+.faq-entry{border:1px solid rgba(255,255,255,.07);border-radius:12px;margin-bottom:10px;overflow:hidden;background:rgba(10,22,40,.6)}
+.faq-entry summary{padding:17px 22px;font-size:15px;font-weight:700;color:#F1F5F9;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4}
+.faq-entry summary::-webkit-details-marker{display:none}
+.faq-entry summary::after{content:'+';color:#C084FC;font-size:18px;font-weight:400;flex-shrink:0;transition:transform .2s}
+.faq-entry[open] summary::after{transform:rotate(45deg)}
+.faq-entry[open]{border-color:rgba(147,51,234,.24)}
+.faq-ans{padding:0 22px 18px;font-size:14px;color:rgba(255,255,255,.62);line-height:1.75}
+
+@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{display:none}.role-grid,.path-grid{grid-template-columns:1fr}.b-footer-grid{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:600px){.b-nav-links{display:none}.b-nav-cta{margin-left:auto}.art-header h1{font-size:28px}.art-body{font-size:16px}.b-footer-grid{grid-template-columns:1fr;gap:24px}}
+</style>
+</head>
+<body>
+
+<div class="prog" id="prog"></div>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4F46E5"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient><symbol id="projiq-p" viewBox="0 0 285 265"><path d="M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z" fill="url(#brand-grad)"/><rect x="0" y="65" width="60" height="12" rx="6" fill="#4F46E5"/><rect x="0" y="100" width="60" height="12" rx="6" fill="#06B6D4"/><rect x="0" y="135" width="60" height="12" rx="6" fill="#10B981"/><path d="M140 105 L160 125 L205 80" fill="none" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
+
+<nav class="b-nav">
+  <div class="b-nav-inner">
+    <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+    <div class="b-nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/" class="active">Blog</a>
+      <a href="/changelog/">Changelog</a>
+    </div>
+    <a href="https://app.projiq.app/register-org" class="b-nav-cta">Get Started Free</a>
+  </div>
+</nav>
+
+<div class="b-crumb">
+  <a href="/">Home</a><span class="b-crumb-sep">/</span>
+  <a href="/blog/">Blog</a><span class="b-crumb-sep">/</span>
+  <a href="/blog/engineering/">Engineering</a><span class="b-crumb-sep">/</span>
+  <span>Engineering Manager vs Tech Lead</span>
+</div>
+
+<main>
+  <div class="art-wrap">
+    <header class="art-header">
+      <div class="art-cat">🏗️ Engineering</div>
+      <h1>Engineering Manager vs Tech Lead: Roles, Differences, and When You Need Both</h1>
+      <div class="art-meta">
+        <span>✍ Projiq Team</span>
+        <span>📅 July 13, 2026</span>
+        <span>⏱ 11 min read</span>
+      </div>
+    </header>
+
+    <div class="art-layout">
+      <article class="art-body">
+
+        <p>Ask ten engineers what a Tech Lead does, and you'll get ten slightly different answers. Ask what separates a Tech Lead from an Engineering Manager, and the answers get even blurrier. This confusion isn't a sign that people don't know their jobs — it's a sign that the two roles have genuinely fuzzy boundaries, and different organizations draw that line in very different places.</p>
+
+        <p>The confusion has real consequences. When a company doesn't clearly distinguish the two roles, individual contributors don't know who to go to for what. Career paths are murky. And often, one person ends up carrying both sets of responsibilities, burning out quietly under the weight of two full-time jobs.</p>
+
+        <p>This guide cuts through that. By the end, you'll know exactly what each role owns, how they collaborate, when you need both, and what it looks like when teams try to squeeze them into one person.</p>
+
+        <h2 id="what-is-tech-lead">What Is a Tech Lead?</h2>
+
+        <p>A Tech Lead (TL) is a senior individual contributor who takes ownership of the technical direction of a team or project. The key word is <strong>individual contributor</strong> — a Tech Lead is not a people manager. They do not own the career development of their teammates, they don't run performance reviews, and they don't make hiring decisions on their own. What they do own is the code.</p>
+
+        <p>In practical terms, a Tech Lead is the person who:</p>
+
+        <ul>
+          <li>Sets the technical direction — architecture decisions, technology choices, design patterns</li>
+          <li>Owns the quality and coherence of the codebase</li>
+          <li>Runs or coordinates code review practices for the team</li>
+          <li>Breaks down large technical problems and distributes work across the team</li>
+          <li>Acts as the primary interface between the engineering team and product/design on technical feasibility questions</li>
+          <li>Mentors junior and mid-level engineers on technical skills — but informally, not through formal performance management</li>
+          <li>Identifies and flags technical debt before it becomes a crisis</li>
+        </ul>
+
+        <p>Critically, a Tech Lead still writes code — typically somewhere between 30% and 60% of their time, depending on team size and organizational expectations. If a Tech Lead stops coding entirely, they lose touch with the codebase and their credibility with the team erodes fast.</p>
+
+        <div class="tip-box">
+          <b>Rule of Thumb</b>
+          A Tech Lead who spends less than 20% of their time coding is probably doing an Engineering Manager's job without the title — or covering for an absent EM. If this is you, it's worth having a direct conversation about role clarity with your manager.
+        </div>
+
+        <h3>What a Tech Lead Does Not Do</h3>
+        <p>This list matters as much as the previous one:</p>
+        <ul>
+          <li><strong>Run performance reviews</strong> — that belongs to the EM</li>
+          <li><strong>Own headcount decisions</strong> — hiring and firing sit with the EM</li>
+          <li><strong>Manage team morale and wellbeing</strong> as a formal responsibility — though good TLs care about this</li>
+          <li><strong>Negotiate roadmap with stakeholders</strong> — they inform and advise, but the EM or PM owns the negotiation</li>
+          <li><strong>Be the single point of failure for technical knowledge</strong> — the best TLs actively distribute knowledge rather than hoard it</li>
+        </ul>
+
+        <h2 id="what-is-em">What Is an Engineering Manager?</h2>
+
+        <p>An Engineering Manager (EM) is a people manager whose primary product is the team itself — not any specific technical system. They are responsible for the growth, performance, and wellbeing of the engineers who report to them, and for the team's ability to ship reliably.</p>
+
+        <p>This is a fundamentally different job from technical leadership. When an EM is doing their job well, you often can't see the work — teams run smoothly, engineers grow, blockers get removed before they cause outages, and the team's relationship with product and business stakeholders is healthy. The absence of drama <em>is</em> the output.</p>
+
+        <p>In practical terms, an Engineering Manager:</p>
+
+        <ul>
+          <li>Runs weekly 1:1s with every direct report, focused on growth, wellbeing, and career direction</li>
+          <li>Owns formal performance reviews and compensation conversations</li>
+          <li>Recruits, interviews, hires, and (when necessary) exits engineers</li>
+          <li>Partners with the Tech Lead and Product Manager to set delivery commitments the team can actually meet</li>
+          <li>Removes organizational blockers — process debt, cross-team dependencies, unclear ownership</li>
+          <li>Manages up: translates team status, risks, and needs into language leadership can act on</li>
+          <li>Maintains team psychological safety and healthy group dynamics</li>
+          <li>Plans for team growth: future headcount, skill gaps, succession</li>
+        </ul>
+
+        <blockquote>"Management is the multiplication of human potential. The EM's job is to make every engineer on the team 1.1× better than they would be alone — over time, that compounds."</blockquote>
+
+        <h3>Does an Engineering Manager Need to Code?</h3>
+        <p>This is the most debated question in the EM role. The honest answer is: it depends on how recently they were an engineer and how technical the decisions their team makes are.</p>
+
+        <p>Most EMs came from engineering and have genuine technical depth. That depth matters — it lets them evaluate tradeoffs, spot when technical decisions are being made for the wrong reasons, and earn the trust of their team. What they don't need to do is <em>write production code actively</em>. An EM who is coding regularly is likely underinvesting in people management, or their team is understaffed.</p>
+
+        <div class="warn-box">
+          <b>Warning Sign</b>
+          An Engineering Manager who is the only one who knows how a critical system works is not doing the management job — they are an individual contributor with reports. This is fragile: the team's delivery depends on a single person's bandwidth, and the EM has no time for genuine people leadership.
+        </div>
+
+        <h2 id="side-by-side">Side-by-Side Comparison</h2>
+
+        <div class="role-grid">
+          <div class="role-card tl-card">
+            <h4>🔧 Tech Lead</h4>
+            <ul>
+              <li>Still writes code (30–60% of time)</li>
+              <li>Owns architecture and technical standards</li>
+              <li>Informal mentorship of junior engineers</li>
+              <li>Single point of contact for technical decisions</li>
+              <li>Grows into: Staff / Principal / Architect</li>
+              <li>Measures success by: technical quality, system health, team technical growth</li>
+            </ul>
+          </div>
+          <div class="role-card em-card">
+            <h4>👥 Engineering Manager</h4>
+            <ul>
+              <li>Rarely or never writes production code</li>
+              <li>Owns people development and career paths</li>
+              <li>Formal performance management and hiring</li>
+              <li>Single point of contact for people and delivery</li>
+              <li>Grows into: Director / VP of Engineering</li>
+              <li>Measures success by: team output, retention, morale, delivery reliability</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cmp-table-wrap">
+          <table class="cmp-table">
+            <thead>
+              <tr>
+                <th>Dimension</th>
+                <th>Tech Lead</th>
+                <th>Engineering Manager</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Writes code regularly</td><td><span class="tag-yes">Yes</span> (30–60%)</td><td><span class="tag-no">Rarely</span></td></tr>
+              <tr><td>Architecture decisions</td><td><span class="tag-yes">Owns</span></td><td><span class="tag-some">Informs / reviews</span></td></tr>
+              <tr><td>Performance reviews</td><td><span class="tag-no">No</span></td><td><span class="tag-yes">Owns</span></td></tr>
+              <tr><td>1:1s for career growth</td><td><span class="tag-no">No</span></td><td><span class="tag-yes">Owns</span></td></tr>
+              <tr><td>Hiring decisions</td><td><span class="tag-some">Involved</span></td><td><span class="tag-yes">Owns</span></td></tr>
+              <tr><td>Roadmap negotiation</td><td><span class="tag-some">Technical input</span></td><td><span class="tag-yes">Partners with PM</span></td></tr>
+              <tr><td>Technical mentorship</td><td><span class="tag-yes">Primary</span></td><td><span class="tag-some">Secondary</span></td></tr>
+              <tr><td>Team morale &amp; culture</td><td><span class="tag-some">Contributes</span></td><td><span class="tag-yes">Owns</span></td></tr>
+              <tr><td>Cross-team dependencies</td><td><span class="tag-some">Technical side</span></td><td><span class="tag-yes">Organizational side</span></td></tr>
+              <tr><td>On-call escalation</td><td><span class="tag-yes">Technical escalation</span></td><td><span class="tag-some">Organizational escalation</span></td></tr>
+              <tr><td>Typical IC → role path</td><td>Senior Engineer</td><td>Tech Lead or Senior EM</td></tr>
+              <tr><td>Grows into</td><td>Staff / Principal</td><td>Director / VP Eng</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="day-in-life">A Day in the Life</h2>
+
+        <p>Abstract comparisons only go so far. Here's what a typical week looks like for each role on a 6-person product engineering team:</p>
+
+        <div class="day-table-wrap">
+          <table class="day-table">
+            <thead>
+              <tr>
+                <th>Activity</th>
+                <th>Tech Lead</th>
+                <th>Engineering Manager</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Monday morning</td><td>Reviews PRs from Friday, attends sprint planning, writes architecture doc for upcoming feature</td><td>Reviews team metrics, prepares for sprint planning, syncs with PM on roadmap blockers</td></tr>
+              <tr><td>Daily standup</td><td>Flags technical blockers, asks about implementation approaches</td><td>Listens for delivery risks, notes who might need support</td></tr>
+              <tr><td>Tuesday PM</td><td>Pair-programming with a junior engineer on a complex integration</td><td>1:1 with a mid-level engineer on their promotion case</td></tr>
+              <tr><td>Wednesday</td><td>Leads technical design review for Q3 infrastructure project</td><td>Interviews a backend engineer candidate, debrief with recruiter</td></tr>
+              <tr><td>Thursday</td><td>Investigates production incident, writes postmortem</td><td>Writes half-year performance narrative for a direct report</td></tr>
+              <tr><td>Friday</td><td>Reviews sprint output, updates technical backlog, codes a refactor</td><td>1:1s with remaining reports, updates headcount plan for leadership review</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Notice the pattern: the TL's time is dominated by <em>technical work and technical coordination</em>. The EM's time is dominated by <em>people work and organizational coordination</em>. The same sprint planning meeting looks completely different through each lens.</p>
+
+        <h2 id="how-they-work-together">How They Work Together</h2>
+
+        <p>On a healthy team with both roles filled, the TL and EM form a two-person leadership partnership. Neither is "senior" to the other — they are peers with complementary authority.</p>
+
+        <p>The handoff points are what matter most:</p>
+
+        <ul>
+          <li><strong>Sprint planning</strong>: The EM owns the process and delivery commitment. The TL owns the technical breakdown and capacity sanity check. If the TL says "this estimate is optimistic by 30%," the EM's job is to protect that signal from getting buried by business pressure.</li>
+          <li><strong>Technical debt decisions</strong>: The TL identifies and scopes the debt. The EM negotiates the space on the roadmap to address it.</li>
+          <li><strong>Engineer performance</strong>: The EM owns the formal assessment. The TL provides the technical signal — code review feedback, technical growth, design quality — that the EM uses as input. The TL should never directly rate an engineer's performance; that's the EM's call.</li>
+          <li><strong>Incidents</strong>: The TL owns the technical response. The EM owns the organizational response — communications, stakeholder management, postmortem facilitation.</li>
+          <li><strong>Hiring</strong>: The EM drives the process and makes the final decision. The TL designs and evaluates the technical interview. Both should align on the bar before any offer goes out.</li>
+        </ul>
+
+        <div class="tip-box">
+          <b>Best Practice</b>
+          The best EM/TL pairs sync privately at least once a week — a short 30-minute check-in where neither role is performing for an audience. This is where real signals get shared: "I think Priya is burning out," or "I'm worried about the API migration timeline." Healthy EM/TL trust is what makes a team resilient.
+        </div>
+
+        <p>For more on how these roles interact with broader team structures, see our guide on <a href="/blog/engineering-team-structure/">engineering team structures: squads, tribes, and guilds explained</a>.</p>
+
+        <h2 id="when-do-you-need-both">When Do You Need Both?</h2>
+
+        <p>This is where the practical guidance gets concrete. Not every team needs both roles filled — and trying to force it too early wastes headcount and creates confusion.</p>
+
+        <div class="scale-bar">
+          <div class="scale-seg tl" style="flex:2">Tech Lead Only</div>
+          <div class="scale-seg both" style="flex:3">TL + EM</div>
+          <div class="scale-seg em" style="flex:2">EM + Senior TL</div>
+        </div>
+        <div class="scale-label">
+          <span>1–4 eng</span><span>5–12 eng</span><span>12+ eng</span>
+        </div>
+
+        <h3>Teams of 1–4 Engineers</h3>
+        <p>At this size, you need technical leadership more than people management. A senior engineer stepping into a Tech Lead role — even informally — is usually sufficient. People management can be handled by a CTO, VP, or a founder who is close to the team. Adding a dedicated EM at this stage is rarely justified.</p>
+
+        <h3>Teams of 5–12 Engineers</h3>
+        <p>This is the sweet spot where both roles become genuinely necessary. Five engineers means five career conversations, five performance perspectives, and enough technical complexity that one person can't hold both the architecture and the people management simultaneously without one of them suffering. This is the range where most companies should have a dedicated EM alongside a Tech Lead.</p>
+
+        <h3>Teams of 12+ Engineers</h3>
+        <p>At this scale, a team typically splits into sub-teams, each with their own TL. The EM may have 8–12 direct reports and needs a strong TL (or multiple TLs) to own technical direction. Some companies also introduce a Staff or Principal Engineer at this point to own cross-team technical strategy, freeing the TLs to focus on execution.</p>
+
+        <div class="link-box">
+          <b>Related Reading</b>
+          How you structure roles changes dramatically depending on whether you've organized around squads or functional groups. See our deep-dive on <a href="/blog/engineering-team-structure/">engineering team structures</a> for how Spotify-model squads, tribes, and guilds split these responsibilities across the org.
+        </div>
+
+        <h2 id="tech-lead-manager">The Tech Lead Manager: Doing Both at Once</h2>
+
+        <p>Companies like Google and Meta have popularized the <strong>Tech Lead Manager (TLM)</strong> — a single person who holds both the technical leadership and people management responsibilities for a small team. This model works, but only under specific conditions.</p>
+
+        <p>The TLM model is viable when:</p>
+        <ul>
+          <li>The team is small — typically 3–5 engineers</li>
+          <li>The technical work is relatively well-understood (not requiring heavy architectural exploration)</li>
+          <li>The TLM is exceptionally senior and has deliberately practiced both skill sets</li>
+          <li>The company has strong HR support so the TLM doesn't also own recruiting operations</li>
+        </ul>
+
+        <p>The TLM model breaks down when:</p>
+        <ul>
+          <li>The team grows past 6 engineers — both jobs are now genuinely full-time</li>
+          <li>There's a major technical transition underway (new platform, architectural shift)</li>
+          <li>Multiple engineers have active performance issues or career ambiguity</li>
+          <li>The TLM is more comfortable in one hat and the other gets neglected</li>
+        </ul>
+
+        <div class="warn-box">
+          <b>The TLM Trap</b>
+          The most common failure mode for TLMs is asymmetric neglect. Strong coders who become TLMs tend to neglect people management — they cancel 1:1s during crunch, defer performance conversations, and rationalize it as "protecting the team from process overhead." Strong people managers who become TLMs often stop coding entirely within six months and lose the technical credibility that made the TLM role viable. Know which hat you naturally take off first, and watch it.
+        </div>
+
+        <p>Most TLMs eventually evolve into one track or the other as their team scales. This is healthy — the goal was never to stay a TLM indefinitely, but to cover a necessary gap early in a team's life. For a broader view of how this fits into product delivery, the <a href="/blog/best-project-management-software/">best project management software guide</a> covers tooling that supports both technical and managerial workflows.</p>
+
+        <h2 id="career-paths">Growing Into Each Role</h2>
+
+        <p>These roles are not just organizational boxes — they are career trajectories. Getting clarity on which direction you want to grow is one of the most important career decisions an engineer makes.</p>
+
+        <div class="path-grid">
+          <div class="path-block tl-path">
+            <h4>🔧 Growing Into Tech Lead</h4>
+            <div class="path-step"><span class="path-num">1</span><span>Build deep expertise in the codebase — know the critical paths, the hidden tradeoffs, the places that will break under load</span></div>
+            <div class="path-step"><span class="path-num">2</span><span>Practice writing technical proposals (RFCs, design docs) and getting buy-in from peers and stakeholders</span></div>
+            <div class="path-step"><span class="path-num">3</span><span>Start reviewing others' code proactively — focus on teaching, not just finding bugs</span></div>
+            <div class="path-step"><span class="path-num">4</span><span>Own a cross-cutting technical initiative end-to-end: from scoping through delivery through postmortem</span></div>
+            <div class="path-step"><span class="path-num">5</span><span>Learn to communicate technical risk to non-engineers without losing precision</span></div>
+          </div>
+          <div class="path-block em-path">
+            <h4>👥 Growing Into Engineering Manager</h4>
+            <div class="path-step"><span class="path-num">1</span><span>Start mentoring formally — take on an intern or onboard a new engineer; notice whether you enjoy it or find it draining</span></div>
+            <div class="path-step"><span class="path-num">2</span><span>Volunteer to run retrospectives, stand-ups, or planning sessions — get comfortable facilitating, not just contributing</span></div>
+            <div class="path-step"><span class="path-num">3</span><span>Practice giving hard feedback: delivery misses, quality concerns, interpersonal tension. Comfortable with conflict = EM material</span></div>
+            <div class="path-step"><span class="path-num">4</span><span>Ask for a "management project" — run the hiring loop for one role, own the onboarding plan for a new teammate</span></div>
+            <div class="path-step"><span class="path-num">5</span><span>Read management fundamentals: <em>An Elegant Puzzle</em> (Will Larson), <em>The Manager's Path</em> (Camille Fournier), <em>Radical Candor</em> (Kim Scott)</span></div>
+          </div>
+        </div>
+
+        <blockquote>"The best engineers I've seen transition to EM are the ones who stopped measuring their impact by lines of code shipped and started measuring it by the sum of their team's output. That shift takes longer than most people expect." — Engineering VP at a Series B startup</blockquote>
+
+        <p>One important note: neither track is superior to the other. The individual contributor path (Senior → Staff → Principal → Distinguished Engineer) is as prestigious and well-compensated as the management track (EM → Director → VP → CTO) at companies that have built healthy IC ladders. If you don't want to manage people, you don't have to become a TL who slowly drifts into management against your will. Choose deliberately.</p>
+
+        <h2 id="common-mistakes">Common Mistakes Organizations Make</h2>
+
+        <p>Having worked with dozens of engineering teams, these are the structural mistakes that appear most often:</p>
+
+        <h3>Promoting the Best Engineer to Tech Lead Without Support</h3>
+        <p>Technical excellence doesn't automatically transfer to technical leadership. A brilliant individual contributor who is suddenly expected to run design reviews, unblock teammates, and communicate technical status to the business often fails — not because they lack intelligence, but because nobody taught them the new job. The transition requires deliberate coaching, a reduction in IC expectations, and clear agreement on what the new role actually means at your company.</p>
+
+        <h3>Skipping the EM and Asking the Tech Lead to Cover It</h3>
+        <p>This is common at startups and small companies. "We'll get an EM when we scale." In the meantime, the TL runs 1:1s, handles hiring, does performance reviews, and manages team dynamics — while somehow still owning architecture. One of the two jobs suffers. Usually both do. The engineers who most need career guidance and feedback get the least of it.</p>
+
+        <h3>Treating the TL as a Junior EM</h3>
+        <p>A Tech Lead is not an Engineering Manager with fewer reports. They are a different role entirely, with different success metrics, different career trajectories, and different skill requirements. Treating the TL as an EM-in-training is disrespectful to the TL and damaging to engineers who prefer the IC path.</p>
+
+        <h3>Not Defining the Interface Between the Two Roles</h3>
+        <p>When both an EM and TL are on the same team, engineers will be confused about who to escalate to. Who decides what technical debt gets prioritized? Who owns the sprint retrospective? Who gives feedback after a difficult code review? Write it down. Socialize it with the team. Revisit it quarterly as the team evolves. For good retrospective practices that both TL and EM can co-facilitate, see our <a href="/blog/sprint-retrospective-templates/">sprint retrospective templates guide</a>.</p>
+
+        <div class="art-cta">
+          <h3>Give your Engineering Leaders the Visibility They Need</h3>
+          <p>Projiq gives Tech Leads real-time sprint health, burndown data, and technical backlog tracking — while Engineering Managers get team throughput, velocity trends, and delivery forecasts. One tool, both perspectives.</p>
+          <a href="https://app.projiq.app/register-org">Start Free — No Credit Card Required</a>
+        </div>
+
+        <div class="faq-block">
+          <h2 id="faq">Frequently Asked Questions</h2>
+
+          <details class="faq-entry">
+            <summary>What is the difference between an Engineering Manager and a Tech Lead?</summary>
+            <div class="faq-ans">An Engineering Manager is a people manager responsible for the career growth, performance, and wellbeing of their direct reports. A Tech Lead is a senior individual contributor who owns technical direction — architecture decisions, code quality, and technical mentorship — while still writing code. The EM focuses on the people and process; the TL focuses on the technology. Both are leadership roles, but with fundamentally different accountabilities.</div>
+          </details>
+
+          <details class="faq-entry">
+            <summary>Does an Engineering Manager need to know how to code?</summary>
+            <div class="faq-ans">An Engineering Manager needs enough technical depth to evaluate tradeoffs, participate in architecture discussions, and earn the respect of their team — but they do not need to actively write production code. Most EMs coded earlier in their careers. The practical threshold is: can you recognize good vs. bad technical decisions without needing to make them yourself? You need technical fluency, not technical execution.</div>
+          </details>
+
+          <details class="faq-entry">
+            <summary>What is a Tech Lead Manager (TLM)?</summary>
+            <div class="faq-ans">A Tech Lead Manager combines both roles: they own technical decisions AND manage a small team (typically 3–6 engineers). This model is common at companies like Google and Meta for small teams. It becomes unsustainable as the team grows past 6 or 7 engineers, because both roles are genuinely full-time jobs at that scale. Most TLMs eventually choose one track as their team grows — either continuing as a people manager or returning to the IC/Staff Engineer path.</div>
+          </details>
+
+          <details class="faq-entry">
+            <summary>Is a Tech Lead the same as a Senior Engineer?</summary>
+            <div class="faq-ans">Not exactly. Senior Engineer is an IC level (a rung on the technical ladder). Tech Lead is a role — often filled by a Senior or Staff engineer — that adds cross-team coordination, technical decision ownership, and broader impact on top of the IC responsibilities. You can be a Senior Engineer without being a Tech Lead. Many Staff Engineers choose not to take on TL responsibilities, preferring deep individual technical work instead. The role is an assignment, not a promotion.</div>
+          </details>
+
+          <details class="faq-entry">
+            <summary>When should a startup hire its first Engineering Manager?</summary>
+            <div class="faq-ans">A common guideline: once your engineering team hits 6–8 people, the CEO or CTO can no longer give every engineer the 1:1 attention they need for genuine career development. That is when a dedicated Engineering Manager adds real value. Before that threshold, a Tech Lead plus an engaged founder or CTO usually covers the bases — though it requires deliberate effort. The right answer also depends on whether your CTO has strong people management instincts or is primarily technical.</div>
+          </details>
+
+          <details class="faq-entry">
+            <summary>Can a Tech Lead become an Engineering Manager?</summary>
+            <div class="faq-ans">Yes — and this is one of the most common paths into engineering management. Tech Leads who discover they derive more satisfaction from growing people than from solving technical problems make natural EMs. The transition requires a deliberate shift: less time coding, more time in 1:1s and cross-functional meetings, and a change in what "good work" feels like. Success in the EM role is often invisible, which takes real psychological adjustment for engineers used to shipping tangible output.</div>
+          </details>
+        </div>
+
+      </article>
+
+      <aside class="art-sidebar">
+        <div class="sb-card">
+          <h4>Table of Contents</h4>
+          <ul class="toc-list">
+            <li><a href="#what-is-tech-lead">What Is a Tech Lead?</a></li>
+            <li><a href="#what-is-em">What Is an Engineering Manager?</a></li>
+            <li><a href="#side-by-side">Side-by-Side Comparison</a></li>
+            <li><a href="#day-in-life">A Day in the Life</a></li>
+            <li><a href="#how-they-work-together">How They Work Together</a></li>
+            <li><a href="#when-do-you-need-both">When Do You Need Both?</a></li>
+            <li><a href="#tech-lead-manager">The Tech Lead Manager</a></li>
+            <li><a href="#career-paths">Growing Into Each Role</a></li>
+            <li><a href="#common-mistakes">Common Mistakes</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="sb-card">
+          <h4>Related Articles</h4>
+          <div class="rel-post">
+            <div class="rel-icon" style="background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.22)">🏗️</div>
+            <div>
+              <a href="/blog/engineering-team-structure/">Engineering Team Structures: Squads, Tribes &amp; Guilds</a>
+              <div class="rel-cat">Engineering</div>
+            </div>
+          </div>
+          <div class="rel-post">
+            <div class="rel-icon" style="background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.22)">🏃</div>
+            <div>
+              <a href="/blog/sprint-retrospective-templates/">7 Sprint Retrospective Templates</a>
+              <div class="rel-cat">Scrum</div>
+            </div>
+          </div>
+          <div class="rel-post">
+            <div class="rel-icon" style="background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.22)">🏆</div>
+            <div>
+              <a href="/blog/best-project-management-software/">Best Project Management Software 2026</a>
+              <div class="rel-cat">Project Management</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sb-card">
+          <h4>Try Projiq Free</h4>
+          <p style="font-size:13px;color:rgba(255,255,255,.48);line-height:1.6;margin-bottom:14px">Sprint boards, backlogs, and team dashboards built for engineering organizations.</p>
+          <a href="https://app.projiq.app/register-org" style="display:block;background:linear-gradient(90deg,#9333EA,#3B82F6);color:#fff;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:700;text-align:center;transition:opacity .2s" onmouseover="this.style.opacity='.86'" onmouseout="this.style.opacity='1'">Start Free →</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="b-footer">
+  <div class="b-footer-inner">
+    <div class="b-footer-grid">
+      <div class="b-footer-brand">
+        <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+        <p>Project management built for engineering organizations. Sprints, boards, timelines, and real-time collaboration.</p>
+      </div>
+      <div class="b-footer-col">
+        <h5>Product</h5>
+        <a href="/#features">Features</a>
+        <a href="/#views">Views</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/changelog/">Changelog</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Blog</h5>
+        <a href="/blog/">All Articles</a>
+        <a href="/blog/scrum/">Scrum</a>
+        <a href="/blog/engineering/">Engineering</a>
+        <a href="/blog/agile/">Agile</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Alternatives</h5>
+        <a href="/jira-alternative/">Jira Alternative</a>
+        <a href="/linear-alternative/">Linear Alternative</a>
+        <a href="/asana-alternative/">Asana Alternative</a>
+        <a href="https://app.projiq.app/register-org">Get Started Free</a>
+      </div>
+    </div>
+    <div class="b-footer-bottom">
+      <span class="b-footer-copy">© 2026 Projiq. All rights reserved.</span>
+      <a href="https://www.linkedin.com/company/porjiq-app/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.38);font-size:12px;text-decoration:none;transition:color .2s" onmouseover="this.style.color='#C084FC'" onmouseout="this.style.color='rgba(255,255,255,.38)'"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+      <span class="b-footer-copy">Built for engineering teams.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var prog=document.getElementById('prog');
+  var art=document.querySelector('.art-body');
+  window.addEventListener('scroll',function(){
+    var st=window.scrollY;
+    var dh=art?art.offsetTop+art.offsetHeight:document.body.scrollHeight;
+    var wh=window.innerHeight;
+    var pct=Math.min(100,Math.round(st/(dh-wh)*100));
+    prog.style.width=pct+'%';
+  },{passive:true});
+})();
+
+(function(){
+  var links=document.querySelectorAll('.toc-list a');
+  var headings=[];
+  links.forEach(function(l){
+    var id=l.getAttribute('href').replace('#','');
+    var el=document.getElementById(id);
+    if(el) headings.push({el:el,link:l});
+  });
+  window.addEventListener('scroll',function(){
+    var sy=window.scrollY+100;
+    var cur=null;
+    headings.forEach(function(h){if(h.el.offsetTop<=sy) cur=h;});
+    links.forEach(function(l){l.classList.remove('active')});
+    if(cur) cur.link.classList.add('active');
+  },{passive:true});
+})();
+</script>
+</body>
+</html>

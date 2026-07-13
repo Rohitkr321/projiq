@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Engineering Productivity Guides — DORA Metrics, OKRs, AI Tools | Projiq Blog</title>
+<meta name="description" content="Boost engineering team productivity: DORA metrics, OKRs for engineering, best AI coding tools, and measurement frameworks that actually work.">
+<link rel="canonical" href="https://projiq.app/blog/productivity/">
+<meta property="og:title" content="Engineering Productivity Guides | Projiq Blog">
+<meta property="og:description" content="DORA metrics, OKRs, AI coding tools, and other guides to boost engineering team productivity.">
+<meta property="og:image" content="https://projiq.app/og.png">
+<meta property="og:url" content="https://projiq.app/blog/productivity/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Engineering Productivity Guides | Projiq Blog">
+<meta name="twitter:image" content="https://projiq.app/og.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#030812">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Engineering Productivity Guides","description":"Boost engineering team productivity with DORA metrics, OKRs, and AI tooling guides.","url":"https://projiq.app/blog/productivity/","isPartOf":{"@type":"Blog","name":"Projiq Blog","url":"https://projiq.app/blog/"}}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#030812;color:#F1F5F9;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.b-nav{position:sticky;top:0;z-index:200;background:rgba(3,8,18,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)}
+.b-nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center}
+.b-logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;color:#F1F5F9;flex-shrink:0}
+.b-logo-mark{flex-shrink:0;display:block}.b-dot-app{color:#06B6D4}
+.b-nav-links{display:flex;gap:28px;margin-left:auto;margin-right:28px}
+.b-nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
+.b-nav-links a:hover,.b-nav-links a.active{color:#F1F5F9}
+.b-nav-cta{background:linear-gradient(90deg,#3B82F6,#8B5CF6);color:#fff;padding:8px 20px;border-radius:9px;font-size:13px;font-weight:700;white-space:nowrap;flex-shrink:0;transition:opacity .2s}
+.b-nav-cta:hover{opacity:.86}
+.cat-hero{text-align:center;padding:72px 24px 48px;position:relative;overflow:hidden}
+.cat-hero::before{content:'';position:absolute;top:-180px;left:50%;transform:translateX(-50%);width:800px;height:600px;background:radial-gradient(ellipse,rgba(99,102,241,.12) 0%,transparent 68%);pointer-events:none}
+.breadcrumb{display:flex;align-items:center;gap:6px;justify-content:center;margin-bottom:20px;font-size:12px;color:rgba(255,255,255,.35)}
+.breadcrumb a{color:rgba(255,255,255,.45);transition:color .18s}.breadcrumb a:hover{color:#60A5FA}
+.breadcrumb span{color:rgba(255,255,255,.20)}
+.cat-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(99,102,241,.10);border:1px solid rgba(99,102,241,.22);border-radius:100px;padding:5px 14px;font-size:11px;font-weight:700;color:#818CF8;letter-spacing:.5px;text-transform:uppercase;margin-bottom:20px}
+.cat-hero h1{font-size:clamp(32px,5vw,54px);font-weight:900;letter-spacing:-1.5px;line-height:1.1;margin-bottom:14px}
+.cat-hero h1 span{background:linear-gradient(135deg,#818CF8,#06B6D4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cat-hero p{font-size:16px;color:rgba(255,255,255,.48);max-width:500px;margin:0 auto;line-height:1.75}
+.cat-count{display:inline-flex;align-items:center;gap:5px;margin-top:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:100px;padding:5px 14px;font-size:12px;color:rgba(255,255,255,.45)}
+.posts-section{max-width:1200px;margin:0 auto;padding:0 24px 80px}
+.section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.28);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.section-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.07)}
+.post-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.post-card{background:rgba(10,22,40,.75);border:1px solid rgba(255,255,255,.07);border-radius:16px;overflow:hidden;transition:all .2s;display:flex;flex-direction:column;position:relative}
+.post-card:hover{border-color:rgba(59,130,246,.24);transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,.28)}
+.card-top{height:128px;display:flex;align-items:center;justify-content:center;position:relative}
+.card-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px}
+.card-badge{position:absolute;top:12px;right:12px;padding:3px 9px;border-radius:100px;font-size:9px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.30);color:#F87171}
+.card-body{padding:20px;flex:1;display:flex;flex-direction:column}
+.card-cat{display:inline-flex;align-items:center;padding:3px 9px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;margin-bottom:10px;align-self:flex-start}
+.card-body h3{font-size:15px;font-weight:700;line-height:1.4;margin-bottom:8px;color:#F1F5F9;letter-spacing:-.1px}
+.card-body p{color:rgba(255,255,255,.40);font-size:13px;line-height:1.6;flex:1;margin-bottom:16px}
+.card-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:12px;border-top:1px solid rgba(255,255,255,.05)}
+.card-meta{color:rgba(255,255,255,.26);font-size:11px;display:flex;gap:10px}
+.card-read{font-size:12px;font-weight:700;color:#60A5FA;display:flex;align-items:center;gap:3px;transition:gap .15s}
+.post-card:hover .card-read{gap:7px}
+.blog-cta{background:linear-gradient(135deg,rgba(59,130,246,.10),rgba(139,92,246,.07));border:1px solid rgba(59,130,246,.18);border-radius:20px;padding:64px 40px;text-align:center;max-width:1152px;margin:0 auto 80px}
+.blog-cta h2{font-size:32px;font-weight:800;margin-bottom:12px;letter-spacing:-.5px}
+.blog-cta p{color:rgba(255,255,255,.50);font-size:16px;margin-bottom:30px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cta-p{background:linear-gradient(90deg,#3B82F6,#8B5CF6);color:#fff;padding:13px 30px;border-radius:10px;font-size:14px;font-weight:700;transition:opacity .2s}
+.cta-p:hover{opacity:.86}
+.cta-s{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#F1F5F9;padding:13px 30px;border-radius:10px;font-size:14px;font-weight:600;transition:all .2s}
+.cta-s:hover{background:rgba(255,255,255,.11)}
+.b-footer{background:#020810;border-top:1px solid rgba(255,255,255,.07);padding:56px 24px 32px}
+.b-footer-inner{max-width:1200px;margin:0 auto}
+.b-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.b-footer-brand p{color:rgba(255,255,255,.38);font-size:13px;line-height:1.7;margin-top:14px;max-width:230px}
+.b-footer-col h5{color:#F1F5F9;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.b-footer-col a{display:block;color:rgba(255,255,255,.38);font-size:13px;margin-bottom:9px;transition:color .2s}
+.b-footer-col a:hover{color:#60A5FA}
+.b-footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.b-footer-copy{color:rgba(255,255,255,.22);font-size:12px}
+@media(max-width:900px){.post-grid{grid-template-columns:repeat(2,1fr)}.b-footer-grid{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:600px){.post-grid{grid-template-columns:1fr}.b-nav-links{display:none}.b-nav-cta{margin-left:auto}.b-footer-grid{grid-template-columns:1fr;gap:24px}.cat-hero{padding:52px 24px 36px}.blog-cta{padding:40px 24px;margin:0 16px 60px}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4F46E5"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient><symbol id="projiq-p" viewBox="0 0 285 265"><path d="M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z" fill="url(#brand-grad)"/><rect x="0" y="65" width="60" height="12" rx="6" fill="#4F46E5"/><rect x="0" y="100" width="60" height="12" rx="6" fill="#06B6D4"/><rect x="0" y="135" width="60" height="12" rx="6" fill="#10B981"/><path d="M140 105 L160 125 L205 80" fill="none" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
+
+<nav class="b-nav">
+  <div class="b-nav-inner">
+    <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+    <div class="b-nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/" class="active">Blog</a>
+      <a href="/changelog/">Changelog</a>
+    </div>
+    <a href="https://app.projiq.app/register-org" class="b-nav-cta">Get Started Free</a>
+  </div>
+</nav>
+
+<main>
+  <section class="cat-hero">
+    <div class="breadcrumb">
+      <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span><span>Productivity</span>
+    </div>
+    <div class="cat-eyebrow">📈 Productivity</div>
+    <h1>Engineering <span>Productivity</span></h1>
+    <p>Metrics, OKRs, and AI tools that help engineering teams ship faster and measure what actually matters.</p>
+    <div class="cat-count">3 articles</div>
+  </section>
+
+  <section class="posts-section">
+    <div class="section-label">All Productivity Articles</div>
+    <div class="post-grid">
+
+      <a href="/blog/best-ai-coding-tools/" class="post-card">
+        <div class="card-top" style="background:linear-gradient(135deg,rgba(99,102,241,.22),rgba(6,182,212,.14),rgba(139,92,246,.10))">
+          <div class="card-icon" style="background:rgba(99,102,241,.14);border:1px solid rgba(99,102,241,.28)">🤖</div>
+          <span class="card-badge">🔥 Trending</span>
+        </div>
+        <div class="card-body">
+          <span class="card-cat" style="background:rgba(99,102,241,.11);border:1px solid rgba(99,102,241,.24);color:#818CF8">Productivity</span>
+          <h3>Best AI Coding Tools for Engineering Teams in 2026: Copilot, Cursor, Claude &amp; More</h3>
+          <p>GitHub Copilot, Cursor, Claude Code, Tabnine, Windsurf — compare top AI coding assistants across autocomplete quality, agentic capability, and team pricing.</p>
+          <div class="card-foot">
+            <div class="card-meta"><span>Jul 9, 2026</span><span>11 min</span></div>
+            <span class="card-read">Read →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/blog/dora-metrics/" class="post-card">
+        <div class="card-top" style="background:linear-gradient(135deg,rgba(99,102,241,.18),rgba(6,182,212,.10))">
+          <div class="card-icon" style="background:rgba(99,102,241,.14);border:1px solid rgba(99,102,241,.26)">📈</div>
+        </div>
+        <div class="card-body">
+          <span class="card-cat" style="background:rgba(99,102,241,.11);border:1px solid rgba(99,102,241,.24);color:#818CF8">Productivity</span>
+          <h3>DORA Metrics Explained: How to Measure Engineering Team Performance</h3>
+          <p>Deployment Frequency, Lead Time, Change Failure Rate, MTTR — the four metrics every engineering leader should track.</p>
+          <div class="card-foot">
+            <div class="card-meta"><span>Jul 10, 2026</span><span>10 min</span></div>
+            <span class="card-read">Read →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/blog/okrs-for-engineering-teams/" class="post-card">
+        <div class="card-top" style="background:linear-gradient(135deg,rgba(99,102,241,.18),rgba(139,92,246,.12))">
+          <div class="card-icon" style="background:rgba(99,102,241,.14);border:1px solid rgba(99,102,241,.28)">🎯</div>
+        </div>
+        <div class="card-body">
+          <span class="card-cat" style="background:rgba(99,102,241,.11);border:1px solid rgba(99,102,241,.26);color:#818CF8">Productivity</span>
+          <h3>OKRs for Engineering Teams: A Practical Guide with Real Examples</h3>
+          <p>Why engineering OKRs fail, how to write Key Results that measure outcomes not tasks, and real OKR sets for platform, product, and DevEx teams.</p>
+          <div class="card-foot">
+            <div class="card-meta"><span>Jul 11, 2026</span><span>10 min</span></div>
+            <span class="card-read">Read →</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <div class="blog-cta">
+    <h2>Measure velocity, not just activity</h2>
+    <p>Projiq gives engineering leaders DORA-aligned dashboards, sprint velocity charts, and burndown reports — out of the box.</p>
+    <div class="cta-btns">
+      <a href="https://app.projiq.app/register-org" class="cta-p">Start Free — No Credit Card</a>
+      <a href="/#pricing" class="cta-s">See Pricing</a>
+    </div>
+  </div>
+</main>
+
+<footer class="b-footer">
+  <div class="b-footer-inner">
+    <div class="b-footer-grid">
+      <div class="b-footer-brand">
+        <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+        <p>Project management built for engineering organizations. Sprints, boards, timelines, and real-time collaboration.</p>
+      </div>
+      <div class="b-footer-col">
+        <h5>Product</h5>
+        <a href="/#features">Features</a>
+        <a href="/#views">Views</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#security">Security</a>
+        <a href="/changelog/">Changelog</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Blog</h5>
+        <a href="/blog/">All Articles</a>
+        <a href="/blog/scrum/">Scrum</a>
+        <a href="/blog/agile/">Agile</a>
+        <a href="/blog/engineering/">Engineering</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Alternatives</h5>
+        <a href="/jira-alternative/">Jira Alternative</a>
+        <a href="/linear-alternative/">Linear Alternative</a>
+        <a href="/asana-alternative/">Asana Alternative</a>
+        <a href="https://app.projiq.app/register-org">Get Started Free</a>
+      </div>
+    </div>
+    <div class="b-footer-bottom">
+      <span class="b-footer-copy">© 2026 Projiq. All rights reserved.</span>
+      <a href="https://www.linkedin.com/company/porjiq-app/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.38);font-size:12px;text-decoration:none;transition:color .2s" onmouseover="this.style.color='#60A5FA'" onmouseout="this.style.color='rgba(255,255,255,.38)'"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+      <span class="b-footer-copy">Built for engineering teams.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

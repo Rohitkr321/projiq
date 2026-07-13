@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Changelog — What's New in Projiq</title>
+<meta name="description" content="Every new feature, improvement, and fix shipped to Projiq — listed newest first. Subscribe to stay up to date.">
+<link rel="canonical" href="https://projiq.app/changelog/">
+<meta property="og:title" content="Projiq Changelog — What's New">
+<meta property="og:description" content="Every new feature, improvement, and fix shipped to Projiq — listed newest first.">
+<meta property="og:image" content="https://projiq.app/og.png">
+<meta property="og:url" content="https://projiq.app/changelog/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Projiq Changelog">
+<meta name="twitter:image" content="https://projiq.app/og.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#030812">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#030812;color:#F1F5F9;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+/* ── Nav ── */
+.b-nav{position:sticky;top:0;z-index:200;background:rgba(3,8,18,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)}
+.b-nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center}
+.b-logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;color:#F1F5F9;flex-shrink:0}
+.b-logo-mark{flex-shrink:0;display:block}
+.b-dot-app{color:#06B6D4}
+.b-nav-links{display:flex;gap:28px;margin-left:auto;margin-right:28px}
+.b-nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
+.b-nav-links a:hover,.b-nav-links a.active{color:#F1F5F9}
+.b-nav-cta{background:linear-gradient(90deg,#3B82F6,#8B5CF6);color:#fff;padding:8px 20px;border-radius:9px;font-size:13px;font-weight:700;white-space:nowrap;flex-shrink:0;transition:opacity .2s}
+.b-nav-cta:hover{opacity:.86}
+
+/* ── Hero ── */
+.cl-hero{text-align:center;padding:80px 24px 52px;position:relative;overflow:hidden}
+.cl-hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:700px;background:radial-gradient(ellipse,rgba(59,130,246,.10) 0%,transparent 65%);pointer-events:none}
+.cl-eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(59,130,246,.10);border:1px solid rgba(59,130,246,.22);border-radius:100px;padding:6px 16px;font-size:11px;font-weight:700;color:#60A5FA;letter-spacing:.6px;text-transform:uppercase;margin-bottom:22px}
+.cl-hero h1{font-size:clamp(36px,5.5vw,60px);font-weight:900;letter-spacing:-1.8px;line-height:1.08;margin-bottom:14px}
+.cl-hero h1 span{background:linear-gradient(135deg,#60A5FA,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cl-hero p{font-size:16px;color:rgba(255,255,255,.46);max-width:460px;margin:0 auto 36px;line-height:1.75}
+
+/* ── Stats strip ── */
+.cl-stats{display:flex;border:1px solid rgba(255,255,255,.07);border-radius:14px;overflow:hidden;max-width:480px;margin:0 auto 0;background:rgba(10,22,40,.4)}
+.cl-stat{flex:1;padding:16px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.06)}
+.cl-stat:last-child{border-right:none}
+.cl-stat-num{font-size:24px;font-weight:900;letter-spacing:-1px;background:linear-gradient(135deg,#60A5FA,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cl-stat-label{font-size:10px;color:rgba(255,255,255,.32);font-weight:600;text-transform:uppercase;letter-spacing:.6px;margin-top:2px}
+
+/* ── Version quick-jump ── */
+.cl-jumps{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:36px 24px 0}
+.jump-pill{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:8px;padding:6px 14px;font-size:12px;font-weight:700;color:rgba(255,255,255,.40);transition:all .18s;letter-spacing:.4px;font-variant-numeric:tabular-nums}
+.jump-pill:hover{background:rgba(59,130,246,.12);border-color:rgba(59,130,246,.30);color:#93C5FD}
+.jump-pill.is-latest-jump{background:rgba(59,130,246,.14);border-color:rgba(59,130,246,.32);color:#60A5FA}
+
+/* ── Timeline wrap ── */
+.cl-wrap{max-width:800px;margin:0 auto;padding:56px 24px 100px}
+
+/* ── Release row ── */
+.release{display:flex;gap:0;align-items:stretch;position:relative}
+.release:last-of-type .rel-main{padding-bottom:0}
+
+/* ── Timeline column ── */
+.rel-tl{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:44px;padding-right:4px}
+.rel-dot{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.15);background:#0d1526;flex-shrink:0;margin-top:26px;position:relative;z-index:2;transition:box-shadow .3s}
+.release.is-latest .rel-dot{border-color:#3B82F6;background:linear-gradient(135deg,#3B82F6,#8B5CF6);box-shadow:0 0 0 5px rgba(59,130,246,.12),0 0 20px rgba(59,130,246,.35)}
+.release.is-launch .rel-dot{border-color:#F59E0B;background:linear-gradient(135deg,#F59E0B,#EF4444);box-shadow:0 0 0 5px rgba(245,158,11,.10),0 0 16px rgba(245,158,11,.28)}
+.rel-line{flex:1;width:2px;background:linear-gradient(180deg,rgba(255,255,255,.09) 0%,rgba(255,255,255,.03) 100%);margin:6px 0;border-radius:2px}
+.release:last-of-type .rel-line{display:none}
+
+/* ── Release card ── */
+.rel-main{flex:1;padding-bottom:36px}
+.rel-card{background:rgba(9,20,40,.65);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:26px 28px 22px;transition:border-color .22s,box-shadow .22s}
+.rel-card:hover{border-color:rgba(255,255,255,.13);box-shadow:0 8px 32px rgba(0,0,0,.25)}
+.release.is-latest .rel-card{background:rgba(59,130,246,.05);border-color:rgba(59,130,246,.18)}
+.release.is-latest .rel-card:hover{border-color:rgba(59,130,246,.30);box-shadow:0 8px 40px rgba(59,130,246,.12)}
+.release.is-launch .rel-card{background:rgba(245,158,11,.04);border-color:rgba(245,158,11,.14)}
+.release.is-launch .rel-card:hover{border-color:rgba(245,158,11,.26);box-shadow:0 8px 36px rgba(245,158,11,.08)}
+
+/* ── Card header ── */
+.rel-hdr{display:flex;align-items:center;gap:9px;margin-bottom:14px;flex-wrap:wrap}
+.rel-ver{font-size:11px;font-weight:800;border-radius:7px;padding:4px 10px;letter-spacing:.5px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.65)}
+.release.is-latest .rel-ver{background:rgba(59,130,246,.16);border-color:rgba(59,130,246,.32);color:#93C5FD}
+.release.is-launch .rel-ver{background:rgba(245,158,11,.15);border-color:rgba(245,158,11,.30);color:#FCD34D}
+.rel-latest-tag{background:rgba(16,185,129,.13);border:1px solid rgba(16,185,129,.26);border-radius:100px;padding:3px 10px;font-size:9px;font-weight:800;color:#34D399;letter-spacing:.6px;text-transform:uppercase}
+.rel-launch-tag{background:rgba(245,158,11,.13);border:1px solid rgba(245,158,11,.26);border-radius:100px;padding:3px 10px;font-size:9px;font-weight:800;color:#FCD34D;letter-spacing:.6px;text-transform:uppercase}
+.rel-date{margin-left:auto;font-size:11.5px;color:rgba(255,255,255,.28);white-space:nowrap;letter-spacing:.2px}
+
+/* ── Type badges ── */
+.rel-badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:100px;font-size:9px;font-weight:800;letter-spacing:.6px;text-transform:uppercase}
+.badge-new{background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.24);color:#34D399}
+.badge-improved{background:rgba(59,130,246,.10);border:1px solid rgba(59,130,246,.22);color:#60A5FA}
+.badge-fix{background:rgba(245,158,11,.10);border:1px solid rgba(245,158,11,.22);color:#FBBF24}
+.badge-security{background:rgba(239,68,68,.10);border:1px solid rgba(239,68,68,.22);color:#F87171}
+
+/* ── Card content ── */
+.rel-card h2{font-size:17px;font-weight:800;letter-spacing:-.3px;margin-bottom:9px;color:#F1F5F9;line-height:1.35}
+.rel-summary{font-size:13.5px;color:rgba(255,255,255,.46);line-height:1.75;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.05)}
+.rel-items{list-style:none;display:flex;flex-direction:column;gap:9px}
+.rel-items li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:rgba(255,255,255,.62);line-height:1.55}
+.rel-items li::before{content:'';flex-shrink:0;width:6px;height:6px;border-radius:50%;margin-top:8px}
+.li-new::before{background:#34D399}
+.li-improved::before{background:#60A5FA}
+.li-fix::before{background:#FBBF24}
+.li-security::before{background:#F87171}
+.li-launch::before{background:#FCD34D}
+code{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.10);border-radius:5px;padding:1px 6px;font-size:11.5px;font-family:ui-monospace,'Fira Code','Cascadia Code',monospace;color:#93C5FD}
+
+/* ── Subscribe ── */
+.cl-subscribe{background:linear-gradient(135deg,rgba(59,130,246,.09),rgba(139,92,246,.07));border:1px solid rgba(59,130,246,.17);border-radius:20px;padding:52px 40px;text-align:center;margin-top:20px}
+.cl-subscribe h2{font-size:26px;font-weight:800;letter-spacing:-.4px;margin-bottom:10px}
+.cl-subscribe p{font-size:14px;color:rgba(255,255,255,.46);margin-bottom:26px;line-height:1.7}
+.sub-form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.sub-input{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.11);border-radius:10px;padding:11px 18px;font-size:14px;color:#F1F5F9;outline:none;width:260px;font-family:inherit;transition:border-color .18s,background .18s}
+.sub-input::placeholder{color:rgba(255,255,255,.26)}
+.sub-input:focus{border-color:rgba(59,130,246,.42);background:rgba(255,255,255,.07)}
+.sub-btn{background:linear-gradient(90deg,#3B82F6,#8B5CF6);color:#fff;border:none;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:opacity .2s;white-space:nowrap;font-family:inherit}
+.sub-btn:hover{opacity:.85}
+
+/* ── Scroll-to-top button ── */
+.back-top{position:fixed;bottom:32px;right:32px;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#3B82F6,#8B5CF6);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transform:translateY(14px);transition:opacity .25s,transform .25s,box-shadow .2s;z-index:500;box-shadow:0 4px 18px rgba(59,130,246,.40)}
+.back-top.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
+.back-top:hover{box-shadow:0 6px 28px rgba(59,130,246,.60)}
+.back-top svg{display:block}
+
+/* ── Footer ── */
+.b-footer{background:#020810;border-top:1px solid rgba(255,255,255,.07);padding:56px 24px 32px}
+.b-footer-inner{max-width:1200px;margin:0 auto}
+.b-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.b-footer-brand p{color:rgba(255,255,255,.38);font-size:13px;line-height:1.7;margin-top:14px;max-width:230px}
+.b-footer-col h5{color:#F1F5F9;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.b-footer-col a{display:block;color:rgba(255,255,255,.38);font-size:13px;margin-bottom:9px;transition:color .2s}
+.b-footer-col a:hover{color:#60A5FA}
+.b-footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.b-footer-copy{color:rgba(255,255,255,.22);font-size:12px}
+
+/* ── Responsive ── */
+@media(max-width:680px){
+  .rel-tl{width:32px}
+  .cl-stats{max-width:100%}
+}
+@media(max-width:600px){
+  .b-nav-links{display:none}
+  .b-nav-cta{margin-left:auto}
+  .cl-hero{padding:56px 24px 36px}
+  .rel-tl{display:none}
+  .rel-main{padding-bottom:28px}
+  .rel-card{padding:20px 20px 18px;border-radius:14px}
+  .b-footer-grid{grid-template-columns:1fr 1fr;gap:28px}
+  .cl-subscribe{padding:36px 20px}
+  .sub-form{flex-direction:column;align-items:center}
+  .sub-input{width:100%;max-width:320px}
+  .back-top{bottom:20px;right:20px;width:42px;height:42px}
+  .cl-wrap{padding:44px 16px 80px}
+}
+@media(max-width:420px){
+  .b-footer-grid{grid-template-columns:1fr;gap:24px}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4F46E5"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient><symbol id="projiq-p" viewBox="0 0 285 265"><path d="M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z" fill="url(#brand-grad)"/><rect x="0" y="65" width="60" height="12" rx="6" fill="#4F46E5"/><rect x="0" y="100" width="60" height="12" rx="6" fill="#06B6D4"/><rect x="0" y="135" width="60" height="12" rx="6" fill="#10B981"/><path d="M140 105 L160 125 L205 80" fill="none" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
+
+<nav class="b-nav">
+  <div class="b-nav-inner">
+    <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+    <div class="b-nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/">Blog</a>
+      <a href="/changelog/" class="active">Changelog</a>
+    </div>
+    <a href="https://app.projiq.app/register-org" class="b-nav-cta">Get Started Free</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- Hero -->
+  <section class="cl-hero">
+    <div class="cl-eyebrow">📋 Changelog</div>
+    <h1>What's <span>New</span> in Projiq</h1>
+    <p>Every feature, improvement, and fix — shipped and documented. We build in public.</p>
+    <div class="cl-stats">
+      <div class="cl-stat"><div class="cl-stat-num">5</div><div class="cl-stat-label">Releases</div></div>
+      <div class="cl-stat"><div class="cl-stat-num">28</div><div class="cl-stat-label">Items Shipped</div></div>
+      <div class="cl-stat"><div class="cl-stat-num">v1.4</div><div class="cl-stat-label">Latest</div></div>
+    </div>
+  </section>
+
+  <!-- Version quick-jump -->
+  <div class="cl-jumps">
+    <a href="#v14" class="jump-pill is-latest-jump">v1.4 — Latest</a>
+    <a href="#v13" class="jump-pill">v1.3</a>
+    <a href="#v12" class="jump-pill">v1.2</a>
+    <a href="#v11" class="jump-pill">v1.1</a>
+    <a href="#v10" class="jump-pill">v1.0 — Launch</a>
+  </div>
+
+  <!-- Timeline -->
+  <div class="cl-wrap">
+
+    <!-- v1.4 -->
+    <article class="release is-latest" id="v14">
+      <div class="rel-tl">
+        <div class="rel-dot"></div>
+        <div class="rel-line"></div>
+      </div>
+      <div class="rel-main">
+        <div class="rel-card">
+          <div class="rel-hdr">
+            <span class="rel-ver">v1.4</span>
+            <span class="rel-latest-tag">Latest</span>
+            <div class="rel-badges">
+              <span class="badge badge-new">New</span>
+              <span class="badge badge-improved">Improved</span>
+              <span class="badge badge-security">Security</span>
+            </div>
+            <span class="rel-date">July 9, 2026</span>
+          </div>
+          <h2>Google Sign-In, Custom Fields Security &amp; Performance</h2>
+          <p class="rel-summary">This release adds Google OAuth sign-in to the registration and login flows, hardens custom field permissions with project-scoped authorization, and fixes several performance and data correctness issues in the reporting layer.</p>
+          <ul class="rel-items">
+            <li class="li-new">Google Sign-In added to the registration and login screens — one tap to join or return</li>
+            <li class="li-security">Custom fields now enforce project-scoped ownership checks — a project manager in Project A can no longer mutate fields belonging to Project B</li>
+            <li class="li-security">Custom field routes now require role-based authorization at the route level (<code>requireProjectRole</code>), preventing unauthorized reads and writes</li>
+            <li class="li-fix">Project overview report now correctly counts <em>open</em> issues (unresolved) vs <em>all</em> issues — the counts were previously identical due to a duplicated query</li>
+            <li class="li-fix">Issue dependency link endpoint corrected — previously resolving to a non-existent route</li>
+            <li class="li-improved">Subscription management UI in Profile screen now shows plan limits, current usage, and upgrade prompts</li>
+            <li class="li-improved">Plan tier enforcement tightened — Starter org project and member caps now applied consistently at creation time</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- v1.3 -->
+    <article class="release" id="v13">
+      <div class="rel-tl">
+        <div class="rel-dot"></div>
+        <div class="rel-line"></div>
+      </div>
+      <div class="rel-main">
+        <div class="rel-card">
+          <div class="rel-hdr">
+            <span class="rel-ver">v1.3</span>
+            <div class="rel-badges">
+              <span class="badge badge-new">New</span>
+              <span class="badge badge-improved">Improved</span>
+              <span class="badge badge-fix">Fix</span>
+            </div>
+            <span class="rel-date">June 18, 2026</span>
+          </div>
+          <h2>Kanban Swimlanes, Cumulative Flow Diagram &amp; Roadmap View</h2>
+          <p class="rel-summary">The board now supports swimlane grouping by assignee or epic. The Reports tab gains a cumulative flow diagram for tracking WIP trends. The Timeline view has been promoted to a first-class navigation item.</p>
+          <ul class="rel-items">
+            <li class="li-new">Kanban swimlanes — group cards by assignee, epic, or priority with a single click</li>
+            <li class="li-new">Cumulative Flow Diagram in the Reports tab — 30, 60, and 90-day windows</li>
+            <li class="li-new">Timeline (Gantt) view promoted from beta — accessible from the main project nav</li>
+            <li class="li-improved">Sprint Planning modal now shows team capacity alongside story point totals</li>
+            <li class="li-improved">Backlog drag-and-drop re-ordering is now persisted immediately across sessions</li>
+            <li class="li-fix">Fixed an issue where completed sprints showed incorrect velocity when issues were moved post-completion</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- v1.2 -->
+    <article class="release" id="v12">
+      <div class="rel-tl">
+        <div class="rel-dot"></div>
+        <div class="rel-line"></div>
+      </div>
+      <div class="rel-main">
+        <div class="rel-card">
+          <div class="rel-hdr">
+            <span class="rel-ver">v1.2</span>
+            <div class="rel-badges">
+              <span class="badge badge-new">New</span>
+              <span class="badge badge-improved">Improved</span>
+              <span class="badge badge-fix">Fix</span>
+            </div>
+            <span class="rel-date">May 5, 2026</span>
+          </div>
+          <h2>Time Tracking, Burndown Charts &amp; Multi-Tenant Billing</h2>
+          <p class="rel-summary">Time logging arrives on issues with a dedicated Time Tracking tab. The Reports module launches with burndown and velocity charts. Billing moves from a shared model to per-organization subscriptions with three plan tiers.</p>
+          <ul class="rel-items">
+            <li class="li-new">Time Tracking — log time directly on any issue, view a per-user breakdown in Reports</li>
+            <li class="li-new">Burndown chart in the Sprint Reports tab — ideal vs actual remaining story points</li>
+            <li class="li-new">Three-tier subscription plans: Starter (free), Pro ($29/mo flat), Enterprise (custom)</li>
+            <li class="li-new">Organization admin billing dashboard — view current plan, usage, and upgrade</li>
+            <li class="li-improved">Issue detail drawer redesigned — tabs for Details, Activity, Time, Dependencies</li>
+            <li class="li-improved">Real-time notifications now appear in-app via Socket.io push — no refresh needed</li>
+            <li class="li-fix">Fixed race condition where two users editing the same issue simultaneously could lose one set of changes</li>
+            <li class="li-fix">Sprint end date validation now correctly rejects end dates earlier than start dates</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- v1.1 -->
+    <article class="release" id="v11">
+      <div class="rel-tl">
+        <div class="rel-dot"></div>
+        <div class="rel-line"></div>
+      </div>
+      <div class="rel-main">
+        <div class="rel-card">
+          <div class="rel-hdr">
+            <span class="rel-ver">v1.1</span>
+            <div class="rel-badges">
+              <span class="badge badge-new">New</span>
+              <span class="badge badge-improved">Improved</span>
+            </div>
+            <span class="rel-date">March 20, 2026</span>
+          </div>
+          <h2>Custom Fields, Issue Dependencies &amp; Role-Based Access</h2>
+          <p class="rel-summary">Project managers can now define custom fields on any issue type. Issue dependencies (blocks / blocked by) let teams model sequencing. A full RBAC system with five roles replaces the previous two-level admin model.</p>
+          <ul class="rel-items">
+            <li class="li-new">Custom Fields — text, number, dropdown, date, and checkbox types; configurable per project</li>
+            <li class="li-new">Issue dependencies — link issues as blocks / blocked by / relates to / duplicates</li>
+            <li class="li-new">Five-role RBAC: super_admin, org_admin, project_manager, developer, reporter</li>
+            <li class="li-new">Project-level member management — invite by email, assign roles per project</li>
+            <li class="li-improved">Issue search now supports full-text across title, description, and custom field values</li>
+            <li class="li-improved">Activity log on each issue records all field changes with before/after values</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- v1.0 -->
+    <article class="release is-launch" id="v10">
+      <div class="rel-tl">
+        <div class="rel-dot"></div>
+        <div class="rel-line"></div>
+      </div>
+      <div class="rel-main">
+        <div class="rel-card">
+          <div class="rel-hdr">
+            <span class="rel-ver">v1.0</span>
+            <span class="rel-launch-tag">🚀 Launch</span>
+            <div class="rel-badges">
+              <span class="badge badge-new">New</span>
+            </div>
+            <span class="rel-date">January 14, 2026</span>
+          </div>
+          <h2>Projiq Launches — Sprint Boards, Kanban &amp; Real-Time Collaboration</h2>
+          <p class="rel-summary">Projiq is live. Engineering teams can now manage sprints, run Kanban workflows, collaborate in real time, and invite their whole organization under one flat subscription — no per-seat fees.</p>
+          <ul class="rel-items">
+            <li class="li-launch">Sprint board with backlog, active sprint, and completion workflow</li>
+            <li class="li-launch">Kanban board with customizable workflow columns and WIP limits</li>
+            <li class="li-launch">Real-time collaboration via Socket.io — see teammates' changes instantly</li>
+            <li class="li-launch">Multi-project workspace with organization-level user management</li>
+            <li class="li-launch">Issue types: Story, Bug, Task, Epic — with priority, assignee, labels, and due dates</li>
+            <li class="li-launch">Mobile app for iOS and Android — React Native, works on all screen sizes</li>
+            <li class="li-launch">Flat-price billing — unlimited members, one organization, one price</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- Subscribe -->
+    <div class="cl-subscribe">
+      <h2>Stay in the loop</h2>
+      <p>Get an email when we ship something significant. No newsletters, just release notes.</p>
+      <form class="sub-form" onsubmit="handleSub(event)">
+        <input type="email" class="sub-input" placeholder="you@company.com" required aria-label="Email address">
+        <button type="submit" class="sub-btn">Notify Me</button>
+      </form>
+    </div>
+
+  </div>
+</main>
+
+<!-- Scroll to top -->
+<button class="back-top" id="back-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14V4M4 9l5-5 5 5"/></svg>
+</button>
+
+<footer class="b-footer">
+  <div class="b-footer-inner">
+    <div class="b-footer-grid">
+      <div class="b-footer-brand">
+        <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+        <p>Project management built for engineering organizations. Sprints, boards, timelines, and real-time collaboration.</p>
+      </div>
+      <div class="b-footer-col">
+        <h5>Product</h5>
+        <a href="/#features">Features</a>
+        <a href="/#views">Views</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/changelog/">Changelog</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Blog</h5>
+        <a href="/blog/">All Articles</a>
+        <a href="/blog/scrum/">Scrum</a>
+        <a href="/blog/agile/">Agile</a>
+        <a href="/blog/engineering/">Engineering</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Alternatives</h5>
+        <a href="/jira-alternative/">Jira Alternative</a>
+        <a href="/linear-alternative/">Linear Alternative</a>
+        <a href="/asana-alternative/">Asana Alternative</a>
+        <a href="https://app.projiq.app/register-org">Get Started Free</a>
+      </div>
+    </div>
+    <div class="b-footer-bottom">
+      <span class="b-footer-copy">© 2026 Projiq. All rights reserved.</span>
+      <a href="https://www.linkedin.com/company/porjiq-app/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.38);font-size:12px;text-decoration:none;transition:color .2s" onmouseover="this.style.color='#60A5FA'" onmouseout="this.style.color='rgba(255,255,255,.38)'"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+      <span class="b-footer-copy">Built for engineering teams.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Scroll-to-top visibility */
+var backTop = document.getElementById('back-top');
+window.addEventListener('scroll', function() {
+  backTop.classList.toggle('visible', window.scrollY > 320);
+}, {passive: true});
+
+/* Subscribe form */
+function handleSub(e) {
+  e.preventDefault();
+  var btn = e.target.querySelector('button');
+  btn.textContent = 'Subscribed ✓';
+  btn.disabled = true;
+  btn.style.background = 'rgba(16,185,129,.22)';
+  btn.style.color = '#34D399';
+  btn.style.border = '1px solid rgba(16,185,129,.35)';
+}
+
+/* Highlight active jump pill on scroll */
+var releases = ['v14','v13','v12','v11','v10'];
+var pills = document.querySelectorAll('.jump-pill');
+window.addEventListener('scroll', function() {
+  var scrollY = window.scrollY + 120;
+  var current = 'v14';
+  releases.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el && el.offsetTop <= scrollY) current = id;
+  });
+  pills.forEach(function(p) {
+    var href = p.getAttribute('href').replace('#','');
+    p.classList.toggle('is-latest-jump', href === current);
+  });
+}, {passive: true});
+</script>
+</body>
+</html>
