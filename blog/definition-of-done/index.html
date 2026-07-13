@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Definition of Done vs Acceptance Criteria: What's the Difference? (2026) | Projiq Blog</title>
+<meta name="description" content="Definition of Done and Acceptance Criteria both gate what ships — but they answer different questions. Learn the difference, how to write both well, and the mistakes that blur them and create quality debt.">
+<link rel="canonical" href="https://projiq.app/blog/definition-of-done/">
+<meta property="og:title" content="Definition of Done vs Acceptance Criteria: What's the Difference? (2026)">
+<meta property="og:description" content="DoD is your team's minimum quality bar for every story. AC is what the product owner needs from this specific story. Learn how to use both — and what breaks when teams confuse them.">
+<meta property="og:image" content="https://projiq.app/og.png">
+<meta property="og:url" content="https://projiq.app/blog/definition-of-done/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-13">
+<meta property="article:author" content="Projiq Team">
+<meta property="article:section" content="Scrum">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Definition of Done vs Acceptance Criteria: What's the Difference? (2026)">
+<meta name="twitter:image" content="https://projiq.app/og.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/favicon-192.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Definition of Done vs Acceptance Criteria: What's the Difference? (2026)","description":"Definition of Done is the team's minimum quality bar for every story. Acceptance Criteria is what the product owner needs from this specific story. Learn the difference, how to write both well, and the mistakes that blur them and create quality debt.","author":{"@type":"Organization","name":"Projiq"},"publisher":{"@type":"Organization","name":"Projiq","logo":{"@type":"ImageObject","url":"https://projiq.app/favicon-192.png"}},"datePublished":"2026-07-13","dateModified":"2026-07-13","mainEntityOfPage":{"@type":"WebPage","@id":"https://projiq.app/blog/definition-of-done/"},"image":"https://projiq.app/og.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://projiq.app"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://projiq.app/blog/"},{"@type":"ListItem","position":3,"name":"Definition of Done vs Acceptance Criteria","item":"https://projiq.app/blog/definition-of-done/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the Definition of Done in Scrum?","acceptedAnswer":{"@type":"Answer","text":"The Definition of Done (DoD) is a shared team checklist that specifies what must be true for any user story to be considered complete and potentially shippable. It applies equally to every story the team works on, regardless of the story's specific content. Typical DoD items include: code reviewed by at least one other engineer, unit tests written and passing, no new high-severity bugs introduced, deployed to the staging environment, and relevant documentation updated. The DoD is created by the Development Team (or Developers in modern Scrum) and reviewed periodically — usually in sprint retrospectives — to keep it current as the team's practices evolve."}},{"@type":"Question","name":"What are Acceptance Criteria in Agile?","acceptedAnswer":{"@type":"Answer","text":"Acceptance Criteria (AC) are the specific conditions a user story must satisfy for the Product Owner to accept it as done. Unlike the Definition of Done (which is the same for all stories), AC is unique to each story and describes the functional behavior the feature should exhibit from the user's perspective. For example, a story about user login might have AC like: 'Given a registered user, when they enter correct credentials, then they are redirected to the dashboard within 2 seconds' and 'Given a user who enters incorrect credentials 5 times, then their account is locked for 30 minutes.' AC is typically written by the Product Owner, often with input from the team, before a story is estimated or pulled into a sprint."}},{"@type":"Question","name":"What is the difference between Definition of Done and Acceptance Criteria?","acceptedAnswer":{"@type":"Answer","text":"The key difference: Definition of Done applies to every story and defines the team's minimum quality standard. Acceptance Criteria apply to one specific story and define the product owner's functional requirements for that story. Both must be satisfied for a story to be truly Done. A story can pass all its Acceptance Criteria (it works as specified) but still fail the Definition of Done (e.g., code wasn't reviewed, or tests weren't written). A story can satisfy the Definition of Done (quality standards met) but fail Acceptance Criteria (it doesn't behave as the product owner expected). Think of DoD as the quality gate and AC as the requirements gate — a story must pass both."}},{"@type":"Question","name":"Should Acceptance Criteria include Definition of Done items?","acceptedAnswer":{"@type":"Answer","text":"No — and this is one of the most common mistakes teams make. Including DoD items (like 'code reviewed' or 'tests written') in every story's Acceptance Criteria creates duplication and fragility. If the DoD is updated but the AC in old stories aren't, you have inconsistency. If a story's AC says 'unit tests written' but your DoD doesn't require it, a new team member might think tests are optional for stories without that AC. Keep DoD items in the DoD only, and keep AC focused exclusively on the story's specific functional behavior."}},{"@type":"Question","name":"What is a Definition of Ready?","acceptedAnswer":{"@type":"Answer","text":"The Definition of Ready (DoR) is the inverse of the Definition of Done — it specifies what must be true for a user story to be ready to be pulled into a sprint. A DoR typically includes: Acceptance Criteria written and agreed on, story estimated in story points, UX mockups attached (for UI stories), dependencies identified, story sized to fit within one sprint, and the business value understood by the team. Using a DoR prevents teams from starting stories that don't have enough information to complete — which is a major cause of stories not getting Done within the sprint they were started. The DoR is less formally specified in the Scrum Guide than the DoD, but many experienced Scrum teams find it equally essential."}},{"@type":"Question","name":"How do you write good Acceptance Criteria?","acceptedAnswer":{"@type":"Answer","text":"Good Acceptance Criteria are testable, written from the user's perspective, and focused on behavior rather than implementation. The most structured format is Given/When/Then (Gherkin syntax): 'Given [precondition], When [action], Then [outcome].' This format makes AC directly translatable to automated tests. Beyond format, strong AC are: specific rather than open-ended ('loads in under 2 seconds on a 4G connection' not 'loads quickly'), complete (covering happy path AND key error states), and written before estimation so the team knows what they're committing to. AC should not describe how the system is built — only what it does from the user's perspective."}},{"@type":"Question","name":"How often should the Definition of Done be updated?","acceptedAnswer":{"@type":"Answer","text":"The Definition of Done should be reviewed in every sprint retrospective and updated whenever the team's practices meaningfully change. Common triggers for updating the DoD: adding a new layer to the tech stack (e.g., starting to use infrastructure-as-code means 'infrastructure changes updated in IaC' gets added), improving quality practices (starting to require integration tests for all API endpoints), or discovering a category of defects that escaped to production and can be caught by a new gate. The DoD typically gets stronger over time as teams mature. In organizations with multiple teams, there's often a baseline DoD that all teams share, with each team adding their own team-specific requirements on top."}}]}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#030812;color:#F1F5F9;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+.prog{position:fixed;top:60px;left:0;height:3px;background:linear-gradient(90deg,#0D9488,#2DD4BF);width:0;z-index:300;transition:width .08s linear}
+
+.b-nav{position:sticky;top:0;z-index:200;background:rgba(3,8,18,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)}
+.b-nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center}
+.b-logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;color:#F1F5F9;flex-shrink:0}
+.b-logo-mark{flex-shrink:0;display:block}.b-dot-app{color:#06B6D4}
+.b-nav-links{display:flex;gap:28px;margin-left:auto;margin-right:28px}
+.b-nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
+.b-nav-links a:hover,.b-nav-links a.active{color:#F1F5F9}
+.b-nav-cta{background:linear-gradient(90deg,#0D9488,#14B8A6);color:#fff;padding:8px 20px;border-radius:9px;font-size:13px;font-weight:700;flex-shrink:0;transition:opacity .2s}
+.b-nav-cta:hover{opacity:.86}
+
+.b-crumb{max-width:1200px;margin:0 auto;padding:28px 24px 0;display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.35);flex-wrap:wrap}
+.b-crumb a{color:rgba(255,255,255,.38);transition:color .2s}
+.b-crumb a:hover{color:#2DD4BF}
+.b-crumb-sep{color:rgba(255,255,255,.18)}
+
+.art-wrap{max-width:1200px;margin:0 auto;padding:32px 24px 0}
+.art-header{margin-bottom:44px}
+.art-cat{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;background:rgba(13,148,136,.11);border:1px solid rgba(13,148,136,.28);color:#2DD4BF;margin-bottom:18px}
+.art-header h1{font-size:clamp(30px,4.5vw,50px);font-weight:900;line-height:1.15;letter-spacing:-1px;margin-bottom:22px}
+.art-meta{display:flex;align-items:center;gap:22px;color:rgba(255,255,255,.35);font-size:13px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap}
+
+.art-layout{display:grid;grid-template-columns:1fr 300px;gap:60px;align-items:start}
+
+.art-body{min-width:0;overflow-wrap:break-word;word-break:break-word;font-size:17px;line-height:1.80;color:rgba(255,255,255,.78);padding-bottom:60px}
+.art-body p{margin-bottom:22px}
+.art-body h2{font-size:26px;font-weight:800;color:#F1F5F9;margin:48px 0 16px;letter-spacing:-.3px;line-height:1.3}
+.art-body h3{font-size:19px;font-weight:700;color:#F1F5F9;margin:28px 0 12px;letter-spacing:-.1px}
+.art-body ul,.art-body ol{margin:0 0 22px 22px}
+.art-body li{margin-bottom:9px;color:rgba(255,255,255,.72)}
+.art-body ul li::marker{color:#0D9488}
+.art-body ol li::marker{color:#2DD4BF;font-weight:700}
+.art-body strong{color:#F1F5F9;font-weight:700}
+.art-body a{color:#2DD4BF;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(45,212,191,.4);transition:text-decoration-color .2s}
+.art-body a:hover{text-decoration-color:#2DD4BF}
+blockquote{border-left:3px solid #0D9488;padding:16px 22px;background:rgba(13,148,136,.06);border-radius:0 10px 10px 0;margin:28px 0;font-style:italic;color:rgba(255,255,255,.72);font-size:16px}
+.tip-box{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.tip-box b{color:#34D399;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.warn-box{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.warn-box b{color:#FBBF24;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+
+.diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:28px 0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.07)}
+.diff-col{padding:22px}
+.diff-col:first-child{background:rgba(13,148,136,.08);border-right:1px solid rgba(255,255,255,.07)}
+.diff-col:last-child{background:rgba(139,92,246,.08)}
+.diff-col h4{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px}
+.diff-col:first-child h4{color:#2DD4BF}
+.diff-col:last-child h4{color:#A78BFA}
+.diff-col ul{margin:0;padding:0;list-style:none}
+.diff-col li{font-size:14px;color:rgba(255,255,255,.65);padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05);line-height:1.5}
+.diff-col li:last-child{border-bottom:none}
+.diff-col li::before{content:'→ ';color:rgba(255,255,255,.25);font-size:12px}
+
+.check-table-wrap{overflow-x:auto;margin:28px 0;border-radius:12px;border:1px solid rgba(255,255,255,.07)}
+.check-table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px}
+.check-table th{background:rgba(13,148,136,.10);color:#2DD4BF;padding:12px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.check-table th:first-child{color:rgba(255,255,255,.50)}
+.check-table td{padding:11px 16px;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.68);vertical-align:top;line-height:1.5}
+.check-table td:first-child{color:rgba(255,255,255,.85);font-weight:600;font-size:13px}
+.check-table tr:hover td{background:rgba(255,255,255,.02)}
+.yes{color:#34D399;font-weight:700}
+.cond{color:#FBBF24;font-weight:600}
+.no{color:rgba(255,255,255,.30)}
+
+.gherkin-block{background:rgba(2,8,23,.9);border:1px solid rgba(13,148,136,.20);border-radius:12px;padding:22px 24px;margin:22px 0;font-family:'Fira Code','Cascadia Code','Consolas',monospace;font-size:13.5px;line-height:1.85;overflow-x:auto}
+.gh-keyword{color:#2DD4BF;font-weight:700}
+.gh-context{color:#A78BFA}
+.gh-action{color:#60A5FA}
+.gh-outcome{color:#34D399}
+
+.bad-good{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0}
+.bg-panel{border-radius:10px;padding:16px 18px}
+.bg-panel.bad{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.18)}
+.bg-panel.good{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.18)}
+.bg-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
+.bg-panel.bad .bg-label{color:#F87171}
+.bg-panel.good .bg-label{color:#34D399}
+.bg-panel ul{margin:0;padding:0;list-style:none}
+.bg-panel li{font-size:13px;color:rgba(255,255,255,.60);padding:4px 0;line-height:1.5}
+.bg-panel.bad li::before{content:'✗ ';color:#F87171}
+.bg-panel.good li::before{content:'✓ ';color:#34D399}
+
+.dor-card{background:rgba(10,22,40,.8);border:1px solid rgba(255,255,255,.07);border-left:3px solid #0D9488;border-radius:0 12px 12px 0;padding:18px 20px;margin:12px 0}
+.dor-card .d-title{font-size:14px;font-weight:700;color:#F1F5F9;margin-bottom:8px}
+.dor-card ul{margin:0 0 0 16px;padding:0}
+.dor-card li{font-size:13px;color:rgba(255,255,255,.58);margin-bottom:5px;line-height:1.5}
+
+.art-cta{background:linear-gradient(135deg,rgba(13,148,136,.13),rgba(45,212,191,.07));border:1px solid rgba(13,148,136,.22);border-radius:16px;padding:36px;text-align:center;margin:44px 0}
+.art-cta h3{font-size:22px;font-weight:800;margin-bottom:10px}
+.art-cta p{color:rgba(255,255,255,.52);font-size:15px;margin-bottom:22px;line-height:1.6}
+.art-cta a{display:inline-block;background:linear-gradient(90deg,#0D9488,#14B8A6);color:#fff;padding:12px 28px;border-radius:9px;font-size:14px;font-weight:700;transition:opacity .2s}
+.art-cta a:hover{opacity:.86;text-decoration:none}
+
+.art-sidebar{position:sticky;top:80px}
+.sb-card{background:rgba(10,22,40,.8);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px;margin-bottom:18px}
+.sb-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.35);margin-bottom:16px}
+.toc-list{list-style:none;padding:0}
+.toc-list li{margin-bottom:9px}
+.toc-list a{font-size:13px;color:rgba(255,255,255,.45);display:block;padding-left:10px;border-left:1px solid rgba(255,255,255,.08);line-height:1.5;transition:color .18s,border-color .18s}
+.toc-list a:hover,.toc-list a.active{color:#2DD4BF;border-left-color:#0D9488;text-decoration:none}
+.rel-post{display:flex;gap:11px;margin-bottom:13px;align-items:flex-start}
+.rel-icon{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px}
+.rel-post a{font-size:13px;font-weight:600;color:rgba(255,255,255,.65);line-height:1.4;transition:color .2s;display:block;margin-bottom:3px}
+.rel-post a:hover{color:#2DD4BF;text-decoration:none}
+.rel-cat{font-size:11px;color:rgba(255,255,255,.28)}
+
+.b-footer{background:#020810;border-top:1px solid rgba(255,255,255,.07);padding:56px 24px 32px}
+.b-footer-inner{max-width:1200px;margin:0 auto}
+.b-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.b-footer-brand p{color:rgba(255,255,255,.38);font-size:13px;line-height:1.7;margin-top:14px;max-width:230px}
+.b-footer-col h5{color:#F1F5F9;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.b-footer-col a{display:block;color:rgba(255,255,255,.38);font-size:13px;margin-bottom:9px;transition:color .2s}
+.b-footer-col a:hover{color:#2DD4BF}
+.b-footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.b-footer-copy{color:rgba(255,255,255,.22);font-size:12px}
+
+@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{display:none}.b-footer-grid{grid-template-columns:1fr 1fr;gap:32px}.diff-grid{grid-template-columns:1fr}.diff-col:first-child{border-right:none;border-bottom:1px solid rgba(255,255,255,.07)}.bad-good{grid-template-columns:1fr}}
+@media(max-width:600px){.b-nav-links{display:none}.b-nav-cta{margin-left:auto}.art-header h1{font-size:28px}.art-body{min-width:0;overflow-wrap:break-word;word-break:break-word;font-size:16px}.b-footer-grid{grid-template-columns:1fr;gap:24px}}
+
+.faq-block{margin:44px 0}
+.faq-block h2{font-size:26px;font-weight:800;color:#F1F5F9;margin-bottom:22px;letter-spacing:-.3px}
+.faq-entry{border:1px solid rgba(255,255,255,.07);border-radius:12px;margin-bottom:10px;overflow:hidden;background:rgba(10,22,40,.6)}
+.faq-entry summary{padding:17px 22px;font-size:15px;font-weight:700;color:#F1F5F9;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4}
+.faq-entry summary::-webkit-details-marker{display:none}
+.faq-entry summary::after{content:'+';color:#2DD4BF;font-size:18px;font-weight:400;flex-shrink:0;transition:transform .2s}
+.faq-entry[open] summary::after{transform:rotate(45deg)}
+.faq-entry[open]{border-color:rgba(13,148,136,.22)}
+.faq-ans{padding:0 22px 18px;font-size:14px;color:rgba(255,255,255,.62);line-height:1.75}
+</style>
+</head>
+<body>
+
+<div class="prog" id="prog"></div>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4F46E5"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient><symbol id="projiq-p" viewBox="0 0 285 265"><path d="M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z" fill="url(#brand-grad)"/><rect x="0" y="65" width="60" height="12" rx="6" fill="#4F46E5"/><rect x="0" y="100" width="60" height="12" rx="6" fill="#06B6D4"/><rect x="0" y="135" width="60" height="12" rx="6" fill="#10B981"/><path d="M140 105 L160 125 L205 80" fill="none" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
+
+<nav class="b-nav">
+  <div class="b-nav-inner">
+    <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+    <div class="b-nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/" class="active">Blog</a>
+    </div>
+    <a href="https://app.projiq.app/register-org" class="b-nav-cta">Get Started Free</a>
+  </div>
+</nav>
+
+<div class="b-crumb">
+  <a href="/">Home</a><span class="b-crumb-sep">›</span>
+  <a href="/blog/">Blog</a><span class="b-crumb-sep">›</span>
+  <span>Definition of Done vs Acceptance Criteria</span>
+</div>
+
+<div class="art-wrap">
+  <header class="art-header">
+    <span class="art-cat">Scrum</span>
+    <h1>Definition of Done vs Acceptance Criteria: What's the Difference?</h1>
+    <div class="art-meta">
+      <span>✍ Projiq Team</span>
+      <span>📅 July 13, 2026</span>
+      <span>⏱ 9 min read</span>
+    </div>
+  </header>
+
+  <div class="art-layout">
+    <article class="art-body" id="article">
+
+      <p>Every Scrum team uses both — but most teams couldn't clearly explain where one ends and the other begins. Definition of Done and Acceptance Criteria are both gates that a user story must pass before it's considered complete, and that overlap is exactly what causes the confusion. They look similar from the outside. But they answer completely different questions, they're owned by different people, and conflating them creates a specific, recurring class of quality problem that's expensive to fix once it's established as a team habit.</p>
+
+      <p>This guide draws the line clearly: what each one is, who owns it, how to write it well, and what goes wrong when teams mix them up. There's also a third checklist — the Definition of Ready — that most teams discover too late, usually after they've already suffered the problem it prevents.</p>
+
+      <h2 id="why-confusion-exists">Why the Confusion Exists — and Why It Matters</h2>
+
+      <p>Both DoD and AC answer the question "is this story done?" Which means both look like checklists for completeness, and teams treat them as interchangeable. The most common symptom: teams include DoD items in their Acceptance Criteria. "Code reviewed" appears as an AC item. "No high-severity bugs" gets written into every story's requirements. "Deployed to staging" shows up in the list alongside actual functional behavior.</p>
+
+      <p>This feels harmless — the information is there somewhere, so who cares where? — but it creates compounding problems:</p>
+
+      <ul>
+        <li>When the DoD evolves (and it should), stories with DoD items buried in their AC don't get updated. You now have inconsistent standards across the backlog.</li>
+        <li>Stories without that specific AC item look like they don't require code review. A new team member reads the AC and assumes the standard doesn't apply.</li>
+        <li>Product owners writing AC start including engineering quality requirements — which is outside their domain and creates friction with developers who know the AC is specifying implementation rather than behavior.</li>
+        <li>The real DoD never gets written down, which means it exists only in the heads of senior team members — invisible to new joiners and impossible to hold the team accountable to.</li>
+      </ul>
+
+      <blockquote>"The Definition of Done is how the team prevents technical debt from accumulating silently. Acceptance Criteria is how the product owner prevents feature drift. Both are necessary. Neither substitutes for the other."</blockquote>
+
+      <h2 id="what-is-dod">What Is the Definition of Done?</h2>
+
+      <p>The Definition of Done is a shared team checklist that specifies what must be true for <strong>any</strong> user story to be considered complete and potentially shippable — regardless of what the story is about. It's the team's minimum quality bar, applied consistently to every piece of work that enters and exits a sprint.</p>
+
+      <p>A well-written DoD makes these guarantees to the organization:</p>
+
+      <ul>
+        <li>Any story marked Done has code that was reviewed by at least one other engineer</li>
+        <li>Any story marked Done has tests that pass and no new high-severity issues</li>
+        <li>Any story marked Done can be deployed — it's not waiting on manual steps, credentials, or environment setup</li>
+        <li>Any story marked Done has documentation current enough that another engineer could maintain it</li>
+      </ul>
+
+      <p>The DoD is owned by the <strong>Developers</strong> (called the "Development Team" in older Scrum terminology). The Scrum Master facilitates and coaches its use. The Product Owner doesn't set the DoD — they set Acceptance Criteria. This distinction matters because DoD items are engineering quality decisions that require engineering expertise to define and evaluate.</p>
+
+      <h3>What typically goes in a DoD</h3>
+
+      <div class="check-table-wrap">
+        <table class="check-table">
+          <thead>
+            <tr><th>DoD Item</th><th>All Stories</th><th>Backend Changes</th><th>UI Changes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Code reviewed by ≥1 engineer</td><td class="yes">Always</td><td class="yes">Always</td><td class="yes">Always</td></tr>
+            <tr><td>Unit tests written and passing</td><td class="yes">Always</td><td class="yes">Always</td><td class="cond">When logic present</td></tr>
+            <tr><td>Integration tests updated</td><td class="no">—</td><td class="yes">Always</td><td class="no">—</td></tr>
+            <tr><td>No new high-severity bugs introduced</td><td class="yes">Always</td><td class="yes">Always</td><td class="yes">Always</td></tr>
+            <tr><td>Deployed to staging environment</td><td class="yes">Always</td><td class="yes">Always</td><td class="yes">Always</td></tr>
+            <tr><td>Accessibility audit passed</td><td class="no">—</td><td class="no">—</td><td class="yes">Always</td></tr>
+            <tr><td>Design review approved</td><td class="no">—</td><td class="no">—</td><td class="cond">Non-trivial UI</td></tr>
+            <tr><td>Performance baseline maintained</td><td class="cond">API + UI</td><td class="yes">Always</td><td class="yes">Always</td></tr>
+            <tr><td>Documentation updated</td><td class="cond">When behavior changes</td><td class="cond">When behavior changes</td><td class="cond">When behavior changes</td></tr>
+            <tr><td>Security review completed</td><td class="no">—</td><td class="cond">Auth/data changes</td><td class="no">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tip-box">
+        <b>DoD Scope Warning</b>
+        A DoD that covers everything imaginable is a DoD nobody follows. Start with the 5–7 items your team can genuinely commit to applying to every single story. Add items incrementally as your practices evolve. A tight DoD that's actually enforced is worth ten comprehensive DoDs that get selectively applied.
+      </div>
+
+      <h2 id="what-are-ac">What Are Acceptance Criteria?</h2>
+
+      <p>Acceptance Criteria are the specific conditions a user story must satisfy for the Product Owner to accept the story as meeting the user's need. Unlike the DoD — which is the same for every story — AC is unique to each story and describes the <em>functional behavior</em> the feature should exhibit.</p>
+
+      <p>AC is written from the <strong>user's perspective</strong>, not the engineer's. It describes what the system does, not how it does it. The Product Owner owns AC — they define what "done" means for this specific requirement. Developers and QA provide input (especially on edge cases), but the product owner has the final say on whether AC captures the intent correctly.</p>
+
+      <p>The most structured format for writing AC is <strong>Given/When/Then</strong> (Gherkin syntax), which maps directly to automated test structure:</p>
+
+      <div class="gherkin-block">
+        <span class="gh-keyword">Scenario:</span> Successful login<br>
+        &nbsp;&nbsp;<span class="gh-keyword">Given</span> <span class="gh-context">a registered user with valid credentials</span><br>
+        &nbsp;&nbsp;<span class="gh-keyword">When</span> <span class="gh-action">they submit the login form with correct email and password</span><br>
+        &nbsp;&nbsp;<span class="gh-keyword">Then</span> <span class="gh-outcome">they are redirected to the dashboard within 2 seconds</span><br>
+        &nbsp;&nbsp;<span class="gh-keyword">And</span> <span class="gh-outcome">their session cookie is set with a 24-hour expiry</span><br><br>
+        <span class="gh-keyword">Scenario:</span> Failed login — incorrect password<br>
+        &nbsp;&nbsp;<span class="gh-keyword">Given</span> <span class="gh-context">a registered user</span><br>
+        &nbsp;&nbsp;<span class="gh-keyword">When</span> <span class="gh-action">they submit the login form with an incorrect password</span><br>
+        &nbsp;&nbsp;<span class="gh-keyword">Then</span> <span class="gh-outcome">they see the error "Incorrect email or password"</span><br>
+        &nbsp;&nbsp;<span class="gh-keyword">And</span> <span class="gh-outcome">the password field is cleared</span><br>
+        &nbsp;&nbsp;<span class="gh-keyword">And</span> <span class="gh-outcome">a failed attempt is recorded against their account</span><br><br>
+        <span class="gh-keyword">Scenario:</span> Account locked after repeated failures<br>
+        &nbsp;&nbsp;<span class="gh-keyword">Given</span> <span class="gh-context">a user who has failed login 5 consecutive times</span><br>
+        &nbsp;&nbsp;<span class="gh-keyword">When</span> <span class="gh-action">they attempt to log in again</span><br>
+        &nbsp;&nbsp;<span class="gh-keyword">Then</span> <span class="gh-outcome">their account is locked for 30 minutes</span><br>
+        &nbsp;&nbsp;<span class="gh-keyword">And</span> <span class="gh-outcome">they receive a lockout notification email</span>
+      </div>
+
+      <p>Notice what's not in the AC above: code review, test coverage, deployment environment — those belong in the DoD and apply automatically to this story alongside every other story in the sprint. The AC only specifies what the login feature <em>does</em> from the user's point of view.</p>
+
+      <p>The foundation of good AC is a well-formed user story to begin with. See our full guide on <a href="/blog/how-to-write-user-stories/">how to write user stories</a> for the format and patterns that produce AC-ready stories from the start.</p>
+
+      <h2 id="differences">The Key Differences Side by Side</h2>
+
+      <div class="diff-grid">
+        <div class="diff-col">
+          <h4>Definition of Done</h4>
+          <ul>
+            <li>Applies to every story equally</li>
+            <li>Owned by the Developers</li>
+            <li>Defines team's minimum quality standard</li>
+            <li>Engineering-focused (tests, review, deployment)</li>
+            <li>Static within a sprint, evolves across sprints</li>
+            <li>Agreed once, applied automatically</li>
+            <li>Invisible in individual stories — lives at team level</li>
+            <li>Failure = technical debt or quality regression</li>
+          </ul>
+        </div>
+        <div class="diff-col">
+          <h4>Acceptance Criteria</h4>
+          <ul>
+            <li>Unique to each story</li>
+            <li>Owned by the Product Owner</li>
+            <li>Defines PO's functional requirements for this story</li>
+            <li>User behavior-focused (what the system does)</li>
+            <li>Written per story, often evolves during refinement</li>
+            <li>Written for each story before estimation</li>
+            <li>Visible on the story card — reviewed before sprint</li>
+            <li>Failure = feature doesn't meet user need</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>The practical test: if the item applies to <em>every</em> story regardless of what the story is about — it belongs in the DoD. If the item is specific to <em>this particular story's behavior</em> — it belongs in the AC. "Code reviewed" applies to every story → DoD. "Users can reset their password via email link" only applies to the password reset story → AC.</p>
+
+      <h2 id="what-breaks">What Breaks When You Mix Them Up</h2>
+
+      <p>The failure modes from conflating DoD and AC are predictable. Here are the four most common:</p>
+
+      <h3>1. The DoD never gets written</h3>
+      <p>If teams put quality items in every story's AC, the DoD never needs to be articulated — it's implicitly encoded across hundreds of stories. The problem: it only exists in the stories the team has already written. New stories don't automatically inherit it. New team members don't see it. The quality standard exists but isn't legible as a standard — it's just a pattern scattered across the backlog.</p>
+
+      <h3>2. Inconsistent quality across stories</h3>
+      <p>If code review is an AC item on some stories but not others, a strict reading of the process means code review is optional for stories without that AC. In practice, experienced developers apply it anyway. But "apply it anyway" is tribal knowledge — it doesn't survive team turnover or growth.</p>
+
+      <h3>3. The PO starts setting engineering standards</h3>
+      <p>When the PO writes AC that includes quality requirements ("must have 90% test coverage", "must be reviewed before merging"), they're reaching into engineering decisions they don't have the context to make correctly. "90% test coverage" on a story that touches business logic might be the right standard; on a story that's pure UI rendering, it's pointless. DoD items are engineering decisions — they belong with the people who have the context to set them correctly.</p>
+
+      <h3>4. Refinement gets confused with DoD validation</h3>
+      <p>Sprint review becomes a muddled exercise when teams don't clearly separate "does this meet the DoD" (engineering question) from "does this meet the AC" (product question). In a healthy sprint review, the PO validates AC against the demo. The DoD check happens before the story even reaches the review — it's the team's internal gate, not a stakeholder gate.</p>
+
+      <h2 id="writing-dod">How to Build a Strong Definition of Done</h2>
+
+      <p>Building a DoD is a team exercise, not a document the Scrum Master writes alone. Run it as a workshop in a sprint retrospective — most teams that don't have one can draft their first version in 45 minutes.</p>
+
+      <ol>
+        <li><strong>List everything that must be true</strong> for a story to be shippable — each person on the team writes their own list first, independently, then the team compares. Independent generation prevents anchoring and surfaces items people assumed were obvious but weren't explicitly shared.</li>
+        <li><strong>Group by type</strong> — code quality, testing, deployment, documentation, design, security. This naturally reveals categories where the team has implicit standards but hasn't formalized them.</li>
+        <li><strong>Narrow to what you can commit to on every story.</strong> Everything on the DoD applies to every story — so anything that's "usually but not always" needs to either become mandatory or be removed. "Sometimes" isn't a DoD standard, it's a guideline.</li>
+        <li><strong>Make it visible.</strong> Post it on the sprint board, include it in the team working agreement, reference it in sprint planning. The DoD only functions as a quality gate if people encounter it constantly.</li>
+        <li><strong>Review it every retrospective.</strong> Specifically ask: "Did any stories almost fail the DoD this sprint?" and "Are there categories of defect that escaped because our DoD didn't cover them?" Evolve it based on evidence, not theory.</li>
+      </ol>
+
+      <div class="tip-box">
+        <b>Multi-Team DoD</b>
+        Organizations with multiple Scrum teams typically have two layers: a baseline DoD that applies to all teams (maintained at the program or product level), and team-specific additions. The baseline ensures a minimum shippability standard; team additions reflect each team's particular tech stack, risk profile, and quality practices. Teams should not be allowed to set their baseline DoD lower than the organizational baseline — only higher.
+      </div>
+
+      <h2 id="writing-ac">Writing Acceptance Criteria That Developers Can Actually Use</h2>
+
+      <p>Good AC is testable, behavior-focused, and complete without being prescriptive about implementation. Here's the difference in practice:</p>
+
+      <div class="bad-good">
+        <div class="bg-panel bad">
+          <div class="bg-label">Weak AC</div>
+          <ul>
+            <li>The page loads quickly</li>
+            <li>The UI looks good on mobile</li>
+            <li>Errors are handled gracefully</li>
+            <li>Code is reviewed and tested</li>
+            <li>The search works correctly</li>
+          </ul>
+        </div>
+        <div class="bg-panel good">
+          <div class="bg-label">Strong AC</div>
+          <ul>
+            <li>First Contentful Paint ≤1.5s on 4G</li>
+            <li>Layout matches Figma frame at 375px width</li>
+            <li>API errors show inline message with retry button</li>
+            <li><em>(this belongs in the DoD, not AC)</em></li>
+            <li>Typing 3+ characters returns results in ≤300ms</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>Each AC item should be answerable with a clear yes or no. If you can't write a test — automated or manual — against an AC item, it's too vague. "Loads quickly" is not testable. "First Contentful Paint under 1.5 seconds on a simulated 4G connection" is testable and deterministic.</p>
+
+      <h3>Cover the error paths, not just the happy path</h3>
+
+      <p>First drafts of AC almost always describe what happens when everything works. Strong AC also covers: what happens when the user provides invalid input, what happens when the network fails mid-operation, what happens when a downstream service is unavailable, and what happens when the user has insufficient permissions. These edge cases are where product decisions are actually made — and if they're not in the AC, developers will make them unilaterally, often in ways the PO wouldn't have chosen.</p>
+
+      <p>Reviewing your estimation accuracy against AC coverage is a useful retrospective exercise. If stories frequently have late-discovered edge cases, your AC is likely missing error paths. See our <a href="/blog/sprint-retrospective-templates/">sprint retrospective templates</a> for formats that surface this kind of estimation and scope mismatch systematically.</p>
+
+      <h2 id="definition-of-ready">The Third Checklist Teams Forget: Definition of Ready</h2>
+
+      <p>The Definition of Ready (DoR) is the inverse of the DoD — it specifies what must be true for a user story to be ready to be pulled into a sprint. It's the input quality gate, where DoD is the output quality gate.</p>
+
+      <div class="dor-card">
+        <div class="d-title">Definition of Ready — Example Checklist</div>
+        <ul>
+          <li>User story written in the standard format (As a… / I want… / So that…)</li>
+          <li>Acceptance Criteria written and reviewed by the team</li>
+          <li>Story estimated by the development team</li>
+          <li>Story is sized to fit within a single sprint</li>
+          <li>UX mockups attached (for UI stories)</li>
+          <li>External dependencies identified and confirmed available</li>
+          <li>Technical spikes completed for any unknowns that would block development</li>
+          <li>Business value understood — PO can explain why this matters now</li>
+        </ul>
+      </div>
+
+      <p>Teams without a DoR pull half-formed stories into sprints and discover mid-sprint that the requirements aren't clear enough to build against. The story either stalls, gets done wrong, or gets pushed to the next sprint — all forms of waste. The DoR prevents this by making "ready to build" an explicit standard, not an assumption.</p>
+
+      <p>The DoR isn't part of the Scrum Guide — it's a pattern that experienced teams adopt after experiencing the problem it solves. It's especially valuable for teams where backlog refinement happens inconsistently, or where the PO is stretched across multiple teams and stories sometimes enter sprints under-specified.</p>
+
+      <div class="warn-box">
+        <b>DoR as a Gatekeeping Tool</b>
+        Some teams turn the DoR into a bureaucratic blocker — refusing to start any story that hasn't passed every DoR item, even when the team has enough information to begin. The DoR is guidance, not a hard rule. If a story is 90% ready and the team has enough to start while the last 10% gets clarified, starting is often the right call. Apply judgment; don't let process serve as a reason to not ship.
+      </div>
+
+      <p>All three artifacts — DoD, AC, and DoR — are inputs to the estimation conversation. A story without complete AC shouldn't be estimated; a story that won't pass the DoD as written is over-scoped for the sprint. For the full estimation picture, see our guide on <a href="/blog/story-points-estimation/">story points vs hours</a>.</p>
+
+      <div class="art-cta">
+        <h3>Ship stories that are actually done with Projiq</h3>
+        <p>Projiq lets you embed your Definition of Done directly in your workflow — every story carries the checklist, so "Done" means the same thing to every team member, every sprint.</p>
+        <a href="https://app.projiq.app/register-org">Start Free — No Credit Card Required</a>
+      </div>
+
+      <div class="faq-block">
+        <h2 id="faq">Frequently Asked Questions</h2>
+
+        <details class="faq-entry">
+          <summary>What is the Definition of Done in Scrum?</summary>
+          <div class="faq-ans">The Definition of Done (DoD) is a shared team checklist specifying what must be true for any user story to be considered complete and shippable. It applies equally to every story regardless of content. Typical DoD items: code reviewed by at least one other engineer, unit tests written and passing, no new high-severity bugs, deployed to staging, and documentation updated. The DoD is created and owned by the Developers, reviewed periodically in retrospectives, and should strengthen over time as the team matures. Its purpose is to prevent technical debt from accumulating silently and to ensure "Done" means the same thing to everyone on the team.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What are Acceptance Criteria in Agile?</summary>
+          <div class="faq-ans">Acceptance Criteria (AC) are the specific conditions a user story must satisfy for the Product Owner to accept it as meeting the user's need. Unlike the Definition of Done (same for all stories), AC is unique to each story and describes the functional behavior from the user's perspective. For example: "Given a registered user, when they enter correct credentials, then they are redirected to the dashboard within 2 seconds." AC is typically written by the Product Owner before a story is estimated or pulled into a sprint. Developers and QA provide input on edge cases, but the PO has final say on whether the AC captures the intent correctly.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What is the difference between Definition of Done and Acceptance Criteria?</summary>
+          <div class="faq-ans">DoD applies to every story and defines the team's minimum quality standard (owned by Developers). AC applies to one specific story and defines the product owner's functional requirements (owned by the Product Owner). Both must be satisfied for a story to be truly Done. A story can pass all its AC (works as specified) but fail the DoD (code wasn't reviewed). A story can satisfy the DoD (quality standards met) but fail AC (doesn't behave as expected). Think of DoD as the quality gate and AC as the requirements gate — a story must pass both before it's complete.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>Should Acceptance Criteria include Definition of Done items?</summary>
+          <div class="faq-ans">No — this is one of the most common mistakes teams make. Including DoD items in every story's AC creates duplication and inconsistency. When the DoD evolves, stories with embedded DoD items in their AC don't get updated. Stories without that specific AC item appear to have lower standards. And product owners start reaching into engineering decisions outside their domain. Keep DoD items in the DoD, and keep AC focused on the story's specific functional behavior.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What is a Definition of Ready?</summary>
+          <div class="faq-ans">The Definition of Ready (DoR) specifies what must be true for a user story to be ready to be pulled into a sprint — the input quality gate, compared to the DoD's output quality gate. A DoR typically includes: Acceptance Criteria written and agreed on, story estimated, UX mockups attached for UI work, dependencies identified, story sized to fit one sprint, and business value understood. Teams without a DoR frequently pull under-specified stories into sprints and discover mid-sprint that requirements aren't clear enough to build against. The DoR prevents this by making readiness explicit rather than assumed.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>How do you write good Acceptance Criteria?</summary>
+          <div class="faq-ans">Good AC is testable, written from the user's perspective, and focused on behavior (not implementation). The most structured format is Given/When/Then: "Given [precondition], When [action], Then [outcome]." Strong AC is specific ("loads in under 1.5s on 4G" not "loads quickly"), covers the happy path AND key error states, and is written before estimation so the team knows what they're committing to. Each AC item should be answerable with a clear yes or no — if you can't write a test against it, it's too vague. Never include DoD items (code review, test coverage, deployment) in AC.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>How often should the Definition of Done be updated?</summary>
+          <div class="faq-ans">Review the DoD in every sprint retrospective and update it when the team's practices meaningfully change. Common triggers: adding a new layer to the tech stack (e.g., starting infrastructure-as-code), improving quality practices (requiring integration tests for all API endpoints), or discovering a class of defects that escaped because the DoD didn't cover them. The DoD typically strengthens over time as teams mature. In multi-team organizations, there's usually a baseline DoD all teams share, with each team adding their own requirements on top — but no team can set their baseline lower than the organizational minimum.</div>
+        </details>
+      </div>
+
+    </article>
+
+    <aside class="art-sidebar">
+      <div class="sb-card">
+        <h4>Table of Contents</h4>
+        <ul class="toc-list">
+          <li><a href="#why-confusion-exists">Why the Confusion Exists</a></li>
+          <li><a href="#what-is-dod">What Is the Definition of Done?</a></li>
+          <li><a href="#what-are-ac">What Are Acceptance Criteria?</a></li>
+          <li><a href="#differences">Key Differences Side by Side</a></li>
+          <li><a href="#what-breaks">What Breaks When You Mix Them</a></li>
+          <li><a href="#writing-dod">Building a Strong DoD</a></li>
+          <li><a href="#writing-ac">Writing Effective AC</a></li>
+          <li><a href="#definition-of-ready">Definition of Ready</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="sb-card">
+        <h4>Related Posts</h4>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(139,92,246,.12);">✍</div>
+          <div>
+            <a href="/blog/how-to-write-user-stories/">How to Write User Stories</a>
+            <span class="rel-cat">Scrum</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(16,185,129,.12);">🏃</div>
+          <div>
+            <a href="/blog/sprint-retrospective-templates/">Sprint Retrospective Templates</a>
+            <span class="rel-cat">Scrum</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(236,72,153,.12);">🃏</div>
+          <div>
+            <a href="/blog/story-points-estimation/">Story Points vs Hours</a>
+            <span class="rel-cat">Scrum</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="b-footer">
+  <div class="b-footer-inner">
+    <div class="b-footer-grid">
+      <div class="b-footer-brand">
+        <a href="/" class="b-logo"><svg class="b-logo-mark" width="24" height="22" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+        <p>Modern project management for engineering teams. Built for speed, clarity, and developer workflow.</p>
+      </div>
+      <div class="b-footer-col">
+        <h5>Blog</h5>
+        <a href="/blog/agile-vs-scrum/">Agile vs Scrum</a>
+        <a href="/blog/kanban-vs-scrum/">Kanban vs Scrum</a>
+        <a href="/blog/sprint-retrospective-templates/">Retro Templates</a>
+        <a href="/blog/how-to-write-user-stories/">User Stories</a>
+        <a href="/blog/definition-of-done/">Definition of Done</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Alternatives</h5>
+        <a href="/jira-alternative/">Jira Alternative</a>
+        <a href="/linear-alternative/">Linear Alternative</a>
+        <a href="/asana-alternative/">Asana Alternative</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Product</h5>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="https://app.projiq.app/register-org">Get Started</a>
+      </div>
+    </div>
+    <div class="b-footer-bottom">
+      <span class="b-footer-copy">© 2026 Projiq. All rights reserved.</span>
+      <span class="b-footer-copy">Built for engineering teams that ship.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var prog=document.getElementById('prog');
+  function update(){
+    var st=window.scrollY;
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    prog.style.width=(h>0?Math.min(100,st/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  var links=document.querySelectorAll('.toc-list a');
+  var headings=document.querySelectorAll('#article h2[id]');
+  function highlight(){
+    var st=window.scrollY+80;
+    var active=null;
+    headings.forEach(function(h){if(h.offsetTop<=st)active=h.id;});
+    links.forEach(function(a){
+      a.classList.toggle('active',a.getAttribute('href')==='#'+active);
+    });
+  }
+  window.addEventListener('scroll',highlight,{passive:true});
+  highlight();
+})();
+</script>
+</body>
+</html>

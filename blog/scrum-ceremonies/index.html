@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Scrum Ceremonies: A Complete Guide to All 5 Events (2026) | Projiq Blog</title>
+<meta name="description" content="Sprint Planning, Daily Scrum, Sprint Review, Retrospective — all 5 Scrum events explained with timeboxes, agendas, anti-patterns, and practical tips for engineering teams who want ceremonies that actually work.">
+<link rel="canonical" href="https://projiq.app/blog/scrum-ceremonies/">
+<meta property="og:title" content="Scrum Ceremonies: A Complete Guide to All 5 Events (2026)">
+<meta property="og:description" content="Every Scrum event explained: purpose, timebox, agenda, and the anti-patterns that turn useful ceremonies into calendar filler. Written for engineering teams who want Scrum to actually work.">
+<meta property="og:image" content="https://projiq.app/og.png">
+<meta property="og:url" content="https://projiq.app/blog/scrum-ceremonies/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-13">
+<meta property="article:author" content="Projiq Team">
+<meta property="article:section" content="Scrum">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Scrum Ceremonies: A Complete Guide to All 5 Events (2026)">
+<meta name="twitter:image" content="https://projiq.app/og.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/favicon-192.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Scrum Ceremonies: A Complete Guide to All 5 Events (2026)","description":"Every Scrum event explained: purpose, timebox, agenda, and the anti-patterns that turn useful ceremonies into calendar filler. Written for engineering teams who want Scrum to actually work.","author":{"@type":"Organization","name":"Projiq"},"publisher":{"@type":"Organization","name":"Projiq","logo":{"@type":"ImageObject","url":"https://projiq.app/favicon-192.png"}},"datePublished":"2026-07-13","dateModified":"2026-07-13","mainEntityOfPage":{"@type":"WebPage","@id":"https://projiq.app/blog/scrum-ceremonies/"},"image":"https://projiq.app/og.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://projiq.app"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://projiq.app/blog/"},{"@type":"ListItem","position":3,"name":"Scrum Ceremonies","item":"https://projiq.app/blog/scrum-ceremonies/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the 5 Scrum ceremonies?","acceptedAnswer":{"@type":"Answer","text":"The five official Scrum events (called ceremonies informally) are: (1) The Sprint — the 1–4 week container that holds all other events; (2) Sprint Planning — where the team selects backlog items and creates a plan for the sprint; (3) Daily Scrum — a 15-minute daily sync for the Developers to inspect progress and adapt the sprint plan; (4) Sprint Review — where the team demonstrates the increment to stakeholders and gets feedback; and (5) Sprint Retrospective — where the team inspects their own process and plans improvements. Backlog Refinement is a common addition but is not a formal Scrum event per the Scrum Guide."}},{"@type":"Question","name":"How long should each Scrum ceremony be?","acceptedAnswer":{"@type":"Answer","text":"For a 2-week sprint, the recommended timeboxes are: Sprint Planning — 4 hours maximum; Daily Scrum — 15 minutes; Sprint Review — 2 hours maximum; Sprint Retrospective — 1.5 hours maximum. These scale proportionally for longer sprints (a 4-week sprint doubles each timebox). The Sprint itself is 1–4 weeks. Timeboxes are maximums, not targets — if the work is done, end early. The Scrum Guide explicitly states that these events should be kept within their timebox to create consistency and reduce waste."}},{"@type":"Question","name":"Who attends each Scrum ceremony?","acceptedAnswer":{"@type":"Answer","text":"Sprint Planning: the entire Scrum Team (Product Owner, Developers, Scrum Master) plus any invited subject matter experts. Daily Scrum: Developers only — the Scrum Master and Product Owner may observe but should not speak unless invited. Sprint Review: the entire Scrum Team plus key stakeholders (business owners, users, anyone with relevant interest in the product increment). Sprint Retrospective: the entire Scrum Team only — no external attendees, which allows for psychological safety in the discussion."}},{"@type":"Question","name":"What is the difference between Sprint Review and Sprint Retrospective?","acceptedAnswer":{"@type":"Answer","text":"Sprint Review inspects the product — what was built during the sprint, whether it meets the goal, and what stakeholders think about it. The output is a revised product backlog based on stakeholder feedback. Sprint Retrospective inspects the process — how the team worked together, what slowed them down, what went well. The output is a set of actionable improvements for the next sprint. Both are inspect-and-adapt events, but one is about the product and one is about the team. The Review faces outward (stakeholders); the Retrospective faces inward (team)."}},{"@type":"Question","name":"What is backlog refinement and is it a Scrum ceremony?","acceptedAnswer":{"@type":"Answer","text":"Backlog refinement (formerly called 'grooming') is the ongoing activity of reviewing, estimating, and prioritizing product backlog items to ensure they are ready to be pulled into future sprints. It is NOT a formal Scrum event per the 2020 Scrum Guide — it's described as an ongoing activity rather than a scheduled ceremony. However, most teams schedule a dedicated refinement session mid-sprint (typically 1–2 hours) to prepare backlog items for the next sprint planning. Teams that skip refinement tend to have chaotic sprint planning meetings where stories aren't ready to build."}},{"@type":"Question","name":"What is a Scrum Master's role in ceremonies?","acceptedAnswer":{"@type":"Answer","text":"The Scrum Master ensures that Scrum events happen, are productive, and stay within their timebox. They coach the team on the purpose of each event and help remove dysfunctions that make events ineffective. However, the Scrum Master does not run the ceremonies in the traditional sense — Sprint Planning is facilitated by the team, the Daily Scrum is run by Developers, the Sprint Review is led by the Product Owner, and the Retrospective can be facilitated by anyone. The Scrum Master's job is to make the team self-organizing, not to be the permanent chair of every meeting."}},{"@type":"Question","name":"Can you skip Scrum ceremonies?","acceptedAnswer":{"@type":"Answer","text":"Skipping Scrum events undermines the framework's inspect-and-adapt cycle. Each event serves a specific function: remove Sprint Planning and the team lacks a shared sprint goal; remove the Daily Scrum and problems fester unnoticed until they're blocking; remove Sprint Review and stakeholders lose visibility; remove Sprint Retrospective and the team never improves its process. Teams that skip ceremonies consistently cite meeting fatigue as the reason — the real fix is running the events well (staying in timebox, having clear agendas) rather than skipping them. Shortening an event that's providing no value is reasonable; removing it entirely is a different problem."}}]}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#030812;color:#F1F5F9;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+.prog{position:fixed;top:60px;left:0;height:3px;background:linear-gradient(90deg,#65A30D,#A3E635);width:0;z-index:300;transition:width .08s linear}
+
+.b-nav{position:sticky;top:0;z-index:200;background:rgba(3,8,18,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)}
+.b-nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center}
+.b-logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;color:#F1F5F9;flex-shrink:0}
+.b-logo-mark{flex-shrink:0;display:block}.b-dot-app{color:#06B6D4}
+.b-nav-links{display:flex;gap:28px;margin-left:auto;margin-right:28px}
+.b-nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
+.b-nav-links a:hover,.b-nav-links a.active{color:#F1F5F9}
+.b-nav-cta{background:linear-gradient(90deg,#65A30D,#84CC16);color:#fff;padding:8px 20px;border-radius:9px;font-size:13px;font-weight:700;flex-shrink:0;transition:opacity .2s}
+.b-nav-cta:hover{opacity:.86}
+
+.b-crumb{max-width:1200px;margin:0 auto;padding:28px 24px 0;display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.35);flex-wrap:wrap}
+.b-crumb a{color:rgba(255,255,255,.38);transition:color .2s}
+.b-crumb a:hover{color:#A3E635}
+.b-crumb-sep{color:rgba(255,255,255,.18)}
+
+.art-wrap{max-width:1200px;margin:0 auto;padding:32px 24px 0}
+.art-header{margin-bottom:44px}
+.art-cat{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;background:rgba(132,204,22,.11);border:1px solid rgba(132,204,22,.28);color:#A3E635;margin-bottom:18px}
+.art-header h1{font-size:clamp(30px,4.5vw,50px);font-weight:900;line-height:1.15;letter-spacing:-1px;margin-bottom:22px}
+.art-meta{display:flex;align-items:center;gap:22px;color:rgba(255,255,255,.35);font-size:13px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap}
+
+.art-layout{display:grid;grid-template-columns:1fr 300px;gap:60px;align-items:start}
+.art-body{min-width:0;overflow-wrap:break-word;word-break:break-word;font-size:17px;line-height:1.80;color:rgba(255,255,255,.78);padding-bottom:60px}
+.art-body p{margin-bottom:22px}
+.art-body h2{font-size:26px;font-weight:800;color:#F1F5F9;margin:48px 0 16px;letter-spacing:-.3px;line-height:1.3}
+.art-body h3{font-size:19px;font-weight:700;color:#F1F5F9;margin:28px 0 12px;letter-spacing:-.1px}
+.art-body ul,.art-body ol{margin:0 0 22px 22px}
+.art-body li{margin-bottom:9px;color:rgba(255,255,255,.72)}
+.art-body ul li::marker{color:#84CC16}
+.art-body ol li::marker{color:#A3E635;font-weight:700}
+.art-body strong{color:#F1F5F9;font-weight:700}
+.art-body a{color:#A3E635;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(163,230,53,.4);transition:text-decoration-color .2s}
+.art-body a:hover{text-decoration-color:#A3E635}
+blockquote{border-left:3px solid #84CC16;padding:16px 22px;background:rgba(132,204,22,.06);border-radius:0 10px 10px 0;margin:28px 0;font-style:italic;color:rgba(255,255,255,.72);font-size:16px}
+.tip-box{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.tip-box b{color:#34D399;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.warn-box{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.warn-box b{color:#FBBF24;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+
+.event-card{background:rgba(10,22,40,.75);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:24px 26px;margin:22px 0;position:relative;overflow:hidden}
+.event-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--ev-color)}
+.event-card h3{font-size:18px;font-weight:800;color:#F1F5F9;margin:0 0 8px}
+.event-meta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+.event-chip{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.45)}
+.event-chip.highlight{background:rgba(132,204,22,.10);color:#A3E635;border:1px solid rgba(132,204,22,.20)}
+.event-card p{font-size:15px;color:rgba(255,255,255,.65);margin:0;line-height:1.7}
+
+.timebox-table-wrap{overflow-x:auto;margin:28px 0;border-radius:12px;border:1px solid rgba(255,255,255,.07)}
+.timebox-table{width:100%;border-collapse:collapse;font-size:14px;min-width:540px}
+.timebox-table th{background:rgba(132,204,22,.09);color:#A3E635;padding:12px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.timebox-table th:first-child{color:rgba(255,255,255,.45)}
+.timebox-table td{padding:11px 16px;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.68);vertical-align:middle;line-height:1.5}
+.timebox-table td:first-child{color:#F1F5F9;font-weight:700;font-size:13px}
+.timebox-table td:nth-child(2){color:#A3E635;font-weight:700;font-variant-numeric:tabular-nums}
+.timebox-table tr:hover td{background:rgba(255,255,255,.02)}
+
+.agenda-list{list-style:none;margin:0 0 22px;padding:0}
+.agenda-list li{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:15px;color:rgba(255,255,255,.68);line-height:1.5}
+.agenda-list li:last-child{border-bottom:none}
+.agenda-num{width:26px;height:26px;border-radius:50%;background:rgba(132,204,22,.14);border:1px solid rgba(132,204,22,.25);color:#A3E635;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+
+.anti-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0}
+.anti-card{background:rgba(10,22,40,.7);border:1px solid rgba(239,68,68,.15);border-radius:12px;padding:16px 18px}
+.anti-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:#F87171;margin-bottom:6px}
+.anti-title{font-size:14px;font-weight:700;color:#F1F5F9;margin-bottom:6px;line-height:1.4}
+.anti-fix{font-size:13px;color:rgba(255,255,255,.55);line-height:1.55}
+.anti-fix strong{color:#A3E635}
+
+.art-cta{background:linear-gradient(135deg,rgba(132,204,22,.11),rgba(163,230,53,.06));border:1px solid rgba(132,204,22,.22);border-radius:16px;padding:36px;text-align:center;margin:44px 0}
+.art-cta h3{font-size:22px;font-weight:800;margin-bottom:10px}
+.art-cta p{color:rgba(255,255,255,.52);font-size:15px;margin-bottom:22px;line-height:1.6}
+.art-cta a{display:inline-block;background:linear-gradient(90deg,#65A30D,#84CC16);color:#fff;padding:12px 28px;border-radius:9px;font-size:14px;font-weight:700;transition:opacity .2s}
+.art-cta a:hover{opacity:.86;text-decoration:none}
+
+.art-sidebar{position:sticky;top:80px}
+.sb-card{background:rgba(10,22,40,.8);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px;margin-bottom:18px}
+.sb-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.35);margin-bottom:16px}
+.toc-list{list-style:none;padding:0}
+.toc-list li{margin-bottom:9px}
+.toc-list a{font-size:13px;color:rgba(255,255,255,.45);display:block;padding-left:10px;border-left:1px solid rgba(255,255,255,.08);line-height:1.5;transition:color .18s,border-color .18s}
+.toc-list a:hover,.toc-list a.active{color:#A3E635;border-left-color:#84CC16;text-decoration:none}
+.rel-post{display:flex;gap:11px;margin-bottom:13px;align-items:flex-start}
+.rel-icon{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px}
+.rel-post a{font-size:13px;font-weight:600;color:rgba(255,255,255,.65);line-height:1.4;transition:color .2s;display:block;margin-bottom:3px}
+.rel-post a:hover{color:#A3E635;text-decoration:none}
+.rel-cat{font-size:11px;color:rgba(255,255,255,.28)}
+
+.b-footer{background:#020810;border-top:1px solid rgba(255,255,255,.07);padding:56px 24px 32px}
+.b-footer-inner{max-width:1200px;margin:0 auto}
+.b-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.b-footer-brand p{color:rgba(255,255,255,.38);font-size:13px;line-height:1.7;margin-top:14px;max-width:230px}
+.b-footer-col h5{color:#F1F5F9;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.b-footer-col a{display:block;color:rgba(255,255,255,.38);font-size:13px;margin-bottom:9px;transition:color .2s}
+.b-footer-col a:hover{color:#A3E635}
+.b-footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.b-footer-copy{color:rgba(255,255,255,.22);font-size:12px}
+
+@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{display:none}.anti-grid{grid-template-columns:1fr}.b-footer-grid{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:600px){.b-nav-links{display:none}.b-nav-cta{margin-left:auto}.art-header h1{font-size:28px}.art-body{min-width:0;overflow-wrap:break-word;word-break:break-word;font-size:16px}.b-footer-grid{grid-template-columns:1fr;gap:24px}}
+
+.faq-block{margin:44px 0}
+.faq-block h2{font-size:26px;font-weight:800;color:#F1F5F9;margin-bottom:22px;letter-spacing:-.3px}
+.faq-entry{border:1px solid rgba(255,255,255,.07);border-radius:12px;margin-bottom:10px;overflow:hidden;background:rgba(10,22,40,.6)}
+.faq-entry summary{padding:17px 22px;font-size:15px;font-weight:700;color:#F1F5F9;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4}
+.faq-entry summary::-webkit-details-marker{display:none}
+.faq-entry summary::after{content:'+';color:#A3E635;font-size:18px;font-weight:400;flex-shrink:0;transition:transform .2s}
+.faq-entry[open] summary::after{transform:rotate(45deg)}
+.faq-entry[open]{border-color:rgba(132,204,22,.22)}
+.faq-ans{padding:0 22px 18px;font-size:14px;color:rgba(255,255,255,.62);line-height:1.75}
+</style>
+</head>
+<body>
+
+<div class="prog" id="prog"></div>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4F46E5"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient><symbol id="projiq-p" viewBox="0 0 285 265"><path d="M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z" fill="url(#brand-grad)"/><rect x="0" y="65" width="60" height="12" rx="6" fill="#4F46E5"/><rect x="0" y="100" width="60" height="12" rx="6" fill="#06B6D4"/><rect x="0" y="135" width="60" height="12" rx="6" fill="#10B981"/><path d="M140 105 L160 125 L205 80" fill="none" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
+
+<nav class="b-nav">
+  <div class="b-nav-inner">
+    <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+    <div class="b-nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/" class="active">Blog</a>
+    </div>
+    <a href="https://app.projiq.app/register-org" class="b-nav-cta">Get Started Free</a>
+  </div>
+</nav>
+
+<div class="b-crumb">
+  <a href="/">Home</a><span class="b-crumb-sep">›</span>
+  <a href="/blog/">Blog</a><span class="b-crumb-sep">›</span>
+  <span>Scrum Ceremonies</span>
+</div>
+
+<div class="art-wrap">
+  <header class="art-header">
+    <span class="art-cat">Scrum</span>
+    <h1>Scrum Ceremonies: A Complete Guide to All 5 Events</h1>
+    <div class="art-meta">
+      <span>✍ Projiq Team</span>
+      <span>📅 July 13, 2026</span>
+      <span>⏱ 11 min read</span>
+    </div>
+  </header>
+
+  <div class="art-layout">
+    <article class="art-body" id="article">
+
+      <p>Most teams that struggle with Scrum aren't struggling with the values — they're struggling with the events. Sprint planning runs three hours and still produces unclear goals. The daily standup turns into a 40-minute status report. The retrospective ends with a list of action items nobody follows up on. The sprint review becomes a demo nobody cares about. By the time teams decide "Scrum doesn't work for us," the events are so misshapen that they're creating more friction than they remove.</p>
+
+      <p>The Scrum Guide defines five events, each with a clear purpose, a timebox, and a defined output. When you understand what each event is <em>for</em> — not just what you're supposed to do in it — running them well becomes much more obvious. This guide covers all five: what they are, how to run them effectively, what goes wrong, and how to fix it.</p>
+
+      <h2 id="why-scrum-events">Why Scrum Events Exist</h2>
+
+      <p>Every Scrum event exists to enable one thing: <strong>inspect and adapt</strong>. Scrum is built on empirical process control — the idea that the best way to manage complex work is to make it transparent, inspect it regularly, and adapt based on what you learn. The events are the formal opportunities to do that.</p>
+
+      <p>Each event inspects something different:</p>
+
+      <ul>
+        <li><strong>Sprint Planning</strong> — inspects the backlog and the team's capacity, then adapts by creating a sprint plan</li>
+        <li><strong>Daily Scrum</strong> — inspects progress toward the Sprint Goal, then adapts the day's work plan</li>
+        <li><strong>Sprint Review</strong> — inspects the product increment and stakeholder feedback, then adapts the backlog</li>
+        <li><strong>Sprint Retrospective</strong> — inspects the team's process and collaboration, then adapts how the team works</li>
+        <li><strong>The Sprint itself</strong> — the container that gives all the others a heartbeat and a boundary</li>
+      </ul>
+
+      <p>Every event is also timeboxed — there's a maximum duration, not a target. Ending early is fine. Running over is not. Timeboxing creates predictability, respects team capacity, and forces prioritization within the meeting. If you can't cover everything in the allotted time, that's feedback that the meeting was insufficiently prepared, not a reason to extend it.</p>
+
+      <div class="timebox-table-wrap">
+        <table class="timebox-table">
+          <thead>
+            <tr><th>Event</th><th>2-Week Sprint</th><th>4-Week Sprint</th><th>Who Attends</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>The Sprint</td><td>2 weeks</td><td>4 weeks</td><td>Entire Scrum Team</td></tr>
+            <tr><td>Sprint Planning</td><td>4 hours max</td><td>8 hours max</td><td>Entire Scrum Team + SMEs</td></tr>
+            <tr><td>Daily Scrum</td><td>15 minutes</td><td>15 minutes</td><td>Developers (PO + SM may observe)</td></tr>
+            <tr><td>Sprint Review</td><td>2 hours max</td><td>4 hours max</td><td>Scrum Team + Stakeholders</td></tr>
+            <tr><td>Sprint Retrospective</td><td>1.5 hours max</td><td>3 hours max</td><td>Scrum Team only</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>One thing teams often miss: the Scrum Guide distinguishes between the Scrum Team (Product Owner + Developers + Scrum Master) and Developers (the people doing the building). This distinction matters for who runs certain events — particularly the Daily Scrum, which belongs to the Developers.</p>
+
+      <h2 id="the-sprint">Event 1: The Sprint</h2>
+
+      <div class="event-card" style="--ev-color:#84CC16">
+        <h3>The Sprint</h3>
+        <div class="event-meta">
+          <span class="event-chip highlight">1–4 weeks</span>
+          <span class="event-chip">Container for all other events</span>
+          <span class="event-chip">Fixed-length cadence</span>
+        </div>
+        <p>The Sprint is the heartbeat of Scrum — a fixed-length timebox (usually 2 weeks) within which all the other events occur and a usable product increment is created. Each sprint starts immediately after the previous one ends, with no gaps.</p>
+      </div>
+
+      <p>The Sprint isn't just a scheduling container — it's a commitment boundary. During a sprint, the Sprint Goal doesn't change. Work scope may be clarified as the team learns more, but nothing is added that jeopardizes the goal. This protection lets teams focus without constant interruption from shifting priorities.</p>
+
+      <h3>Choosing the right sprint length</h3>
+
+      <p>Two weeks is the industry standard for a reason. It's long enough to complete meaningful work, short enough to catch problems before they compound. Here's how different lengths play out:</p>
+
+      <ul>
+        <li><strong>1-week sprints</strong> — high feedback frequency, good for early-stage products where direction is changing fast. Overhead of planning/review/retro is proportionally high relative to build time. Works best when stories are consistently small and well-defined.</li>
+        <li><strong>2-week sprints</strong> — the sweet spot for most product engineering teams. Enough time for meaningful stories, frequent enough to course-correct. Almost universally the best starting point.</li>
+        <li><strong>3–4 week sprints</strong> — problems compound. A wrong assumption in week one doesn't surface until week three. Feedback loops become too slow for rapidly evolving products. Only justifiable when work items are genuinely large and well-understood (some hardware or infrastructure teams).</li>
+      </ul>
+
+      <div class="tip-box">
+        <b>The Sprint Goal Is Not Optional</b>
+        Every sprint needs a Sprint Goal — a single sentence that describes why this sprint exists and what the team intends to achieve. "Complete stories X, Y, and Z" is not a Sprint Goal; it's a task list. A Sprint Goal sounds like: "Give users the ability to invite team members and manage their own permissions." The Sprint Goal is the anchor that lets teams make trade-off decisions mid-sprint when something unexpected comes up.
+      </div>
+
+      <h2 id="sprint-planning">Event 2: Sprint Planning</h2>
+
+      <div class="event-card" style="--ev-color:#84CC16">
+        <h3>Sprint Planning</h3>
+        <div class="event-meta">
+          <span class="event-chip highlight">4 hours max (2-week sprint)</span>
+          <span class="event-chip">Start of each sprint</span>
+          <span class="event-chip">Entire Scrum Team</span>
+        </div>
+        <p>Sprint Planning answers three questions: Why is this sprint valuable? What can be done this sprint? How will the selected work get done? The output is a Sprint Goal and a Sprint Backlog — a committed set of items the team believes they can complete.</p>
+      </div>
+
+      <p>The Scrum Guide structures Sprint Planning around three topics, in order:</p>
+
+      <ol>
+        <li><strong>Why is this sprint valuable?</strong> The Product Owner proposes how the sprint can increase the product's value. The team collaborates to define the Sprint Goal. This comes first — the goal shapes which items are worth pulling.</li>
+        <li><strong>What can be done?</strong> The Developers select backlog items they forecast they can complete. They consider their velocity, available capacity, and whether items are refined enough to start. The PO can clarify and reprioritize but cannot dictate what the Developers commit to.</li>
+        <li><strong>How will it get done?</strong> The Developers decompose selected items into tasks small enough to track (usually under 1 day each). This is where the "how" lives — the PO typically isn't involved in this part.</li>
+      </ol>
+
+      <h3>Running effective sprint planning</h3>
+
+      <ul class="agenda-list">
+        <li><span class="agenda-num">1</span>PO opens by presenting the sprint goal and the top backlog items — 15 minutes of context-setting, not a sales pitch</li>
+        <li><span class="agenda-num">2</span>Team reviews each candidate story — clarifying questions only, not estimation debates. Stories should already be estimated from refinement</li>
+        <li><span class="agenda-num">3</span>Developers agree on how much capacity they have this sprint (account for meetings, PTO, on-call rotations)</li>
+        <li><span class="agenda-num">4</span>Team pulls items into the sprint backlog until capacity is reached — not one item over</li>
+        <li><span class="agenda-num">5</span>Team breaks selected stories into tasks — engineering-specific, no PO involvement needed</li>
+        <li><span class="agenda-num">6</span>Final confirmation: can the team achieve the Sprint Goal with the items selected?</li>
+      </ul>
+
+      <p>The single biggest predictor of a productive sprint planning is backlog readiness. If stories aren't estimated, don't have acceptance criteria, or require design work that hasn't happened yet — planning becomes a refinement session, and the sprint starts without a solid plan. This is why <a href="/blog/how-to-write-user-stories/">well-written user stories</a> with clear acceptance criteria are a prerequisite, not a nice-to-have.</p>
+
+      <div class="warn-box">
+        <b>Velocity ≠ Commitment</b>
+        Velocity is a planning input, not a target. If your team's rolling average is 32 points, that doesn't mean every sprint should have exactly 32 points. A sprint with unusual complexity, a public holiday, or a team member out sick might only support 24. A sprint with perfectly sized, well-understood stories might support 36. Pull based on realistic capacity; use velocity as a sanity check, not a quota.
+      </div>
+
+      <h2 id="daily-scrum">Event 3: The Daily Scrum</h2>
+
+      <div class="event-card" style="--ev-color:#84CC16">
+        <h3>Daily Scrum</h3>
+        <div class="event-meta">
+          <span class="event-chip highlight">15 minutes</span>
+          <span class="event-chip">Every working day</span>
+          <span class="event-chip">Developers only</span>
+        </div>
+        <p>The Daily Scrum is a 15-minute event for the Developers to inspect progress toward the Sprint Goal and adapt the sprint plan for the next 24 hours. It is not a status meeting for the Scrum Master or Product Owner — it is the Developers' event.</p>
+      </div>
+
+      <p>The 2020 Scrum Guide removed the old three-question format ("What did I do yesterday? What will I do today? Any blockers?") — not because those questions are wrong, but because they became ritualistic answers recited without thought. The actual goal is different: <em>does the sprint plan still make sense given what we learned today?</em></p>
+
+      <p>The Developers can structure the Daily Scrum however they want, as long as it focuses on the Sprint Goal. Common effective formats:</p>
+
+      <ul>
+        <li><strong>Walk the board</strong> — go through the sprint backlog right-to-left (in-progress items first, then to-do). For each item: what's the status, is it blocked, will it be done on time?</li>
+        <li><strong>Individual round</strong> — each developer briefly states their focus for the day and flags any blockers. Works well for smaller, highly coordinated teams.</li>
+        <li><strong>Goal-check first</strong> — open with "Are we on track for the Sprint Goal?" If yes, quick round of updates. If no, spend the time figuring out why and how to adapt.</li>
+      </ul>
+
+      <h3>What the Scrum Master and Product Owner do in the Daily Scrum</h3>
+
+      <p>They observe. Per the Scrum Guide, the Daily Scrum is a Developers event. The Scrum Master ensures it happens and helps the Developers run it effectively — but doesn't chair it. The Product Owner doesn't attend unless they're also functioning as a Developer (building the product). When managers or stakeholders attend and start asking questions, it turns the event into a status meeting — which is exactly what it's not supposed to be.</p>
+
+      <p>Conversations that come up during the Daily Scrum and need more depth happen <em>after</em> it — not during it. Discipline here is the difference between a 15-minute sync and a 45-minute meeting nobody wants.</p>
+
+      <blockquote>"The Daily Scrum is not a status report for management. It's a coordination tool for the people doing the work — so they can organize themselves without needing a manager to orchestrate their day."</blockquote>
+
+      <h2 id="sprint-review">Event 4: The Sprint Review</h2>
+
+      <div class="event-card" style="--ev-color:#84CC16">
+        <h3>Sprint Review</h3>
+        <div class="event-meta">
+          <span class="event-chip highlight">2 hours max (2-week sprint)</span>
+          <span class="event-chip">End of each sprint</span>
+          <span class="event-chip">Scrum Team + Stakeholders</span>
+        </div>
+        <p>The Sprint Review inspects the product increment built during the sprint and adapts the product backlog based on stakeholder feedback. It faces outward — the audience is business stakeholders, users, or anyone whose input shapes what gets built next.</p>
+      </div>
+
+      <p>Sprint Review is frequently misunderstood as a "demo meeting" — a one-way presentation where the team shows off what they built. It's actually a working session. The Scrum Guide describes it as a collaborative event where the Scrum Team and stakeholders inspect the increment and discuss what to do next. The demo is the starting point of a conversation, not the end of one.</p>
+
+      <h3>A strong Sprint Review agenda</h3>
+
+      <ul class="agenda-list">
+        <li><span class="agenda-num">1</span>Product Owner opens: recap the Sprint Goal and confirm whether it was achieved</li>
+        <li><span class="agenda-num">2</span>Developers demonstrate the increment — working software only, not mockups or slide decks</li>
+        <li><span class="agenda-num">3</span>Stakeholders interact with and respond to what was built — questions, reactions, edge cases they notice</li>
+        <li><span class="agenda-num">4</span>Product Owner presents current backlog state — what's coming next and why</li>
+        <li><span class="agenda-num">5</span>Group discusses: does the backlog need to change based on what was just seen? Are priorities still right?</li>
+        <li><span class="agenda-num">6</span>Product Owner captures backlog updates — items added, re-prioritized, or removed based on feedback</li>
+      </ul>
+
+      <p>The most valuable thing that can come out of a Sprint Review isn't praise for the work — it's a stakeholder saying "actually, that's not quite what we needed" or "seeing this makes me realize we should add X before we ship it." That feedback, surfaced in Sprint Review rather than after release, is the entire point of the event.</p>
+
+      <div class="tip-box">
+        <b>Invite Actual Users When You Can</b>
+        Most Sprint Reviews involve internal stakeholders. When you can get real users into a Sprint Review — even remotely — the quality of feedback jumps dramatically. Users react differently than product managers. They spot usability issues in seconds that internal teams have normalized. Build a short user panel and rotate them through reviews quarterly.
+      </div>
+
+      <h2 id="sprint-retrospective">Event 5: The Sprint Retrospective</h2>
+
+      <div class="event-card" style="--ev-color:#84CC16">
+        <h3>Sprint Retrospective</h3>
+        <div class="event-meta">
+          <span class="event-chip highlight">1.5 hours max (2-week sprint)</span>
+          <span class="event-chip">After Sprint Review, before next Planning</span>
+          <span class="event-chip">Scrum Team only</span>
+        </div>
+        <p>The Sprint Retrospective inspects the team's process, relationships, and tools — then creates a plan for improvements to implement in the next sprint. It faces inward — stakeholders don't attend, and that's by design.</p>
+      </div>
+
+      <p>The retrospective is the most frequently skipped and most frequently botched Scrum event. Teams skip it under time pressure ("we're behind, let's use the time to build"). When they do hold it, they generate lists of problems and no actionable commitments. The next retrospective opens with the same list. Repeat until the team concludes retrospectives are useless.</p>
+
+      <p>The format that actually produces improvement has three phases, in this order:</p>
+
+      <ol>
+        <li><strong>What went well?</strong> Start positive — acknowledge wins explicitly, including small ones. This isn't cheerleading; it reinforces behaviors worth keeping and creates psychological safety for what comes next.</li>
+        <li><strong>What didn't go well?</strong> Gather data on friction points — missed estimates, communication breakdowns, process steps that created waste. Use a structured method (Start/Stop/Continue, 4Ls, Sailboat) to surface issues systematically rather than relying on whoever speaks loudest.</li>
+        <li><strong>What will we improve?</strong> From all identified issues, pick <strong>one or two</strong> to focus on this sprint. Write them as specific, measurable actions with an owner: "By Sprint 8, Sarah will document our deployment runbook so anyone can do a hotfix without pair support." Not "we should improve documentation."</li>
+      </ol>
+
+      <p>The reason most retrospectives don't produce improvement isn't the format — it's the last step. Teams generate 15 action items and follow through on zero. One item, owned, with a check-in date, produces change. Fifteen items produce a backlog of good intentions. See our <a href="/blog/sprint-retrospective-templates/">sprint retrospective templates</a> for specific formats that work well at each team maturity stage.</p>
+
+      <h3>Psychological safety is the prerequisite</h3>
+
+      <p>Retrospectives are only as honest as the team's psychological safety allows. If team members fear that surfacing problems will reflect poorly on them, they won't surface problems — they'll give safe, vague feedback that produces no real insight. Scrum Masters play their most critical role here: creating a space where the team can discuss what's actually happening, not what looks good to report. No external attendees, no recording shared outside the team, and Scrum Masters who model vulnerability rather than defensiveness.</p>
+
+      <h2 id="backlog-refinement">Backlog Refinement: The Unofficial Sixth Event</h2>
+
+      <p>The 2020 Scrum Guide doesn't list backlog refinement as a formal Scrum event — it describes it as "an ongoing activity." But virtually every team that runs Scrum well schedules a dedicated refinement session, typically mid-sprint, because the alternative is chaos in sprint planning.</p>
+
+      <p>Refinement serves three functions:</p>
+
+      <ul>
+        <li><strong>Clarity:</strong> Breaking down epics into sprint-sized stories, adding acceptance criteria, attaching mockups — getting stories to the point where a developer can pick one up and start without needing a conversation first</li>
+        <li><strong>Estimation:</strong> Running planning poker on upcoming stories so velocity-based capacity planning in the next sprint planning is grounded in real estimates</li>
+        <li><strong>Priority:</strong> The Product Owner adjusting the backlog order based on changing business priorities before the next sprint planning</li>
+      </ul>
+
+      <p>A healthy refinement target: enough refined stories in the backlog that the team could pull two full sprints without running out. Teams that maintain this buffer have smoother sprint planning and more focused sprints. Teams that don't maintain the buffer spend their sprint planning refining instead of planning — which pushes the sprint start later and shrinks the build window.</p>
+
+      <div class="tip-box">
+        <b>Timebox Refinement Too</b>
+        One to two hours per sprint, mid-sprint. If refinement is regularly running over, stories are coming in too raw. Work with the Product Owner to establish a "Definition of Ready" — a checklist that stories must meet before they're even brought to refinement. This creates a quality gate earlier in the process where fixing under-specified requirements is cheaper.
+      </div>
+
+      <h2 id="common-mistakes">Common Ceremony Mistakes That Kill Scrum</h2>
+
+      <div class="anti-grid">
+        <div class="anti-card">
+          <div class="anti-label">Anti-Pattern</div>
+          <div class="anti-title">Sprint planning without refined stories</div>
+          <div class="anti-fix"><strong>Fix:</strong> Stories must have AC and estimates before they enter planning. No refinement, no pull.</div>
+        </div>
+        <div class="anti-card">
+          <div class="anti-label">Anti-Pattern</div>
+          <div class="anti-title">Daily standup as status report for managers</div>
+          <div class="anti-fix"><strong>Fix:</strong> Daily Scrum is a Developers event. Managers can observe silently or not attend at all.</div>
+        </div>
+        <div class="anti-card">
+          <div class="anti-label">Anti-Pattern</div>
+          <div class="anti-title">Sprint Review with no stakeholders</div>
+          <div class="anti-fix"><strong>Fix:</strong> If stakeholders don't attend, you're not getting the feedback the event exists to surface. Make attendance easy — short agenda, regular timeslot.</div>
+        </div>
+        <div class="anti-card">
+          <div class="anti-label">Anti-Pattern</div>
+          <div class="anti-title">Retro action items with no owners</div>
+          <div class="anti-fix"><strong>Fix:</strong> Every improvement needs one person responsible and a check-in time. Open the next retro by reviewing last sprint's commitments.</div>
+        </div>
+        <div class="anti-card">
+          <div class="anti-label">Anti-Pattern</div>
+          <div class="anti-title">Skipping the retrospective when behind</div>
+          <div class="anti-fix"><strong>Fix:</strong> Being behind is exactly when you need the retro most — to find and fix the cause. Skipping it means the same cause affects the next sprint.</div>
+        </div>
+        <div class="anti-card">
+          <div class="anti-label">Anti-Pattern</div>
+          <div class="anti-title">Sprint goal as a list of stories</div>
+          <div class="anti-fix"><strong>Fix:</strong> The Sprint Goal is a single outcome sentence, not "complete stories A, B, and C." It gives the sprint coherence and guides trade-off decisions mid-sprint.</div>
+        </div>
+        <div class="anti-card">
+          <div class="anti-label">Anti-Pattern</div>
+          <div class="anti-title">Extending meetings past the timebox</div>
+          <div class="anti-fix"><strong>Fix:</strong> Timeboxes are hard stops. If you ran out of time, that's feedback — the meeting was under-prepared, not under-scheduled.</div>
+        </div>
+        <div class="anti-card">
+          <div class="anti-label">Anti-Pattern</div>
+          <div class="anti-title">Scrum Master running every ceremony</div>
+          <div class="anti-fix"><strong>Fix:</strong> The Daily Scrum is run by Developers. Reviews are led by the team. Retros can be facilitated by anyone. The SM's job is to make the team self-organizing, not chair every meeting.</div>
+        </div>
+      </div>
+
+      <p>Most ceremony problems trace back to one root cause: the team is performing Scrum rituals without understanding their purpose. When the team knows why Sprint Review exists (stakeholder feedback that shapes the backlog), they naturally involve the right people and have the right conversations. When they don't, it becomes a demo of work nobody asked for.</p>
+
+      <p>If your team is adopting Scrum for the first time or struggling with it, read our guide on <a href="/blog/agile-vs-scrum/">Agile vs Scrum</a> first — it explains the philosophy behind the framework, which makes the events make much more sense.</p>
+
+      <div class="art-cta">
+        <h3>Run every Scrum event from one place with Projiq</h3>
+        <p>Projiq's sprint boards keep your backlog, Sprint Goal, and team capacity in one view — so planning takes minutes instead of hours, and every ceremony starts with the full picture already visible.</p>
+        <a href="https://app.projiq.app/register-org">Start Free — No Credit Card Required</a>
+      </div>
+
+      <div class="faq-block">
+        <h2 id="faq">Frequently Asked Questions</h2>
+
+        <details class="faq-entry">
+          <summary>What are the 5 Scrum ceremonies?</summary>
+          <div class="faq-ans">The five official Scrum events (informally called ceremonies) are: (1) The Sprint — the 1–4 week container that holds all other events; (2) Sprint Planning — where the team selects backlog items and creates a sprint plan around a Sprint Goal; (3) Daily Scrum — a 15-minute daily sync for Developers to inspect progress and adapt their plan; (4) Sprint Review — where the team demonstrates the increment to stakeholders and gets feedback that updates the backlog; and (5) Sprint Retrospective — where the team inspects their own process and commits to improvements. Backlog Refinement is a common addition but is not a formal Scrum event per the 2020 Scrum Guide.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>How long should each Scrum ceremony be?</summary>
+          <div class="faq-ans">For a 2-week sprint: Sprint Planning 4 hours max, Daily Scrum 15 minutes, Sprint Review 2 hours max, Sprint Retrospective 1.5 hours max. These scale proportionally for longer sprints — a 4-week sprint doubles each timebox. Timeboxes are maximums, not targets — end early when the work is done. The Daily Scrum is always 15 minutes regardless of sprint length. If your events are consistently running to or past their timebox, investigate preparation quality rather than extending the limit.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>Who attends each Scrum ceremony?</summary>
+          <div class="faq-ans">Sprint Planning: the entire Scrum Team plus any invited subject matter experts. Daily Scrum: Developers only — the Scrum Master and Product Owner may observe silently but should not speak unless invited by the Developers. Sprint Review: the entire Scrum Team plus relevant stakeholders (business owners, users, anyone with interest in the product direction). Sprint Retrospective: the Scrum Team only — no external attendees, which is essential for psychological safety and honest discussion.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What is the difference between Sprint Review and Sprint Retrospective?</summary>
+          <div class="faq-ans">Sprint Review inspects the product — what was built, whether it meets the Sprint Goal, and what stakeholders think. The output is a revised product backlog reflecting stakeholder feedback. Sprint Retrospective inspects the process — how the team worked together, what created friction, what went well. The output is specific process improvements to implement next sprint. Sprint Review faces outward (stakeholders attend); Sprint Retrospective faces inward (Scrum Team only, no external attendees). Both run every sprint, in this order: Review then Retrospective.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What is backlog refinement and is it a Scrum ceremony?</summary>
+          <div class="faq-ans">Backlog refinement (formerly called grooming) is the activity of reviewing, estimating, and clarifying upcoming backlog items so they're ready for sprint planning. It's not a formal Scrum event per the 2020 Scrum Guide — it's an ongoing activity. However, most teams schedule a dedicated 1–2 hour refinement session mid-sprint because the alternative (arriving at sprint planning with unrefined stories) produces chaotic, overlong planning meetings. Teams that consistently refine have faster, smoother sprint planning and more focused sprints.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What is a Scrum Master's role in ceremonies?</summary>
+          <div class="faq-ans">The Scrum Master ensures Scrum events happen, are productive, and stay within their timebox. They coach the team on each event's purpose and help remove dysfunctions. However, the Scrum Master doesn't chair every meeting — the Daily Scrum is run by Developers, the Sprint Review is led by the Product Owner and team, and the Retrospective can be facilitated by anyone. The Scrum Master's job is to make the team self-organizing, not to be the permanent meeting host. A team that only runs Scrum ceremonies when the Scrum Master facilitates them hasn't internalized the framework yet.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>Can you skip Scrum ceremonies?</summary>
+          <div class="faq-ans">Skipping Scrum events breaks the inspect-and-adapt cycle the framework depends on. Remove Sprint Planning and the team starts a sprint without shared direction. Remove the Daily Scrum and blockers fester until they're critical. Remove Sprint Review and stakeholders lose visibility into what's being built. Remove Sprint Retrospective and process problems accumulate without resolution. Teams that skip ceremonies typically cite meeting fatigue — the real fix is running events well (tight agenda, right attendees, clear outputs) rather than eliminating them. A badly run event is a preparation problem, not a frequency problem.</div>
+        </details>
+      </div>
+
+    </article>
+
+    <aside class="art-sidebar">
+      <div class="sb-card">
+        <h4>Table of Contents</h4>
+        <ul class="toc-list">
+          <li><a href="#why-scrum-events">Why Scrum Events Exist</a></li>
+          <li><a href="#the-sprint">The Sprint</a></li>
+          <li><a href="#sprint-planning">Sprint Planning</a></li>
+          <li><a href="#daily-scrum">The Daily Scrum</a></li>
+          <li><a href="#sprint-review">Sprint Review</a></li>
+          <li><a href="#sprint-retrospective">Sprint Retrospective</a></li>
+          <li><a href="#backlog-refinement">Backlog Refinement</a></li>
+          <li><a href="#common-mistakes">Common Mistakes</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="sb-card">
+        <h4>Related Posts</h4>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(139,92,246,.12);">⚡</div>
+          <div>
+            <a href="/blog/agile-vs-scrum/">Agile vs Scrum Guide</a>
+            <span class="rel-cat">Agile</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(16,185,129,.12);">🏃</div>
+          <div>
+            <a href="/blog/sprint-retrospective-templates/">Retrospective Templates</a>
+            <span class="rel-cat">Scrum</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(139,92,246,.12);">✍</div>
+          <div>
+            <a href="/blog/how-to-write-user-stories/">How to Write User Stories</a>
+            <span class="rel-cat">Scrum</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="b-footer">
+  <div class="b-footer-inner">
+    <div class="b-footer-grid">
+      <div class="b-footer-brand">
+        <a href="/" class="b-logo"><svg class="b-logo-mark" width="24" height="22" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+        <p>Modern project management for engineering teams. Built for speed, clarity, and developer workflow.</p>
+      </div>
+      <div class="b-footer-col">
+        <h5>Blog</h5>
+        <a href="/blog/agile-vs-scrum/">Agile vs Scrum</a>
+        <a href="/blog/kanban-vs-scrum/">Kanban vs Scrum</a>
+        <a href="/blog/sprint-retrospective-templates/">Retro Templates</a>
+        <a href="/blog/scrum-ceremonies/">Scrum Ceremonies</a>
+        <a href="/blog/how-to-write-user-stories/">User Stories</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Alternatives</h5>
+        <a href="/jira-alternative/">Jira Alternative</a>
+        <a href="/linear-alternative/">Linear Alternative</a>
+        <a href="/asana-alternative/">Asana Alternative</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Product</h5>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="https://app.projiq.app/register-org">Get Started</a>
+      </div>
+    </div>
+    <div class="b-footer-bottom">
+      <span class="b-footer-copy">© 2026 Projiq. All rights reserved.</span>
+      <span class="b-footer-copy">Built for engineering teams that ship.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var prog=document.getElementById('prog');
+  function update(){
+    var st=window.scrollY;
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    prog.style.width=(h>0?Math.min(100,st/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  var links=document.querySelectorAll('.toc-list a');
+  var headings=document.querySelectorAll('#article h2[id]');
+  function highlight(){
+    var st=window.scrollY+80;
+    var active=null;
+    headings.forEach(function(h){if(h.offsetTop<=st)active=h.id;});
+    links.forEach(function(a){
+      a.classList.toggle('active',a.getAttribute('href')==='#'+active);
+    });
+  }
+  window.addEventListener('scroll',highlight,{passive:true});
+  highlight();
+})();
+</script>
+</body>
+</html>
