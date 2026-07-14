@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to Run a Daily Standup That Doesn't Waste Everyone's Time | Projiq Blog</title>
+<meta name="description" content="Most daily standups are slow, unfocused, and exhausting. Here's exactly how to run a standup that's actually useful — format, facilitation, anti-patterns, and async alternatives.">
+<link rel="canonical" href="https://projiq.app/blog/how-to-run-standup/">
+<meta property="og:title" content="How to Run a Daily Standup That Doesn't Waste Everyone's Time">
+<meta property="og:description" content="Most daily standups are slow, unfocused, and exhausting. Here's the format, facilitation tips, and anti-patterns that separate great standups from calendar filler.">
+<meta property="og:image" content="https://projiq.app/og.png">
+<meta property="og:url" content="https://projiq.app/blog/how-to-run-standup/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-14">
+<meta property="article:author" content="Projiq Team">
+<meta property="article:section" content="Scrum">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Run a Daily Standup That Doesn't Waste Everyone's Time">
+<meta name="twitter:description" content="Format, facilitation, anti-patterns, and async alternatives for a standup that teams actually want to attend.">
+<meta name="twitter:image" content="https://projiq.app/og.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#030812">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to Run a Daily Standup That Doesn't Waste Everyone's Time","description":"Most daily standups are slow, unfocused, and exhausting. Here's exactly how to run a standup that's actually useful — format, facilitation, anti-patterns, and async alternatives.","author":{"@type":"Organization","name":"Projiq"},"publisher":{"@type":"Organization","name":"Projiq","logo":{"@type":"ImageObject","url":"https://projiq.app/og.png"}},"datePublished":"2026-07-14","dateModified":"2026-07-14","mainEntityOfPage":{"@type":"WebPage","@id":"https://projiq.app/blog/how-to-run-standup/"},"image":"https://projiq.app/og.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://projiq.app"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://projiq.app/blog/"},{"@type":"ListItem","position":3,"name":"Scrum","item":"https://projiq.app/blog/scrum/"},{"@type":"ListItem","position":4,"name":"How to Run a Daily Standup","item":"https://projiq.app/blog/how-to-run-standup/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the 3 questions in a daily standup?","acceptedAnswer":{"@type":"Answer","text":"The classic three questions are: (1) What did I complete since the last standup? (2) What am I working on today? (3) Is there anything blocking my progress? These three questions are designed to create team-level awareness quickly, not to give individual status reports to a manager."}},{"@type":"Question","name":"How long should a daily standup be?","acceptedAnswer":{"@type":"Answer","text":"The Scrum Guide recommends 15 minutes for a team of up to 9 people. In practice, a well-run standup for a 5–7 person team takes 8–12 minutes. If yours consistently runs over 15 minutes, that's a signal of a facilitation problem, not a team size problem."}},{"@type":"Question","name":"Should the Scrum Master run the standup?","acceptedAnswer":{"@type":"Answer","text":"The Scrum Master should facilitate — meaning they set the format, timebox, and keep conversations from going long — but not run the standup in the sense of asking each person individually. Ideally, the team self-organizes: members speak when ready, not in a round-robin managed by the SM."}},{"@type":"Question","name":"What is an async standup?","acceptedAnswer":{"@type":"Answer","text":"An async standup replaces the daily meeting with a written or recorded update posted in a tool (Slack, Projiq, Loom, etc.) at a set time each day. Each team member answers the three standup questions in their own time. This works well for distributed or timezone-split teams, and for teams where context-switching from deep work is a concern."}},{"@type":"Question","name":"Why do standups go over time?","acceptedAnswer":{"@type":"Answer","text":"The most common causes are: (1) Problem-solving happening in the meeting instead of being parked for after; (2) Round-robin format where everyone waits politely for their turn; (3) No facilitator actively timeboxing; (4) Status reporting to the manager instead of coordination between peers; (5) People joining unprepared and thinking through their update live."}},{"@type":"Question","name":"When should you skip the daily standup?","acceptedAnswer":{"@type":"Answer","text":"Skip it when the whole team is already in sync (e.g., a crunch day where everyone is pairing), when more than half the team is absent, or when the team has transitioned to a healthy async standup routine that's working. Don't skip it just because it feels uncomfortable — discomfort is usually a facilitation problem, not a format problem."}}]}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#030812;color:#F1F5F9;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+.prog{position:fixed;top:60px;left:0;height:3px;background:linear-gradient(90deg,#F43F5E,#FB7185);width:0;z-index:300;transition:width .08s linear}
+
+.b-nav{position:sticky;top:0;z-index:200;background:rgba(3,8,18,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)}
+.b-nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center}
+.b-logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;color:#F1F5F9;flex-shrink:0}
+.b-logo-mark{flex-shrink:0;display:block}.b-dot-app{color:#06B6D4}
+.b-nav-links{display:flex;gap:28px;margin-left:auto;margin-right:28px}
+.b-nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
+.b-nav-links a:hover,.b-nav-links a.active{color:#F1F5F9}
+.b-nav-cta{background:linear-gradient(90deg,#3B82F6,#8B5CF6);color:#fff;padding:8px 20px;border-radius:9px;font-size:13px;font-weight:700;flex-shrink:0;transition:opacity .2s}
+.b-nav-cta:hover{opacity:.86}
+
+.b-crumb{max-width:1200px;margin:0 auto;padding:28px 24px 0;display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.35);flex-wrap:wrap}
+.b-crumb a{color:rgba(255,255,255,.38);transition:color .2s}
+.b-crumb a:hover{color:#FB7185}
+.b-crumb-sep{color:rgba(255,255,255,.18)}
+
+.art-wrap{max-width:1200px;margin:0 auto;padding:32px 24px 0}
+.art-header{margin-bottom:44px}
+.art-cat{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;background:rgba(244,63,94,.11);border:1px solid rgba(244,63,94,.28);color:#FB7185;margin-bottom:18px}
+.art-header h1{font-size:clamp(30px,4.5vw,50px);font-weight:900;line-height:1.12;letter-spacing:-1px;margin-bottom:22px}
+.art-meta{display:flex;align-items:center;gap:22px;color:rgba(255,255,255,.35);font-size:13px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap}
+
+.art-layout{display:grid;grid-template-columns:1fr 300px;gap:60px;align-items:start}
+
+.art-body{min-width:0;overflow-wrap:break-word;word-break:break-word;font-size:17px;line-height:1.80;color:rgba(255,255,255,.78);padding-bottom:60px}
+.art-body p{margin-bottom:22px}
+.art-body h2{font-size:26px;font-weight:800;color:#F1F5F9;margin:52px 0 16px;letter-spacing:-.3px;line-height:1.3}
+.art-body h3{font-size:19px;font-weight:700;color:#F1F5F9;margin:30px 0 12px;letter-spacing:-.1px}
+.art-body ul,.art-body ol{margin:0 0 22px 22px}
+.art-body li{margin-bottom:9px;color:rgba(255,255,255,.72)}
+.art-body ul li::marker{color:#F43F5E}
+.art-body ol li::marker{color:#FB7185;font-weight:700}
+.art-body strong{color:#F1F5F9;font-weight:700}
+.art-body a{color:#FB7185;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(251,113,133,.4);transition:text-decoration-color .2s}
+.art-body a:hover{text-decoration-color:#FB7185}
+blockquote{border-left:3px solid #F43F5E;padding:16px 22px;background:rgba(244,63,94,.07);border-radius:0 10px 10px 0;margin:28px 0;font-style:italic;color:rgba(255,255,255,.72);font-size:16px}
+
+.tip-box{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.tip-box b{color:#34D399;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.warn-box{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.warn-box b{color:#FBBF24;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.link-box{background:rgba(244,63,94,.07);border:1px solid rgba(244,63,94,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.link-box b{color:#FB7185;display:block;margin-bottom:8px;font-size:13px;font-weight:700}
+
+/* 3-question cards */
+.q-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+.q-card{background:rgba(10,22,40,.8);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px}
+.q-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;background:rgba(244,63,94,.14);border:1px solid rgba(244,63,94,.26);color:#FB7185;margin-bottom:14px}
+.q-card h4{font-size:14px;font-weight:700;color:#F1F5F9;margin-bottom:8px;line-height:1.4}
+.q-card p{font-size:13px;color:rgba(255,255,255,.50);line-height:1.6;margin:0}
+
+/* Anti-pattern table */
+.ap-table-wrap{overflow-x:auto;margin:28px 0;border-radius:12px;border:1px solid rgba(255,255,255,.07)}
+.ap-table{width:100%;border-collapse:collapse;font-size:14px;min-width:540px}
+.ap-table th{padding:12px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.ap-table th:first-child{background:rgba(244,63,94,.09);color:#FB7185}
+.ap-table th:last-child{background:rgba(16,185,129,.09);color:#34D399}
+.ap-table td{padding:11px 16px;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.62);vertical-align:top;line-height:1.5}
+.ap-table tr:hover td{background:rgba(255,255,255,.02)}
+
+/* Timeline */
+.standup-timeline{margin:28px 0}
+.tl-row{display:flex;gap:16px;margin-bottom:14px;align-items:flex-start}
+.tl-time{width:52px;font-size:12px;font-weight:700;color:#FB7185;flex-shrink:0;padding-top:3px;text-align:right}
+.tl-bar{width:3px;background:rgba(244,63,94,.25);border-radius:2px;flex-shrink:0;min-height:48px}
+.tl-content{flex:1}
+.tl-content strong{display:block;font-size:14px;font-weight:700;color:#F1F5F9;margin-bottom:4px}
+.tl-content span{font-size:13px;color:rgba(255,255,255,.50);line-height:1.5}
+
+/* Async vs sync compare */
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:28px 0}
+.vs-card{background:rgba(10,22,40,.8);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px}
+.vs-card h4{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;margin-bottom:14px}
+.vs-card.sync h4{color:#FB7185}
+.vs-card.async h4{color:#34D399}
+.vs-card ul{list-style:none;padding:0;margin:0}
+.vs-card li{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;color:rgba(255,255,255,.60);margin-bottom:10px;line-height:1.5}
+.vs-card li::before{flex-shrink:0;margin-top:2px;font-size:12px}
+.vs-card.sync li::before{content:'→';color:#FB7185}
+.vs-card.async li::before{content:'→';color:#34D399}
+
+.art-cta{background:linear-gradient(135deg,rgba(244,63,94,.10),rgba(59,130,246,.07));border:1px solid rgba(244,63,94,.20);border-radius:16px;padding:36px;text-align:center;margin:44px 0}
+.art-cta h3{font-size:22px;font-weight:800;margin-bottom:10px}
+.art-cta p{color:rgba(255,255,255,.52);font-size:15px;margin-bottom:22px;line-height:1.6}
+.art-cta a{display:inline-block;background:linear-gradient(90deg,#F43F5E,#8B5CF6);color:#fff;padding:12px 28px;border-radius:9px;font-size:14px;font-weight:700;transition:opacity .2s}
+.art-cta a:hover{opacity:.86;text-decoration:none}
+
+.art-sidebar{position:sticky;top:80px}
+.sb-card{background:rgba(10,22,40,.8);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px;margin-bottom:18px}
+.sb-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.35);margin-bottom:16px}
+.toc-list{list-style:none;padding:0}
+.toc-list li{margin-bottom:9px}
+.toc-list a{font-size:13px;color:rgba(255,255,255,.45);display:block;padding-left:10px;border-left:1px solid rgba(255,255,255,.08);line-height:1.5;transition:color .18s,border-color .18s}
+.toc-list a:hover,.toc-list a.active{color:#FB7185;border-left-color:#F43F5E;text-decoration:none}
+.rel-post{display:flex;gap:11px;margin-bottom:13px;align-items:flex-start}
+.rel-icon{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px}
+.rel-post a{font-size:13px;font-weight:600;color:rgba(255,255,255,.65);line-height:1.4;transition:color .2s;display:block;margin-bottom:3px}
+.rel-post a:hover{color:#FB7185;text-decoration:none}
+.rel-cat{font-size:11px;color:rgba(255,255,255,.28)}
+
+.b-footer{background:#020810;border-top:1px solid rgba(255,255,255,.07);padding:56px 24px 32px}
+.b-footer-inner{max-width:1200px;margin:0 auto}
+.b-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.b-footer-brand p{color:rgba(255,255,255,.38);font-size:13px;line-height:1.7;margin-top:14px;max-width:230px}
+.b-footer-col h5{color:#F1F5F9;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.b-footer-col a{display:block;color:rgba(255,255,255,.38);font-size:13px;margin-bottom:9px;transition:color .2s}
+.b-footer-col a:hover{color:#FB7185}
+.b-footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.b-footer-copy{color:rgba(255,255,255,.22);font-size:12px}
+
+.faq-block{margin:44px 0}
+.faq-block h2{font-size:26px;font-weight:800;color:#F1F5F9;margin-bottom:22px;letter-spacing:-.3px}
+.faq-entry{border:1px solid rgba(255,255,255,.07);border-radius:12px;margin-bottom:10px;overflow:hidden;background:rgba(10,22,40,.6)}
+.faq-entry summary{padding:17px 22px;font-size:15px;font-weight:700;color:#F1F5F9;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4}
+.faq-entry summary::-webkit-details-marker{display:none}
+.faq-entry summary::after{content:'+';color:#FB7185;font-size:18px;font-weight:400;flex-shrink:0;transition:transform .2s}
+.faq-entry[open] summary::after{transform:rotate(45deg)}
+.faq-entry[open]{border-color:rgba(244,63,94,.24)}
+.faq-ans{padding:0 22px 18px;font-size:14px;color:rgba(255,255,255,.62);line-height:1.75}
+
+@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{display:none}.q-grid{grid-template-columns:1fr}.vs-grid{grid-template-columns:1fr}.b-footer-grid{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:600px){.b-nav-links{display:none}.b-nav-cta{margin-left:auto}.art-header h1{font-size:28px}.art-body{font-size:16px}.b-footer-grid{grid-template-columns:1fr;gap:24px}}
+</style>
+</head>
+<body>
+
+<div class="prog" id="prog"></div>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4F46E5"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient><symbol id="projiq-p" viewBox="0 0 285 265"><path d="M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z" fill="url(#brand-grad)"/><rect x="0" y="65" width="60" height="12" rx="6" fill="#4F46E5"/><rect x="0" y="100" width="60" height="12" rx="6" fill="#06B6D4"/><rect x="0" y="135" width="60" height="12" rx="6" fill="#10B981"/><path d="M140 105 L160 125 L205 80" fill="none" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
+
+<nav class="b-nav">
+  <div class="b-nav-inner">
+    <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+    <div class="b-nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/" class="active">Blog</a>
+    </div>
+    <a href="https://app.projiq.app/register-org" class="b-nav-cta">Get Started Free</a>
+  </div>
+</nav>
+
+<div class="b-crumb">
+  <a href="/">Home</a><span class="b-crumb-sep">/</span>
+  <a href="/blog/">Blog</a><span class="b-crumb-sep">/</span>
+  <a href="/blog/scrum/">Scrum</a><span class="b-crumb-sep">/</span>
+  <span>How to Run a Daily Standup</span>
+</div>
+
+<main>
+  <div class="art-wrap">
+    <header class="art-header">
+      <div class="art-cat">🏃 Scrum</div>
+      <h1>How to Run a Daily Standup That Doesn't Waste Everyone's Time</h1>
+      <div class="art-meta">
+        <span>✍ Projiq Team</span>
+        <span>📅 July 14, 2026</span>
+        <span>⏱ 9 min read</span>
+      </div>
+    </header>
+
+    <div class="art-layout">
+      <article class="art-body">
+
+        <p>The daily standup is the most run meeting in software engineering — and, arguably, the most misunderstood. Teams schedule 15 minutes every morning, shuffle through updates one by one, and call it Scrum. But most standups aren't actually doing what they're supposed to do.</p>
+
+        <p>When done right, the standup is the heartbeat of a sprint: a brief daily pulse-check that keeps everyone moving in the same direction, surfaces blockers before they compound, and requires zero preparation. When done wrong, it's a slow-moving status report that drains the first hour of everyone's day.</p>
+
+        <p>This guide explains the format, facilitation technique, anti-patterns to kill, and when to go async — so your team can run a standup worth showing up to.</p>
+
+        <h2 id="purpose">What the Daily Standup Is Actually For</h2>
+
+        <p>Before fixing your standup format, get clear on the goal. The Scrum Guide defines the Daily Scrum as a 15-minute event for the developers to inspect progress toward the Sprint Goal and adapt the Sprint Backlog as necessary. Two things stand out in that definition:</p>
+
+        <ul>
+          <li><strong>It's for the developers, not the manager.</strong> The standup is a peer coordination meeting, not a report-up to leadership. If the team feels like they're updating a boss rather than syncing with colleagues, the meeting has already gone wrong.</li>
+          <li><strong>The sprint goal is the reference point.</strong> Every update should tie back to whether the team is on track for the sprint goal — not just whether individuals are busy.</li>
+        </ul>
+
+        <p>The standup's job is to answer one question: <em>Does anything need to change today to keep the sprint on track?</em> Everything else — detailed technical explanations, solution discussions, stakeholder updates — happens elsewhere.</p>
+
+        <div class="tip-box">
+          <b>Reframe the Meeting</b>
+          Tell your team: "The standup is not for me. I'm here to listen and remove blockers. It's for you — to find out who needs help, who's finishing something you're waiting on, and whether the sprint is still realistic." Most meeting drag disappears once this shift happens.
+        </div>
+
+        <h2 id="three-questions">The Three Questions (and What They Really Mean)</h2>
+
+        <p>The classic standup format uses three questions. They're simple, but each one has a specific purpose that teams often miss.</p>
+
+        <div class="q-grid">
+          <div class="q-card">
+            <div class="q-num">1</div>
+            <h4>What did I complete since the last standup?</h4>
+            <p>Not "what did I work on" — <em>complete</em>. Forces honesty about progress and reveals if stories are dragging on too long.</p>
+          </div>
+          <div class="q-card">
+            <div class="q-num">2</div>
+            <h4>What am I working on today?</h4>
+            <p>Creates accountability and surfaces overlap — two engineers unknowingly working on the same thing, or an engineer ignoring a higher-priority task.</p>
+          </div>
+          <div class="q-card">
+            <div class="q-num">3</div>
+            <h4>Is there anything blocking my progress?</h4>
+            <p>The most important question. A blocker raised here gets resolved today. A blocker not raised can silently kill a sprint for days.</p>
+          </div>
+        </div>
+
+        <p>Some teams modify the format. That's fine — the three-question structure is a starting point, not a sacred rule. What matters is that the meeting creates shared awareness and surfaces blockers quickly. If your modified format does that, keep it.</p>
+
+        <h3>Walking the Board Instead</h3>
+        <p>An alternative to the three-questions format is <strong>walking the board</strong> — going through sprint tickets from right to left (closest to done first) and discussing what's in progress, what's blocked, and what's ready to be pulled. This format is often faster for teams with a well-maintained board because it grounds the conversation in actual work rather than individual updates. It also makes it easier to spot WIP pile-ups and stories aging in a column.</p>
+
+        <div class="tip-box">
+          <b>Try It</b>
+          Run "walk the board" for one sprint and the three-question format for another. Ask the team which felt more useful. The right answer depends on your team's working style — there's no universal winner.
+        </div>
+
+        <h2 id="format">The Standup Format That Actually Works</h2>
+
+        <p>Here's a minute-by-minute breakdown of a tight, effective standup for a 6-person team targeting 12 minutes total:</p>
+
+        <div class="standup-timeline">
+          <div class="tl-row">
+            <span class="tl-time">0:00</span>
+            <div class="tl-bar"></div>
+            <div class="tl-content">
+              <strong>Start on time — always</strong>
+              <span>Don't wait for latecomers. Starting late trains the team to be late. Latecomers catch up from the board or a quick peer sync afterward.</span>
+            </div>
+          </div>
+          <div class="tl-row">
+            <span class="tl-time">0:00–1:00</span>
+            <div class="tl-bar"></div>
+            <div class="tl-content">
+              <strong>Sprint goal check (60 seconds)</strong>
+              <span>Read the sprint goal aloud. One sentence. Keeps every update anchored to why the sprint exists.</span>
+            </div>
+          </div>
+          <div class="tl-row">
+            <span class="tl-time">1:00–9:00</span>
+            <div class="tl-bar"></div>
+            <div class="tl-content">
+              <strong>Team updates (~90 sec per person)</strong>
+              <span>Each person answers the three questions. Facilitator parks any discussion that goes deeper than 30 seconds with "let's take that offline."</span>
+            </div>
+          </div>
+          <div class="tl-row">
+            <span class="tl-time">9:00–11:00</span>
+            <div class="tl-bar"></div>
+            <div class="tl-content">
+              <strong>Blockers and handoffs</strong>
+              <span>Quick pass on anything raised as a blocker. Who owns resolving it? By when? No solutions — just ownership and next step.</span>
+            </div>
+          </div>
+          <div class="tl-row">
+            <span class="tl-time">11:00–12:00</span>
+            <div class="tl-bar"></div>
+            <div class="tl-content">
+              <strong>After-party invite</strong>
+              <span>"Anyone who needs to dig into [topic] — stay behind. Everyone else, go build." The meeting ends. Discussions continue only with the people who need to be there.</span>
+            </div>
+          </div>
+        </div>
+
+        <p>The "after-party" framing is one of the most underrated standup techniques. It gives people who have more to say a channel to say it without holding the whole group hostage. And critically, it makes the end of the standup feel like a release rather than an interruption.</p>
+
+        <h2 id="facilitation">How to Facilitate (Without Micromanaging)</h2>
+
+        <p>Good facilitation is nearly invisible. A well-facilitated standup feels like a natural conversation that happens to be fast and useful. Here's what that looks like in practice:</p>
+
+        <h3>Set the Pace Without Being the Traffic Cop</h3>
+        <p>Your job is to keep things moving — not to police every word. If someone is going long, a simple "let's park that for the after-party" is enough. If the team is talking about a solution rather than identifying a blocker, redirect: "What do you need to unblock? Who can help?" You're steering, not judging.</p>
+
+        <h3>Stand Up Physically (When In-Person)</h3>
+        <p>This one sounds obvious but teams forget it. Standing up creates a natural physical timer — people get uncomfortable after 10–12 minutes and wrap up. Seated standups drift toward 25-minute meetings. If your team is remote, the equivalent is keeping video on with camera-height framing that signals "this is a quick meeting, not a sit-down."</p>
+
+        <h3>Don't Go in a Fixed Order</h3>
+        <p>Round-robin (alphabetical, clockwise, same person always first) slows the meeting and creates passive waiting. Instead, let the team self-organize: "Who wants to go first?" or "Let's start from the right side of the board." Whoever is closest to done on a key story often has the most time-sensitive update, so starting there makes flow sense.</p>
+
+        <h3>Listen for Dependencies, Not Just Status</h3>
+        <p>While people are talking, you're listening for: "Is anyone waiting on someone else's output?" If Person A is starting a task that depends on Person B finishing something, flag it. That dependency is a blocker waiting to happen. Surface it now while everyone is in the room.</p>
+
+        <blockquote>"The best standup facilitators I've worked with don't say much. They listen carefully, spot when a conversation is about to go 5 minutes deep, and redirect before the room loses focus." — Senior Scrum Master, fintech team of 8</blockquote>
+
+        <h2 id="anti-patterns">Anti-Patterns That Kill Standups</h2>
+
+        <p>Most bad standups suffer from one or more of these patterns. Identify which ones apply to your team and fix them one at a time.</p>
+
+        <div class="ap-table-wrap">
+          <table class="ap-table">
+            <thead>
+              <tr>
+                <th>❌ Anti-Pattern</th>
+                <th>✅ Fix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Status report to the manager</strong> — People address their updates to the SM or EM, not the team</td>
+                <td>Physically move so the manager is not at the "head" of the group. Have team members face each other, not leadership</td>
+              </tr>
+              <tr>
+                <td><strong>Problem-solving in the meeting</strong> — "I'm blocked on the auth issue" → 10-minute debugging session</td>
+                <td>Cut it at 30 seconds: "Let's take that offline. Who should join that conversation? 9:30 work?" Schedule it immediately</td>
+              </tr>
+              <tr>
+                <td><strong>No one knows what the sprint goal is</strong> — Updates are disconnected from any shared objective</td>
+                <td>Print the sprint goal and stick it in the room. Read it at the start of every standup until the team has it memorized</td>
+              </tr>
+              <tr>
+                <td><strong>People join unprepared</strong> — Thinking through their update live, creating dead air</td>
+                <td>Have team members check the board for 2 minutes before standup. A Slack reminder 5 min before helps</td>
+              </tr>
+              <tr>
+                <td><strong>The "I'm fine" update</strong> — "Working on the same ticket as yesterday, no blockers" every single day</td>
+                <td>Prompt: "What specifically will you finish today?" If the answer is the same three days running, that story might need replanning</td>
+              </tr>
+              <tr>
+                <td><strong>Standup as the only sync</strong> — Team relies on standup for all coordination, so it keeps expanding</td>
+                <td>Establish other lightweight channels: a Slack thread for async blockers, a quick DM for two-person coordination. Standup should be the summary, not the only channel</td>
+              </tr>
+              <tr>
+                <td><strong>Running over every day</strong> — 15 minutes drifts to 25, then 35</td>
+                <td>Set a visible timer. When it hits 15:00, the facilitator says "We're over — let's continue with whoever is needed." Walk away</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="warn-box">
+          <b>The Hardest Anti-Pattern to Fix</b>
+          When the Scrum Master or manager is the one making the standup go long — by asking follow-up questions, sharing context, or running a mini sprint review — the team can't fix it themselves. If this is happening, the SM needs external feedback. Ask someone to observe a standup and report back on who's doing the talking.
+        </div>
+
+        <h2 id="async">When to Go Async</h2>
+
+        <p>The sync standup is not the only valid format. For many teams — especially distributed ones or teams that do a lot of deep, uninterrupted work — a well-structured async standup outperforms the daily meeting.</p>
+
+        <div class="vs-grid">
+          <div class="vs-card sync">
+            <h4>⚡ Sync Standup — Best When</h4>
+            <ul>
+              <li>Team is co-located or in overlapping timezones</li>
+              <li>Sprint has active blockers that need same-day resolution</li>
+              <li>Team is early-stage and still building shared context</li>
+              <li>Work is highly interdependent and handoffs are frequent</li>
+              <li>You're mid-sprint and energy or morale needs a moment of human contact</li>
+            </ul>
+          </div>
+          <div class="vs-card async">
+            <h4>📝 Async Standup — Best When</h4>
+            <ul>
+              <li>Team spans 3+ timezones with no clean overlap window</li>
+              <li>Engineers regularly need 3–4 hour uninterrupted blocks</li>
+              <li>Work is relatively independent and blockers are rare</li>
+              <li>Team is senior and self-directed — coordination is low-overhead</li>
+              <li>Current sync standup consistently fails to produce action items</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Running a Good Async Standup</h3>
+        <p>An async standup that's just "post your three questions in Slack" usually degrades into noise that nobody reads. Make it work by:</p>
+        <ol>
+          <li><strong>Using a dedicated channel or tool</strong> — not buried in general chat. Projiq's standup feature or a pinned Slack thread with a bot prompt works well.</li>
+          <li><strong>Setting a deadline</strong> — posts due by 10am in each person's local time. Consistency is what makes it useful.</li>
+          <li><strong>Having someone actually read and respond to blockers</strong> — ideally the SM or TL acknowledges blockers with a reply and resolution plan within the hour.</li>
+          <li><strong>Doing a weekly sync standup</strong> — even async-first teams benefit from one live meeting per week to maintain human connection and catch anything that fell through the async cracks.</li>
+        </ol>
+
+        <div class="link-box">
+          <b>Related: Scrum Ceremonies Overview</b>
+          The standup is one of five Scrum events. If you want a complete picture of how all the ceremonies work together — Sprint Planning, Daily Scrum, Sprint Review, Retrospective — see our guide to <a href="/blog/scrum-ceremonies/">all 5 Scrum ceremonies</a>.
+        </div>
+
+        <h2 id="remote">Remote and Hybrid Standup Tips</h2>
+
+        <p>Remote standups have their own failure modes. The classic issues: people talking over each other, awkward silences, cameras off so you can't read the room, and the meeting drifting because there's no physical discomfort to end it.</p>
+
+        <ul>
+          <li><strong>Video on by default.</strong> Not a surveillance move — it's a connection move. Reading expressions lets facilitators catch when someone is struggling and not saying so.</li>
+          <li><strong>Use a talking order for remote standups.</strong> Unlike in-person, self-organizing doesn't work as well over video because of lag. Go alphabetically or board-order, but keep it fast.</li>
+          <li><strong>Share the board on screen.</strong> If you're walking the board, screenshare the Projiq sprint board so everyone is literally looking at the same thing. It cuts ambiguity instantly.</li>
+          <li><strong>Use reactions, not interruptions.</strong> Train the team to use emoji reactions (👍 for "got it," ❓ for "can we discuss this") instead of talking over people. Async-style communication tools even in sync meetings reduce friction.</li>
+          <li><strong>Set a hard end-time in the calendar invite.</strong> Zoom and Meet don't naturally end meetings. A 9:00–9:15 block with no buffer teaches the team that 9:15 means done.</li>
+        </ul>
+
+        <h2 id="measuring">How to Know If Your Standup Is Working</h2>
+
+        <p>You don't need a formal survey to assess standup health. Watch for these signals over two to three sprints:</p>
+
+        <h3>Signs of a Healthy Standup</h3>
+        <ul>
+          <li>Consistently finishes at or under 15 minutes</li>
+          <li>Blockers raised in standup are resolved the same day</li>
+          <li>Team members reference each other's updates ("Oh, you're working on that — I just finished the API it depends on")</li>
+          <li>People arrive prepared and rarely repeat yesterday's update word-for-word</li>
+          <li>Engineers stay for the after-party voluntarily rather than being corralled</li>
+        </ul>
+
+        <h3>Signs It Needs Work</h3>
+        <ul>
+          <li>People look at their phones or multitask during others' updates</li>
+          <li>The same blockers appear day after day without resolution</li>
+          <li>One person (usually the SM or EM) does most of the talking</li>
+          <li>Engineers frequently say "same as yesterday" without pushback</li>
+          <li>The meeting ends and nobody does anything differently than they would have without it</li>
+        </ul>
+
+        <p>The simplest retrospective question: "Did anything you learned in standup today change what you did this morning?" If the answer is "no" for most people most days, the standup format needs to change. See our <a href="/blog/sprint-retrospective-templates/">sprint retrospective templates</a> for structured ways to surface this feedback from the team.</p>
+
+        <div class="tip-box">
+          <b>Quick Health Check</b>
+          At the end of a sprint, ask: "How many blockers raised in standup were resolved within 4 hours?" If the answer is "most of them," your standup is functioning. If the answer is "we rarely raise blockers," either the team doesn't have blockers (unlikely) or they've stopped using standup to surface them (a trust or format problem).
+        </div>
+
+        <h2 id="sprint-planning">Standup vs. Sprint Planning</h2>
+
+        <p>Teams sometimes blur standup with mini sprint planning — re-discussing task assignments, debating priority, or pulling new stories into the sprint during the daily meeting. This is a sign that sprint planning wasn't done well enough, not that standup needs to absorb more scope.</p>
+
+        <p>Keep standup focused on today's execution. If the sprint goal has materially changed, call an explicit replanning session rather than retrofitting it into the standup. A rushed 5-minute replanning discussion embedded in standup almost always produces worse decisions than a dedicated 30-minute session with the board in front of everyone. Our <a href="/blog/sprint-planning-guide/">sprint planning guide</a> covers how to run a planning session that sets standup up for success.</p>
+
+        <blockquote>"The daily standup and sprint planning are solving different problems. Planning answers 'what should we build this sprint?' Standup answers 'how is today going?' Mixing them is like using a hammer as a screwdriver — you'll eventually drive the screw, but badly."</blockquote>
+
+        <div class="art-cta">
+          <h3>Run Standups From Your Sprint Board</h3>
+          <p>Projiq's sprint board shows every story's status in real time. Walk the board in standup, update blockers in one click, and let engineers post async updates before the meeting even starts.</p>
+          <a href="https://app.projiq.app/register-org">Start Free — No Credit Card Required</a>
+        </div>
+
+        <div class="faq-block">
+          <h2 id="faq">Frequently Asked Questions</h2>
+
+          <details class="faq-entry">
+            <summary>What are the 3 questions in a daily standup?</summary>
+            <div class="faq-ans">The classic three questions are: (1) What did I complete since the last standup? (2) What am I working on today? (3) Is there anything blocking my progress? These questions are designed to create team-level awareness, not individual status reports to a manager. The goal is coordination between peers, not reporting up.</div>
+          </details>
+
+          <details class="faq-entry">
+            <summary>How long should a daily standup be?</summary>
+            <div class="faq-ans">The Scrum Guide recommends 15 minutes for a team of up to 9 people. In practice, a well-facilitated standup for a 5–7 person team takes 8–12 minutes. If yours consistently runs over 15 minutes, that's a facilitation problem — most commonly, problem-solving happening inside the meeting instead of being parked for after.</div>
+          </details>
+
+          <details class="faq-entry">
+            <summary>Should the Scrum Master run the standup?</summary>
+            <div class="faq-ans">The Scrum Master should facilitate — setting the format, keeping the timebox, and redirecting conversations that go deep — but not dominate or interrogate. Ideally the team self-organizes and speaks voluntarily rather than in a round-robin managed by the SM. The standup belongs to the developers; the SM's job is to protect that.</div>
+          </details>
+
+          <details class="faq-entry">
+            <summary>What is an async standup?</summary>
+            <div class="faq-ans">An async standup replaces the daily meeting with a written update posted in a shared tool (Slack, Projiq, Loom) at a set time each day. Each team member answers the three standup questions on their own schedule. This works well for distributed teams across multiple timezones or for teams where daily context-switching from deep work is a productivity concern. It requires someone to actively read and respond to blockers, or it degrades into noise.</div>
+          </details>
+
+          <details class="faq-entry">
+            <summary>Why do standups go over time?</summary>
+            <div class="faq-ans">The most common causes: (1) Problem-solving happening inside the meeting instead of being parked; (2) No one actively enforcing the timebox; (3) People joining unprepared and thinking through their update live; (4) The format has become a status report to management rather than peer coordination; (5) Standup is being used as the only coordination channel, so it absorbs everything. Each has a different fix — identify which one applies first.</div>
+          </details>
+
+          <details class="faq-entry">
+            <summary>When should you skip the daily standup?</summary>
+            <div class="faq-ans">Skip it when the whole team is already in close sync (a focused pairing day, a hackathon), when more than half the team is absent, or when you've successfully transitioned to an async format that's working. Don't skip it because it feels uncomfortable — that discomfort usually points to a facilitation problem worth fixing, not a reason to abandon the meeting entirely.</div>
+          </details>
+        </div>
+
+      </article>
+
+      <aside class="art-sidebar">
+        <div class="sb-card">
+          <h4>Table of Contents</h4>
+          <ul class="toc-list">
+            <li><a href="#purpose">What Standup Is Actually For</a></li>
+            <li><a href="#three-questions">The Three Questions</a></li>
+            <li><a href="#format">Format That Works</a></li>
+            <li><a href="#facilitation">How to Facilitate</a></li>
+            <li><a href="#anti-patterns">Anti-Patterns to Kill</a></li>
+            <li><a href="#async">When to Go Async</a></li>
+            <li><a href="#remote">Remote & Hybrid Tips</a></li>
+            <li><a href="#measuring">How to Know It's Working</a></li>
+            <li><a href="#sprint-planning">Standup vs. Sprint Planning</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="sb-card">
+          <h4>Related Articles</h4>
+          <div class="rel-post">
+            <div class="rel-icon" style="background:rgba(132,204,22,.12);border:1px solid rgba(132,204,22,.22)">🗓️</div>
+            <div>
+              <a href="/blog/scrum-ceremonies/">Scrum Ceremonies: A Complete Guide to All 5 Events</a>
+              <div class="rel-cat">Scrum</div>
+            </div>
+          </div>
+          <div class="rel-post">
+            <div class="rel-icon" style="background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.22)">🏃</div>
+            <div>
+              <a href="/blog/sprint-planning-guide/">How to Run an Effective Sprint Planning Meeting</a>
+              <div class="rel-cat">Scrum</div>
+            </div>
+          </div>
+          <div class="rel-post">
+            <div class="rel-icon" style="background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.22)">🔁</div>
+            <div>
+              <a href="/blog/sprint-retrospective-templates/">7 Sprint Retrospective Templates</a>
+              <div class="rel-cat">Scrum</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sb-card">
+          <h4>Try Projiq Free</h4>
+          <p style="font-size:13px;color:rgba(255,255,255,.48);line-height:1.6;margin-bottom:14px">Sprint boards, standup tracking, and async updates — built for engineering teams.</p>
+          <a href="https://app.projiq.app/register-org" style="display:block;background:linear-gradient(90deg,#F43F5E,#8B5CF6);color:#fff;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:700;text-align:center;transition:opacity .2s" onmouseover="this.style.opacity='.86'" onmouseout="this.style.opacity='1'">Start Free →</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="b-footer">
+  <div class="b-footer-inner">
+    <div class="b-footer-grid">
+      <div class="b-footer-brand">
+        <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+        <p>Project management built for engineering organizations. Sprints, boards, timelines, and real-time collaboration.</p>
+      </div>
+      <div class="b-footer-col">
+        <h5>Product</h5>
+        <a href="/#features">Features</a>
+        <a href="/#views">Views</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#security">Security</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Blog</h5>
+        <a href="/blog/">All Articles</a>
+        <a href="/blog/scrum/">Scrum</a>
+        <a href="/blog/engineering/">Engineering</a>
+        <a href="/blog/agile/">Agile</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Alternatives</h5>
+        <a href="/jira-alternative/">Jira Alternative</a>
+        <a href="/linear-alternative/">Linear Alternative</a>
+        <a href="/asana-alternative/">Asana Alternative</a>
+        <a href="https://app.projiq.app/register-org">Get Started Free</a>
+      </div>
+    </div>
+    <div class="b-footer-bottom">
+      <span class="b-footer-copy">© 2026 Projiq. All rights reserved.</span>
+      <a href="https://www.linkedin.com/company/porjiq-app/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.38);font-size:12px;text-decoration:none;transition:color .2s" onmouseover="this.style.color='#FB7185'" onmouseout="this.style.color='rgba(255,255,255,.38)'"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+      <span class="b-footer-copy">Built for engineering teams.</span>
+    </div>
+  </div>
+</footer>
+
+<style>.back-top{position:fixed;bottom:32px;right:32px;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#F43F5E,#FB7185);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transform:translateY(14px);transition:opacity .25s,transform .25s,box-shadow .2s;z-index:500;box-shadow:0 4px 18px rgba(244,63,94,.40)}.back-top.visible{opacity:1;pointer-events:auto;transform:translateY(0)}.back-top:hover{box-shadow:0 6px 28px rgba(244,63,94,.60)}.back-top svg{display:block}@media(max-width:600px){.back-top{bottom:20px;right:20px;width:42px;height:42px}}</style>
+<button class="back-top" id="back-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14V4M4 9l5-5 5 5"/></svg></button>
+<script>
+(function(){
+  var prog=document.getElementById('prog');
+  var art=document.querySelector('.art-body');
+  window.addEventListener('scroll',function(){
+    var st=window.scrollY;
+    var dh=art?art.offsetTop+art.offsetHeight:document.body.scrollHeight;
+    var wh=window.innerHeight;
+    var pct=Math.min(100,Math.round(st/(dh-wh)*100));
+    prog.style.width=pct+'%';
+  },{passive:true});
+})();
+(function(){
+  var links=document.querySelectorAll('.toc-list a');
+  var headings=[];
+  links.forEach(function(l){
+    var id=l.getAttribute('href').replace('#','');
+    var el=document.getElementById(id);
+    if(el) headings.push({el:el,link:l});
+  });
+  window.addEventListener('scroll',function(){
+    var sy=window.scrollY+100;
+    var cur=null;
+    headings.forEach(function(h){if(h.el.offsetTop<=sy) cur=h;});
+    links.forEach(function(l){l.classList.remove('active')});
+    if(cur) cur.link.classList.add('active');
+  },{passive:true});
+})();
+var _bt=document.getElementById('back-top');window.addEventListener('scroll',function(){_bt.classList.toggle('visible',window.scrollY>320)},{passive:true});
+</script>
+</body>
+</html>
