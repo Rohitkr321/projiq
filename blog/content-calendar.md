@@ -30,7 +30,7 @@ Always pick the next `pending` entry in order.
 | 15 | done | scrum ceremonies | Scrum Ceremonies: A Complete Guide to All 5 Events | /blog/scrum-ceremonies/ |
 | 16 | done | engineering manager vs tech lead | Engineering Manager vs Tech Lead: Roles, Differences, and When You Need Both | /blog/engineering-manager-vs-tech-lead/ |
 | 17 | done | how to run standup meeting | How to Run a Daily Standup That Doesn't Waste Everyone's Time | /blog/how-to-run-standup/ |
-| 18 | pending | software development lifecycle | The Software Development Lifecycle (SDLC) Explained for Engineering Teams | /blog/software-development-lifecycle/ |
+| 18 | done | software development lifecycle | The Software Development Lifecycle (SDLC) Explained for Engineering Teams | /blog/software-development-lifecycle/ |
 | 19 | pending | project management for startups | Project Management for Startups: How to Stay Organized While Moving Fast | /blog/project-management-for-startups/ |
 | 20 | pending | how to reduce meeting time | Engineering Teams: How to Cut Meeting Time in Half Without Losing Alignment | /blog/reduce-meeting-time/ |
 | 21 | pending | platform engineering | Platform Engineering: What It Is and Why Every Tech Company Needs It in 2026 | /blog/platform-engineering/ |
