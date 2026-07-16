@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Incident Postmortem Template &amp; Guide for Engineering Teams | Projiq Blog</title>
+<meta name="description" content="A complete incident postmortem template and guide for engineering teams. Learn how to run blameless postmortems, what to include, and how to turn outages into lasting improvements.">
+<link rel="canonical" href="https://projiq.app/blog/incident-postmortem-template/">
+<meta property="og:title" content="Incident Postmortem Template &amp; Guide for Engineering Teams">
+<meta property="og:description" content="Run blameless postmortems that actually prevent the next outage. Includes a fill-in template, a step-by-step process, and common mistakes to avoid.">
+<meta property="og:image" content="https://projiq.app/og.png">
+<meta property="og:url" content="https://projiq.app/blog/incident-postmortem-template/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-16">
+<meta property="article:author" content="Projiq Team">
+<meta property="article:section" content="Engineering">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Incident Postmortem Template (2026): The Complete Guide">
+<meta name="twitter:description" content="A blameless postmortem template and process guide for engineering teams. Turn every outage into a learning that prevents the next one.">
+<meta name="twitter:image" content="https://projiq.app/og.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#030812">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Incident Postmortem Template & Guide for Engineering Teams","description":"A complete incident postmortem template and guide for engineering teams. Learn how to run blameless postmortems, what to include, and how to turn outages into lasting improvements.","author":{"@type":"Organization","name":"Projiq"},"publisher":{"@type":"Organization","name":"Projiq","logo":{"@type":"ImageObject","url":"https://projiq.app/og.png"}},"datePublished":"2026-07-16","dateModified":"2026-07-16","mainEntityOfPage":{"@type":"WebPage","@id":"https://projiq.app/blog/incident-postmortem-template/"},"image":"https://projiq.app/og.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://projiq.app"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://projiq.app/blog/"},{"@type":"ListItem","position":3,"name":"Incident Postmortem Template","item":"https://projiq.app/blog/incident-postmortem-template/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is an incident postmortem in engineering?","acceptedAnswer":{"@type":"Answer","text":"An incident postmortem (also called a post-incident review or retrospective) is a structured process where an engineering team analyzes a production incident after it has been resolved. The goal is to understand what happened, why it happened, and what systemic changes will prevent it from happening again. Blameless postmortems — pioneered by Google's SRE team — focus on process and system failures rather than individual mistakes, which encourages honest reporting and deeper learning."}},{"@type":"Question","name":"How long after an incident should you hold a postmortem?","acceptedAnswer":{"@type":"Answer","text":"Most teams hold the postmortem within 48–72 hours of the incident being resolved. This window is short enough that participants' memories are still fresh, but long enough that the team has recovered from the stress of the incident and can think clearly. For very large incidents (major outages affecting thousands of users), 5 business days is acceptable. Avoid holding postmortems immediately after resolution — the team needs time to decompress. Also avoid waiting more than a week — urgency fades and details are forgotten."}},{"@type":"Question","name":"Who should attend an incident postmortem?","acceptedAnswer":{"@type":"Answer","text":"The core attendees should be everyone directly involved in the incident response: the engineers who investigated and fixed the issue, the on-call engineer, and anyone who was paged. Beyond the core, invite the engineering manager, the product manager if customers were impacted, and a representative from any other team affected. For significant incidents, consider inviting a customer success representative who can provide external perspective. Keep the meeting focused — 6 to 10 people is usually the right size. Beyond 12, the meeting becomes inefficient."}},{"@type":"Question","name":"What is a blameless postmortem?","acceptedAnswer":{"@type":"Answer","text":"A blameless postmortem is a post-incident analysis that focuses entirely on systemic and process failures rather than individual mistakes. The underlying philosophy — popularized by John Allspaw and Paul Hammond at Etsy and later formalized in Google's Site Reliability Engineering book — is that engineers always act with the best intentions given the information and tools available to them at the time. If a human made a mistake that caused an outage, the real question is: what system allowed that mistake to happen, and how can we build a system where the same mistake can't cause the same outcome?"}},{"@type":"Question","name":"What is the difference between an RCA and a postmortem?","acceptedAnswer":{"@type":"Answer","text":"A Root Cause Analysis (RCA) and a postmortem are related but different. An RCA focuses narrowly on identifying the technical root cause of a specific failure. A postmortem is broader: it captures the timeline, the detection story, the response, the contributing factors (there are almost always multiple), and — critically — the action items that will prevent recurrence. A good postmortem subsumes the RCA but goes further into organizational learning. Many engineering teams find that pure RCAs are counterproductive because they create a false sense that there is always a single root cause, when in reality most incidents are the result of multiple overlapping factors."}},{"@type":"Question","name":"How do you write action items in a postmortem?","acceptedAnswer":{"@type":"Answer","text":"Good postmortem action items are specific, assigned, time-bound, and tracked. Vague action items like 'improve monitoring' or 'add more tests' are almost never completed. Good action items specify exactly what will change: 'Add a P1 alert on checkout_service error rate exceeding 2% sustained for 3 minutes — assigned to @engineer, due by 2026-08-01.' Every action item should have a single owner and a specific definition of done. Track them in your project management tool alongside regular work — not in the postmortem document — so they don't get forgotten."}}]}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#030812;color:#F1F5F9;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+.prog{position:fixed;top:60px;left:0;height:3px;background:linear-gradient(90deg,#6366F1,#06B6D4);width:0;z-index:300;transition:width .08s linear}
+
+.b-nav{position:sticky;top:0;z-index:200;background:rgba(3,8,18,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)}
+.b-nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center}
+.b-logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;color:#F1F5F9;flex-shrink:0}
+.b-logo-mark{flex-shrink:0;display:block}.b-dot-app{color:#06B6D4}
+.b-nav-links{display:flex;gap:28px;margin-left:auto;margin-right:28px}
+.b-nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
+.b-nav-links a:hover,.b-nav-links a.active{color:#F1F5F9}
+.b-nav-cta{background:linear-gradient(90deg,#3B82F6,#8B5CF6);color:#fff;padding:8px 20px;border-radius:9px;font-size:13px;font-weight:700;white-space:nowrap;flex-shrink:0;transition:opacity .2s}
+.b-nav-cta:hover{opacity:.86}
+
+.b-crumb{max-width:1200px;margin:0 auto;padding:28px 24px 0;display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.35);flex-wrap:wrap}
+.b-crumb a{color:rgba(255,255,255,.38);transition:color .2s}
+.b-crumb a:hover{color:#818CF8}
+.b-crumb-sep{color:rgba(255,255,255,.18)}
+
+.art-wrap{max-width:1200px;margin:0 auto;padding:32px 24px 0}
+.art-header{margin-bottom:44px}
+.art-cat{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;background:rgba(239,68,68,.11);border:1px solid rgba(239,68,68,.26);color:#FCA5A5;margin-bottom:18px}
+.art-header h1{font-size:clamp(30px,4.5vw,50px);font-weight:900;line-height:1.15;letter-spacing:-1px;margin-bottom:22px}
+.art-meta{display:flex;align-items:center;gap:22px;color:rgba(255,255,255,.35);font-size:13px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap}
+
+.art-layout{display:grid;grid-template-columns:1fr 300px;gap:60px;align-items:start}
+
+.art-body{min-width:0;overflow-wrap:break-word;word-break:break-word;font-size:17px;line-height:1.80;color:rgba(255,255,255,.78);padding-bottom:60px}
+.art-body p{margin-bottom:22px}
+.art-body h2{font-size:26px;font-weight:800;color:#F1F5F9;margin:52px 0 16px;letter-spacing:-.3px;line-height:1.3}
+.art-body h3{font-size:19px;font-weight:700;color:#F1F5F9;margin:30px 0 12px;letter-spacing:-.1px}
+.art-body ul,.art-body ol{margin:0 0 22px 22px}
+.art-body li{margin-bottom:9px;color:rgba(255,255,255,.72)}
+.art-body ul li::marker{color:#6366F1}
+.art-body ol li::marker{color:#818CF8;font-weight:700}
+.art-body strong{color:#F1F5F9;font-weight:700}
+.art-body a{color:#818CF8;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(129,140,248,.4);transition:text-decoration-color .2s}
+.art-body a:hover{text-decoration-color:#818CF8}
+blockquote{border-left:3px solid #6366F1;padding:16px 22px;background:rgba(99,102,241,.07);border-radius:0 10px 10px 0;margin:28px 0;font-style:italic;color:rgba(255,255,255,.72);font-size:16px}
+
+.tip-box{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.tip-box b{color:#34D399;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.warn-box{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.warn-box b{color:#FBBF24;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.danger-box{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.danger-box b{color:#FCA5A5;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.link-box{background:rgba(99,102,241,.07);border:1px solid rgba(99,102,241,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.link-box b{color:#818CF8;display:block;margin-bottom:8px;font-size:13px;font-weight:700}
+
+/* Phase cards */
+.phase-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0}
+.phase-card{background:rgba(10,22,40,.7);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px}
+.phase-card .ph-num{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
+.phase-card h4{font-size:15px;font-weight:800;color:#F1F5F9;margin-bottom:8px}
+.phase-card p{font-size:13px;color:rgba(255,255,255,.52);line-height:1.65;margin-bottom:0}
+
+/* Template block */
+.template-block{background:rgba(6,9,20,.8);border:1px solid rgba(99,102,241,.22);border-radius:14px;overflow:hidden;margin:28px 0}
+.template-header{background:rgba(99,102,241,.10);border-bottom:1px solid rgba(99,102,241,.22);padding:14px 22px;display:flex;align-items:center;gap:10px}
+.template-header span{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#818CF8}
+.template-body{padding:24px 22px;font-family:'Courier New',Courier,monospace;font-size:13px;line-height:1.9;color:rgba(255,255,255,.72)}
+.t-section{color:#818CF8;font-weight:700}
+.t-label{color:#34D399;font-weight:600}
+.t-placeholder{color:rgba(255,255,255,.35);font-style:italic}
+.t-sep{color:rgba(255,255,255,.12)}
+
+/* Comparison table */
+.cmp-table-wrap{overflow-x:auto;margin:28px 0;border-radius:12px;border:1px solid rgba(255,255,255,.07)}
+.cmp-table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+.cmp-table th{background:rgba(99,102,241,.10);color:#818CF8;padding:12px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.cmp-table td{padding:12px 16px;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.68);vertical-align:top;line-height:1.5}
+.cmp-table td:first-child{font-weight:700;color:#F1F5F9;white-space:nowrap;font-size:13px}
+.cmp-table tr:hover td{background:rgba(255,255,255,.02)}
+.good td:nth-child(2){color:#34D399}
+.bad  td:nth-child(2){color:#F87171}
+
+/* Checklist */
+.checklist{list-style:none;padding:0;margin:22px 0}
+.checklist li{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:15px;color:rgba(255,255,255,.72);align-items:flex-start}
+.checklist li:last-child{border-bottom:none}
+.checklist li::before{content:'☐';color:#6366F1;font-size:16px;flex-shrink:0;margin-top:1px}
+.checklist li strong{color:#F1F5F9}
+
+/* CTA */
+.art-cta{background:linear-gradient(135deg,rgba(99,102,241,.13),rgba(6,182,212,.07));border:1px solid rgba(99,102,241,.22);border-radius:16px;padding:36px;text-align:center;margin:44px 0}
+.art-cta h3{font-size:22px;font-weight:800;margin-bottom:10px}
+.art-cta p{color:rgba(255,255,255,.52);font-size:15px;margin-bottom:22px;line-height:1.6}
+.art-cta a{display:inline-block;background:linear-gradient(90deg,#6366F1,#06B6D4);color:#fff;padding:12px 28px;border-radius:9px;font-size:14px;font-weight:700;transition:opacity .2s}
+.art-cta a:hover{opacity:.86;text-decoration:none}
+
+/* Sidebar */
+.art-sidebar{position:sticky;top:80px}
+.sb-card{background:rgba(10,22,40,.8);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px;margin-bottom:18px}
+.sb-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.35);margin-bottom:16px}
+.toc-list{list-style:none;padding:0}
+.toc-list li{margin-bottom:9px}
+.toc-list a{font-size:13px;color:rgba(255,255,255,.45);display:block;padding-left:10px;border-left:1px solid rgba(255,255,255,.08);line-height:1.5;transition:color .18s,border-color .18s}
+.toc-list a:hover,.toc-list a.active{color:#818CF8;border-left-color:#6366F1;text-decoration:none}
+.rel-post{display:flex;gap:11px;margin-bottom:13px;align-items:flex-start}
+.rel-icon{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px}
+.rel-post a{font-size:13px;font-weight:600;color:rgba(255,255,255,.65);line-height:1.4;transition:color .2s;display:block;margin-bottom:3px}
+.rel-post a:hover{color:#818CF8;text-decoration:none}
+.rel-cat{font-size:11px;color:rgba(255,255,255,.28)}
+
+/* FAQ */
+.faq-block{margin:44px 0}
+.faq-block h2{font-size:26px;font-weight:800;color:#F1F5F9;margin-bottom:22px;letter-spacing:-.3px}
+.faq-entry{border:1px solid rgba(255,255,255,.07);border-radius:12px;margin-bottom:10px;overflow:hidden;background:rgba(10,22,40,.6)}
+.faq-entry summary{padding:17px 22px;font-size:15px;font-weight:700;color:#F1F5F9;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4}
+.faq-entry summary::-webkit-details-marker{display:none}
+.faq-entry summary::after{content:'+';color:#818CF8;font-size:18px;font-weight:400;flex-shrink:0;transition:transform .2s}
+.faq-entry[open] summary::after{transform:rotate(45deg)}
+.faq-entry[open]{border-color:rgba(99,102,241,.24)}
+.faq-ans{padding:0 22px 18px;font-size:14px;color:rgba(255,255,255,.62);line-height:1.75}
+
+/* Footer */
+.b-footer{background:#020810;border-top:1px solid rgba(255,255,255,.07);padding:56px 24px 32px}
+.b-footer-inner{max-width:1200px;margin:0 auto}
+.b-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.b-footer-brand p{color:rgba(255,255,255,.38);font-size:13px;line-height:1.7;margin-top:14px;max-width:230px}
+.b-footer-col h5{color:#F1F5F9;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.b-footer-col a{display:block;color:rgba(255,255,255,.38);font-size:13px;margin-bottom:9px;transition:color .2s}
+.b-footer-col a:hover{color:#818CF8}
+.b-footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.b-footer-copy{color:rgba(255,255,255,.22);font-size:12px}
+
+@media(max-width:900px){
+  .art-layout{grid-template-columns:1fr}
+  .art-sidebar{display:none}
+  .phase-grid{grid-template-columns:1fr}
+  .b-footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media(max-width:600px){
+  .b-nav-links{display:none}
+  .b-nav-cta{margin-left:auto}
+  .art-header h1{font-size:28px}
+  .art-body{font-size:16px}
+  .phase-grid{grid-template-columns:1fr}
+  .b-footer-grid{grid-template-columns:1fr;gap:24px}
+}
+</style>
+</head>
+<body>
+
+<div class="prog" id="prog"></div>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4F46E5"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient><symbol id="projiq-p" viewBox="0 0 285 265"><path d="M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z" fill="url(#brand-grad)"/><rect x="0" y="65" width="60" height="12" rx="6" fill="#4F46E5"/><rect x="0" y="100" width="60" height="12" rx="6" fill="#06B6D4"/><rect x="0" y="135" width="60" height="12" rx="6" fill="#10B981"/><path d="M140 105 L160 125 L205 80" fill="none" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
+
+<nav class="b-nav">
+  <div class="b-nav-inner">
+    <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+    <div class="b-nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/" class="active">Blog</a>
+    </div>
+    <a href="https://app.projiq.app/register-org" class="b-nav-cta">Get Started Free</a>
+  </div>
+</nav>
+
+<nav class="b-crumb" aria-label="Breadcrumb">
+  <a href="/">Home</a><span class="b-crumb-sep">›</span>
+  <a href="/blog/">Blog</a><span class="b-crumb-sep">›</span>
+  <span>Incident Postmortem Template</span>
+</nav>
+
+<div class="art-wrap">
+  <header class="art-header">
+    <span class="art-cat">🔥 Engineering</span>
+    <h1>Incident Postmortem Template &amp; Guide for Engineering Teams</h1>
+    <div class="art-meta">
+      <span>✍ Projiq Team</span>
+      <span>📅 Jul 16, 2026</span>
+      <span>⏱ 11 min read</span>
+      <span>🏷 Incident Management, SRE, Engineering Leadership</span>
+    </div>
+  </header>
+
+  <div class="art-layout">
+    <article class="art-body">
+
+      <p>Every engineering team has outages. The teams that improve fastest are not the ones that have the fewest incidents — they are the ones that extract the most learning from each one. A disciplined, blameless postmortem process is the mechanism that turns a painful production failure into a lasting systemic improvement.</p>
+
+      <p>This guide covers what an incident postmortem is, how to run one well, a complete fill-in template you can use today, and the mistakes that make postmortems useless. Whether you are setting up your first postmortem process or reforming a broken one, this is the place to start.</p>
+
+      <h2 id="what-is">What Is an Incident Postmortem?</h2>
+
+      <p>An incident postmortem — also called a post-incident review (PIR), after-action review, or incident retrospective — is a structured analysis conducted after a production incident has been resolved. The goal is not to assign blame. The goal is to understand <em>what happened</em>, <em>why it happened</em>, and <em>what systemic changes will prevent it from happening again</em>.</p>
+
+      <p>The blameless postmortem philosophy was pioneered by John Allspaw and Paul Hammond at Etsy and later formalized in <a href="https://sre.google/sre-book/postmortem-culture/" rel="noopener">Google's Site Reliability Engineering book</a>. The core insight is this: engineers always act with the best intentions given the information, tools, and time pressure available to them in the moment. Blaming individuals for outages is not only unfair — it actively destroys psychological safety, which means future incidents get hidden or minimized rather than learned from.</p>
+
+      <blockquote>"The goal is to understand the contributing causes of the incident in order to prevent similar incidents from occurring in the future, not to punish the people involved." — Google SRE Book</blockquote>
+
+      <p>The postmortem is also distinct from an incident response debrief (which covers what happened in the hour after the alert fired) and a root cause analysis (which focuses narrowly on the technical cause). A good postmortem does both of those things and goes further — into contributing factors, detection gaps, process failures, and concrete action items.</p>
+
+      <h2 id="when-to-run">When to Run a Postmortem</h2>
+
+      <p>Not every incident warrants a full postmortem. Establishing clear criteria prevents both extremes: running postmortems on every minor blip (which leads to postmortem fatigue) or only running them on catastrophic outages (which misses the smaller, more frequent learning opportunities).</p>
+
+      <h3>Always run a postmortem when:</h3>
+      <ul>
+        <li>The incident lasted more than 30 minutes</li>
+        <li>Multiple systems or teams were affected</li>
+        <li>Customer data was at risk or affected</li>
+        <li>A manual rollback was required</li>
+        <li>The incident was escalated to senior leadership or customers were notified</li>
+        <li>A P1 or P2 incident as defined by your severity framework</li>
+      </ul>
+
+      <h3>Consider running a postmortem when:</h3>
+      <ul>
+        <li>A bug reached production that your tests should have caught</li>
+        <li>An on-call engineer was paged outside business hours for a non-critical issue</li>
+        <li>Detection was delayed by more than 10 minutes for an issue that had already been active</li>
+        <li>The same class of issue has occurred before</li>
+      </ul>
+
+      <div class="tip-box">
+        <b>Near-miss postmortems</b>
+        Some of the most valuable postmortems are for near-misses — incidents that were caught before they reached production, or that were resolved in minutes but easily could have been catastrophic. A near-miss is a free lesson: the same learning, without the customer impact.
+      </div>
+
+      <h2 id="timeline">The Postmortem Timeline</h2>
+
+      <p>Timing matters. The right window for holding a postmortem is <strong>24 to 72 hours after the incident is resolved</strong>.</p>
+
+      <div class="phase-grid">
+        <div class="phase-card">
+          <div class="ph-num" style="color:#EF4444">❌ Too Soon (&lt;4h)</div>
+          <h4>Right After Resolution</h4>
+          <p>The team is still decompressing. Stress and recency bias lead to surface-level analysis. Decisions made in this state are often reversed later.</p>
+        </div>
+        <div class="phase-card">
+          <div class="ph-num" style="color:#10B981">✅ Sweet Spot (24–72h)</div>
+          <h4>1–3 Days After</h4>
+          <p>Memories are still fresh. The team has recovered enough to think clearly. Metrics and logs have been reviewed. This is the right time.</p>
+        </div>
+        <div class="phase-card">
+          <div class="ph-num" style="color:#F59E0B">⚠️ Acceptable (3–5d)</div>
+          <h4>3–5 Days After</h4>
+          <p>Acceptable for major incidents where the response itself took several days. But urgency starts to fade and schedules fill up. Move quickly.</p>
+        </div>
+        <div class="phase-card">
+          <div class="ph-num" style="color:#EF4444">❌ Too Late (&gt;7d)</div>
+          <h4>More Than a Week</h4>
+          <p>Details are forgotten. The team has moved on. The postmortem feels like a bureaucratic exercise. Action items from late postmortems rarely get done.</p>
+        </div>
+      </div>
+
+      <h2 id="who-runs">Who Runs It and Who Attends</h2>
+
+      <p><strong>Facilitator:</strong> Ideally someone who was not directly involved in the incident response — an engineering manager, a senior engineer from another team, or a designated postmortem facilitator. The facilitator's job is to keep the conversation focused on learning, not blame. They ask "what" and "why" questions rather than "who" questions.</p>
+
+      <p><strong>Note-taker:</strong> Designate this role explicitly. The facilitator and note-taker should be different people. Good notes are the output of the meeting — without them, you lose everything.</p>
+
+      <p><strong>Required attendees:</strong></p>
+      <ul>
+        <li>Everyone who was directly involved in the incident response</li>
+        <li>The on-call engineer</li>
+        <li>The engineering manager of the affected team(s)</li>
+        <li>Product manager if customers were notified or SLAs were breached</li>
+      </ul>
+
+      <div class="warn-box">
+        <b>Keep it small</b>
+        Postmortems with more than 10 people become inefficient. The most honest, useful conversations happen in smaller groups. For major cross-team incidents, hold a core postmortem first, then share findings in a broader readout. Don't conflate the analysis meeting with the communication meeting.
+      </div>
+
+      <h2 id="template">The Postmortem Template</h2>
+
+      <p>Below is a production-ready template used by engineering teams at companies including Google, Atlassian, and Stripe. Copy it into Notion, Confluence, or a shared doc and fill it in before the meeting — the facilitator leads the group through each section.</p>
+
+      <div class="template-block">
+        <div class="template-header">
+          <span>📄 Postmortem Template — Copy &amp; Use</span>
+        </div>
+        <div class="template-body">
+<span class="t-section">## INCIDENT POSTMORTEM</span><br><br>
+<span class="t-label">Incident ID:</span>    <span class="t-placeholder">INC-2026-XXXX</span><br>
+<span class="t-label">Severity:</span>       <span class="t-placeholder">P1 / P2 / P3</span><br>
+<span class="t-label">Date of Incident:</span> <span class="t-placeholder">YYYY-MM-DD</span><br>
+<span class="t-label">Duration:</span>       <span class="t-placeholder">X hours Y minutes</span><br>
+<span class="t-label">Status:</span>         <span class="t-placeholder">Draft / In Review / Final</span><br>
+<span class="t-label">Postmortem Date:</span> <span class="t-placeholder">YYYY-MM-DD</span><br>
+<span class="t-label">Facilitator:</span>    <span class="t-placeholder">@name</span><br>
+<span class="t-label">Attendees:</span>      <span class="t-placeholder">@name1, @name2, @name3</span><br><br>
+<span class="t-sep">────────────────────────────────────────────────</span><br><br>
+<span class="t-section">### 1. EXECUTIVE SUMMARY</span><br>
+<span class="t-placeholder">2–4 sentences. What happened, what was the customer impact, how was it resolved.</span><br>
+<span class="t-placeholder">Example: At 14:32 UTC on Jul 16, the checkout service began returning 503 errors...</span><br><br>
+<span class="t-section">### 2. CUSTOMER IMPACT</span><br>
+<span class="t-label">- Users affected:</span>    <span class="t-placeholder">~X,XXX (estimated via error logs)</span><br>
+<span class="t-label">- Revenue impact:</span>    <span class="t-placeholder">~₹X failed transactions</span><br>
+<span class="t-label">- SLA breached:</span>     <span class="t-placeholder">Yes / No — 99.95% target, actual: XX%</span><br>
+<span class="t-label">- External comms:</span>   <span class="t-placeholder">Status page updated at HH:MM, customers notified at HH:MM</span><br><br>
+<span class="t-section">### 3. TIMELINE (UTC)</span><br>
+<span class="t-label">HH:MM</span> <span class="t-placeholder">First error appears in logs (not yet detected)</span><br>
+<span class="t-label">HH:MM</span> <span class="t-placeholder">Alert fires — on-call paged</span><br>
+<span class="t-label">HH:MM</span> <span class="t-placeholder">On-call begins investigation</span><br>
+<span class="t-label">HH:MM</span> <span class="t-placeholder">Incident declared, additional engineers pulled in</span><br>
+<span class="t-label">HH:MM</span> <span class="t-placeholder">Root cause identified</span><br>
+<span class="t-label">HH:MM</span> <span class="t-placeholder">Fix deployed / rollback initiated</span><br>
+<span class="t-label">HH:MM</span> <span class="t-placeholder">Service fully restored — incident closed</span><br><br>
+<span class="t-section">### 4. ROOT CAUSE</span><br>
+<span class="t-placeholder">The specific technical cause. One or two paragraphs. Be precise — not "database issue"</span><br>
+<span class="t-placeholder">but "the connection pool was exhausted because a slow query introduced in PR #1234</span><br>
+<span class="t-placeholder">held connections open 10x longer than normal under 3× normal traffic load."</span><br><br>
+<span class="t-section">### 5. CONTRIBUTING FACTORS</span><br>
+<span class="t-placeholder">List EVERY factor that made this possible or worse. Ask "why" 5 times for each.</span><br>
+<span class="t-placeholder">- No load test was run for the PR that introduced the slow query</span><br>
+<span class="t-placeholder">- Connection pool exhaustion had no dedicated alert — only a generic 503 alert</span><br>
+<span class="t-placeholder">- The runbook for database performance incidents was out of date</span><br>
+<span class="t-placeholder">- The deploy happened at 14:15 with no engineer monitoring for 15 min post-deploy</span><br><br>
+<span class="t-section">### 6. DETECTION</span><br>
+<span class="t-label">- How detected:</span>  <span class="t-placeholder">Alert / Customer report / Internal discovery</span><br>
+<span class="t-label">- Detection lag:</span>  <span class="t-placeholder">XX minutes from first error to page</span><br>
+<span class="t-label">- Could we detect faster?</span> <span class="t-placeholder">Yes — a DB connection pool saturation alert would have fired 12 min earlier</span><br><br>
+<span class="t-section">### 7. RESOLUTION</span><br>
+<span class="t-placeholder">What specifically resolved the incident? Rollback? Hotfix? Config change? Scale-out?</span><br>
+<span class="t-placeholder">Was this the right resolution, or was it a temporary mitigation? What is the permanent fix?</span><br><br>
+<span class="t-section">### 8. ACTION ITEMS</span><br>
+<span class="t-label">| Action                                     | Owner   | Due        | Tracker |</span><br>
+<span class="t-label">|--------------------------------------------|---------|------------|---------|</span><br>
+<span class="t-placeholder">| Add DB connection pool saturation alert     | @alice  | 2026-07-23 | INC-101 |</span><br>
+<span class="t-placeholder">| Add load test step to PR process for query-heavy changes | @bob | 2026-07-30 | INC-102 |</span><br>
+<span class="t-placeholder">| Update DB incident runbook                 | @carol  | 2026-07-23 | INC-103 |</span><br>
+<span class="t-placeholder">| Post-deploy monitoring window: 15 min SOP  | @dave   | 2026-07-28 | INC-104 |</span><br><br>
+<span class="t-section">### 9. LESSONS LEARNED</span><br>
+<span class="t-placeholder">What went well? What surprised you? What would you do differently?</span><br>
+<span class="t-placeholder">Keep this forward-looking and constructive.</span>
+        </div>
+      </div>
+
+      <h2 id="running-meeting">Running the Postmortem Meeting</h2>
+
+      <p>The template is filled in before the meeting, not during it. The meeting is for discussing, validating, and challenging the draft — not for building it from scratch. Here is how to run the 60-minute session effectively:</p>
+
+      <h3>Agenda (60 minutes)</h3>
+      <ol>
+        <li><strong>Opening (5 min):</strong> Facilitator sets ground rules — blameless, curious, forward-looking. Remind the group: we are here to improve the system, not evaluate the people.</li>
+        <li><strong>Timeline walkthrough (15 min):</strong> Walk through the incident timeline chronologically. The goal is to make sure everyone has the same understanding of what happened. Fill in gaps, correct errors.</li>
+        <li><strong>Contributing factors (20 min):</strong> This is the most important part. Use the "5 Whys" or a fishbone diagram. Keep asking "why" until you reach something systemic, not just "engineer made a mistake." Every factor should point to a process gap, tooling gap, or knowledge gap — not to a person.</li>
+        <li><strong>Action items (15 min):</strong> Draft the action items. Every item must have an owner, a due date, and a ticket number. If you can't assign an owner in the room, the item will not get done.</li>
+        <li><strong>Lessons learned (5 min):</strong> What went well? Acknowledge the things the team did right under pressure — good incident response practices deserve positive reinforcement too.</li>
+      </ol>
+
+      <div class="danger-box">
+        <b>Red flags during the meeting</b>
+        If someone says "the engineer shouldn't have done X" — redirect to "what made it possible for that to happen?" If someone says "we just need to be more careful" — that is not an action item, it is wishful thinking. If the action items are all assigned to the same person — you have a single point of failure, not a systemic fix.
+      </div>
+
+      <h2 id="action-items">Writing Good Action Items</h2>
+
+      <p>The action items section is where most postmortems fail. Vague, unowned, untracked action items are the number-one reason postmortems don't prevent the next incident.</p>
+
+      <div class="cmp-table-wrap">
+        <table class="cmp-table">
+          <thead>
+            <tr><th>Action Item</th><th>Quality</th><th>Why</th></tr>
+          </thead>
+          <tbody>
+            <tr class="bad">
+              <td>Improve monitoring</td>
+              <td>❌ Bad</td>
+              <td>Vague, no owner, no definition of done, not trackable</td>
+            </tr>
+            <tr class="good">
+              <td>Add P1 alert on checkout_service 5xx rate &gt; 2% for 3 min — @alice — due 2026-07-23</td>
+              <td>✅ Good</td>
+              <td>Specific metric, threshold, service, owner, deadline</td>
+            </tr>
+            <tr class="bad">
+              <td>Be more careful with DB migrations</td>
+              <td>❌ Bad</td>
+              <td>Not an action, not actionable, no owner</td>
+            </tr>
+            <tr class="good">
+              <td>Add mandatory staging dry-run step to migration PR checklist — @bob — due 2026-07-30</td>
+              <td>✅ Good</td>
+              <td>Specific process change, specific artifact, owner, deadline</td>
+            </tr>
+            <tr class="bad">
+              <td>Write runbook for DB issues</td>
+              <td>❌ Bad</td>
+              <td>No scope, no owner, no deadline</td>
+            </tr>
+            <tr class="good">
+              <td>Update /runbooks/db-connection-pool.md to include connection exhaustion recovery steps — @carol — due 2026-07-25</td>
+              <td>✅ Good</td>
+              <td>Specific doc, specific content to add, owner, deadline</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Track action items in your project management tool — not in the postmortem document. A Notion page or Confluence doc is where engineers look for reference, not where they manage work. Put the tickets in Projiq, Jira, or Linear where they'll be prioritized and tracked alongside regular work. Add a link from the action item table back to the ticket.</p>
+
+      <h2 id="sharing">Sharing and Follow-Up</h2>
+
+      <p>A postmortem that is filed in a folder and never referenced again is nearly worthless. Postmortem value compounds over time — when you can search across six months of postmortems to find that your DB connection pool has been the contributing factor in three separate incidents, you know exactly where to invest.</p>
+
+      <h3>Postmortem lifecycle checklist:</h3>
+      <ul class="checklist">
+        <li><strong>Within 72h:</strong> Draft postmortem document completed, meeting scheduled</li>
+        <li><strong>Meeting day:</strong> Postmortem meeting held, action items assigned with tickets created</li>
+        <li><strong>Within 5 days:</strong> Final postmortem document published and linked from the incident record</li>
+        <li><strong>Within 5 days:</strong> Postmortem shared with the wider engineering team (weekly eng digest, Slack #incidents channel, or all-hands)</li>
+        <li><strong>Quarterly:</strong> Review all postmortems from the quarter for patterns — recurring systems, recurring contributing factors</li>
+        <li><strong>All action items:</strong> Tracked and reviewed in weekly team syncs until closed</li>
+      </ul>
+
+      <div class="link-box">
+        <b>💡 Build a postmortem library</b>
+        Great engineering organizations — Netflix, Google, Etsy, Cloudflare — publish many of their postmortems publicly. Internally, creating a searchable postmortem library lets teams learn from incidents they weren't involved in. Tag each postmortem by system, by contributing factor type, and by action item status. Over time, this library becomes one of the most valuable pieces of institutional knowledge your team has.
+      </div>
+
+      <h2 id="common-mistakes">Common Postmortem Mistakes to Avoid</h2>
+
+      <ul>
+        <li><strong>Single root cause thinking.</strong> Most incidents have multiple contributing factors. Stopping at "the DB query was slow" misses the fact that no alert detected it, no load test would have caught it, and no runbook existed for it. Fix the whole system, not just the trigger.</li>
+        <li><strong>Postmortems only for the biggest incidents.</strong> The smaller, more frequent incidents are where the most actionable learning lives. A P3 that happens four times a quarter is more important to fix than a P1 that happened once.</li>
+        <li><strong>Action items that are never tracked.</strong> If action items live only in the postmortem document, they will not get done. Every action item needs a ticket, an owner, and a due date — tracked in the same system as the team's regular work.</li>
+        <li><strong>Not sharing broadly.</strong> The team that experienced the incident is not the only team that can learn from it. Sharing postmortems across engineering builds shared knowledge and prevents the same class of issue from happening to a different team.</li>
+        <li><strong>Skipping postmortems when things are busy.</strong> This is exactly backwards. The times when the team is most stressed — high incident rate, large releases — are when learning from each incident matters most. Postmortems are not optional in busy periods; they are how you get out of the cycle.</li>
+      </ul>
+
+      <div class="art-cta">
+        <h3>Track Postmortem Actions Alongside Your Engineering Work</h3>
+        <p>Projiq lets you link postmortem action items directly to sprint boards. Every action item becomes a ticket with an owner, due date, and priority — tracked alongside your regular engineering work so nothing falls through the cracks.</p>
+        <a href="https://app.projiq.app/register-org">Start Free — No Credit Card</a>
+      </div>
+
+      <!-- FAQ -->
+      <div class="faq-block">
+        <h2>Frequently Asked Questions</h2>
+
+        <details class="faq-entry">
+          <summary>What is an incident postmortem in engineering?</summary>
+          <div class="faq-ans">An incident postmortem (also called a post-incident review or retrospective) is a structured process where an engineering team analyzes a production incident after it has been resolved. The goal is to understand what happened, why it happened, and what systemic changes will prevent it from happening again. Blameless postmortems — pioneered by Google's SRE team — focus on process and system failures rather than individual mistakes, which encourages honest reporting and deeper learning.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>How long after an incident should you hold a postmortem?</summary>
+          <div class="faq-ans">Most teams hold the postmortem within 48–72 hours of the incident being resolved. This window is short enough that participants' memories are still fresh, but long enough that the team has recovered from the stress of the incident and can think clearly. For very large incidents (major outages affecting thousands of users), 5 business days is acceptable. Avoid holding postmortems immediately after resolution — the team needs time to decompress. Also avoid waiting more than a week — urgency fades and details are forgotten.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>Who should attend an incident postmortem?</summary>
+          <div class="faq-ans">The core attendees should be everyone directly involved in the incident response: the engineers who investigated and fixed the issue, the on-call engineer, and anyone who was paged. Beyond the core, invite the engineering manager, the product manager if customers were impacted, and a representative from any other team affected. Keep the meeting focused — 6 to 10 people is usually the right size. Beyond 12, the meeting becomes inefficient.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What is a blameless postmortem?</summary>
+          <div class="faq-ans">A blameless postmortem is a post-incident analysis that focuses entirely on systemic and process failures rather than individual mistakes. The underlying philosophy — popularized by John Allspaw and Paul Hammond at Etsy and later formalized in Google's Site Reliability Engineering book — is that engineers always act with the best intentions given the information and tools available to them at the time. If a human made a mistake that caused an outage, the real question is: what system allowed that mistake to happen, and how can we build a system where the same mistake can't cause the same outcome?</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What is the difference between an RCA and a postmortem?</summary>
+          <div class="faq-ans">A Root Cause Analysis (RCA) focuses narrowly on identifying the technical root cause of a specific failure. A postmortem is broader: it captures the timeline, the detection story, the response, the contributing factors (there are almost always multiple), and — critically — the action items that will prevent recurrence. A good postmortem subsumes the RCA but goes further into organizational learning.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>How do you write good action items in a postmortem?</summary>
+          <div class="faq-ans">Good postmortem action items are specific, assigned, time-bound, and tracked. Vague items like "improve monitoring" or "add more tests" are almost never completed. Good action items specify exactly what will change: "Add a P1 alert on checkout_service error rate exceeding 2% sustained for 3 minutes — assigned to @alice, due 2026-08-01." Every action item should have a single owner, a specific definition of done, and a corresponding ticket in your project management tool — not just a row in the postmortem document.</div>
+        </details>
+      </div>
+
+    </article>
+
+    <!-- Sidebar -->
+    <aside class="art-sidebar">
+      <div class="sb-card">
+        <h4>Table of Contents</h4>
+        <ul class="toc-list">
+          <li><a href="#what-is">What is a Postmortem?</a></li>
+          <li><a href="#when-to-run">When to Run One</a></li>
+          <li><a href="#timeline">The Postmortem Timeline</a></li>
+          <li><a href="#who-runs">Who Runs It &amp; Who Attends</a></li>
+          <li><a href="#template">The Full Template</a></li>
+          <li><a href="#running-meeting">Running the Meeting</a></li>
+          <li><a href="#action-items">Writing Good Action Items</a></li>
+          <li><a href="#sharing">Sharing &amp; Follow-Up</a></li>
+          <li><a href="#common-mistakes">Common Mistakes</a></li>
+        </ul>
+      </div>
+      <div class="sb-card">
+        <h4>Related Articles</h4>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(99,102,241,.12)">📈</div>
+          <div>
+            <a href="/blog/dora-metrics/">DORA Metrics Explained: How to Measure Engineering Performance</a>
+            <div class="rel-cat">Productivity</div>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(16,185,129,.12)">🔁</div>
+          <div>
+            <a href="/blog/sprint-retrospective-templates/">Sprint Retrospective Templates That Drive Real Change</a>
+            <div class="rel-cat">Agile</div>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(245,158,11,.12)">📋</div>
+          <div>
+            <a href="/blog/technical-debt-management/">Technical Debt: How to Measure, Prioritize, and Pay It Down</a>
+            <div class="rel-cat">Engineering</div>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(239,68,68,.12)">🏃</div>
+          <div>
+            <a href="/blog/sprint-planning-guide/">Sprint Planning Guide: From Backlog to Board</a>
+            <div class="rel-cat">Agile</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="b-footer">
+  <div class="b-footer-inner">
+    <div class="b-footer-grid">
+      <div class="b-footer-brand">
+        <a href="/" class="b-logo"><svg width="26" height="24" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span style="margin-left:9px;font-weight:800;font-size:17px">Projiq<span class="b-dot-app">.app</span></span></a>
+        <p>Project management for engineering orgs. Sprints, Kanban, roadmaps and real-time collaboration — one flat price for your whole team.</p>
+      </div>
+      <div class="b-footer-col">
+        <h5>Product</h5>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="https://app.projiq.app/register-org">Get Started</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Compare</h5>
+        <a href="/jira-alternative/">Jira Alternative</a>
+        <a href="/linear-alternative/">Linear Alternative</a>
+        <a href="/asana-alternative/">Asana Alternative</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Resources</h5>
+        <a href="/blog/">Blog</a>
+        <a href="/blog/dora-metrics/">DORA Metrics</a>
+        <a href="/blog/sprint-planning-guide/">Sprint Planning</a>
+        <a href="/blog/incident-postmortem-template/">Postmortem Template</a>
+      </div>
+    </div>
+    <div class="b-footer-bottom">
+      <span class="b-footer-copy">© 2026 Projiq. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const prog = document.getElementById('prog');
+window.addEventListener('scroll', () => {
+  const d = document.documentElement;
+  prog.style.width = (d.scrollTop / (d.scrollHeight - d.clientHeight) * 100) + '%';
+});
+
+// TOC active
+const headings = document.querySelectorAll('.art-body h2[id]');
+const tocLinks  = document.querySelectorAll('.toc-list a');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -75% 0px' });
+headings.forEach(h => obs.observe(h));
+</script>
+</body>
+</html>
