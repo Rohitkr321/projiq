@@ -870,6 +870,134 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
   .prob-num{font-size:44px;}
 }
 
+/* ─── SCROLL PROGRESS BAR ─────────────────────────── */
+#scroll-progress{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--accent),var(--violet),#EC4899);z-index:10000;pointer-events:none;transition:width .08s linear;}
+
+/* ─── TYPEWRITER ─────────────────────────────────── */
+.hero-typewriter{color:var(--accentL);font-weight:700;display:inline;}
+.hero-tw-cursor{display:inline-block;width:2px;height:.85em;background:var(--accentL);margin-left:1px;vertical-align:text-bottom;animation:twBlink .75s steps(1) infinite;}
+@keyframes twBlink{0%,100%{opacity:1;}50%{opacity:0;}}
+
+/* ─── LIVE COUNTER CHIP ──────────────────────────── */
+.hero-live-chip{display:inline-flex;align-items:center;gap:8px;padding:7px 18px;border:1px solid rgba(16,185,129,.25);border-radius:100px;font-size:12px;color:var(--text);background:rgba(16,185,129,.07);margin-top:16px;backdrop-filter:blur(8px);}
+.hlc-num{font-size:13px;font-weight:800;color:var(--success);}
+
+/* ─── ROI CALCULATOR ─────────────────────────────── */
+#roi-calc{background:var(--bg2);overflow:hidden;}
+.roi-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:56px;}
+@media(max-width:768px){.roi-wrap{grid-template-columns:1fr;gap:36px;}}
+.roi-controls{display:flex;flex-direction:column;gap:26px;}
+.roi-slider-row{display:flex;flex-direction:column;gap:10px;}
+.roi-slider-label{display:flex;justify-content:space-between;align-items:center;}
+.roi-slider-label span{font-size:13px;color:var(--muted);}
+.roi-slider-label strong{font-size:18px;font-weight:800;color:var(--strong);font-variant-numeric:tabular-nums;}
+.roi-range{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:rgba(59,130,246,.18);outline:none;cursor:pointer;}
+.roi-range::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--violet));cursor:pointer;box-shadow:0 0 0 4px rgba(59,130,246,.18),0 2px 8px rgba(59,130,246,.35);}
+.roi-range::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--violet));cursor:pointer;border:none;box-shadow:0 0 0 4px rgba(59,130,246,.18);}
+.roi-hint{font-size:12px;color:var(--muted);font-style:italic;}
+.roi-result-card{background:var(--bg3);border:1px solid rgba(59,130,246,.22);border-radius:22px;padding:36px 32px;position:relative;overflow:hidden;}
+.roi-result-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--violet),#EC4899);}
+.roi-cost-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:4px;}
+.roi-cost-num{font-size:clamp(38px,7vw,64px);font-weight:900;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums;color:#F87171;margin-bottom:6px;}
+.roi-cost-desc{font-size:12px;color:var(--muted);margin-bottom:22px;}
+.roi-rows{display:flex;flex-direction:column;gap:0;}
+.roi-row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--border);}
+.roi-row:last-of-type{border-bottom:none;}
+.roi-row-label{font-size:13px;color:var(--muted);}
+.roi-row-val{font-size:14px;font-weight:700;}
+.roi-row-val.pos{color:var(--success);}
+.roi-row-val.neg{color:#F87171;}
+.roi-row-val.neu{color:var(--accentL);}
+.roi-payback{margin-top:18px;padding:12px 16px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:12px;font-size:13px;color:var(--success);font-weight:600;text-align:center;}
+.roi-action{margin-top:20px;width:100%;padding:14px 0;border-radius:12px;background:linear-gradient(90deg,var(--accent),var(--violet));color:#fff;font-size:14px;font-weight:700;cursor:pointer;border:none;letter-spacing:.02em;transition:opacity .2s,transform .15s;}
+.roi-action:hover{opacity:.88;transform:translateY(-1px);}
+
+/* ─── 60s DEMO SECTION ───────────────────────────── */
+#demo-video{background:var(--bg);}
+.demo-video-wrap{margin-top:48px;position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(59,130,246,.18);box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 80px rgba(59,130,246,.08);cursor:pointer;}
+.demo-video-wrap:hover .demo-play-btn{transform:translate(-50%,-50%) scale(1.1);}
+.demo-mock-screen{background:rgba(4,12,28,.9);padding:0;position:relative;}
+.demo-chrome{background:#030C1A;border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.demo-dots{display:flex;gap:5px;}
+.demo-dot{width:10px;height:10px;border-radius:50%;}
+.demo-url{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:6px;padding:5px 12px;font-size:11px;color:var(--muted);text-align:center;}
+.demo-overlay{position:absolute;inset:0;background:rgba(2,11,24,.45);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;z-index:2;}
+.demo-play-btn{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--violet));display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 12px rgba(59,130,246,.12),0 0 50px rgba(59,130,246,.4);transition:transform .3s ease;cursor:pointer;border:none;}
+.demo-play-btn svg{margin-left:5px;}
+.demo-label{font-size:15px;font-weight:700;color:var(--strong);}
+.demo-sub-label{font-size:13px;color:var(--muted);}
+.demo-features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;}
+@media(max-width:640px){.demo-features{grid-template-columns:1fr 1fr;}}
+.demo-feat{padding:16px;background:var(--bg3);border:1px solid var(--border);border-radius:12px;text-align:center;}
+.demo-feat-icon{font-size:20px;margin-bottom:6px;}
+.demo-feat-label{font-size:12px;font-weight:600;color:var(--text);}
+.demo-feat-time{font-size:10px;color:var(--muted);margin-top:2px;}
+
+/* ─── STICKY CTA BAR ─────────────────────────────── */
+#sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:889;background:rgba(3,10,28,.96);backdrop-filter:blur(20px);border-top:1px solid rgba(59,130,246,.22);padding:13px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;transform:translateY(100%);transition:transform .45s cubic-bezier(.23,1,.32,1);flex-wrap:wrap;}
+#sticky-cta.visible{transform:translateY(0);}
+.sct-text{font-size:14px;color:var(--text);line-height:1.4;}
+.sct-text strong{color:var(--strong);}
+.sct-actions{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.sct-trust{font-size:11px;color:var(--muted);}
+#sct-close{background:none;border:none;color:var(--muted);cursor:pointer;font-size:22px;line-height:1;padding:2px 6px;flex-shrink:0;transition:color .2s;}
+#sct-close:hover{color:var(--text);}
+@media(max-width:640px){#sticky-cta{padding:12px 18px;}.sct-text{font-size:12.5px;}.sct-actions{gap:8px;}}
+@media(max-width:480px){#sticky-cta{flex-direction:column;align-items:stretch;gap:10px;}.sct-actions{justify-content:center;}}
+
+/* ─── WHATSAPP FLOAT BUTTON ─────────────────────── */
+#wa-float{position:fixed;bottom:100px;right:28px;z-index:888;display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
+#wa-btn{width:56px;height:56px;border-radius:50%;background:#25D366;border:none;cursor:pointer;box-shadow:0 4px 24px rgba(37,211,102,.45),0 2px 8px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;transition:transform .25s,box-shadow .25s;animation:waPulse 2.8s ease-in-out infinite;}
+#wa-btn:hover{transform:scale(1.1);box-shadow:0 6px 32px rgba(37,211,102,.6),0 2px 10px rgba(0,0,0,.3);animation:none;}
+#wa-btn svg{width:30px;height:30px;fill:#fff;flex-shrink:0;}
+#wa-tooltip{background:rgba(3,10,28,.95);border:1px solid rgba(37,211,102,.3);color:#fff;font-size:13px;font-weight:600;padding:9px 14px;border-radius:10px;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.4);display:flex;align-items:center;gap:8px;opacity:0;transform:translateX(8px);transition:opacity .25s,transform .25s;pointer-events:none;}
+#wa-tooltip.show{opacity:1;transform:translateX(0);pointer-events:auto;}
+#wa-tooltip .wa-tt-dot{width:7px;height:7px;border-radius:50%;background:#25D366;flex-shrink:0;animation:waPulse 1.6s ease-in-out infinite;}
+@keyframes waPulse{0%,100%{box-shadow:0 4px 24px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,.35);}50%{box-shadow:0 4px 24px rgba(37,211,102,.45),0 0 0 10px rgba(37,211,102,0);}}
+@media(max-width:640px){#wa-float{bottom:84px;right:16px;}#wa-btn{width:50px;height:50px;}#wa-btn svg{width:26px;height:26px;}}
+
+/* ─── EXIT-INTENT POPUP ──────────────────────────── */
+#exit-popup{position:fixed;inset:0;z-index:9990;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .32s;}
+#exit-popup.show{opacity:1;pointer-events:all;}
+.ep-backdrop{position:absolute;inset:0;background:rgba(2,11,24,.88);backdrop-filter:blur(8px);cursor:pointer;}
+.ep-card{position:relative;z-index:1;background:linear-gradient(160deg,rgba(6,14,40,.99),rgba(10,22,58,.99));border:1px solid rgba(59,130,246,.28);border-radius:24px;padding:48px 44px;max-width:470px;width:100%;text-align:center;box-shadow:0 50px 120px rgba(0,0,0,.85),0 0 80px rgba(59,130,246,.08);}
+.ep-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--violet),#EC4899);border-radius:24px 24px 0 0;}
+.ep-x{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:50%;width:32px;height:32px;color:var(--muted);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:color .2s;}
+.ep-x:hover{color:var(--text);}
+.ep-icon{font-size:52px;line-height:1;display:block;margin-bottom:14px;}
+.ep-h{font-size:clamp(20px,5vw,28px);font-weight:900;color:var(--strong);letter-spacing:-.03em;line-height:1.15;margin-bottom:10px;}
+.ep-sub{font-size:13.5px;color:var(--muted);line-height:1.68;margin-bottom:28px;}
+.ep-form{display:flex;flex-direction:column;gap:10px;}
+.ep-input{padding:13px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--strong);font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;width:100%;}
+.ep-input:focus{border-color:rgba(59,130,246,.55);}
+.ep-input::placeholder{color:var(--muted);}
+.ep-btn{padding:14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--violet));color:#fff;font-size:14px;font-weight:700;border:none;cursor:pointer;font-family:inherit;transition:opacity .2s;position:relative;overflow:hidden;}
+.ep-btn:hover{opacity:.88;}
+.ep-skip{font-size:12px;color:var(--muted);margin-top:12px;cursor:pointer;background:none;border:none;font-family:inherit;text-underline-offset:2px;text-decoration:underline;}
+.ep-skip:hover{color:var(--text);}
+.ep-ok{display:none;padding:20px 0;}
+.ep-ok-icon{font-size:44px;display:block;margin-bottom:10px;}
+.ep-ok-text{font-size:17px;font-weight:800;color:var(--success);}
+.ep-ok-sub{font-size:13px;color:var(--muted);margin-top:5px;}
+@media(max-width:480px){.ep-card{padding:32px 22px;}}
+
+/* ─── VIDEO LIGHTBOX ─────────────────────────────── */
+#video-modal{position:fixed;inset:0;z-index:9995;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;}
+#video-modal.show{opacity:1;pointer-events:all;}
+#video-modal-backdrop{position:absolute;inset:0;background:rgba(2,11,24,.94);backdrop-filter:blur(10px);cursor:pointer;}
+#video-modal-box{position:relative;z-index:1;width:100%;max-width:900px;border-radius:16px;overflow:hidden;border:1px solid rgba(59,130,246,.25);box-shadow:0 50px 120px rgba(0,0,0,.9),0 0 80px rgba(59,130,246,.1);}
+#video-modal-chrome{background:#030C1A;border-bottom:1px solid rgba(59,130,246,.1);padding:10px 16px;display:flex;align-items:center;gap:10px;}
+#video-modal-dots{display:flex;gap:5px;}
+#video-modal-url{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(59,130,246,.12);border-radius:6px;padding:5px 12px;font-size:11px;color:var(--muted);text-align:center;}
+#video-modal-close{position:absolute;top:10px;right:12px;z-index:2;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.12);border-radius:50%;width:32px;height:32px;color:#fff;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;transition:background .2s;line-height:1;}
+#video-modal-close:hover{background:rgba(239,68,68,.6);}
+#video-modal-frame{width:100%;aspect-ratio:16/9;background:#000;display:block;border:none;}
+#video-modal-coming{display:none;padding:60px 40px;background:#030C1A;text-align:center;}
+#video-modal-coming .vmc-icon{font-size:52px;display:block;margin-bottom:16px;}
+#video-modal-coming .vmc-h{font-size:22px;font-weight:900;color:var(--strong);margin-bottom:10px;}
+#video-modal-coming .vmc-sub{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:28px;max-width:400px;margin-left:auto;margin-right:auto;}
+@media(max-width:600px){#video-modal-box{border-radius:12px;}#video-modal-coming{padding:40px 22px;}}
+
 /* prefers-reduced-motion: kill all animations */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}
@@ -965,6 +1093,9 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
 </head>
 <body>
 
+<!-- Scroll progress bar -->
+<div id="scroll-progress" aria-hidden="true"></div>
+
 <!-- shared SVG defs — gradients + reusable brand P-mark symbol -->
 <svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true">
   <defs>
@@ -1013,6 +1144,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
     </div>
     <div class="nav-cta">
       <a href="https://app.projiq.app/login" target="_blank" class="btn btn-ghost btn-sm">Sign In</a>
+      <button onclick="openContactModal('demo');return false;" class="btn btn-ghost btn-sm" style="border-color:rgba(139,92,246,.35);color:var(--violet);">Book a Demo</button>
       <a href="https://app.projiq.app/register-org?plan=professional" target="_blank" class="btn btn-primary btn-sm">Get Started</a>
     </div>
     <button class="nav-ham" id="ham-btn" aria-label="Open menu" aria-expanded="false">
@@ -1059,12 +1191,20 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
         The project platform<br><span class="gr">built for organizations.</span>
       </h1>
       <p class="hero-sub">One plan covers your entire organization — sprints, boards, roadmaps, epics, and real-time collaboration for every team member.</p>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:32px;margin-top:-10px;">
+        Organizations like yours use Projiq for&nbsp;<span class="hero-typewriter" id="hero-tw"></span><span class="hero-tw-cursor" aria-hidden="true"></span>
+      </p>
       <div class="hero-btns">
         <a href="https://app.projiq.app/register-org?plan=professional" target="_blank" class="btn btn-primary">Start Free Trial</a>
         <a href="#features" class="btn btn-ghost">Explore Features ↓</a>
       </div>
       <div class="hero-trust reveal d2">
         <span class="hero-trust-text">No credit card required &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; Full access from day one</span>
+      </div>
+      <div class="hero-live-chip reveal d3" aria-live="polite">
+        <span class="live-dot" style="background:var(--success);box-shadow:0 0 6px var(--success);flex-shrink:0;"></span>
+        <span class="hlc-num" id="live-count">0</span>
+        <span>teams joined in the last 7 days</span>
       </div>
       <div class="hero-plat">
         <span class="plat-lbl">Available on</span>
@@ -1211,6 +1351,173 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
         <div class="prob-num">3.2<span class="prob-unit">x</span></div>
         <div class="prob-title">Higher delivery risk without a single source of truth</div>
         <div class="prob-desc">Siloed tools create blind spots. Blockers go unreported, priorities drift, and when a project slips, accountability becomes impossible to trace. A unified platform eliminates this at the source.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ROI CALCULATOR ═══════════════ -->
+<section id="roi-calc" class="section-pad">
+  <div class="container">
+    <div class="reveal center">
+      <span class="ey">ROI Calculator</span>
+      <h2 class="section-title">How much is poor project management <span class="gr">costing you?</span></h2>
+      <p class="section-sub center">Move the sliders to see your team's real annual cost of fragmented tools — and how fast Projiq pays for itself.</p>
+    </div>
+    <div class="roi-wrap">
+      <!-- Controls -->
+      <div class="roi-controls reveal d1">
+        <div class="roi-slider-row">
+          <div class="roi-slider-label">
+            <span>Team size (people)</span>
+            <strong id="roi-team-val">20</strong>
+          </div>
+          <input type="range" class="roi-range" id="roi-team" min="5" max="200" step="5" value="20">
+          <span class="roi-hint">Starter ≤ 30 &nbsp;·&nbsp; Professional ≤ 150 &nbsp;·&nbsp; Enterprise &gt; 150</span>
+        </div>
+        <div class="roi-slider-row">
+          <div class="roi-slider-label">
+            <span>Avg. hourly rate (USD)</span>
+            <strong id="roi-rate-val">$60</strong>
+          </div>
+          <input type="range" class="roi-range" id="roi-rate" min="20" max="150" step="5" value="60">
+          <span class="roi-hint">Blended rate across your engineering team</span>
+        </div>
+        <div style="padding:20px;background:var(--bg3);border:1px solid var(--border);border-radius:14px;margin-top:4px;">
+          <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0;">
+            Based on McKinsey research: knowledge workers lose an average of <strong style="color:var(--text);">5.4 hours per person per week</strong> to tool switching, status meetings, and duplicated work across disconnected systems.
+          </p>
+        </div>
+      </div>
+      <!-- Result card -->
+      <div class="roi-result-card reveal d2">
+        <div class="roi-cost-label">Annual cost of tool fragmentation</div>
+        <div class="roi-cost-num" id="roi-loss">$0</div>
+        <div class="roi-cost-desc">in productive hours lost per year</div>
+        <div class="roi-rows">
+          <div class="roi-row">
+            <span class="roi-row-label">Hours lost / week</span>
+            <span class="roi-row-val neg" id="roi-hrs-wk">0 hrs</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-row-label">Projiq plan for your team</span>
+            <span class="roi-row-val neu" id="roi-plan">Professional</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-row-label">Projiq annual cost</span>
+            <span class="roi-row-val neu" id="roi-projiq-cost">$0/yr</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-row-label">Your net annual saving</span>
+            <span class="roi-row-val pos" id="roi-net">$0</span>
+          </div>
+        </div>
+        <div class="roi-payback" id="roi-payback">Calculating…</div>
+        <button class="roi-action" onclick="window.open('https://app.projiq.app/register-org?plan=professional','_blank')">
+          Start Free Trial — No Card Required →
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 60-SECOND DEMO ═══════════════ -->
+<section id="demo-video" class="section-pad" style="background:var(--bg2);">
+  <div class="container">
+    <div class="reveal center">
+      <span class="ey">Product Walkthrough</span>
+      <h2 class="section-title">See Projiq in <span class="gr">60 seconds</span></h2>
+      <p class="section-sub center">Watch how a real engineering team runs sprints, moves issues, and ships faster — from first login to first sprint complete.</p>
+    </div>
+    <div class="demo-video-wrap reveal" id="demo-video-wrap" onclick="openDemoVideo()">
+      <div class="demo-chrome">
+        <div class="demo-dots">
+          <div class="demo-dot" style="background:#EF4444;"></div>
+          <div class="demo-dot" style="background:#F59E0B;"></div>
+          <div class="demo-dot" style="background:#10B981;"></div>
+        </div>
+        <div class="demo-url">app.projiq.app — Sprint Board · Design System v3</div>
+      </div>
+      <div class="demo-mock-screen">
+        <!-- Reuse the hero app UI as a static thumbnail -->
+        <div style="height:340px;background:#030C1A;display:flex;overflow:hidden;position:relative;">
+          <div style="width:48px;background:#020B18;border-right:1px solid rgba(59,130,246,.1);display:flex;flex-direction:column;align-items:center;padding:14px 0;gap:14px;flex-shrink:0;">
+            <div style="width:26px;height:24px;"><svg viewBox="0 0 285 265" width="26" height="24"><use href="#projiq-p"/></svg></div>
+            <div style="width:32px;height:32px;border-radius:8px;background:rgba(59,130,246,.18);border:1px solid rgba(59,130,246,.25);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--accentL);">▦</div>
+            <div style="width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--muted);">≡</div>
+            <div style="width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--muted);">◫</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;">
+            <div style="background:#030C1A;border-bottom:1px solid rgba(59,130,246,.1);padding:10px 16px;display:flex;align-items:center;gap:10px;">
+              <span style="font-size:12px;font-weight:700;color:var(--strong);">Design System v3</span>
+              <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:rgba(59,130,246,.14);color:var(--accentL);border:1px solid rgba(59,130,246,.22);">Sprint 14 · 3d left</span>
+              <div style="margin-left:auto;display:flex;gap:5px;">
+                <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--violet));font-size:7px;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;">SR</div>
+                <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--success),#34D399);font-size:7px;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;margin-left:-6px;">JD</div>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:12px;flex:1;overflow:hidden;">
+              <div style="background:rgba(8,18,40,.6);border-radius:10px;padding:10px;">
+                <div style="font-size:9px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.1em;">To Do · 4</div>
+                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;margin-bottom:6px;"><div style="font-size:9px;color:var(--accentL);margin-bottom:3px;">Story</div><div style="font-size:10px;font-weight:600;color:var(--strong);">Redesign token system</div></div>
+                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;"><div style="font-size:9px;color:var(--amber);margin-bottom:3px;">Task</div><div style="font-size:10px;font-weight:600;color:var(--strong);">Write API docs v2</div></div>
+              </div>
+              <div style="background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.14);border-radius:10px;padding:10px;">
+                <div style="font-size:9px;font-weight:700;color:var(--accentL);margin-bottom:8px;text-transform:uppercase;letter-spacing:.1em;">In Progress · 3</div>
+                <div style="background:var(--bg3);border:1px solid rgba(59,130,246,.22);border-radius:6px;padding:8px;margin-bottom:6px;"><div style="font-size:9px;color:#F87171;margin-bottom:3px;">Bug</div><div style="font-size:10px;font-weight:600;color:var(--strong);">Auth fails on Safari 17</div></div>
+                <div style="background:var(--bg3);border:1px solid rgba(59,130,246,.22);border-radius:6px;padding:8px;"><div style="font-size:9px;color:var(--accentL);margin-bottom:3px;">Story</div><div style="font-size:10px;font-weight:600;color:var(--strong);">Dashboard perf pass</div></div>
+              </div>
+              <div style="background:rgba(8,18,40,.6);border-radius:10px;padding:10px;">
+                <div style="font-size:9px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.1em;">In Review · 2</div>
+                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;"><div style="font-size:9px;color:var(--accentL);margin-bottom:3px;">Story</div><div style="font-size:10px;font-weight:600;color:var(--strong);">Onboarding flow redesign</div></div>
+              </div>
+              <div style="background:rgba(8,18,40,.6);border-radius:10px;padding:10px;">
+                <div style="font-size:9px;font-weight:700;color:var(--success);margin-bottom:8px;text-transform:uppercase;letter-spacing:.1em;">Done · 7</div>
+                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;margin-bottom:6px;opacity:.55;"><div style="font-size:9px;color:var(--muted);margin-bottom:3px;">Task</div><div style="font-size:10px;font-weight:600;color:var(--text);">Design system audit</div></div>
+                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;opacity:.55;"><div style="font-size:9px;color:var(--muted);margin-bottom:3px;">Bug</div><div style="font-size:10px;font-weight:600;color:var(--text);">Mobile nav regression</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-overlay">
+          <button class="demo-play-btn" aria-label="Play demo video">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+          <span class="demo-label">Watch the 60-second walkthrough</span>
+          <span class="demo-sub-label">No signup required</span>
+        </div>
+      </div>
+    </div>
+    <div class="demo-features reveal">
+      <div class="demo-feat">
+        <div class="demo-feat-icon">⚡</div>
+        <div class="demo-feat-label">Sprint setup</div>
+        <div class="demo-feat-time">0:00 – 0:12</div>
+      </div>
+      <div class="demo-feat">
+        <div class="demo-feat-icon">🎯</div>
+        <div class="demo-feat-label">Issue tracking</div>
+        <div class="demo-feat-time">0:12 – 0:28</div>
+      </div>
+      <div class="demo-feat">
+        <div class="demo-feat-icon">📊</div>
+        <div class="demo-feat-label">Burndown & velocity</div>
+        <div class="demo-feat-time">0:28 – 0:45</div>
+      </div>
+      <div class="demo-feat">
+        <div class="demo-feat-icon">🔄</div>
+        <div class="demo-feat-label">Real-time sync</div>
+        <div class="demo-feat-time">0:45 – 1:00</div>
+      </div>
+      <div class="demo-feat">
+        <div class="demo-feat-icon">🛡️</div>
+        <div class="demo-feat-label">RBAC & roles</div>
+        <div class="demo-feat-time">1:00 – 1:10</div>
+      </div>
+      <div class="demo-feat">
+        <div class="demo-feat-icon">🗺️</div>
+        <div class="demo-feat-label">Roadmap view</div>
+        <div class="demo-feat-time">1:10 – 1:20</div>
       </div>
     </div>
   </div>
@@ -2764,6 +3071,266 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeContactModal();
 });
 
+/* ══════════════════════════════════════
+   SCROLL PROGRESS BAR
+══════════════════════════════════════ */
+(function(){
+  var bar = document.getElementById('scroll-progress');
+  if (!bar) return;
+  function updateBar() {
+    var doc = document.documentElement;
+    var scrolled = doc.scrollTop || document.body.scrollTop;
+    var total = doc.scrollHeight - doc.clientHeight;
+    bar.style.width = total > 0 ? Math.round(scrolled / total * 100) + '%' : '0%';
+  }
+  window.addEventListener('scroll', updateBar, {passive:true});
+  updateBar();
+}());
+
+/* ══════════════════════════════════════
+   TYPEWRITER — hero
+══════════════════════════════════════ */
+(function(){
+  var el = document.getElementById('hero-tw');
+  if (!el) return;
+  var phrases = [
+    'sprint planning.',
+    'release tracking.',
+    'cross-team visibility.',
+    'bug triage.',
+    'roadmap management.',
+    'agile delivery.',
+    'stakeholder reporting.',
+  ];
+  var pi = 0, ci = 0, deleting = false, pause = 0;
+  function tick() {
+    if (pause > 0) { pause--; setTimeout(tick, 60); return; }
+    var phrase = phrases[pi];
+    if (!deleting) {
+      el.textContent = phrase.slice(0, ++ci);
+      if (ci === phrase.length) { deleting = true; pause = 28; }
+      setTimeout(tick, 70);
+    } else {
+      el.textContent = phrase.slice(0, --ci);
+      if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; pause = 6; }
+      setTimeout(tick, 38);
+    }
+  }
+  setTimeout(tick, 800);
+}());
+
+/* ══════════════════════════════════════
+   LIVE COUNTER — animates to final value
+══════════════════════════════════════ */
+(function(){
+  var el = document.getElementById('live-count');
+  if (!el) return;
+  var target = 47; /* update this number as you grow */
+  var io = window.IntersectionObserver && new IntersectionObserver(function(entries) {
+    if (!entries[0].isIntersecting) return;
+    io.disconnect();
+    var start = 0, dur = 1200, t0 = null;
+    function step(ts) {
+      if (!t0) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      var ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(ease * target);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }, {threshold: 0.5});
+  io.observe(el);
+}());
+
+/* ══════════════════════════════════════
+   ROI CALCULATOR
+══════════════════════════════════════ */
+(function(){
+  var teamEl  = document.getElementById('roi-team');
+  var rateEl  = document.getElementById('roi-rate');
+  var tvEl    = document.getElementById('roi-team-val');
+  var rvEl    = document.getElementById('roi-rate-val');
+  var lossEl  = document.getElementById('roi-loss');
+  var hrsEl   = document.getElementById('roi-hrs-wk');
+  var planEl  = document.getElementById('roi-plan');
+  var pcostEl = document.getElementById('roi-projiq-cost');
+  var netEl   = document.getElementById('roi-net');
+  var pbEl    = document.getElementById('roi-payback');
+  if (!teamEl || !rateEl) return;
+
+  var PLANS = [
+    {name:'Starter',      limit:30,  monthly:149},
+    {name:'Professional', limit:150, monthly:299},
+    {name:'Enterprise',   limit:9999,monthly:599},
+  ];
+
+  function fmt(n) {
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+
+  function calc() {
+    var team = parseInt(teamEl.value, 10);
+    var rate = parseInt(rateEl.value, 10);
+    tvEl.textContent = team;
+    rvEl.textContent = '$' + rate;
+
+    var hrsWk = team * 5.4;
+    var lossYr = hrsWk * rate * 52;
+
+    var plan = PLANS.find(function(p){ return team <= p.limit; }) || PLANS[2];
+    var projiqYr = plan.monthly * 12;
+    var net = lossYr - projiqYr;
+    var paybackWks = projiqYr / (lossYr / 52);
+
+    lossEl.textContent = fmt(lossYr);
+    hrsEl.textContent  = Math.round(hrsWk) + ' hrs';
+    planEl.textContent = plan.name + ' (' + fmt(plan.monthly) + '/mo)';
+    pcostEl.textContent = fmt(projiqYr) + '/yr';
+    netEl.textContent  = net > 0 ? fmt(net) + ' saved' : fmt(Math.abs(net)) + ' over';
+    netEl.className    = 'roi-row-val ' + (net > 0 ? 'pos' : 'neg');
+    pbEl.textContent   = paybackWks < 4
+      ? '⚡ ROI in under 1 month — Projiq pays for itself almost immediately'
+      : '📈 Projiq pays for itself in ~' + Math.round(paybackWks) + ' weeks';
+  }
+
+  teamEl.addEventListener('input', calc);
+  rateEl.addEventListener('input', calc);
+  calc();
+}());
+
+/* ══════════════════════════════════════
+   STICKY CTA BAR
+══════════════════════════════════════ */
+(function(){
+  var bar   = document.getElementById('sticky-cta');
+  var close = document.getElementById('sct-close');
+  if (!bar) return;
+  var dismissed = false;
+  var shown = false;
+  function update() {
+    if (dismissed) return;
+    var shouldShow = window.scrollY > 600;
+    if (shouldShow && !shown) { bar.classList.add('visible'); shown = true; }
+    else if (!shouldShow && shown) { bar.classList.remove('visible'); shown = false; }
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  if (close) close.addEventListener('click', function() {
+    dismissed = true;
+    bar.classList.remove('visible');
+    sessionStorage.setItem('sct_dismissed','1');
+  });
+  if (sessionStorage.getItem('sct_dismissed')) dismissed = true;
+  update();
+}());
+
+/* ══════════════════════════════════════
+   EXIT-INTENT POPUP
+══════════════════════════════════════ */
+(function(){
+  var popup = document.getElementById('exit-popup');
+  if (!popup) return;
+  var fired = false;
+  var COOLDOWN_KEY = 'ep_seen';
+  if (sessionStorage.getItem(COOLDOWN_KEY)) return;
+
+  function showPopup() {
+    if (fired) return;
+    fired = true;
+    sessionStorage.setItem(COOLDOWN_KEY, '1');
+    popup.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  /* desktop: mouse exits toward top of screen */
+  var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  if (!isTouch) {
+    document.addEventListener('mouseleave', function(e) {
+      if (e.clientY <= 4) showPopup();
+    });
+  }
+
+  /* mobile: fire after 90s of page time as fallback */
+  setTimeout(function() { if (!fired) showPopup(); }, 90000);
+}());
+
+/* ══════════════════════════════════════
+   WHATSAPP FLOAT — auto-show tooltip
+══════════════════════════════════════ */
+(function(){
+  var tooltip = document.getElementById('wa-tooltip');
+  if (!tooltip) return;
+  /* Show tooltip after 4 s, hide after 5 s */
+  setTimeout(function(){
+    tooltip.classList.add('show');
+    setTimeout(function(){ tooltip.classList.remove('show'); }, 5000);
+  }, 4000);
+}());
+
+function closeExitPopup() {
+  var popup = document.getElementById('exit-popup');
+  if (popup) { popup.classList.remove('show'); document.body.style.overflow = ''; }
+}
+
+function submitExitEmail() {
+  var emailEl = document.getElementById('ep-email');
+  if (!emailEl) return;
+  var email = emailEl.value.trim();
+  var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!re.test(email)) { emailEl.style.borderColor = 'rgba(239,68,68,.7)'; emailEl.focus(); return; }
+  emailEl.style.borderColor = '';
+  /* redirect to register page with email prefilled */
+  window.open('https://app.projiq.app/register-org?plan=professional&email=' + encodeURIComponent(email), '_blank');
+  document.getElementById('ep-form').style.display = 'none';
+  document.getElementById('ep-ok').style.display   = 'block';
+  setTimeout(closeExitPopup, 3500);
+}
+
+/* ══════════════════════════════════════
+   DEMO VIDEO — open in contact modal or redirect
+══════════════════════════════════════ */
+/* ══════════════════════════════════════
+   VIDEO LIGHTBOX
+   - Set DEMO_URL to a YouTube / Loom / Vimeo embed URL
+   - YouTube: https://www.youtube.com/embed/VIDEO_ID?autoplay=1
+   - Loom:    https://www.loom.com/embed/VIDEO_ID?autoplay=1
+   - Vimeo:   https://player.vimeo.com/video/VIDEO_ID?autoplay=1
+══════════════════════════════════════ */
+var DEMO_URL = ''; /* ← paste your embed URL here */
+
+function openDemoVideo() {
+  var modal  = document.getElementById('video-modal');
+  var frame  = document.getElementById('video-modal-frame');
+  var coming = document.getElementById('video-modal-coming');
+  if (!modal) return;
+
+  if (DEMO_URL) {
+    frame.src = DEMO_URL;
+    frame.style.display  = 'block';
+    coming.style.display = 'none';
+  } else {
+    frame.style.display  = 'none';
+    coming.style.display = 'block';
+  }
+
+  modal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeVideoModal() {
+  var modal = document.getElementById('video-modal');
+  var frame = document.getElementById('video-modal-frame');
+  if (!modal) return;
+  modal.classList.remove('show');
+  document.body.style.overflow = '';
+  /* stop video by clearing src */
+  if (frame) { frame.src = 'about:blank'; }
+}
+
+/* Close on ESC */
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeVideoModal();
+});
+
 async function submitContactForm(e) {
   e.preventDefault();
   var btn  = document.getElementById('cm-submit');
@@ -2805,6 +3372,85 @@ async function submitContactForm(e) {
   }
 }
 </script>
+<!-- ═══ VIDEO LIGHTBOX ═══ -->
+<div id="video-modal" role="dialog" aria-modal="true" aria-label="Product demo video">
+  <div id="video-modal-backdrop" onclick="closeVideoModal()"></div>
+  <div id="video-modal-box">
+    <div id="video-modal-chrome">
+      <div id="video-modal-dots">
+        <div style="width:10px;height:10px;border-radius:50%;background:#EF4444;"></div>
+        <div style="width:10px;height:10px;border-radius:50%;background:#F59E0B;"></div>
+        <div style="width:10px;height:10px;border-radius:50%;background:#10B981;"></div>
+      </div>
+      <div id="video-modal-url">app.projiq.app — 60-second walkthrough</div>
+    </div>
+    <button id="video-modal-close" onclick="closeVideoModal()" aria-label="Close video">&times;</button>
+    <!-- iframe injected by JS when a URL is set -->
+    <iframe id="video-modal-frame" src="about:blank" allowfullscreen allow="autoplay; fullscreen" style="display:none;"></iframe>
+    <!-- Shown when no video URL is set yet -->
+    <div id="video-modal-coming">
+      <span class="vmc-icon">🎬</span>
+      <div class="vmc-h">Full walkthrough video coming soon</div>
+      <div class="vmc-sub">We're recording a polished 60-second tour of Projiq. In the meantime, start your free trial and explore hands-on — no card required, full access from day one.</div>
+      <a href="https://app.projiq.app/register-org?plan=professional" target="_blank" class="btn btn-primary" onclick="closeVideoModal()">Start Free Trial — No Card Required →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ WHATSAPP FLOAT ═══ -->
+<div id="wa-float" aria-label="Chat with us on WhatsApp">
+  <div id="wa-tooltip" role="tooltip">
+    <span class="wa-tt-dot"></span>
+    Chat with us on WhatsApp
+  </div>
+  <a id="wa-btn"
+     href="https://wa.me/919353751856?text=Hi%2C%20I%27m%20interested%20in%20Projiq.%20Can%20you%20tell%20me%20more%3F"
+     target="_blank" rel="noopener noreferrer"
+     aria-label="Chat with us on WhatsApp"
+     onmouseenter="document.getElementById('wa-tooltip').classList.add('show')"
+     onmouseleave="document.getElementById('wa-tooltip').classList.remove('show')"
+     onclick="document.getElementById('wa-tooltip').classList.remove('show')">
+    <!-- WhatsApp official icon -->
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M16 .5C7.44.5.5 7.44.5 16c0 2.84.74 5.6 2.14 8.03L.5 31.5l7.65-2.11A15.45 15.45 0 0016 31.5c8.56 0 15.5-6.94 15.5-15.5S24.56.5 16 .5zm0 28.3a12.76 12.76 0 01-6.5-1.77l-.47-.28-4.54 1.25 1.22-4.6-.3-.48A12.74 12.74 0 013.2 16 12.8 12.8 0 0116 3.2 12.8 12.8 0 0128.8 16 12.8 12.8 0 0116 28.8zm7.02-9.6c-.38-.19-2.26-1.12-2.61-1.24-.35-.13-.6-.19-.86.19-.25.38-.98 1.24-1.2 1.5-.22.25-.44.28-.82.1-.38-.2-1.6-.6-3.05-1.9-1.13-1-1.89-2.23-2.11-2.6-.22-.38-.02-.58.17-.77.17-.17.38-.44.57-.66.19-.22.25-.38.38-.63.13-.25.06-.47-.03-.66-.1-.19-.86-2.1-1.18-2.87-.31-.75-.63-.65-.86-.66h-.73c-.25 0-.66.1-1.01.47-.35.38-1.32 1.3-1.32 3.16s1.35 3.66 1.54 3.91c.19.25 2.66 4.07 6.44 5.71.9.39 1.6.62 2.15.8.9.28 1.73.24 2.38.14.73-.11 2.26-.93 2.58-1.82.32-.9.32-1.67.22-1.82-.09-.16-.35-.25-.73-.44z"/>
+    </svg>
+  </a>
+</div>
+
+<!-- ═══ STICKY CTA BAR ═══ -->
+<div id="sticky-cta" role="region" aria-label="Get started with Projiq">
+  <div class="sct-text">
+    <strong>Ready to cut 5+ hours of wasted work per person, per week?</strong><br>
+    <span class="sct-trust">No credit card · Cancel anytime · Free 14-day trial</span>
+  </div>
+  <div class="sct-actions">
+    <button onclick="openContactModal('demo');return false;" class="btn btn-ghost btn-sm" style="border-color:rgba(139,92,246,.4);color:var(--violet);font-size:13px;">Book a Demo</button>
+    <a href="https://app.projiq.app/register-org?plan=professional" target="_blank" class="btn btn-primary btn-sm">Start Free Trial →</a>
+  </div>
+  <button id="sct-close" aria-label="Dismiss">&times;</button>
+</div>
+
+<!-- ═══ EXIT-INTENT POPUP ═══ -->
+<div id="exit-popup" role="dialog" aria-modal="true" aria-labelledby="ep-heading">
+  <div class="ep-backdrop" onclick="closeExitPopup()"></div>
+  <div class="ep-card">
+    <button class="ep-x" onclick="closeExitPopup()" aria-label="Close">&times;</button>
+    <span class="ep-icon">🚀</span>
+    <h2 class="ep-h" id="ep-heading">Wait — get 30 days free,<br>no credit card needed.</h2>
+    <p class="ep-sub">Before you go — lock in a free 30-day trial of Projiq Professional. Your team gets full access from day one. Takes 60 seconds to set up.</p>
+    <div class="ep-form" id="ep-form">
+      <input type="email" class="ep-input" id="ep-email" placeholder="Work email address" autocomplete="email">
+      <button class="ep-btn" onclick="submitExitEmail()">Claim My Free 30 Days →</button>
+      <button class="ep-skip" onclick="closeExitPopup()">No thanks, I'll figure it out myself</button>
+    </div>
+    <div class="ep-ok" id="ep-ok">
+      <span class="ep-ok-icon">🎉</span>
+      <div class="ep-ok-text">Check your inbox!</div>
+      <div class="ep-ok-sub">We've sent your free trial link. See you inside.</div>
+    </div>
+  </div>
+</div>
+
 <style>.back-top{position:fixed;bottom:32px;right:32px;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#3B82F6,#8B5CF6);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transform:translateY(14px);transition:opacity .25s,transform .25s,box-shadow .2s;z-index:500;box-shadow:0 4px 18px rgba(59,130,246,.40)}.back-top.visible{opacity:1;pointer-events:auto;transform:translateY(0)}.back-top:hover{box-shadow:0 6px 28px rgba(59,130,246,.60)}.back-top svg{display:block}@media(max-width:600px){.back-top{bottom:20px;right:20px;width:42px;height:42px}}</style>
 <button class="back-top" id="back-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14V4M4 9l5-5 5 5"/></svg></button>
 <script>var _bt=document.getElementById('back-top');window.addEventListener('scroll',function(){_bt.classList.toggle('visible',window.scrollY>320)},{passive:true});</script>
