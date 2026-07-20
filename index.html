@@ -107,7 +107,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 /* ─── TYPOGRAPHY ───────────────────────────────────── */
 .ey{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-weight:600;display:block;}
 .section-title{font-size:clamp(30px,4.5vw,52px);font-weight:900;color:var(--strong);letter-spacing:-.04em;line-height:1.04;text-wrap:balance;}
-.section-sub{font-size:17px;color:var(--muted);margin-top:14px;line-height:1.68;max-width:560px;}
+.section-sub{font-size:17px;color:var(--text);margin-top:14px;line-height:1.68;max-width:560px;}
 .gr{background:linear-gradient(135deg,var(--accentL),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .center{text-align:center;}.center .section-sub{margin-left:auto;margin-right:auto;}
 
@@ -144,30 +144,44 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 ::-webkit-scrollbar-thumb:hover{background:rgba(59,130,246,.5);}
 
 /* ─── NAVIGATION ───────────────────────────────────── */
-.nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(2,11,24,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);}
-.nav-inner{display:flex;align-items:center;padding:0 40px;max-width:1220px;margin:0 auto;height:64px;gap:32px;}
-.nav-logo{font-size:21px;font-weight:900;letter-spacing:-.05em;text-decoration:none;color:#F1F5F9;flex-shrink:0;display:flex;align-items:center;gap:10px;transition:opacity .2s;}
-.nav-logo:hover{opacity:.85;}
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(3,12,26,.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);transition:background .3s,border-color .3s,box-shadow .3s;}
+.nav.scrolled{background:rgba(3,12,26,.95);border-bottom-color:rgba(59,130,246,.14);box-shadow:0 4px 32px rgba(0,0,0,.4);}
+.nav-inner{display:flex;align-items:center;padding:0 40px;max-width:1220px;margin:0 auto;height:64px;gap:0;}
+.nav-logo{font-size:20px;font-weight:900;letter-spacing:-.04em;text-decoration:none;color:#F1F5F9;flex-shrink:0;display:flex;align-items:center;gap:9px;transition:opacity .2s,filter .2s;}
+.nav-logo:hover{opacity:.9;filter:drop-shadow(0 0 8px rgba(59,130,246,.35));}
 .nav-logo-mark{flex-shrink:0;display:block;}
-.nav-wordmark{display:inline-flex;align-items:baseline;line-height:1;}
-.nav-dot-app{color:#06B6D4;}
-.nav-links{display:flex;gap:26px;margin-left:auto;}
-.nav-links a{font-size:13.5px;color:var(--muted);text-decoration:none;font-weight:500;transition:color .2s;}
-.nav-links a:hover{color:var(--strong);}
-.nav-cta{display:flex;gap:10px;margin-left:28px;}
-@media(max-width:768px){.nav-links{display:none;}.nav-inner{padding:0 22px;}.nav-cta{display:none;}}
-.nav-ham{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;margin-left:auto;flex-shrink:0;}
-.nav-ham span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform .25s,opacity .25s;}
-.nav-ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-wordmark{display:inline-flex;align-items:baseline;line-height:1;font-size:19px;font-weight:900;}
+.nav-dot-app{color:#06B6D4;font-weight:700;}
+.nav-links{display:flex;gap:4px;margin-left:auto;}
+.nav-links a{font-size:13.5px;color:rgba(148,163,184,.85);text-decoration:none;font-weight:500;padding:6px 12px;border-radius:8px;transition:color .18s,background .18s;}
+.nav-links a:hover{color:#F1F5F9;background:rgba(255,255,255,.06);}
+.nav-links a.scroll-active{color:#F1F5F9;background:rgba(59,130,246,.1);}
+.nav-links a.scroll-active::after{display:none;}
+.nav-actions{display:flex;align-items:center;gap:10px;margin-left:24px;}
+.nav-signin{font-size:13px;color:rgba(148,163,184,.85);text-decoration:none;font-weight:500;padding:6px 12px;border-radius:8px;transition:color .18s,background .18s;white-space:nowrap;}
+.nav-signin:hover{color:#F1F5F9;background:rgba(255,255,255,.06);}
+/* keep legacy .nav-cta selector working */
+.nav-cta{display:flex;gap:10px;margin-left:0;}
+@media(max-width:768px){.nav-links{display:none;}.nav-inner{padding:0 20px;}.nav-actions{display:none;}.nav-cta{display:none;}}
+.nav-ham{display:none;flex-direction:column;justify-content:center;gap:5px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;cursor:pointer;padding:8px 9px;margin-left:auto;flex-shrink:0;transition:background .2s;}
+.nav-ham:hover{background:rgba(255,255,255,.1);}
+.nav-ham span{display:block;width:20px;height:1.5px;background:rgba(148,163,184,.9);border-radius:2px;transition:transform .25s,opacity .25s;}
+.nav-ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
 .nav-ham.open span:nth-child(2){opacity:0;}
-.nav-ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
 @media(max-width:768px){.nav-ham{display:flex;}}
-.mob-nav{position:fixed;inset:0;z-index:997;background:rgba(2,11,24,.97);backdrop-filter:blur(18px);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:28px;opacity:0;pointer-events:none;transition:opacity .28s;}
+/* ── MOBILE NAV ── */
+.mob-nav{position:fixed;inset:0;z-index:997;background:rgba(2,9,22,.98);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;flex-direction:column;align-items:center;padding:100px 32px 48px;gap:0;opacity:0;pointer-events:none;transition:opacity .28s;}
 .mob-nav.open{opacity:1;pointer-events:all;}
-.mob-nav a{font-size:22px;font-weight:700;color:var(--text);text-decoration:none;transition:color .2s;letter-spacing:-.02em;}
-.mob-nav a:hover{color:var(--strong);}
-.mob-nav-div{width:40px;height:1px;background:var(--border);margin:4px 0;}
-.mob-nav-cta{display:flex;flex-direction:column;gap:12px;width:260px;margin-top:8px;}
+.mob-nav-logo{display:flex;align-items:center;gap:9px;margin-bottom:32px;}
+.mob-nav-logo svg{width:28px;height:26px;}
+.mob-nav-logo-text{font-size:19px;font-weight:900;color:#F1F5F9;letter-spacing:-.04em;}
+.mob-nav-logo-text span{color:#06B6D4;}
+.mob-nav a.mob-link{font-size:19px;font-weight:600;color:rgba(148,163,184,.9);text-decoration:none;transition:color .18s;letter-spacing:-.02em;width:100%;text-align:center;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.05);}
+.mob-nav a.mob-link:hover{color:#F1F5F9;}
+.mob-nav-div{width:40px;height:1px;background:rgba(255,255,255,.08);margin:8px 0;}
+.mob-nav-cta{display:flex;flex-direction:column;gap:12px;width:100%;max-width:300px;margin-top:20px;}
 
 /* ─── HERO ─────────────────────────────────────────── */
 #hero{min-height:100vh;display:flex;align-items:center;padding:100px 0 80px;overflow:visible;position:relative;z-index:1;}
@@ -187,12 +201,13 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .nav-announce strong{color:var(--text);}
 .nav-announce a{color:var(--accentL);font-weight:700;text-decoration:none;margin-left:6px;border-bottom:1px solid rgba(96,165,250,.35);padding-bottom:1px;}
 .nav-announce a:hover{color:var(--strong);border-bottom-color:var(--strong);}
-@media(max-width:480px){.nav-announce{font-size:10.5px;padding:6px 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}}
+@media(max-width:480px){.nav-announce{font-size:10.5px;padding:6px 14px;white-space:normal;overflow:visible;text-overflow:unset;line-height:1.5;}}
+@media(max-width:480px){.nav-announce a{display:inline;margin-left:4px;}}
 
 /* ─── NAV ACTIVE LINK ──────────────────────────────── */
 .nav-links a.scroll-active{color:var(--strong);}
 .nav-links a.scroll-active::after{content:'';display:block;height:1px;background:var(--accent);margin-top:1px;border-radius:1px;}
-.hero-sub{font-size:clamp(16px,2.2vw,20px);color:var(--muted);line-height:1.65;margin-bottom:38px;max-width:640px;margin-left:auto;margin-right:auto;}
+.hero-sub{font-size:clamp(16px,2.2vw,20px);color:var(--text);line-height:1.65;margin-bottom:38px;max-width:600px;margin-left:auto;margin-right:auto;}
 .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:18px;}
 .hero-trust{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:28px;flex-wrap:wrap;}
 .hero-trust-text{font-size:12px;color:var(--muted);}
@@ -221,7 +236,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .prob-num{font-size:56px;font-weight:900;color:var(--strong);letter-spacing:-.04em;line-height:1;margin-bottom:8px;font-variant-numeric:tabular-nums;}
 .prob-unit{font-size:22px;font-weight:600;color:var(--muted);}
 .prob-title{font-size:16px;font-weight:700;color:var(--strong);margin-bottom:10px;}
-.prob-desc{font-size:13.5px;color:var(--muted);line-height:1.65;}
+.prob-desc{font-size:13.5px;color:var(--text);line-height:1.65;}
 
 /* ─── PLATFORM CHIP ROW ────────────────────────────── */
 .chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;}
@@ -237,6 +252,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .feat-item:hover{border-color:rgba(59,130,246,.3);}
 .feat-icon{width:32px;height:32px;border-radius:8px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .feat-icon svg{width:14px;height:14px;stroke:var(--accentL);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.feat-item-text{min-width:0;overflow-wrap:break-word;}
 .feat-item-text strong{display:block;font-size:13px;font-weight:700;color:var(--strong);margin-bottom:2px;}
 .feat-item-text span{font-size:12px;color:var(--muted);line-height:1.46;}
 
@@ -279,14 +295,14 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 
 /* ─── MOCK: KANBAN BOARD ───────────────────────────── */
 .mock-board{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;background:rgba(4,12,28,.85);border:1px solid var(--border);border-radius:18px;padding:16px;backdrop-filter:blur(12px);}
-.kboard-col{background:rgba(8,18,40,.6);border-radius:10px;padding:12px;}
+.kboard-col{background:rgba(8,18,40,.6);border-radius:10px;padding:12px;min-width:0;}
 .kboard-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
 .kboard-lbl{font-size:10.5px;font-weight:700;color:var(--text);}
 .kboard-cnt{font-size:10px;padding:2px 7px;border-radius:100px;background:rgba(255,255,255,.07);color:var(--muted);}
 .kcard{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;margin-bottom:8px;}
 .kcard:last-child{margin-bottom:0;}
 .kcard-type{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-weight:600;}
-.kcard-title{font-size:12px;font-weight:600;color:var(--strong);line-height:1.35;margin-bottom:7px;}
+.kcard-title{font-size:12px;font-weight:600;color:var(--strong);line-height:1.35;margin-bottom:7px;overflow-wrap:break-word;word-break:break-word;}
 .kcard-foot{display:flex;align-items:center;justify-content:space-between;}
 .kcard-pts{font-size:9.5px;color:var(--muted);background:rgba(255,255,255,.05);padding:2px 6px;border-radius:4px;}
 .kcard-av{width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--violet));display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:800;color:#fff;}
@@ -759,7 +775,8 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
 
 /* ─── FAQ ──────────────────────────────────────────── */
 .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px;}
-@media(max-width:768px){.faq-grid{grid-template-columns:1fr;}}
+.faq-grid .faq-item:last-child:nth-child(odd){grid-column:1/-1;max-width:calc(50% - 8px);margin-left:auto;margin-right:auto;}
+@media(max-width:768px){.faq-grid{grid-template-columns:1fr;}.faq-grid .faq-item:last-child:nth-child(odd){max-width:100%;}}
 .faq-item{background:var(--bg3);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .2s;}
 .faq-item:hover{border-color:rgba(59,130,246,.28);}
 .faq-q{width:100%;background:none;border:none;text-align:left;padding:22px 24px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;}
@@ -868,6 +885,10 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
 
   /* Prob grid cards full width */
   .prob-num{font-size:44px;}
+
+  /* Kanban mock-board: 2 columns, hide Done on very small screens */
+  .mock-board{grid-template-columns:repeat(2,1fr);}
+  .mock-board .kboard-col:last-child{display:none;}
 }
 
 /* ─── SCROLL PROGRESS BAR ─────────────────────────── */
@@ -882,35 +903,6 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
 .hero-live-chip{display:inline-flex;align-items:center;gap:8px;padding:7px 18px;border:1px solid rgba(16,185,129,.25);border-radius:100px;font-size:12px;color:var(--text);background:rgba(16,185,129,.07);margin-top:16px;backdrop-filter:blur(8px);}
 .hlc-num{font-size:13px;font-weight:800;color:var(--success);}
 
-/* ─── ROI CALCULATOR ─────────────────────────────── */
-#roi-calc{background:var(--bg2);overflow:hidden;}
-.roi-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:56px;}
-@media(max-width:768px){.roi-wrap{grid-template-columns:1fr;gap:36px;}}
-.roi-controls{display:flex;flex-direction:column;gap:26px;}
-.roi-slider-row{display:flex;flex-direction:column;gap:10px;}
-.roi-slider-label{display:flex;justify-content:space-between;align-items:center;}
-.roi-slider-label span{font-size:13px;color:var(--muted);}
-.roi-slider-label strong{font-size:18px;font-weight:800;color:var(--strong);font-variant-numeric:tabular-nums;}
-.roi-range{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:rgba(59,130,246,.18);outline:none;cursor:pointer;}
-.roi-range::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--violet));cursor:pointer;box-shadow:0 0 0 4px rgba(59,130,246,.18),0 2px 8px rgba(59,130,246,.35);}
-.roi-range::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--violet));cursor:pointer;border:none;box-shadow:0 0 0 4px rgba(59,130,246,.18);}
-.roi-hint{font-size:12px;color:var(--muted);font-style:italic;}
-.roi-result-card{background:var(--bg3);border:1px solid rgba(59,130,246,.22);border-radius:22px;padding:36px 32px;position:relative;overflow:hidden;}
-.roi-result-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--violet),#EC4899);}
-.roi-cost-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:4px;}
-.roi-cost-num{font-size:clamp(38px,7vw,64px);font-weight:900;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums;color:#F87171;margin-bottom:6px;}
-.roi-cost-desc{font-size:12px;color:var(--muted);margin-bottom:22px;}
-.roi-rows{display:flex;flex-direction:column;gap:0;}
-.roi-row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--border);}
-.roi-row:last-of-type{border-bottom:none;}
-.roi-row-label{font-size:13px;color:var(--muted);}
-.roi-row-val{font-size:14px;font-weight:700;}
-.roi-row-val.pos{color:var(--success);}
-.roi-row-val.neg{color:#F87171;}
-.roi-row-val.neu{color:var(--accentL);}
-.roi-payback{margin-top:18px;padding:12px 16px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:12px;font-size:13px;color:var(--success);font-weight:600;text-align:center;}
-.roi-action{margin-top:20px;width:100%;padding:14px 0;border-radius:12px;background:linear-gradient(90deg,var(--accent),var(--violet));color:#fff;font-size:14px;font-weight:700;cursor:pointer;border:none;letter-spacing:.02em;transition:opacity .2s,transform .15s;}
-.roi-action:hover{opacity:.88;transform:translateY(-1px);}
 
 /* ─── 60s DEMO SECTION ───────────────────────────── */
 #demo-video{background:var(--bg);}
@@ -1006,7 +998,8 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
 }
 
 /* ─── MOBILE POLISH ─────────────────────────────────── */
-.mob-close{position:absolute;top:22px;right:22px;width:40px;height:40px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:50%;color:#94A3B8;font-size:22px;line-height:1;cursor:pointer;display:none;align-items:center;justify-content:center;}
+.mob-close{position:absolute;top:22px;right:22px;width:40px;height:40px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:50%;color:#94A3B8;font-size:18px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;}
+.mob-close:hover{background:rgba(239,68,68,.15);color:#F87171;border-color:rgba(239,68,68,.3);}
 @media(max-width:768px){
   .mob-close{display:flex;}
   #cta{padding:72px 0;}
@@ -1130,21 +1123,17 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
   </div>
   <div class="nav-inner">
     <a href="/" class="nav-logo" id="nav-logo-home">
-      <svg class="nav-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-label="Projiq mark"><use href="#projiq-p"/></svg><span class="nav-wordmark">Projiq<span class="nav-dot-app">.app</span></span>
+      <svg class="nav-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-label="Projiq mark"><use href="#projiq-p"/></svg>
+      <span class="nav-wordmark">Projiq<span class="nav-dot-app">.app</span></span>
     </a>
     <div class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#views">Views</a>
-      <a href="#platform">Platform</a>
-      <a href="#security">Security</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
       <a href="#" onclick="openContactModal('contact');return false;">Contact</a>
       <a href="/blog/">Blog</a>
     </div>
-    <div class="nav-cta">
-      <a href="https://app.projiq.app/login" target="_blank" class="btn btn-ghost btn-sm">Sign In</a>
-      <button onclick="openContactModal('demo');return false;" class="btn btn-ghost btn-sm" style="border-color:rgba(139,92,246,.35);color:var(--violet);">Book a Demo</button>
+    <div class="nav-actions">
+      <a href="https://app.projiq.app/login" target="_blank" class="nav-signin">Sign In</a>
       <a href="https://app.projiq.app/register-org?plan=professional" target="_blank" class="btn btn-primary btn-sm">Get Started</a>
     </div>
     <button class="nav-ham" id="ham-btn" aria-label="Open menu" aria-expanded="false">
@@ -1156,10 +1145,10 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
 <!-- ═══════════════ MOBILE NAV ═══════════════ -->
 <div class="mob-nav" id="mob-nav" role="dialog" aria-label="Mobile navigation">
   <button class="mob-close" id="mob-close" aria-label="Close menu">&#x2715;</button>
-  <a href="#features" class="mob-link">Features</a>
-  <a href="#views" class="mob-link">Views</a>
-  <a href="#platform" class="mob-link">Platform</a>
-  <a href="#security" class="mob-link">Security</a>
+  <div class="mob-nav-logo">
+    <svg width="30" height="28" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg"><use href="#projiq-p"/></svg>
+    <span class="mob-nav-logo-text">Projiq<span>.app</span></span>
+  </div>
   <a href="#pricing" class="mob-link">Pricing</a>
   <a href="#faq" class="mob-link">FAQ</a>
   <a href="#" class="mob-link" onclick="openContactModal('contact');return false;">Contact</a>
@@ -1180,243 +1169,109 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
   <div class="hero-glow2"></div>
   <div class="container">
     <div class="hero-content">
-      <div class="hero-logo-wrap reveal">
-        <svg width="68" height="63" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-label="Projiq mark"><use href="#projiq-p"/></svg>
-        <div class="hero-logo-name">
-          <strong>Projiq<span class="dot-app">.app</span></strong>
-          <span>Project Management Platform</span>
-        </div>
-      </div>
       <h1 class="hero-h1">
-        The project platform<br><span class="gr">built for organizations.</span>
+        Stop switching tools.<br><span class="gr">Start shipping faster.</span>
       </h1>
-      <p class="hero-sub">One plan covers your entire organization — sprints, boards, roadmaps, epics, and real-time collaboration for every team member.</p>
-      <p style="font-size:14px;color:var(--muted);margin-bottom:32px;margin-top:-10px;">
-        Organizations like yours use Projiq for&nbsp;<span class="hero-typewriter" id="hero-tw"></span><span class="hero-tw-cursor" aria-hidden="true"></span>
-      </p>
+      <p class="hero-sub">Projiq gives your engineering team sprints, boards, and roadmaps in one workspace — one flat plan, every team member included.</p>
       <div class="hero-btns">
         <a href="https://app.projiq.app/register-org?plan=professional" target="_blank" class="btn btn-primary">Start Free Trial</a>
-        <a href="#features" class="btn btn-ghost">Explore Features ↓</a>
       </div>
       <div class="hero-trust reveal d2">
         <span class="hero-trust-text">No credit card required &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; Full access from day one</span>
-      </div>
-      <div class="hero-live-chip reveal d3" aria-live="polite">
-        <span class="live-dot" style="background:var(--success);box-shadow:0 0 6px var(--success);flex-shrink:0;"></span>
-        <span class="hlc-num" id="live-count">0</span>
-        <span>teams joined in the last 7 days</span>
-      </div>
-      <div class="hero-plat">
-        <span class="plat-lbl">Available on</span>
-        <div class="plat-badges">
-          <div class="plat-b">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accentL)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
-            Web App
-          </div>
-        </div>
       </div>
       <div class="hero-scroll-hint" aria-hidden="true">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
       </div>
     </div>
 
-    <!-- 3D floating device preview -->
-    <div class="hero-3d-wrap reveal">
-      <!-- floating badge chips -->
-      <div class="badge-3d b3d-tl"><span class="badge-3d-dot" style="background:var(--success);box-shadow:0 0 6px var(--success);"></span>Sprint 14 — 72% complete</div>
-      <div class="badge-3d b3d-tr"><span class="badge-3d-dot" style="background:var(--accentL);box-shadow:0 0 6px var(--accentL);"></span>Live · 6 users online</div>
-      <div class="badge-3d b3d-bl"><span class="badge-3d-dot" style="background:var(--amber);box-shadow:0 0 6px var(--amber);"></span>PRJ-142 moved → In Review</div>
-      <div class="badge-3d b3d-br"><span class="badge-3d-dot" style="background:var(--violet);box-shadow:0 0 6px var(--violet);"></span>Burndown on track</div>
-
-      <div class="hero-3d-device">
-        <!-- browser chrome -->
-        <div class="browser-chrome">
-          <div class="browser-dots"><div class="bd bd-r"></div><div class="bd bd-y"></div><div class="bd bd-g"></div></div>
-          <div class="browser-url">app.projiq.app — Sprint Board · Design System v3</div>
-        </div>
-        <!-- app shell -->
-        <div class="app-ui" style="height:320px;">
-          <div class="app-sidebar">
-            <div class="app-logo-mark"><svg width="20" height="19" viewBox="0 0 285 265"><use href="#projiq-p"/></svg></div>
-            <div class="app-nav-item active" title="Board">▦</div>
-            <div class="app-nav-item" title="Backlog">≡</div>
-            <div class="app-nav-item" title="Roadmap">◫</div>
-            <div class="app-nav-item" title="Sprint">⚡</div>
-            <div class="app-nav-item" title="Team">⊕</div>
-          </div>
-          <div class="app-main">
-            <div class="app-topbar">
-              <span class="app-proj-name">Design System v3</span>
-              <span class="app-sprint-badge">Sprint 14 · 3d left</span>
-              <div style="display:flex;gap:6px;margin-left:auto;">
-                <div style="display:flex;gap:-4px;">
-                  <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--violet));font-size:7px;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;border:2px solid #030C1A;">SR</div>
-                  <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--success),#34D399);font-size:7px;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;border:2px solid #030C1A;margin-left:-6px;">JD</div>
-                  <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--amber),#FCD34D);font-size:7px;font-weight:800;color:#7C2D12;display:flex;align-items:center;justify-content:center;border:2px solid #030C1A;margin-left:-6px;">AM</div>
-                </div>
-                <div class="app-action-btn">+ Add Issue</div>
-              </div>
-            </div>
-            <div class="app-board-cols">
-              <!-- TO DO -->
-              <div class="kol">
-                <div class="kol-hdr"><span class="kol-name">To Do</span><span class="kol-cnt">4</span></div>
-                <div class="kol-card"><div class="kcard-badge story">Story</div><div class="kcard-ttl">Redesign token system</div><div class="kcard-foot"><span class="kcp">8 pts</span><div class="kcav" style="background:linear-gradient(135deg,var(--accent),var(--violet));">JD</div></div></div>
-                <div class="kol-card"><div class="kcard-badge task">Task</div><div class="kcard-ttl">Write API docs v2</div><div class="kcard-foot"><span class="kcp">5 pts</span><div class="kcav" style="background:linear-gradient(135deg,var(--amber),#FCD34D);color:#7C2D12;">AM</div></div></div>
-                <div class="kol-card" style="opacity:.6;"><div class="kcard-badge epic">Epic</div><div class="kcard-ttl">Mobile v2 release</div><div class="kcard-foot"><span class="kcp">13 pts</span></div></div>
-              </div>
-              <!-- IN PROGRESS -->
-              <div class="kol" style="background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.14);">
-                <div class="kol-hdr"><span class="kol-name" style="color:var(--accentL);">In Progress</span><span class="kol-cnt">3</span></div>
-                <div class="kol-card kc-active"><div class="kcard-badge bug">Bug</div><div class="kcard-ttl">Auth fails on Safari 17</div><div class="kcard-foot"><span class="kcp">5 pts</span><div class="kcav" style="background:linear-gradient(135deg,var(--success),#34D399);">SR</div></div></div>
-                <div class="kol-card kc-active"><div class="kcard-badge story">Story</div><div class="kcard-ttl">Dashboard perf pass</div><div class="kcard-foot"><span class="kcp">3 pts</span><div class="kcav" style="background:linear-gradient(135deg,var(--accent),var(--violet));">JD</div></div></div>
-              </div>
-              <!-- IN REVIEW -->
-              <div class="kol">
-                <div class="kol-hdr"><span class="kol-name">In Review</span><span class="kol-cnt">2</span></div>
-                <div class="kol-card"><div class="kcard-badge story">Story</div><div class="kcard-ttl">Onboarding flow redesign</div><div class="kcard-foot"><span class="kcp">8 pts</span><div class="kcav" style="background:linear-gradient(135deg,var(--amber),#FCD34D);color:#7C2D12;">AM</div></div></div>
-              </div>
-              <!-- DONE -->
-              <div class="kol">
-                <div class="kol-hdr"><span class="kol-name" style="color:var(--success);">Done</span><span class="kol-cnt">7</span></div>
-                <div class="kol-card kc-done"><div class="kcard-badge task">Task</div><div class="kcard-ttl">Design system audit</div><div class="kcard-foot"><span class="kcp">8 pts</span></div></div>
-                <div class="kol-card kc-done"><div class="kcard-badge bug">Bug</div><div class="kcard-ttl">Mobile nav regression</div><div class="kcard-foot"><span class="kcp">3 pts</span></div></div>
-                <div class="kol-card kc-done" style="opacity:.38;"><div class="kcard-badge story">Story</div><div class="kcard-ttl">Rate limit middleware</div><div class="kcard-foot"><span class="kcp">5 pts</span></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- sprint bar at bottom -->
-        <div style="padding:10px 14px;border-top:1px solid var(--border);background:#030C1A;display:flex;align-items:center;justify-content:space-between;font-size:10.5px;">
-          <span style="color:var(--muted);">Sprint 14 &nbsp;·&nbsp; Jun 30 – Jul 13</span>
-          <div style="display:flex;align-items:center;gap:10px;">
-            <div style="width:120px;height:3px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;"><div style="width:72%;height:100%;background:linear-gradient(90deg,var(--accent),var(--accentL));border-radius:2px;"></div></div>
-            <span style="color:var(--accentL);font-weight:700;">72%</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
-<!-- ═══════════════ STATS BAR ═══════════════ -->
-<div class="stats-bar">
-  <div class="container">
-    <div class="stats-inner">
-      <div class="stat-item">
-        <div class="stat-num" data-count="11">11</div>
-        <div class="stat-lbl">Core modules</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num" data-count="6">6</div>
-        <div class="stat-lbl">Work views</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num" data-count="5">5</div>
-        <div class="stat-lbl">Permission roles</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">1</div>
-        <div class="stat-lbl">Platform (Web)</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">&lt;100ms</div>
-        <div class="stat-lbl">Real-time sync</div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- ═══════════════ CHALLENGE ═══════════════ -->
 <section class="section-pad" style="background:var(--bg2);">
   <div class="container">
     <div class="reveal center">
       <span class="ey">The Problem</span>
-      <h2 class="section-title">What <span class="gr">fragmented tools</span><br>are costing your organization</h2>
-      <p class="section-sub">Most organizations don't have a project management problem. They have a visibility and coordination problem. One platform fixes both.</p>
+      <h2 class="section-title">Your tools are <span class="gr">costing you more</span><br>than you think</h2>
+      <p class="section-sub center">Engineering teams lose 5.4 hours per person per week to tool-switching and status meetings. That's $336k a year for a 20-person team — wasted on coordination, not code.</p>
     </div>
     <div class="prob-grid">
       <div class="prob-card reveal d1">
         <div class="prob-num">5.4<span class="prob-unit">hrs</span></div>
         <div class="prob-title">Lost per person, per week</div>
-        <div class="prob-desc">Context switching between disconnected tools drains capacity invisibly. Every switch costs 23 minutes of re-focus time — adding up to more than half a working day wasted, per person, every week.</div>
+        <div class="prob-desc">Jira, Confluence, Slack, spreadsheets — your team is context-switching between 4+ tools just to know what's happening. Every switch costs 23 minutes of re-focus time.</div>
       </div>
       <div class="prob-card reveal d2">
         <div class="prob-num">68<span class="prob-unit">%</span></div>
         <div class="prob-title">Of projects miss their deadline</div>
-        <div class="prob-desc">Without real-time sprint tracking and burndown visibility, managers only discover they're behind when it's already too late. Proactive visibility — not reactive reports — keeps delivery on schedule.</div>
+        <div class="prob-desc">Without real-time sprint tracking, managers only discover they're behind when it's too late. Proactive visibility — not reactive Slack pings — keeps delivery on schedule.</div>
       </div>
       <div class="prob-card reveal d3">
         <div class="prob-num">3.2<span class="prob-unit">x</span></div>
-        <div class="prob-title">Higher delivery risk without a single source of truth</div>
-        <div class="prob-desc">Siloed tools create blind spots. Blockers go unreported, priorities drift, and when a project slips, accountability becomes impossible to trace. A unified platform eliminates this at the source.</div>
+        <div class="prob-title">Higher delivery risk with fragmented tooling</div>
+        <div class="prob-desc">Siloed tools create blind spots. Blockers go unreported, priorities drift, and when a project slips, accountability is impossible to trace back.</div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ═══════════════ ROI CALCULATOR ═══════════════ -->
-<section id="roi-calc" class="section-pad">
-  <div class="container">
-    <div class="reveal center">
-      <span class="ey">ROI Calculator</span>
-      <h2 class="section-title">How much is poor project management <span class="gr">costing you?</span></h2>
-      <p class="section-sub center">Move the sliders to see your team's real annual cost of fragmented tools — and how fast Projiq pays for itself.</p>
+    <!-- Tool comparison -->
+    <div class="reveal" style="margin-top:56px;">
+      <h3 class="section-title" style="font-size:clamp(22px,3vw,34px);text-align:center;margin-bottom:8px;">Why teams switch to Projiq</h3>
+      <p class="section-sub center" style="margin-bottom:36px;">The alternatives are either too complex, too expensive, or not built for engineering.</p>
+      <div style="overflow-x:auto;border-radius:16px;border:1px solid var(--border);">
+        <table style="width:100%;border-collapse:collapse;min-width:560px;font-size:14px;">
+          <thead>
+            <tr style="background:rgba(59,130,246,.08);border-bottom:1px solid var(--border);">
+              <th style="padding:14px 20px;text-align:left;color:var(--muted);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;width:28%;">Feature</th>
+              <th style="padding:14px 16px;text-align:center;color:#F87171;font-size:12px;font-weight:700;">Jira</th>
+              <th style="padding:14px 16px;text-align:center;color:var(--muted);font-size:12px;font-weight:700;">Linear</th>
+              <th style="padding:14px 16px;text-align:center;color:var(--muted);font-size:12px;font-weight:700;">Asana</th>
+              <th style="padding:14px 16px;text-align:center;color:var(--accentL);font-size:12px;font-weight:700;">Projiq ✦</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid rgba(255,255,255,.05);">
+              <td style="padding:13px 20px;color:var(--text);font-weight:600;">Flat org pricing</td>
+              <td style="padding:13px 16px;text-align:center;color:#F87171;">✗ Per seat</td>
+              <td style="padding:13px 16px;text-align:center;color:#F87171;">✗ Per seat</td>
+              <td style="padding:13px 16px;text-align:center;color:#F87171;">✗ Per seat</td>
+              <td style="padding:13px 16px;text-align:center;color:#34D399;font-weight:700;">✓ One plan</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.02);">
+              <td style="padding:13px 20px;color:var(--text);font-weight:600;">Built for engineering teams</td>
+              <td style="padding:13px 16px;text-align:center;color:#FBBF24;">~ Partial</td>
+              <td style="padding:13px 16px;text-align:center;color:#34D399;">✓</td>
+              <td style="padding:13px 16px;text-align:center;color:#F87171;">✗</td>
+              <td style="padding:13px 16px;text-align:center;color:#34D399;font-weight:700;">✓</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,.05);">
+              <td style="padding:13px 20px;color:var(--text);font-weight:600;">Real-time board sync</td>
+              <td style="padding:13px 16px;text-align:center;color:#F87171;">✗ Refresh needed</td>
+              <td style="padding:13px 16px;text-align:center;color:#34D399;">✓</td>
+              <td style="padding:13px 16px;text-align:center;color:#FBBF24;">~ Partial</td>
+              <td style="padding:13px 16px;text-align:center;color:#34D399;font-weight:700;">✓ &lt;100ms</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.02);">
+              <td style="padding:13px 20px;color:var(--text);font-weight:600;">Setup time</td>
+              <td style="padding:13px 16px;text-align:center;color:#F87171;">Days</td>
+              <td style="padding:13px 16px;text-align:center;color:#FBBF24;">Hours</td>
+              <td style="padding:13px 16px;text-align:center;color:#FBBF24;">Hours</td>
+              <td style="padding:13px 16px;text-align:center;color:#34D399;font-weight:700;">Minutes</td>
+            </tr>
+            <tr>
+              <td style="padding:13px 20px;color:var(--text);font-weight:600;">Sprints + Kanban + Roadmap</td>
+              <td style="padding:13px 16px;text-align:center;color:#FBBF24;">~ Add-ons needed</td>
+              <td style="padding:13px 16px;text-align:center;color:#FBBF24;">~ No roadmap</td>
+              <td style="padding:13px 16px;text-align:center;color:#F87171;">✗ Not engineering-focused</td>
+              <td style="padding:13px 16px;text-align:center;color:#34D399;font-weight:700;">✓ All included</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div class="roi-wrap">
-      <!-- Controls -->
-      <div class="roi-controls reveal d1">
-        <div class="roi-slider-row">
-          <div class="roi-slider-label">
-            <span>Team size (people)</span>
-            <strong id="roi-team-val">20</strong>
-          </div>
-          <input type="range" class="roi-range" id="roi-team" min="5" max="200" step="5" value="20">
-          <span class="roi-hint">Starter ≤ 30 &nbsp;·&nbsp; Professional ≤ 150 &nbsp;·&nbsp; Enterprise &gt; 150</span>
-        </div>
-        <div class="roi-slider-row">
-          <div class="roi-slider-label">
-            <span>Avg. hourly rate (USD)</span>
-            <strong id="roi-rate-val">$60</strong>
-          </div>
-          <input type="range" class="roi-range" id="roi-rate" min="20" max="150" step="5" value="60">
-          <span class="roi-hint">Blended rate across your engineering team</span>
-        </div>
-        <div style="padding:20px;background:var(--bg3);border:1px solid var(--border);border-radius:14px;margin-top:4px;">
-          <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0;">
-            Based on McKinsey research: knowledge workers lose an average of <strong style="color:var(--text);">5.4 hours per person per week</strong> to tool switching, status meetings, and duplicated work across disconnected systems.
-          </p>
-        </div>
-      </div>
-      <!-- Result card -->
-      <div class="roi-result-card reveal d2">
-        <div class="roi-cost-label">Annual cost of tool fragmentation</div>
-        <div class="roi-cost-num" id="roi-loss">$0</div>
-        <div class="roi-cost-desc">in productive hours lost per year</div>
-        <div class="roi-rows">
-          <div class="roi-row">
-            <span class="roi-row-label">Hours lost / week</span>
-            <span class="roi-row-val neg" id="roi-hrs-wk">0 hrs</span>
-          </div>
-          <div class="roi-row">
-            <span class="roi-row-label">Projiq plan for your team</span>
-            <span class="roi-row-val neu" id="roi-plan">Professional</span>
-          </div>
-          <div class="roi-row">
-            <span class="roi-row-label">Projiq annual cost</span>
-            <span class="roi-row-val neu" id="roi-projiq-cost">$0/yr</span>
-          </div>
-          <div class="roi-row">
-            <span class="roi-row-label">Your net annual saving</span>
-            <span class="roi-row-val pos" id="roi-net">$0</span>
-          </div>
-        </div>
-        <div class="roi-payback" id="roi-payback">Calculating…</div>
-        <button class="roi-action" onclick="window.open('https://app.projiq.app/register-org?plan=professional','_blank')">
-          Start Free Trial — No Card Required →
-        </button>
-      </div>
+
+    <div class="reveal" style="text-align:center;margin-top:40px;">
+      <a href="https://app.projiq.app/register-org?plan=professional" target="_blank" class="btn btn-primary">Start Free Trial — No Card Required</a>
     </div>
   </div>
 </section>
@@ -1492,63 +1347,30 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
       <div class="demo-feat">
         <div class="demo-feat-icon">⚡</div>
         <div class="demo-feat-label">Sprint setup</div>
-        <div class="demo-feat-time">0:00 – 0:12</div>
       </div>
       <div class="demo-feat">
         <div class="demo-feat-icon">🎯</div>
         <div class="demo-feat-label">Issue tracking</div>
-        <div class="demo-feat-time">0:12 – 0:28</div>
       </div>
       <div class="demo-feat">
         <div class="demo-feat-icon">📊</div>
         <div class="demo-feat-label">Burndown & velocity</div>
-        <div class="demo-feat-time">0:28 – 0:45</div>
       </div>
       <div class="demo-feat">
         <div class="demo-feat-icon">🔄</div>
         <div class="demo-feat-label">Real-time sync</div>
-        <div class="demo-feat-time">0:45 – 1:00</div>
       </div>
       <div class="demo-feat">
         <div class="demo-feat-icon">🛡️</div>
         <div class="demo-feat-label">RBAC & roles</div>
-        <div class="demo-feat-time">1:00 – 1:10</div>
       </div>
       <div class="demo-feat">
         <div class="demo-feat-icon">🗺️</div>
         <div class="demo-feat-label">Roadmap view</div>
-        <div class="demo-feat-time">1:10 – 1:20</div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ═══════════════ PLATFORM OVERVIEW ═══════════════ -->
-<section class="section-pad">
-  <div class="container">
-    <div class="reveal">
-      <span class="ey">Introducing Projiq</span>
-      <h2 class="section-title">One workspace.<br><span class="gr">Every project. Every team.</span></h2>
-      <p class="section-sub">Projiq is a full-stack project management platform sold to organizations. Your company gets a private Web workspace for every person you invite, under one plan.</p>
-    </div>
-    <div class="chip-row reveal">
-      <span class="chip chip-b">Sprint Management</span>
-      <span class="chip chip-b">Kanban Board</span>
-      <span class="chip chip-b">Backlog Grooming</span>
-      <span class="chip chip-b">Epic Tracking</span>
-      <span class="chip chip-b">Timeline View</span>
-      <span class="chip chip-b">Roadmap View</span>
-      <span class="chip chip-b">Calendar View</span>
-      <span class="chip chip-a">Burndown Charts</span>
-      <span class="chip chip-a">Release Management</span>
-      <span class="chip chip-a">Custom Workflows</span>
-      <span class="chip chip-a">Custom Fields</span>
-      <span class="chip chip-g">Real-time WebSocket</span>
-      <span class="chip chip-g">5-Tier RBAC</span>
-      <span class="chip chip-g">Web Application</span>
-      <span class="chip chip-v">Velocity Tracking</span>
-      <span class="chip chip-v">Sprint Analytics</span>
-      <span class="chip chip-v">Multi-tenant</span>
+    <div class="reveal" style="text-align:center;margin-top:40px;">
+      <a href="https://app.projiq.app/register-org?plan=professional" target="_blank" class="btn btn-primary">Start Free Trial — No Card Required</a>
     </div>
   </div>
 </section>
@@ -2604,14 +2426,6 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
-          <span class="faq-q-text">Can we migrate from Jira, Trello, or another tool?</span>
-          <span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">Yes. Enterprise plans include <strong>hands-on data migration assistance</strong> from your current tool — Jira, Trello, Asana, Linear, or spreadsheets. Professional and Starter plans include CSV import support. Your implementation manager handles the full transition.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
           <span class="faq-q-text">How secure is our organization's data?</span>
           <span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
         </button>
@@ -2642,102 +2456,6 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
         <div class="faq-a"><div class="faq-a-inner"><strong>Yes — no lock-in, ever</strong>. Upgrade or downgrade your plan at any time from the billing settings. Cancel whenever you want; access continues until the end of your current billing period. All your data is retained for 90 days after cancellation so you can export everything.</div></div>
       </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ BLOG ═══════════════ -->
-<section id="blog" class="section-pad">
-  <div class="container">
-    <div class="center reveal">
-      <span class="ey">From the Blog</span>
-      <h2 class="section-title">Insights for <span class="gr">engineering teams</span></h2>
-      <p class="section-sub center">Real lessons from building and shipping software — project management, team dynamics, and the tools that get in the way.</p>
-    </div>
-
-    <div class="blog-grid">
-
-      <!-- Post 1 — Technical -->
-      <a class="blog-card reveal" href="https://hashnode.com" target="_blank" rel="noopener">
-        <div class="blog-card-img bci-1">
-          <div class="bci-pattern"></div>
-          <div class="bci-accent"></div>
-          <div class="bci-icon">⚙️</div>
-        </div>
-        <div class="blog-card-body">
-          <div class="blog-meta">
-            <span class="blog-cat bc-tech">Engineering</span>
-            <span class="blog-date">Jul 20, 2026</span>
-            <span class="blog-read">6 min read</span>
-          </div>
-          <div class="blog-title">We Ditched Jira and Built Our Own Tool — 6 Months Later, Here's What We Learned</div>
-          <div class="blog-excerpt">Multi-tenancy from day one, Socket.io room-scoping that cut latency 80%, and the RBAC design that actually maps to how engineering teams work.</div>
-          <div class="blog-footer">
-            <div class="blog-author">
-              <div class="blog-avatar ba-blue">P</div>
-              <span class="blog-author-name">Projiq Team</span>
-            </div>
-            <span class="blog-platform bp-hn">Hashnode ↗</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Post 2 — Productivity -->
-      <a class="blog-card reveal" href="https://dev.to" target="_blank" rel="noopener">
-        <div class="blog-card-img bci-2">
-          <div class="bci-pattern"></div>
-          <div class="bci-accent"></div>
-          <div class="bci-icon">🚨</div>
-        </div>
-        <div class="blog-card-body">
-          <div class="blog-meta">
-            <span class="blog-cat bc-prod">Productivity</span>
-            <span class="blog-date">Jul 20, 2026</span>
-            <span class="blog-read">4 min read</span>
-          </div>
-          <div class="blog-title">5 Signs Your Engineering Team Has Outgrown Jira (And What to Do About It)</div>
-          <div class="blog-excerpt">If standups start with "did anyone update the board?" and onboarding a new engineer takes 30 minutes just for the PM tool — you've already outgrown it.</div>
-          <div class="blog-footer">
-            <div class="blog-author">
-              <div class="blog-avatar ba-violet">P</div>
-              <span class="blog-author-name">Projiq Team</span>
-            </div>
-            <span class="blog-platform bp-dev">Dev.to ↗</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Post 3 — Business -->
-      <a class="blog-card reveal" href="https://linkedin.com" target="_blank" rel="noopener">
-        <div class="blog-card-img bci-3">
-          <div class="bci-pattern"></div>
-          <div class="bci-accent"></div>
-          <div class="bci-icon">💸</div>
-        </div>
-        <div class="blog-card-body">
-          <div class="blog-meta">
-            <span class="blog-cat bc-biz">Leadership</span>
-            <span class="blog-date">Jul 20, 2026</span>
-            <span class="blog-read">2 min read</span>
-          </div>
-          <div class="blog-title">The Hidden $336,000 Problem in Your Engineering Team</div>
-          <div class="blog-excerpt">McKinsey data says knowledge workers lose 5.4 hours per week to tool-switching. For a 20-person team, that's $336,960 gone every year — before a single bug is written.</div>
-          <div class="blog-footer">
-            <div class="blog-author">
-              <div class="blog-avatar ba-green">P</div>
-              <span class="blog-author-name">Projiq Team</span>
-            </div>
-            <span class="blog-platform bp-li">LinkedIn ↗</span>
-          </div>
-        </div>
-      </a>
-
-    </div>
-
-    <div class="blog-all reveal">
-      <a href="https://hashnode.com" target="_blank" rel="noopener">
-        View all articles &nbsp;→
-      </a>
     </div>
   </div>
 </section>
@@ -2856,7 +2574,9 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
   var sio=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){var id=e.target.id;navLinks.forEach(function(a){a.style.color=a.getAttribute('href')==='#'+id?'var(--strong)':'';});}});},{threshold:0.35});
   sections.forEach(function(s){sio.observe(s);});
   var nav=document.querySelector('.nav');
-  window.addEventListener('scroll',function(){nav.style.borderBottomColor=window.scrollY>60?'rgba(59,130,246,0.22)':'rgba(59,130,246,0.12)';},{passive:true});
+  function updateNav(){nav.classList.toggle('scrolled',window.scrollY>50);}
+  window.addEventListener('scroll',updateNav,{passive:true});
+  updateNav();
 
   /* ══════════════════════════════════════════
      MOBILE HAMBURGER
@@ -3236,62 +2956,6 @@ document.addEventListener('keydown', function(e) {
     requestAnimationFrame(step);
   }, {threshold: 0.5});
   io.observe(el);
-}());
-
-/* ══════════════════════════════════════
-   ROI CALCULATOR
-══════════════════════════════════════ */
-(function(){
-  var teamEl  = document.getElementById('roi-team');
-  var rateEl  = document.getElementById('roi-rate');
-  var tvEl    = document.getElementById('roi-team-val');
-  var rvEl    = document.getElementById('roi-rate-val');
-  var lossEl  = document.getElementById('roi-loss');
-  var hrsEl   = document.getElementById('roi-hrs-wk');
-  var planEl  = document.getElementById('roi-plan');
-  var pcostEl = document.getElementById('roi-projiq-cost');
-  var netEl   = document.getElementById('roi-net');
-  var pbEl    = document.getElementById('roi-payback');
-  if (!teamEl || !rateEl) return;
-
-  var PLANS = [
-    {name:'Starter',      limit:30,  monthly:149},
-    {name:'Professional', limit:150, monthly:299},
-    {name:'Enterprise',   limit:9999,monthly:599},
-  ];
-
-  function fmt(n) {
-    return '$' + Math.round(n).toLocaleString('en-US');
-  }
-
-  function calc() {
-    var team = parseInt(teamEl.value, 10);
-    var rate = parseInt(rateEl.value, 10);
-    tvEl.textContent = team;
-    rvEl.textContent = '$' + rate;
-
-    var hrsWk = team * 5.4;
-    var lossYr = hrsWk * rate * 52;
-
-    var plan = PLANS.find(function(p){ return team <= p.limit; }) || PLANS[2];
-    var projiqYr = plan.monthly * 12;
-    var net = lossYr - projiqYr;
-    var paybackWks = projiqYr / (lossYr / 52);
-
-    lossEl.textContent = fmt(lossYr);
-    hrsEl.textContent  = Math.round(hrsWk) + ' hrs';
-    planEl.textContent = plan.name + ' (' + fmt(plan.monthly) + '/mo)';
-    pcostEl.textContent = fmt(projiqYr) + '/yr';
-    netEl.textContent  = net > 0 ? fmt(net) + ' saved' : fmt(Math.abs(net)) + ' over';
-    netEl.className    = 'roi-row-val ' + (net > 0 ? 'pos' : 'neg');
-    pbEl.textContent   = paybackWks < 4
-      ? '⚡ ROI in under 1 month — Projiq pays for itself almost immediately'
-      : '📈 Projiq pays for itself in ~' + Math.round(paybackWks) + ' weeks';
-  }
-
-  teamEl.addEventListener('input', calc);
-  rateEl.addEventListener('input', calc);
-  calc();
 }());
 
 /* ══════════════════════════════════════
