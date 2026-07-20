@@ -2646,6 +2646,102 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
   </div>
 </section>
 
+<!-- ═══════════════ BLOG ═══════════════ -->
+<section id="blog" class="section-pad">
+  <div class="container">
+    <div class="center reveal">
+      <span class="ey">From the Blog</span>
+      <h2 class="section-title">Insights for <span class="gr">engineering teams</span></h2>
+      <p class="section-sub center">Real lessons from building and shipping software — project management, team dynamics, and the tools that get in the way.</p>
+    </div>
+
+    <div class="blog-grid">
+
+      <!-- Post 1 — Technical -->
+      <a class="blog-card reveal" href="https://hashnode.com" target="_blank" rel="noopener">
+        <div class="blog-card-img bci-1">
+          <div class="bci-pattern"></div>
+          <div class="bci-accent"></div>
+          <div class="bci-icon">⚙️</div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-cat bc-tech">Engineering</span>
+            <span class="blog-date">Jul 20, 2026</span>
+            <span class="blog-read">6 min read</span>
+          </div>
+          <div class="blog-title">We Ditched Jira and Built Our Own Tool — 6 Months Later, Here's What We Learned</div>
+          <div class="blog-excerpt">Multi-tenancy from day one, Socket.io room-scoping that cut latency 80%, and the RBAC design that actually maps to how engineering teams work.</div>
+          <div class="blog-footer">
+            <div class="blog-author">
+              <div class="blog-avatar ba-blue">P</div>
+              <span class="blog-author-name">Projiq Team</span>
+            </div>
+            <span class="blog-platform bp-hn">Hashnode ↗</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 2 — Productivity -->
+      <a class="blog-card reveal" href="https://dev.to" target="_blank" rel="noopener">
+        <div class="blog-card-img bci-2">
+          <div class="bci-pattern"></div>
+          <div class="bci-accent"></div>
+          <div class="bci-icon">🚨</div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-cat bc-prod">Productivity</span>
+            <span class="blog-date">Jul 20, 2026</span>
+            <span class="blog-read">4 min read</span>
+          </div>
+          <div class="blog-title">5 Signs Your Engineering Team Has Outgrown Jira (And What to Do About It)</div>
+          <div class="blog-excerpt">If standups start with "did anyone update the board?" and onboarding a new engineer takes 30 minutes just for the PM tool — you've already outgrown it.</div>
+          <div class="blog-footer">
+            <div class="blog-author">
+              <div class="blog-avatar ba-violet">P</div>
+              <span class="blog-author-name">Projiq Team</span>
+            </div>
+            <span class="blog-platform bp-dev">Dev.to ↗</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 3 — Business -->
+      <a class="blog-card reveal" href="https://linkedin.com" target="_blank" rel="noopener">
+        <div class="blog-card-img bci-3">
+          <div class="bci-pattern"></div>
+          <div class="bci-accent"></div>
+          <div class="bci-icon">💸</div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-cat bc-biz">Leadership</span>
+            <span class="blog-date">Jul 20, 2026</span>
+            <span class="blog-read">2 min read</span>
+          </div>
+          <div class="blog-title">The Hidden $336,000 Problem in Your Engineering Team</div>
+          <div class="blog-excerpt">McKinsey data says knowledge workers lose 5.4 hours per week to tool-switching. For a 20-person team, that's $336,960 gone every year — before a single bug is written.</div>
+          <div class="blog-footer">
+            <div class="blog-author">
+              <div class="blog-avatar ba-green">P</div>
+              <span class="blog-author-name">Projiq Team</span>
+            </div>
+            <span class="blog-platform bp-li">LinkedIn ↗</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="blog-all reveal">
+      <a href="https://hashnode.com" target="_blank" rel="noopener">
+        View all articles &nbsp;→
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════ CTA ═══════════════ -->
 <section id="cta">
   <div class="cta-glow"></div>
@@ -3451,6 +3547,49 @@ async function submitContactForm(e) {
   </div>
 </div>
 
+<style>
+/* ─── BLOG SECTION ───────────────────────────────── */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px;}
+.blog-card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .28s,box-shadow .28s,border-color .28s;text-decoration:none;color:inherit;}
+.blog-card:hover{transform:translateY(-6px);box-shadow:0 28px 64px rgba(0,0,0,.55),0 0 0 1px rgba(59,130,246,.25);border-color:rgba(59,130,246,.35);}
+.blog-card-img{height:172px;position:relative;overflow:hidden;flex-shrink:0;}
+.bci-1{background:linear-gradient(135deg,#0B1C35 0%,#0F2B50 50%,#1A3A6B 100%);}
+.bci-2{background:linear-gradient(135deg,#0B1225 0%,#1A0B35 50%,#2D1060 100%);}
+.bci-3{background:linear-gradient(135deg,#0B1E1A 0%,#0D2E28 50%,#0F3D30 100%);}
+.bci-pattern{position:absolute;inset:0;opacity:.18;background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.4) 1px,transparent 0);background-size:28px 28px;}
+.bci-accent{position:absolute;bottom:-24px;right:-24px;width:140px;height:140px;border-radius:50%;filter:blur(48px);opacity:.6;}
+.bci-1 .bci-accent{background:#3B82F6;}
+.bci-2 .bci-accent{background:#8B5CF6;}
+.bci-3 .bci-accent{background:#10B981;}
+.bci-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:44px;line-height:1;}
+.blog-card-body{padding:22px 22px 20px;display:flex;flex-direction:column;flex:1;gap:10px;}
+.blog-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.blog-cat{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:20px;}
+.bc-tech{background:rgba(59,130,246,.12);color:#60A5FA;border:1px solid rgba(59,130,246,.2);}
+.bc-prod{background:rgba(139,92,246,.12);color:#A78BFA;border:1px solid rgba(139,92,246,.2);}
+.bc-biz {background:rgba(16,185,129,.12);color:#34D399;border:1px solid rgba(16,185,129,.2);}
+.blog-date{font-size:11px;color:var(--muted);}
+.blog-read{margin-left:auto;font-size:11px;color:var(--muted);}
+.blog-title{font-size:16px;font-weight:800;color:var(--strong);line-height:1.35;letter-spacing:-.02em;}
+.blog-excerpt{font-size:13px;color:var(--muted);line-height:1.65;flex:1;}
+.blog-footer{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--border);margin-top:4px;}
+.blog-author{display:flex;align-items:center;gap:8px;}
+.blog-avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0;}
+.ba-blue{background:linear-gradient(135deg,#3B82F6,#6366F1);}
+.ba-violet{background:linear-gradient(135deg,#8B5CF6,#EC4899);}
+.ba-green{background:linear-gradient(135deg,#10B981,#06B6D4);}
+.blog-author-name{font-size:12px;font-weight:600;color:var(--text);}
+.blog-platform{font-size:11px;font-weight:700;padding:4px 10px;border-radius:7px;text-decoration:none;transition:opacity .2s;}
+.blog-platform:hover{opacity:.8;}
+.bp-hn {background:#F6821F;color:#fff;}
+.bp-dev{background:#1F2937;color:#fff;}
+.bp-li {background:#0A66C2;color:#fff;}
+.blog-all{display:flex;justify-content:center;margin-top:40px;}
+.blog-all a{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;font-weight:600;text-decoration:none;transition:border-color .2s,color .2s,background .2s;}
+.blog-all a:hover{border-color:rgba(59,130,246,.5);color:var(--accent);background:rgba(59,130,246,.05);}
+@media(max-width:900px){.blog-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:580px){.blog-grid{grid-template-columns:1fr;}}
+</style>
 <style>.back-top{position:fixed;bottom:32px;right:32px;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#3B82F6,#8B5CF6);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transform:translateY(14px);transition:opacity .25s,transform .25s,box-shadow .2s;z-index:500;box-shadow:0 4px 18px rgba(59,130,246,.40)}.back-top.visible{opacity:1;pointer-events:auto;transform:translateY(0)}.back-top:hover{box-shadow:0 6px 28px rgba(59,130,246,.60)}.back-top svg{display:block}@media(max-width:600px){.back-top{bottom:20px;right:20px;width:42px;height:42px}}</style>
 <button class="back-top" id="back-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14V4M4 9l5-5 5 5"/></svg></button>
 <script>var _bt=document.getElementById('back-top');window.addEventListener('scroll',function(){_bt.classList.toggle('visible',window.scrollY>320)},{passive:true});</script>
