@@ -391,9 +391,9 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .price-card.featured{border-color:rgba(59,130,246,.5);background:linear-gradient(160deg,rgba(10,22,50,.96),rgba(14,26,62,.96));box-shadow:0 0 70px rgba(59,130,246,.2),inset 0 1px 0 rgba(255,255,255,.06);}
 .price-card.featured::before{content:'Most Popular';position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--accent),var(--violet));color:#fff;font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:4px 18px;border-radius:100px;white-space:nowrap;}
 .price-tier{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;font-weight:600;}
-.price-amount{font-size:52px;font-weight:900;color:var(--strong);letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums;}
-.price-amount sup{font-size:22px;vertical-align:top;margin-top:10px;display:inline-block;color:var(--muted);font-weight:700;}
-.price-amount span{font-size:14px;font-weight:500;color:var(--muted);}
+.price-amount{font-size:52px;font-weight:900;color:var(--strong);letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:2px;}
+.price-amount sup{font-size:22px;line-height:1;color:var(--muted);font-weight:700;align-self:flex-start;margin-top:8px;}
+.price-period{font-size:14px;font-weight:500;color:var(--muted);}
 .price-users{font-size:13px;color:var(--muted);margin-top:6px;}
 .price-plat{display:flex;gap:5px;flex-wrap:wrap;margin:12px 0 20px;}
 .price-plat span{font-size:10px;padding:3px 9px;border-radius:100px;background:rgba(16,185,129,.1);color:var(--success);border:1px solid rgba(16,185,129,.18);font-weight:600;}
@@ -894,6 +894,19 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
 /* ─── SCROLL PROGRESS BAR ─────────────────────────── */
 #scroll-progress{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--accent),var(--violet),#EC4899);z-index:10000;pointer-events:none;transition:width .08s linear;}
 
+/* ─── HERO ROTATING TAGLINE ──────────────────────── */
+.hero-rotate-wrap{overflow:hidden;height:1.5em;margin-bottom:12px;margin-top:-4px;}
+.hero-rotate{display:flex;flex-direction:column;transition:transform .55s cubic-bezier(.77,0,.18,1);}
+.hero-rotate-item{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accentL);opacity:.9;line-height:1.5em;white-space:nowrap;}
+
+.price-num{display:inline;}
+
+/* ─── ANIMATED COUNTER ───────────────────────────── */
+.prob-num[data-target]{transition:color .3s;}
+.prob-card:hover .prob-num{color:var(--accentL);}
+.prob-card{transition:transform .22s cubic-bezier(.34,1.56,.64,1),box-shadow .22s,border-color .22s;}
+.prob-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.35);border-color:rgba(59,130,246,.22);}
+
 /* ─── TYPEWRITER ─────────────────────────────────── */
 .hero-typewriter{color:var(--accentL);font-weight:700;display:inline;}
 .hero-tw-cursor{display:inline-block;width:2px;height:.85em;background:var(--accentL);margin-left:1px;vertical-align:text-bottom;animation:twBlink .75s steps(1) infinite;}
@@ -904,26 +917,25 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
 .hlc-num{font-size:13px;font-weight:800;color:var(--success);}
 
 
-/* ─── 60s DEMO SECTION ───────────────────────────── */
-#demo-video{background:var(--bg);}
-.demo-video-wrap{margin-top:48px;position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(59,130,246,.18);box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 80px rgba(59,130,246,.08);cursor:pointer;}
-.demo-video-wrap:hover .demo-play-btn{transform:translate(-50%,-50%) scale(1.1);}
-.demo-mock-screen{background:rgba(4,12,28,.9);padding:0;position:relative;}
+/* ─── INTERACTIVE DEMO EXPLORER ─────────────────────── */
+#demo-video{background:var(--bg2);}
 .demo-chrome{background:#030C1A;border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:10px;}
 .demo-dots{display:flex;gap:5px;}
 .demo-dot{width:10px;height:10px;border-radius:50%;}
-.demo-url{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:6px;padding:5px 12px;font-size:11px;color:var(--muted);text-align:center;}
-.demo-overlay{position:absolute;inset:0;background:rgba(2,11,24,.45);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;z-index:2;}
-.demo-play-btn{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--violet));display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 12px rgba(59,130,246,.12),0 0 50px rgba(59,130,246,.4);transition:transform .3s ease;cursor:pointer;border:none;}
-.demo-play-btn svg{margin-left:5px;}
-.demo-label{font-size:15px;font-weight:700;color:var(--strong);}
-.demo-sub-label{font-size:13px;color:var(--muted);}
-.demo-features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;}
-@media(max-width:640px){.demo-features{grid-template-columns:1fr 1fr;}}
-.demo-feat{padding:16px;background:var(--bg3);border:1px solid var(--border);border-radius:12px;text-align:center;}
-.demo-feat-icon{font-size:20px;margin-bottom:6px;}
-.demo-feat-label{font-size:12px;font-weight:600;color:var(--text);}
-.demo-feat-time{font-size:10px;color:var(--muted);margin-top:2px;}
+.demo-url{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:6px;padding:5px 12px;font-size:11px;color:var(--muted);text-align:center;transition:opacity .2s;}
+.pdemo-tabs{display:flex;gap:8px;justify-content:center;margin-top:40px;flex-wrap:wrap;}
+.pdemo-tab{display:flex;align-items:center;gap:7px;padding:10px 20px;border-radius:100px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:var(--text);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;}
+.pdemo-tab svg{opacity:.6;flex-shrink:0;transition:opacity .2s;}
+.pdemo-tab:hover{border-color:rgba(59,130,246,.4);color:var(--accentL);}
+.pdemo-tab:hover svg{opacity:1;}
+.pdemo-tab.active{background:rgba(59,130,246,.12);border-color:rgba(59,130,246,.45);color:#F1F5F9;}
+.pdemo-tab.active svg{opacity:1;}
+.pdemo-frame{margin-top:20px;border-radius:16px;overflow:hidden;border:1px solid rgba(59,130,246,.18);box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 80px rgba(59,130,246,.06);}
+.pdemo-progress{height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;max-width:100px;flex-shrink:0;}
+.pdemo-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--violet));border-radius:2px;}
+.pdemo-screen{display:none;}
+.pdemo-screen.active{display:block;animation:pdFadeIn .3s ease;}
+@keyframes pdFadeIn{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
 
 /* ─── STICKY CTA BAR ─────────────────────────────── */
 #sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:889;background:rgba(3,10,28,.96);backdrop-filter:blur(20px);border-top:1px solid rgba(59,130,246,.22);padding:13px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;transform:translateY(100%);transition:transform .45s cubic-bezier(.23,1,.32,1);flex-wrap:wrap;}
@@ -973,22 +985,6 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
 .ep-ok-sub{font-size:13px;color:var(--muted);margin-top:5px;}
 @media(max-width:480px){.ep-card{padding:32px 22px;}}
 
-/* ─── VIDEO LIGHTBOX ─────────────────────────────── */
-#video-modal{position:fixed;inset:0;z-index:9995;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;}
-#video-modal.show{opacity:1;pointer-events:all;}
-#video-modal-backdrop{position:absolute;inset:0;background:rgba(2,11,24,.94);backdrop-filter:blur(10px);cursor:pointer;}
-#video-modal-box{position:relative;z-index:1;width:100%;max-width:900px;border-radius:16px;overflow:hidden;border:1px solid rgba(59,130,246,.25);box-shadow:0 50px 120px rgba(0,0,0,.9),0 0 80px rgba(59,130,246,.1);}
-#video-modal-chrome{background:#030C1A;border-bottom:1px solid rgba(59,130,246,.1);padding:10px 16px;display:flex;align-items:center;gap:10px;}
-#video-modal-dots{display:flex;gap:5px;}
-#video-modal-url{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(59,130,246,.12);border-radius:6px;padding:5px 12px;font-size:11px;color:var(--muted);text-align:center;}
-#video-modal-close{position:absolute;top:10px;right:12px;z-index:2;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.12);border-radius:50%;width:32px;height:32px;color:#fff;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;transition:background .2s;line-height:1;}
-#video-modal-close:hover{background:rgba(239,68,68,.6);}
-#video-modal-frame{width:100%;aspect-ratio:16/9;background:#000;display:block;border:none;}
-#video-modal-coming{display:none;padding:60px 40px;background:#030C1A;text-align:center;}
-#video-modal-coming .vmc-icon{font-size:52px;display:block;margin-bottom:16px;}
-#video-modal-coming .vmc-h{font-size:22px;font-weight:900;color:var(--strong);margin-bottom:10px;}
-#video-modal-coming .vmc-sub{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:28px;max-width:400px;margin-left:auto;margin-right:auto;}
-@media(max-width:600px){#video-modal-box{border-radius:12px;}#video-modal-coming{padding:40px 22px;}}
 
 /* prefers-reduced-motion: kill all animations */
 @media(prefers-reduced-motion:reduce){
@@ -1127,8 +1123,8 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
       <span class="nav-wordmark">Projiq<span class="nav-dot-app">.app</span></span>
     </a>
     <div class="nav-links">
+      <a href="#features">Features</a>
       <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
       <a href="#" onclick="openContactModal('contact');return false;">Contact</a>
       <a href="/blog/">Blog</a>
     </div>
@@ -1149,8 +1145,8 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
     <svg width="30" height="28" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg"><use href="#projiq-p"/></svg>
     <span class="mob-nav-logo-text">Projiq<span>.app</span></span>
   </div>
+  <a href="#features" class="mob-link">Features</a>
   <a href="#pricing" class="mob-link">Pricing</a>
-  <a href="#faq" class="mob-link">FAQ</a>
   <a href="#" class="mob-link" onclick="openContactModal('contact');return false;">Contact</a>
   <a href="/blog/" class="mob-link">Blog</a>
   <div class="mob-nav-div"></div>
@@ -1169,6 +1165,14 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
   <div class="hero-glow2"></div>
   <div class="container">
     <div class="hero-content">
+      <div class="hero-rotate-wrap" aria-hidden="true">
+        <div class="hero-rotate" id="hero-rotate">
+          <div class="hero-rotate-item">Built for engineering teams</div>
+          <div class="hero-rotate-item">One flat plan · unlimited members</div>
+          <div class="hero-rotate-item">Real-time · no refresh needed</div>
+          <div class="hero-rotate-item">Built for engineering teams</div>
+        </div>
+      </div>
       <h1 class="hero-h1">
         Stop switching tools.<br><span class="gr">Start shipping faster.</span>
       </h1>
@@ -1198,17 +1202,17 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
     </div>
     <div class="prob-grid">
       <div class="prob-card reveal d1">
-        <div class="prob-num">5.4<span class="prob-unit">hrs</span></div>
+        <div class="prob-num" data-target="5.4" data-suffix="hrs" data-decimal="1">0<span class="prob-unit">hrs</span></div>
         <div class="prob-title">Lost per person, per week</div>
         <div class="prob-desc">Jira, Confluence, Slack, spreadsheets — your team is context-switching between 4+ tools just to know what's happening. Every switch costs 23 minutes of re-focus time.</div>
       </div>
       <div class="prob-card reveal d2">
-        <div class="prob-num">68<span class="prob-unit">%</span></div>
+        <div class="prob-num" data-target="68" data-suffix="%" data-decimal="0">0<span class="prob-unit">%</span></div>
         <div class="prob-title">Of projects miss their deadline</div>
         <div class="prob-desc">Without real-time sprint tracking, managers only discover they're behind when it's too late. Proactive visibility — not reactive Slack pings — keeps delivery on schedule.</div>
       </div>
       <div class="prob-card reveal d3">
-        <div class="prob-num">3.2<span class="prob-unit">x</span></div>
+        <div class="prob-num" data-target="3.2" data-suffix="x" data-decimal="1">0<span class="prob-unit">x</span></div>
         <div class="prob-title">Higher delivery risk with fragmented tooling</div>
         <div class="prob-desc">Siloed tools create blind spots. Blockers go unreported, priorities drift, and when a project slips, accountability is impossible to trace back.</div>
       </div>
@@ -1276,101 +1280,272 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
   </div>
 </section>
 
-<!-- ═══════════════ 60-SECOND DEMO ═══════════════ -->
+<!-- ═══════════════ INTERACTIVE DEMO ═══════════════ -->
 <section id="demo-video" class="section-pad" style="background:var(--bg2);">
   <div class="container">
     <div class="reveal center">
-      <span class="ey">Product Walkthrough</span>
-      <h2 class="section-title">See Projiq in <span class="gr">60 seconds</span></h2>
-      <p class="section-sub center">Watch how a real engineering team runs sprints, moves issues, and ships faster — from first login to first sprint complete.</p>
+      <span class="ey">Explore the Product</span>
+      <h2 class="section-title">See every view — <span class="gr">no signup needed</span></h2>
+      <p class="section-sub center">Click any tab to explore how engineering teams run sprints, track issues, plan roadmaps, and measure velocity — all inside one workspace.</p>
     </div>
-    <div class="demo-video-wrap reveal" id="demo-video-wrap" onclick="openDemoVideo()">
+
+    <!-- Tab bar -->
+    <div class="pdemo-tabs reveal">
+      <button class="pdemo-tab active" data-tab="board" data-url="app.projiq.app / board">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Board
+      </button>
+      <button class="pdemo-tab" data-tab="sprint" data-url="app.projiq.app / sprint-14">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Sprint
+      </button>
+      <button class="pdemo-tab" data-tab="roadmap" data-url="app.projiq.app / roadmap">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>
+        Roadmap
+      </button>
+      <button class="pdemo-tab" data-tab="analytics" data-url="app.projiq.app / analytics">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Analytics
+      </button>
+    </div>
+
+    <!-- Browser frame -->
+    <div class="pdemo-frame reveal">
       <div class="demo-chrome">
         <div class="demo-dots">
           <div class="demo-dot" style="background:#EF4444;"></div>
           <div class="demo-dot" style="background:#F59E0B;"></div>
           <div class="demo-dot" style="background:#10B981;"></div>
         </div>
-        <div class="demo-url">app.projiq.app — Sprint Board · Design System v3</div>
+        <div class="demo-url" id="pdemo-url">app.projiq.app / board</div>
+        <div class="pdemo-progress" id="pdemo-progress"><div class="pdemo-progress-fill" id="pdemo-progress-fill"></div></div>
       </div>
-      <div class="demo-mock-screen">
-        <!-- Reuse the hero app UI as a static thumbnail -->
-        <div style="height:340px;background:#030C1A;display:flex;overflow:hidden;position:relative;">
-          <div style="width:48px;background:#020B18;border-right:1px solid rgba(59,130,246,.1);display:flex;flex-direction:column;align-items:center;padding:14px 0;gap:14px;flex-shrink:0;">
-            <div style="width:26px;height:24px;"><svg viewBox="0 0 285 265" width="26" height="24"><use href="#projiq-p"/></svg></div>
-            <div style="width:32px;height:32px;border-radius:8px;background:rgba(59,130,246,.18);border:1px solid rgba(59,130,246,.25);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--accentL);">▦</div>
-            <div style="width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--muted);">≡</div>
-            <div style="width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--muted);">◫</div>
+
+      <!-- ── BOARD VIEW ── -->
+      <div class="pdemo-screen active" id="pdemo-board">
+        <div style="height:380px;background:#030C1A;display:flex;overflow:hidden;">
+          <div style="width:46px;background:#020B18;border-right:1px solid rgba(59,130,246,.1);display:flex;flex-direction:column;align-items:center;padding:14px 0;gap:12px;flex-shrink:0;">
+            <div style="width:24px;height:22px;"><svg viewBox="0 0 285 265" width="24" height="22"><use href="#projiq-p"/></svg></div>
+            <div style="width:30px;height:30px;border-radius:8px;background:rgba(59,130,246,.2);border:1px solid rgba(59,130,246,.3);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--accentL);">▦</div>
+            <div style="width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--muted);">≡</div>
+            <div style="width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--muted);">◫</div>
+            <div style="width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--muted);">⚡</div>
           </div>
-          <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;">
-            <div style="background:#030C1A;border-bottom:1px solid rgba(59,130,246,.1);padding:10px 16px;display:flex;align-items:center;gap:10px;">
+          <div style="flex:1;display:flex;flex-direction:column;min-width:0;">
+            <div style="background:#030C1A;border-bottom:1px solid rgba(59,130,246,.1);padding:9px 14px;display:flex;align-items:center;gap:10px;flex-shrink:0;">
               <span style="font-size:12px;font-weight:700;color:var(--strong);">Design System v3</span>
-              <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:rgba(59,130,246,.14);color:var(--accentL);border:1px solid rgba(59,130,246,.22);">Sprint 14 · 3d left</span>
-              <div style="margin-left:auto;display:flex;gap:5px;">
-                <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--violet));font-size:7px;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;">SR</div>
-                <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--success),#34D399);font-size:7px;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;margin-left:-6px;">JD</div>
+              <span style="font-size:9.5px;padding:2px 8px;border-radius:4px;background:rgba(59,130,246,.14);color:var(--accentL);border:1px solid rgba(59,130,246,.22);">Sprint 14 · 3d left</span>
+              <div style="margin-left:auto;display:flex;align-items:center;gap:8px;">
+                <span style="font-size:9.5px;color:var(--success);background:rgba(16,185,129,.1);padding:2px 8px;border-radius:4px;">● 6 live</span>
+                <div style="display:flex;"><div style="width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--violet));font-size:7px;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;border:1.5px solid #030C1A;">SR</div><div style="width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--success),#34D399);font-size:7px;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;margin-left:-5px;border:1.5px solid #030C1A;">JD</div><div style="width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--amber),#FCD34D);font-size:7px;font-weight:800;color:#7C2D12;display:flex;align-items:center;justify-content:center;margin-left:-5px;border:1.5px solid #030C1A;">AM</div></div>
+                <div style="font-size:9.5px;padding:3px 10px;border-radius:6px;background:linear-gradient(90deg,var(--accent),var(--violet));color:#fff;font-weight:700;cursor:pointer;">+ Issue</div>
               </div>
             </div>
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:12px;flex:1;overflow:hidden;">
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:10px;flex:1;overflow:hidden;">
               <div style="background:rgba(8,18,40,.6);border-radius:10px;padding:10px;">
-                <div style="font-size:9px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.1em;">To Do · 4</div>
-                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;margin-bottom:6px;"><div style="font-size:9px;color:var(--accentL);margin-bottom:3px;">Story</div><div style="font-size:10px;font-weight:600;color:var(--strong);">Redesign token system</div></div>
-                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;"><div style="font-size:9px;color:var(--amber);margin-bottom:3px;">Task</div><div style="font-size:10px;font-weight:600;color:var(--strong);">Write API docs v2</div></div>
+                <div style="font-size:9px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.1em;display:flex;justify-content:space-between;"><span>To Do</span><span style="background:rgba(255,255,255,.07);padding:1px 6px;border-radius:100px;">4</span></div>
+                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;margin-bottom:6px;"><div style="font-size:9px;color:var(--accentL);margin-bottom:3px;">Story</div><div style="font-size:10px;font-weight:600;color:var(--strong);margin-bottom:5px;">Redesign token system</div><div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:9px;color:var(--muted);">8 pts</span><div style="width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--violet));font-size:6px;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;">SR</div></div></div>
+                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;margin-bottom:6px;"><div style="font-size:9px;color:var(--amber);margin-bottom:3px;">Task</div><div style="font-size:10px;font-weight:600;color:var(--strong);margin-bottom:5px;">Write API docs v2</div><div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:9px;color:var(--muted);">5 pts</span><div style="width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,var(--amber),#FCD34D);font-size:6px;font-weight:800;color:#7C2D12;display:flex;align-items:center;justify-content:center;">AM</div></div></div>
+                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;opacity:.65;"><div style="font-size:9px;color:#8B5CF6;margin-bottom:3px;">Epic</div><div style="font-size:10px;font-weight:600;color:var(--strong);">Mobile v2 release</div></div>
               </div>
-              <div style="background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.14);border-radius:10px;padding:10px;">
-                <div style="font-size:9px;font-weight:700;color:var(--accentL);margin-bottom:8px;text-transform:uppercase;letter-spacing:.1em;">In Progress · 3</div>
-                <div style="background:var(--bg3);border:1px solid rgba(59,130,246,.22);border-radius:6px;padding:8px;margin-bottom:6px;"><div style="font-size:9px;color:#F87171;margin-bottom:3px;">Bug</div><div style="font-size:10px;font-weight:600;color:var(--strong);">Auth fails on Safari 17</div></div>
-                <div style="background:var(--bg3);border:1px solid rgba(59,130,246,.22);border-radius:6px;padding:8px;"><div style="font-size:9px;color:var(--accentL);margin-bottom:3px;">Story</div><div style="font-size:10px;font-weight:600;color:var(--strong);">Dashboard perf pass</div></div>
-              </div>
-              <div style="background:rgba(8,18,40,.6);border-radius:10px;padding:10px;">
-                <div style="font-size:9px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.1em;">In Review · 2</div>
-                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;"><div style="font-size:9px;color:var(--accentL);margin-bottom:3px;">Story</div><div style="font-size:10px;font-weight:600;color:var(--strong);">Onboarding flow redesign</div></div>
+              <div style="background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.18);border-radius:10px;padding:10px;">
+                <div style="font-size:9px;font-weight:700;color:var(--accentL);margin-bottom:8px;text-transform:uppercase;letter-spacing:.1em;display:flex;justify-content:space-between;"><span>In Progress</span><span style="background:rgba(59,130,246,.15);padding:1px 6px;border-radius:100px;color:var(--accentL);">3</span></div>
+                <div style="background:var(--bg3);border:1px solid rgba(59,130,246,.22);border-radius:6px;padding:8px;margin-bottom:6px;box-shadow:0 0 0 1px rgba(59,130,246,.12);"><div style="font-size:9px;color:#F87171;margin-bottom:3px;">Bug · High</div><div style="font-size:10px;font-weight:600;color:var(--strong);margin-bottom:5px;">Auth fails on Safari 17</div><div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:9px;color:var(--muted);">5 pts</span><div style="width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,var(--success),#34D399);font-size:6px;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;">JD</div></div></div>
+                <div style="background:var(--bg3);border:1px solid rgba(59,130,246,.22);border-radius:6px;padding:8px;margin-bottom:6px;"><div style="font-size:9px;color:var(--accentL);margin-bottom:3px;">Story</div><div style="font-size:10px;font-weight:600;color:var(--strong);margin-bottom:5px;">Dashboard perf pass</div><div style="display:flex;justify-content:space-between;"><span style="font-size:9px;color:var(--muted);">3 pts</span><div style="width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--violet));font-size:6px;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;">SR</div></div></div>
               </div>
               <div style="background:rgba(8,18,40,.6);border-radius:10px;padding:10px;">
-                <div style="font-size:9px;font-weight:700;color:var(--success);margin-bottom:8px;text-transform:uppercase;letter-spacing:.1em;">Done · 7</div>
+                <div style="font-size:9px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.1em;display:flex;justify-content:space-between;"><span>In Review</span><span style="background:rgba(255,255,255,.07);padding:1px 6px;border-radius:100px;">2</span></div>
+                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;margin-bottom:6px;"><div style="font-size:9px;color:var(--accentL);margin-bottom:3px;">Story</div><div style="font-size:10px;font-weight:600;color:var(--strong);margin-bottom:5px;">Onboarding flow</div><div style="display:flex;justify-content:space-between;"><span style="font-size:9px;color:var(--muted);">8 pts</span><div style="width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,var(--amber),#FCD34D);font-size:6px;font-weight:800;color:#7C2D12;display:flex;align-items:center;justify-content:center;">AM</div></div></div>
+              </div>
+              <div style="background:rgba(8,18,40,.6);border-radius:10px;padding:10px;">
+                <div style="font-size:9px;font-weight:700;color:var(--success);margin-bottom:8px;text-transform:uppercase;letter-spacing:.1em;display:flex;justify-content:space-between;"><span>Done</span><span style="background:rgba(16,185,129,.1);padding:1px 6px;border-radius:100px;color:var(--success);">7</span></div>
                 <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;margin-bottom:6px;opacity:.55;"><div style="font-size:9px;color:var(--muted);margin-bottom:3px;">Task</div><div style="font-size:10px;font-weight:600;color:var(--text);">Design system audit</div></div>
                 <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;opacity:.55;"><div style="font-size:9px;color:var(--muted);margin-bottom:3px;">Bug</div><div style="font-size:10px;font-weight:600;color:var(--text);">Mobile nav regression</div></div>
+                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;margin-top:6px;opacity:.55;"><div style="font-size:9px;color:var(--muted);margin-bottom:3px;">Story</div><div style="font-size:10px;font-weight:600;color:var(--text);">Rate limit middleware</div></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="demo-overlay">
-          <button class="demo-play-btn" aria-label="Play demo video">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          </button>
-          <span class="demo-label">Watch the 60-second walkthrough</span>
-          <span class="demo-sub-label">No signup required</span>
+      </div>
+
+      <!-- ── SPRINT VIEW ── -->
+      <div class="pdemo-screen" id="pdemo-sprint">
+        <div style="height:380px;background:#030C1A;display:flex;flex-direction:column;overflow:hidden;">
+          <div style="background:#020B18;border-bottom:1px solid rgba(59,130,246,.1);padding:10px 18px;display:flex;align-items:center;gap:12px;flex-shrink:0;">
+            <span style="font-size:12px;font-weight:700;color:var(--strong);">Sprint 14 — Design System v3</span>
+            <span style="font-size:9.5px;padding:2px 9px;border-radius:4px;background:rgba(16,185,129,.12);color:var(--success);border:1px solid rgba(16,185,129,.22);">Active</span>
+            <span style="font-size:9.5px;color:var(--muted);">Jun 30 – Jul 13</span>
+            <div style="margin-left:auto;display:flex;align-items:center;gap:10px;">
+              <span style="font-size:9.5px;color:var(--accentL);">24 / 33 pts done</span>
+              <div style="width:90px;height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;"><div style="width:73%;height:100%;background:linear-gradient(90deg,var(--accent),var(--accentL));border-radius:3px;"></div></div>
+              <span style="font-size:9.5px;font-weight:700;color:var(--accentL);">73%</span>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 280px;flex:1;overflow:hidden;min-height:0;">
+            <div style="overflow-y:auto;padding:10px 14px;display:flex;flex-direction:column;gap:6px;">
+              <div style="font-size:9.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;">Sprint Backlog · 12 issues</div>
+              <div style="background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.18);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:10px;"><span style="font-size:8.5px;padding:1px 7px;border-radius:4px;background:rgba(239,68,68,.15);color:#F87171;font-weight:700;border:1px solid rgba(239,68,68,.2);">BUG</span><span style="font-size:11px;font-weight:600;color:var(--strong);flex:1;">Auth fails on mobile Safari 17</span><span style="font-size:9px;color:var(--accentL);background:rgba(59,130,246,.12);padding:2px 6px;border-radius:4px;">In Progress</span><span style="font-size:9px;color:var(--muted);margin-left:6px;">5 pts</span></div>
+              <div style="background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.18);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:10px;"><span style="font-size:8.5px;padding:1px 7px;border-radius:4px;background:rgba(59,130,246,.12);color:var(--accentL);font-weight:700;border:1px solid rgba(59,130,246,.2);">STORY</span><span style="font-size:11px;font-weight:600;color:var(--strong);flex:1;">Dashboard performance improvements</span><span style="font-size:9px;color:var(--accentL);background:rgba(59,130,246,.12);padding:2px 6px;border-radius:4px;">In Progress</span><span style="font-size:9px;color:var(--muted);margin-left:6px;">3 pts</span></div>
+              <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:10px;"><span style="font-size:8.5px;padding:1px 7px;border-radius:4px;background:rgba(245,158,11,.12);color:var(--amber);font-weight:700;border:1px solid rgba(245,158,11,.2);">TASK</span><span style="font-size:11px;font-weight:600;color:var(--strong);flex:1;">Redesign token system</span><span style="font-size:9px;color:var(--muted);background:rgba(255,255,255,.05);padding:2px 6px;border-radius:4px;">To Do</span><span style="font-size:9px;color:var(--muted);margin-left:6px;">8 pts</span></div>
+              <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:10px;"><span style="font-size:8.5px;padding:1px 7px;border-radius:4px;background:rgba(59,130,246,.12);color:var(--accentL);font-weight:700;border:1px solid rgba(59,130,246,.2);">STORY</span><span style="font-size:11px;font-weight:600;color:var(--strong);flex:1;">Onboarding flow redesign</span><span style="font-size:9px;color:var(--muted);background:rgba(255,255,255,.05);padding:2px 6px;border-radius:4px;">In Review</span><span style="font-size:9px;color:var(--muted);margin-left:6px;">8 pts</span></div>
+              <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:10px;opacity:.55;"><span style="font-size:8.5px;padding:1px 7px;border-radius:4px;background:rgba(16,185,129,.1);color:var(--success);font-weight:700;border:1px solid rgba(16,185,129,.2);">TASK</span><span style="font-size:11px;font-weight:600;color:var(--text);flex:1;text-decoration:line-through;">Write API docs for v2 endpoints</span><span style="font-size:9px;color:var(--success);background:rgba(16,185,129,.1);padding:2px 6px;border-radius:4px;">Done ✓</span><span style="font-size:9px;color:var(--muted);margin-left:6px;">5 pts</span></div>
+              <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:10px;opacity:.55;"><span style="font-size:8.5px;padding:1px 7px;border-radius:4px;background:rgba(239,68,68,.12);color:#F87171;font-weight:700;border:1px solid rgba(239,68,68,.2);">BUG</span><span style="font-size:11px;font-weight:600;color:var(--text);flex:1;text-decoration:line-through;">Mobile nav regression in v2.1</span><span style="font-size:9px;color:var(--success);background:rgba(16,185,129,.1);padding:2px 6px;border-radius:4px;">Done ✓</span><span style="font-size:9px;color:var(--muted);margin-left:6px;">3 pts</span></div>
+            </div>
+            <div style="border-left:1px solid rgba(59,130,246,.08);padding:14px;display:flex;flex-direction:column;gap:12px;overflow:hidden;">
+              <div style="font-size:9.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;">Sprint Stats</div>
+              <div style="background:rgba(8,18,40,.6);border-radius:10px;padding:12px;">
+                <div style="font-size:9px;color:var(--muted);margin-bottom:3px;">Velocity</div>
+                <div style="font-size:22px;font-weight:900;color:var(--strong);letter-spacing:-.04em;">24<span style="font-size:11px;color:var(--muted);font-weight:500;"> pts</span></div>
+                <div style="font-size:9px;color:var(--success);margin-top:2px;">↑ 18% vs last sprint</div>
+              </div>
+              <div style="background:rgba(8,18,40,.6);border-radius:10px;padding:12px;">
+                <div style="font-size:9px;color:var(--muted);margin-bottom:3px;">Remaining</div>
+                <div style="font-size:22px;font-weight:900;color:var(--amber);letter-spacing:-.04em;">9<span style="font-size:11px;color:var(--muted);font-weight:500;"> pts</span></div>
+                <div style="font-size:9px;color:var(--muted);margin-top:2px;">3 days remaining</div>
+              </div>
+              <div style="background:rgba(8,18,40,.6);border-radius:10px;padding:12px;">
+                <div style="font-size:9px;color:var(--muted);margin-bottom:6px;">Completion</div>
+                <div style="height:6px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;margin-bottom:4px;"><div style="width:73%;height:100%;background:linear-gradient(90deg,var(--success),#34D399);border-radius:3px;"></div></div>
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:9px;color:var(--success);">73% done</span><span style="font-size:9px;color:var(--muted);">7 of 12</span></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="demo-features reveal">
-      <div class="demo-feat">
-        <div class="demo-feat-icon">⚡</div>
-        <div class="demo-feat-label">Sprint setup</div>
+
+      <!-- ── ROADMAP VIEW ── -->
+      <div class="pdemo-screen" id="pdemo-roadmap">
+        <div style="height:380px;background:#030C1A;display:flex;flex-direction:column;overflow:hidden;">
+          <div style="background:#020B18;border-bottom:1px solid rgba(59,130,246,.1);padding:10px 18px;display:flex;align-items:center;gap:12px;flex-shrink:0;">
+            <span style="font-size:12px;font-weight:700;color:var(--strong);">Roadmap — Q3 · Q4 2026</span>
+            <div style="margin-left:auto;display:flex;gap:6px;">
+              <span style="font-size:9px;padding:2px 8px;border-radius:4px;border:1px solid rgba(59,130,246,.25);color:var(--accentL);">Epics</span>
+              <span style="font-size:9px;padding:2px 8px;border-radius:4px;border:1px solid rgba(16,185,129,.25);color:var(--success);">Milestones</span>
+            </div>
+          </div>
+          <div style="padding:10px 14px;flex:1;overflow:hidden;display:flex;flex-direction:column;gap:0;">
+            <!-- Month headers -->
+            <div style="display:grid;grid-template-columns:140px repeat(6,1fr);gap:0;margin-bottom:8px;">
+              <div></div>
+              <div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;text-align:center;padding:4px 0;border-right:1px solid rgba(255,255,255,.04);">Jul</div>
+              <div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;text-align:center;padding:4px 0;border-right:1px solid rgba(255,255,255,.04);">Aug</div>
+              <div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;text-align:center;padding:4px 0;border-right:1px solid rgba(255,255,255,.04);">Sep</div>
+              <div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;text-align:center;padding:4px 0;border-right:1px solid rgba(255,255,255,.04);">Oct</div>
+              <div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;text-align:center;padding:4px 0;border-right:1px solid rgba(255,255,255,.04);">Nov</div>
+              <div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;text-align:center;padding:4px 0;">Dec</div>
+            </div>
+            <!-- Epics -->
+            <div style="display:flex;flex-direction:column;gap:8px;overflow:hidden;">
+              <div style="display:grid;grid-template-columns:140px repeat(6,1fr);gap:0;align-items:center;">
+                <div style="font-size:10px;font-weight:600;color:var(--text);padding-right:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Design System v3</div>
+                <div style="grid-column:span 2;padding:0 2px;"><div style="height:22px;border-radius:6px;background:linear-gradient(90deg,var(--accent),#6366F1);display:flex;align-items:center;padding:0 8px;font-size:9px;font-weight:700;color:#fff;white-space:nowrap;">73% · In Progress</div></div>
+                <div style="grid-column:span 4;"></div>
+              </div>
+              <div style="display:grid;grid-template-columns:140px repeat(6,1fr);gap:0;align-items:center;">
+                <div style="font-size:10px;font-weight:600;color:var(--text);padding-right:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Mobile App v1</div>
+                <div style="grid-column:span 1;"></div>
+                <div style="grid-column:span 3;padding:0 2px;"><div style="height:22px;border-radius:6px;background:linear-gradient(90deg,var(--violet),#EC4899);display:flex;align-items:center;padding:0 8px;font-size:9px;font-weight:700;color:#fff;white-space:nowrap;">Planning · Q3–Q4</div></div>
+                <div style="grid-column:span 2;"></div>
+              </div>
+              <div style="display:grid;grid-template-columns:140px repeat(6,1fr);gap:0;align-items:center;">
+                <div style="font-size:10px;font-weight:600;color:var(--text);padding-right:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Auth &amp; Security</div>
+                <div style="grid-column:span 1;padding:0 2px;"><div style="height:22px;border-radius:6px;background:linear-gradient(90deg,var(--success),#059669);display:flex;align-items:center;padding:0 8px;font-size:9px;font-weight:700;color:#fff;white-space:nowrap;">Done</div></div>
+                <div style="grid-column:span 5;"></div>
+              </div>
+              <div style="display:grid;grid-template-columns:140px repeat(6,1fr);gap:0;align-items:center;">
+                <div style="font-size:10px;font-weight:600;color:var(--text);padding-right:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Analytics v2</div>
+                <div style="grid-column:span 2;"></div>
+                <div style="grid-column:span 2;padding:0 2px;"><div style="height:22px;border-radius:6px;background:linear-gradient(90deg,var(--amber),#D97706);display:flex;align-items:center;padding:0 8px;font-size:9px;font-weight:700;color:#fff;white-space:nowrap;">Planned · Q4</div></div>
+                <div style="grid-column:span 2;"></div>
+              </div>
+              <div style="display:grid;grid-template-columns:140px repeat(6,1fr);gap:0;align-items:center;margin-top:4px;">
+                <div style="font-size:10px;font-weight:600;color:var(--text);padding-right:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">v2.0 Release</div>
+                <div style="grid-column:span 2;"></div>
+                <div style="padding:0 2px;"><div style="height:22px;width:22px;border-radius:50%;background:linear-gradient(135deg,var(--accentL),var(--violet));display:flex;align-items:center;justify-content:center;margin:0 auto;" title="Milestone: v2.0 Release">◆</div></div>
+                <div style="grid-column:span 3;"></div>
+              </div>
+              <div style="height:1px;background:rgba(255,255,255,.05);margin:4px 0;"></div>
+              <div style="display:grid;grid-template-columns:140px repeat(6,1fr);gap:0;align-items:center;">
+                <div style="font-size:10px;font-weight:600;color:var(--text);padding-right:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Custom Fields</div>
+                <div style="grid-column:span 3;"></div>
+                <div style="grid-column:span 2;padding:0 2px;"><div style="height:22px;border-radius:6px;background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.25);display:flex;align-items:center;padding:0 8px;font-size:9px;font-weight:700;color:var(--accentL);white-space:nowrap;">Backlog</div></div>
+                <div></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="demo-feat">
-        <div class="demo-feat-icon">🎯</div>
-        <div class="demo-feat-label">Issue tracking</div>
+
+      <!-- ── ANALYTICS VIEW ── -->
+      <div class="pdemo-screen" id="pdemo-analytics">
+        <div style="height:380px;background:#030C1A;display:flex;flex-direction:column;overflow:hidden;">
+          <div style="background:#020B18;border-bottom:1px solid rgba(59,130,246,.1);padding:10px 18px;display:flex;align-items:center;gap:12px;flex-shrink:0;">
+            <span style="font-size:12px;font-weight:700;color:var(--strong);">Analytics — Design System v3</span>
+            <div style="margin-left:auto;display:flex;gap:6px;">
+              <span style="font-size:9px;padding:2px 8px;border-radius:4px;background:rgba(59,130,246,.12);color:var(--accentL);border:1px solid rgba(59,130,246,.2);">Sprint 14</span>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;flex:1;overflow:hidden;min-height:0;">
+            <!-- Left: Burndown chart -->
+            <div style="padding:14px;border-right:1px solid rgba(255,255,255,.05);display:flex;flex-direction:column;">
+              <div style="font-size:9.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">Burndown Chart</div>
+              <svg viewBox="0 0 260 140" style="flex:1;min-height:0;" preserveAspectRatio="none">
+                <!-- Grid lines -->
+                <line x1="30" y1="10" x2="260" y2="10" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+                <line x1="30" y1="40" x2="260" y2="40" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+                <line x1="30" y1="70" x2="260" y2="70" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+                <line x1="30" y1="100" x2="260" y2="100" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+                <line x1="30" y1="130" x2="260" y2="130" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+                <!-- Y-axis labels -->
+                <text x="24" y="13" fill="#475569" font-size="8" text-anchor="end">33</text>
+                <text x="24" y="43" fill="#475569" font-size="8" text-anchor="end">25</text>
+                <text x="24" y="73" fill="#475569" font-size="8" text-anchor="end">17</text>
+                <text x="24" y="103" fill="#475569" font-size="8" text-anchor="end">8</text>
+                <text x="24" y="133" fill="#475569" font-size="8" text-anchor="end">0</text>
+                <!-- Ideal line -->
+                <line x1="30" y1="10" x2="260" y2="130" stroke="rgba(148,163,184,.2)" stroke-width="1.5" stroke-dasharray="5,4"/>
+                <!-- Actual fill -->
+                <path d="M30,10 L75,18 L120,32 L150,50 L190,75 L230,95 L250,115 L260,130 L260,130 L30,130 Z" fill="url(#bdGrad)" opacity=".18"/>
+                <!-- Actual line -->
+                <path d="M30,10 L75,18 L120,32 L150,50 L190,75 L230,95 L250,115 L260,130" fill="none" stroke="url(#bdLine)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Today marker -->
+                <line x1="230" y1="10" x2="230" y2="130" stroke="rgba(96,165,250,.4)" stroke-width="1" stroke-dasharray="3,3"/>
+                <text x="228" y="8" fill="#60A5FA" font-size="7" text-anchor="end">Today</text>
+                <!-- Current dot -->
+                <circle cx="230" cy="95" r="4" fill="var(--accentL)" stroke="#030C1A" stroke-width="2"/>
+                <defs>
+                  <linearGradient id="bdGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#8B5CF6"/></linearGradient>
+                  <linearGradient id="bdLine" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#8B5CF6"/></linearGradient>
+                </defs>
+              </svg>
+              <div style="display:flex;gap:14px;margin-top:6px;">
+                <div style="display:flex;align-items:center;gap:5px;"><div style="width:14px;height:2px;background:linear-gradient(90deg,#3B82F6,#8B5CF6);border-radius:1px;"></div><span style="font-size:9px;color:var(--muted);">Actual</span></div>
+                <div style="display:flex;align-items:center;gap:5px;"><div style="width:14px;height:1.5px;background:rgba(148,163,184,.3);border-radius:1px;"></div><span style="font-size:9px;color:var(--muted);">Ideal</span></div>
+              </div>
+            </div>
+            <!-- Right: Velocity + stats -->
+            <div style="padding:14px;display:flex;flex-direction:column;gap:10px;">
+              <div style="font-size:9.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;">Sprint Velocity</div>
+              <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+                <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:9px;color:var(--muted);width:36px;text-align:right;flex-shrink:0;">Sp 11</span><div style="flex:1;height:14px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden;"><div style="width:52%;height:100%;background:rgba(59,130,246,.35);border-radius:4px;"></div></div><span style="font-size:9px;color:var(--muted);width:22px;">17</span></div>
+                <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:9px;color:var(--muted);width:36px;text-align:right;flex-shrink:0;">Sp 12</span><div style="flex:1;height:14px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden;"><div style="width:61%;height:100%;background:rgba(59,130,246,.45);border-radius:4px;"></div></div><span style="font-size:9px;color:var(--muted);width:22px;">20</span></div>
+                <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:9px;color:var(--muted);width:36px;text-align:right;flex-shrink:0;">Sp 13</span><div style="flex:1;height:14px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden;"><div style="width:61%;height:100%;background:rgba(59,130,246,.55);border-radius:4px;"></div></div><span style="font-size:9px;color:var(--muted);width:22px;">20</span></div>
+                <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:9px;color:var(--accentL);width:36px;text-align:right;font-weight:700;flex-shrink:0;">Sp 14</span><div style="flex:1;height:14px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden;"><div style="width:73%;height:100%;background:linear-gradient(90deg,var(--accent),var(--violet));border-radius:4px;"></div></div><span style="font-size:9px;color:var(--accentL);font-weight:700;width:22px;">24</span></div>
+              </div>
+              <div style="height:1px;background:rgba(255,255,255,.05);"></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                <div style="background:rgba(8,18,40,.7);border-radius:8px;padding:10px;"><div style="font-size:9px;color:var(--muted);margin-bottom:2px;">Avg velocity</div><div style="font-size:18px;font-weight:900;color:var(--strong);letter-spacing:-.03em;">20<span style="font-size:10px;color:var(--muted);font-weight:400;"> pts</span></div></div>
+                <div style="background:rgba(8,18,40,.7);border-radius:8px;padding:10px;"><div style="font-size:9px;color:var(--muted);margin-bottom:2px;">On-track</div><div style="font-size:18px;font-weight:900;color:var(--success);letter-spacing:-.03em;">73<span style="font-size:10px;color:var(--muted);font-weight:400;">%</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="demo-feat">
-        <div class="demo-feat-icon">📊</div>
-        <div class="demo-feat-label">Burndown & velocity</div>
-      </div>
-      <div class="demo-feat">
-        <div class="demo-feat-icon">🔄</div>
-        <div class="demo-feat-label">Real-time sync</div>
-      </div>
-      <div class="demo-feat">
-        <div class="demo-feat-icon">🛡️</div>
-        <div class="demo-feat-label">RBAC & roles</div>
-      </div>
-      <div class="demo-feat">
-        <div class="demo-feat-icon">🗺️</div>
-        <div class="demo-feat-label">Roadmap view</div>
-      </div>
-    </div>
+    </div><!-- /pdemo-frame -->
+
     <div class="reveal" style="text-align:center;margin-top:40px;">
-      <a href="https://app.projiq.app/register-org?plan=professional" target="_blank" class="btn btn-primary">Start Free Trial — No Card Required</a>
+      <a href="https://app.projiq.app/register-org?plan=professional" target="_blank" class="btn btn-primary">Start Free — No Card Required</a>
+      <p style="font-size:12px;color:var(--muted);margin-top:12px;">14-day free trial · Full access from day one</p>
     </div>
   </div>
 </section>
@@ -2251,7 +2426,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
     <div class="pricing-grid">
       <div class="price-card reveal d1">
         <div class="price-tier">Starter</div>
-        <div class="price-amount"><sup>$</sup>149<span> / month</span></div>
+        <div class="price-amount"><sup>$</sup><span class="price-num">149</span><span class="price-period"> / month</span></div>
         <div class="price-users">Per organization &nbsp;·&nbsp; Up to 10 members</div>
         <div class="price-plat"><span>Web</span></div>
         <div class="price-div"></div>
@@ -2271,7 +2446,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
       </div>
       <div class="price-card featured reveal d2">
         <div class="price-tier">Professional</div>
-        <div class="price-amount"><sup>$</sup>299<span> / month</span></div>
+        <div class="price-amount"><sup>$</sup><span class="price-num">299</span><span class="price-period"> / month</span></div>
         <div class="price-users">Per organization &nbsp;·&nbsp; Up to 50 members</div>
         <div class="price-plat"><span>Web</span></div>
         <div class="price-div"></div>
@@ -2291,7 +2466,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
       </div>
       <div class="price-card reveal d3">
         <div class="price-tier">Enterprise</div>
-        <div class="price-amount" style="font-size:36px;line-height:1.15;padding-top:5px;background:linear-gradient(135deg,var(--amber),#FCD34D);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;"><sup style="-webkit-text-fill-color:transparent;">$</sup>599<span style="font-size:15px;"> / month+</span></div>
+        <div class="price-amount" style="font-size:36px;line-height:1.15;padding-top:5px;background:linear-gradient(135deg,var(--amber),#FCD34D);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;"><sup style="-webkit-text-fill-color:transparent;">$</sup><span class="price-num" style="-webkit-text-fill-color:transparent;background:inherit;-webkit-background-clip:text;background-clip:text;">599</span><span style="font-size:15px;"> / month+</span></div>
         <div class="price-users">Per organization &nbsp;·&nbsp; Unlimited members</div>
         <div class="price-plat"><span>Web</span></div>
         <div class="price-div"></div>
@@ -2588,6 +2763,64 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
   mobNav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeM);});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeM();});
   var mobClose=document.getElementById('mob-close');if(mobClose)mobClose.addEventListener('click',closeM);
+
+  /* ══════════════════════════════════════════
+     HERO ROTATING TAGLINE
+  ══════════════════════════════════════════ */
+  (function(){
+    var reel = document.getElementById('hero-rotate');
+    if (!reel) return;
+    var items = reel.querySelectorAll('.hero-rotate-item');
+    var total = items.length - 1; /* last item is duplicate of first for seamless loop */
+    var cur = 0;
+    var itemH = items[0].offsetHeight || 22;
+    setInterval(function(){
+      cur++;
+      reel.style.transform = 'translateY(-' + (cur * itemH) + 'px)';
+      if (cur >= total) {
+        setTimeout(function(){
+          reel.style.transition = 'none';
+          cur = 0;
+          reel.style.transform = 'translateY(0)';
+          setTimeout(function(){ reel.style.transition = ''; }, 20);
+        }, 560);
+      }
+    }, 2800);
+  }());
+
+  /* ══════════════════════════════════════════
+     ANIMATED NUMBER COUNTERS
+  ══════════════════════════════════════════ */
+  (function(){
+    var counters = document.querySelectorAll('.prob-num[data-target]');
+    if (!counters.length) return;
+    var done = new Set();
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting || done.has(e.target)) return;
+        done.add(e.target);
+        var el = e.target;
+        var target = parseFloat(el.getAttribute('data-target'));
+        var suffix = el.getAttribute('data-suffix') || '';
+        var dec = parseInt(el.getAttribute('data-decimal') || '0', 10);
+        var duration = 1400;
+        var start = null;
+        var unit = el.querySelector('.prob-unit');
+        function step(ts){
+          if (!start) start = ts;
+          var prog = Math.min((ts - start) / duration, 1);
+          var ease = 1 - Math.pow(1 - prog, 3);
+          var val = (target * ease).toFixed(dec);
+          el.firstChild.nodeValue = val;
+          if (unit) unit.textContent = suffix;
+          if (prog < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }, {threshold: 0.5});
+    counters.forEach(function(c){ io.observe(c); });
+  }());
+
 
   /* ══════════════════════════════════════════
      FAQ ACCORDION
@@ -3046,50 +3279,55 @@ function submitExitEmail() {
 }
 
 /* ══════════════════════════════════════
-   DEMO VIDEO — open in contact modal or redirect
+   INTERACTIVE DEMO — tabbed product explorer
 ══════════════════════════════════════ */
-/* ══════════════════════════════════════
-   VIDEO LIGHTBOX
-   - Set DEMO_URL to a YouTube / Loom / Vimeo embed URL
-   - YouTube: https://www.youtube.com/embed/VIDEO_ID?autoplay=1
-   - Loom:    https://www.loom.com/embed/VIDEO_ID?autoplay=1
-   - Vimeo:   https://player.vimeo.com/video/VIDEO_ID?autoplay=1
-══════════════════════════════════════ */
-var DEMO_URL = ''; /* ← paste your embed URL here */
+(function () {
+  var ORDER = ['board', 'sprint', 'roadmap', 'analytics'];
+  var TICK  = 5000;
+  var cur   = 0;
+  var timer = null;
 
-function openDemoVideo() {
-  var modal  = document.getElementById('video-modal');
-  var frame  = document.getElementById('video-modal-frame');
-  var coming = document.getElementById('video-modal-coming');
-  if (!modal) return;
-
-  if (DEMO_URL) {
-    frame.src = DEMO_URL;
-    frame.style.display  = 'block';
-    coming.style.display = 'none';
-  } else {
-    frame.style.display  = 'none';
-    coming.style.display = 'block';
+  function activate(idx) {
+    cur = idx;
+    var id = ORDER[idx];
+    document.querySelectorAll('.pdemo-tab').forEach(function (t) {
+      t.classList.toggle('active', t.dataset.tab === id);
+    });
+    document.querySelectorAll('.pdemo-screen').forEach(function (s) {
+      s.classList.toggle('active', s.id === 'pdemo-' + id);
+    });
+    var urlEl = document.getElementById('pdemo-url');
+    if (urlEl) {
+      var activeTab = document.querySelector('.pdemo-tab[data-tab="' + id + '"]');
+      if (activeTab) urlEl.textContent = activeTab.dataset.url || '';
+    }
+    var fill = document.getElementById('pdemo-progress-fill');
+    if (fill) {
+      fill.style.transition = 'none';
+      fill.style.width = '0%';
+      void fill.offsetWidth;
+      fill.style.transition = 'width ' + TICK + 'ms linear';
+      fill.style.width = '100%';
+    }
   }
 
-  modal.classList.add('show');
-  document.body.style.overflow = 'hidden';
-}
+  function startAuto() {
+    clearInterval(timer);
+    timer = setInterval(function () { activate((cur + 1) % ORDER.length); }, TICK);
+  }
 
-function closeVideoModal() {
-  var modal = document.getElementById('video-modal');
-  var frame = document.getElementById('video-modal-frame');
-  if (!modal) return;
-  modal.classList.remove('show');
-  document.body.style.overflow = '';
-  /* stop video by clearing src */
-  if (frame) { frame.src = 'about:blank'; }
-}
-
-/* Close on ESC */
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeVideoModal();
-});
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.pdemo-tab').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        clearInterval(timer);
+        activate(ORDER.indexOf(tab.dataset.tab));
+        startAuto();
+      });
+    });
+    activate(0);
+    startAuto();
+  });
+}());
 
 async function submitContactForm(e) {
   e.preventDefault();
@@ -3132,30 +3370,6 @@ async function submitContactForm(e) {
   }
 }
 </script>
-<!-- ═══ VIDEO LIGHTBOX ═══ -->
-<div id="video-modal" role="dialog" aria-modal="true" aria-label="Product demo video">
-  <div id="video-modal-backdrop" onclick="closeVideoModal()"></div>
-  <div id="video-modal-box">
-    <div id="video-modal-chrome">
-      <div id="video-modal-dots">
-        <div style="width:10px;height:10px;border-radius:50%;background:#EF4444;"></div>
-        <div style="width:10px;height:10px;border-radius:50%;background:#F59E0B;"></div>
-        <div style="width:10px;height:10px;border-radius:50%;background:#10B981;"></div>
-      </div>
-      <div id="video-modal-url">app.projiq.app — 60-second walkthrough</div>
-    </div>
-    <button id="video-modal-close" onclick="closeVideoModal()" aria-label="Close video">&times;</button>
-    <!-- iframe injected by JS when a URL is set -->
-    <iframe id="video-modal-frame" src="about:blank" allowfullscreen allow="autoplay; fullscreen" style="display:none;"></iframe>
-    <!-- Shown when no video URL is set yet -->
-    <div id="video-modal-coming">
-      <span class="vmc-icon">🎬</span>
-      <div class="vmc-h">Full walkthrough video coming soon</div>
-      <div class="vmc-sub">We're recording a polished 60-second tour of Projiq. In the meantime, start your free trial and explore hands-on — no card required, full access from day one.</div>
-      <a href="https://app.projiq.app/register-org?plan=professional" target="_blank" class="btn btn-primary" onclick="closeVideoModal()">Start Free Trial — No Card Required →</a>
-    </div>
-  </div>
-</div>
 
 <!-- ═══ WHATSAPP FLOAT ═══ -->
 <div id="wa-float" aria-label="Chat with us on WhatsApp">
