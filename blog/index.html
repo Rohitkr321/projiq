@@ -180,12 +180,12 @@ a{color:inherit;text-decoration:none}
   </div>
 
   <div class="cat-filter">
-    <button class="cat-pill active" onclick="filterCat('all',this)">All Articles <span class="pill-count">19</span></button>
+    <button class="cat-pill active" onclick="filterCat('all',this)">All Articles <span class="pill-count">20</span></button>
     <a href="/blog/agile/" class="cat-pill">Agile <span class="pill-count">2</span></a>
     <a href="/blog/scrum/" class="cat-pill">Scrum <span class="pill-count">7</span></a>
     <a href="/blog/project-management/" class="cat-pill">Project Management <span class="pill-count">2</span></a>
     <button class="cat-pill" onclick="filterCat('Product Management',this)">Product Management <span class="pill-count">1</span></button>
-    <a href="/blog/engineering/" class="cat-pill">Engineering <span class="pill-count">2</span></a>
+    <a href="/blog/engineering/" class="cat-pill">Engineering <span class="pill-count">3</span></a>
     <button class="cat-pill" onclick="filterCat('Remote Work',this)">Remote Work <span class="pill-count">1</span></button>
     <a href="/blog/productivity/" class="cat-pill">Productivity <span class="pill-count">3</span></a>
   </div>
@@ -194,13 +194,33 @@ a{color:inherit;text-decoration:none}
 
     <div class="section-label">Featured Article</div>
 
-    <!-- NEW: Latest post Jul 20 2026 -->
-    <a href="/blog/engineering-team-productivity/" class="featured-post" data-cat="Engineering" id="featured">
+    <!-- NEW: Latest post Jul 21 2026 -->
+    <a href="/blog/reduce-context-switching/" class="featured-post" data-cat="Engineering" id="featured">
+      <div class="feat-banner" style="background:linear-gradient(135deg,rgba(59,130,246,.22),rgba(139,92,246,.14),rgba(99,102,241,.10))">
+        <div class="feat-icon" style="background:rgba(59,130,246,.14);border:1px solid rgba(59,130,246,.28)">🧠</div>
+      </div>
+      <div class="feat-body">
+        <span class="feat-tag" style="background:rgba(16,185,129,.11);border:1px solid rgba(16,185,129,.26);color:#34D399">🆕 Latest Post</span>
+        <h2>Context Switching Is Killing Your Engineering Team's Productivity (Here's How to Fix It)</h2>
+        <p>23 minutes of deep focus lost per interruption. 28% of the working week gone to unnecessary switches. Here's where context switching comes from on engineering teams — and the 7 proven fixes that actually recover the hours.</p>
+        <div class="feat-meta">
+          <span>✍ Projiq Team</span>
+          <span>📅 Jul 21, 2026</span>
+          <span>⏱ 9 min read</span>
+        </div>
+        <span class="read-btn">Read Article <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+    </a>
+
+    <div class="section-label" style="margin-top:32px">Previous Featured</div>
+
+    <!-- Previous featured: Jul 20 2026 -->
+    <a href="/blog/engineering-team-productivity/" class="featured-post" data-cat="Engineering" id="featured-prev">
       <div class="feat-banner" style="background:linear-gradient(135deg,rgba(16,185,129,.22),rgba(6,182,212,.14),rgba(59,130,246,.10))">
         <div class="feat-icon" style="background:rgba(16,185,129,.14);border:1px solid rgba(16,185,129,.28)">⚡</div>
       </div>
       <div class="feat-body">
-        <span class="feat-tag" style="background:rgba(16,185,129,.11);border:1px solid rgba(16,185,129,.26);color:#34D399">🆕 Latest Post</span>
+        <span class="feat-tag" style="background:rgba(239,68,68,.11);border:1px solid rgba(239,68,68,.26);color:#F87171">🔥 Trending Now</span>
         <h2>Why Your Engineering Team is Losing 5+ Hours a Week (And What to Do About It)</h2>
         <p>McKinsey research says knowledge workers lose 5.4 hours per person per week to tool switching and status meetings. For a 20-person team, that's $336,000 gone annually. Here's the breakdown — and 5 fixes that actually work.</p>
         <div class="feat-meta">
@@ -212,32 +232,29 @@ a{color:inherit;text-decoration:none}
       </div>
     </a>
 
-    <div class="section-label" style="margin-top:32px">Previous Featured</div>
-
-    <!-- Previous featured post -->
-    <a href="/blog/best-ai-coding-tools/" class="featured-post" data-cat="Productivity" id="featured-prev">
-      <div class="feat-banner" style="background:linear-gradient(135deg,rgba(99,102,241,.22),rgba(6,182,212,.14),rgba(139,92,246,.10))">
-        <div class="feat-icon" style="background:rgba(99,102,241,.14);border:1px solid rgba(99,102,241,.28)">🤖</div>
-      </div>
-      <div class="feat-body">
-        <span class="feat-tag" style="background:rgba(239,68,68,.11);border:1px solid rgba(239,68,68,.26);color:#F87171">🔥 Trending Now</span>
-        <h2>Best AI Coding Tools for Engineering Teams in 2026: Copilot, Cursor, Claude &amp; More</h2>
-        <p>GitHub Copilot, Cursor, Claude Code, Tabnine, Windsurf — we compare the top AI coding assistants across autocomplete quality, agentic capability, multi-file context, and team pricing so you can standardise on the right tool.</p>
-        <div class="feat-meta">
-          <span>✍ Projiq Team</span>
-          <span>📅 Jul 9, 2026</span>
-          <span>⏱ 11 min read</span>
-        </div>
-        <span class="read-btn">Read Article <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </div>
-    </a>
-
     <div class="section-label grid-label">All Articles</div>
 
     <!-- Post grid -->
     <div class="post-grid" id="post-grid">
 
-      <!-- NEW Jul 20 2026 -->
+      <!-- NEW Jul 21 2026 -->
+      <a href="/blog/reduce-context-switching/" class="post-card" data-cat="Engineering">
+        <div class="card-top" style="background:linear-gradient(135deg,rgba(59,130,246,.18),rgba(139,92,246,.12))">
+          <div class="card-icon" style="background:rgba(59,130,246,.16);border:1px solid rgba(59,130,246,.28)">🧠</div>
+          <span class="card-badge new">New</span>
+        </div>
+        <div class="card-body">
+          <span class="card-cat" style="background:rgba(59,130,246,.11);border:1px solid rgba(59,130,246,.24);color:#60A5FA">Engineering</span>
+          <h3>Context Switching Is Killing Your Engineering Team's Productivity</h3>
+          <p>23 minutes of focus lost per interruption — and 7 proven fixes to recover the hours.</p>
+          <div class="card-foot">
+            <div class="card-meta"><span>Jul 21, 2026</span><span>9 min</span></div>
+            <span class="card-read">Read →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Jul 20 2026 -->
       <a href="/blog/engineering-team-productivity/" class="post-card" data-cat="Engineering">
         <div class="card-top" style="background:linear-gradient(135deg,rgba(16,185,129,.18),rgba(6,182,212,.12))">
           <div class="card-icon" style="background:rgba(16,185,129,.16);border:1px solid rgba(16,185,129,.28)">⚡</div>
