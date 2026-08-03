@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Agents in Software Engineering: The Complete Guide for Engineering Teams (2026) | Projiq Blog</title>
+<meta name="description" content="AI agents are transforming how engineering teams build software in 2026. Learn what they are, the 5 types your team should know, how MCP connects them to your tools, and how to deploy them safely in your sprint workflow.">
+<link rel="canonical" href="https://projiq.app/blog/ai-agents-engineering/">
+<meta property="og:title" content="AI Agents in Software Engineering: Complete Guide 2026">
+<meta property="og:description" content="From coding agents to CI/CD automation — the definitive guide to AI agents for engineering teams in 2026.">
+<meta property="og:image" content="https://projiq.app/og.png">
+<meta property="og:url" content="https://projiq.app/blog/ai-agents-engineering/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-03">
+<meta property="article:author" content="Projiq Team">
+<meta property="article:section" content="Engineering">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Agents in Software Engineering 2026: Complete Guide">
+<meta name="twitter:image" content="https://projiq.app/og.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI Agents in Software Engineering: The Complete Guide for Engineering Teams (2026)","description":"AI agents are transforming how engineering teams build software in 2026. Learn what they are, the 5 types, how MCP connects them, and how to deploy them safely.","author":{"@type":"Organization","name":"Projiq"},"publisher":{"@type":"Organization","name":"Projiq","logo":{"@type":"ImageObject","url":"https://projiq.app/og.png"}},"datePublished":"2026-08-03","dateModified":"2026-08-03","mainEntityOfPage":{"@type":"WebPage","@id":"https://projiq.app/blog/ai-agents-engineering/"},"image":"https://projiq.app/og.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://projiq.app"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://projiq.app/blog/"},{"@type":"ListItem","position":3,"name":"AI Agents in Software Engineering 2026","item":"https://projiq.app/blog/ai-agents-engineering/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is an AI agent in software engineering?","acceptedAnswer":{"@type":"Answer","text":"An AI agent in software engineering is an AI system that can take multi-step actions autonomously — not just answer a question, but plan a sequence of steps, use tools, execute code, observe results, and adjust its approach. Unlike a chatbot that responds once, an agent loops: it acts, observes what happened, and acts again until the task is done. Examples include Claude Code (which writes code, runs tests, reads failures, and fixes them), Devin, and CI/CD agents that deploy and monitor."}},{"@type":"Question","name":"What is the Model Context Protocol (MCP)?","acceptedAnswer":{"@type":"Answer","text":"MCP (Model Context Protocol) is an open protocol created by Anthropic in 2024 that standardises how AI models connect to external tools, data sources, and APIs. Before MCP, every tool needed a custom integration. With MCP, any MCP-compatible AI can connect to any MCP server — your GitHub, Jira, database, or internal API — through a standard interface. It's becoming the USB-C of AI integrations for engineering tools."}},{"@type":"Question","name":"What is the difference between an AI agent and an AI assistant?","acceptedAnswer":{"@type":"Answer","text":"An AI assistant (like ChatGPT or Copilot Chat) is reactive — it responds to a prompt and then stops. An AI agent is proactive and autonomous — given a goal, it plans steps, executes them using real tools (running code, reading files, calling APIs), observes the results, and continues until the goal is reached or it can't proceed. The key difference is the agent loop: act → observe → reason → act again."}},{"@type":"Question","name":"Is Devin AI actually useful for engineering teams?","acceptedAnswer":{"@type":"Answer","text":"Devin (by Cognition) can handle complete end-to-end coding tasks — writing code, running tests, debugging, and submitting PRs — with impressive autonomy on well-defined tasks. In practice, experienced teams find it most valuable for isolated, well-scoped tasks: adding a new API endpoint, writing a migration, building a utility script. It struggles with deeply intertwined legacy code and tasks requiring deep business context. Think of it as a capable junior contractor rather than a senior engineer replacement."}},{"@type":"Question","name":"How do AI agents fit into a Scrum sprint?","acceptedAnswer":{"@type":"Answer","text":"The most effective integration is to assign agents to specific task types rather than letting them roam freely. During sprint planning, identify tickets suitable for agent execution: isolated bug fixes, test generation, documentation updates, small API endpoints. Assign these to agents as you would assign them to engineers. The agent opens a PR; a senior engineer reviews and merges. Agents on agentic tasks, humans on architecture and review. This captures 20–40% of sprint velocity without sacrificing quality or oversight."}}]}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#030812;color:#F1F5F9;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+.prog{position:fixed;top:60px;left:0;height:3px;background:linear-gradient(90deg,#14B8A6,#06B6D4,#3B82F6);width:0;z-index:300;transition:width .08s linear}
+
+.b-nav{position:sticky;top:0;z-index:200;background:rgba(3,8,18,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)}
+.b-nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center}
+.b-logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;color:#F1F5F9;flex-shrink:0}
+.b-logo-mark{flex-shrink:0;display:block}.b-dot-app{color:#06B6D4}
+.b-nav-links{display:flex;gap:28px;margin-left:auto;margin-right:28px}
+.b-nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
+.b-nav-links a:hover,.b-nav-links a.active{color:#F1F5F9}
+.b-nav-cta{background:linear-gradient(90deg,#3B82F6,#8B5CF6);color:#fff;padding:8px 20px;border-radius:9px;font-size:13px;font-weight:700;flex-shrink:0;transition:opacity .2s}
+.b-nav-cta:hover{opacity:.86}
+
+.b-crumb{max-width:1200px;margin:0 auto;padding:28px 24px 0;display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.35);flex-wrap:wrap}
+.b-crumb a{color:rgba(255,255,255,.38);transition:color .2s}
+.b-crumb a:hover{color:#14B8A6}
+.b-crumb-sep{color:rgba(255,255,255,.18)}
+
+.art-wrap{max-width:1200px;margin:0 auto;padding:32px 24px 0}
+.art-header{margin-bottom:44px}
+.art-cat{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;background:rgba(20,184,166,.11);border:1px solid rgba(20,184,166,.28);color:#2DD4BF;margin-bottom:18px}
+.art-header h1{font-size:clamp(30px,4.5vw,50px);font-weight:900;line-height:1.15;letter-spacing:-1px;margin-bottom:22px}
+.art-meta{display:flex;align-items:center;gap:22px;color:rgba(255,255,255,.35);font-size:13px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap}
+
+.art-layout{display:grid;grid-template-columns:1fr 300px;gap:60px;align-items:start}
+
+.art-body{min-width:0;overflow-wrap:break-word;word-break:break-word;font-size:17px;line-height:1.80;color:rgba(255,255,255,.78);padding-bottom:60px}
+.art-body p{margin-bottom:22px}
+.art-body h2{font-size:26px;font-weight:800;color:#F1F5F9;margin:48px 0 16px;letter-spacing:-.3px;line-height:1.3}
+.art-body h3{font-size:19px;font-weight:700;color:#F1F5F9;margin:28px 0 12px;letter-spacing:-.1px}
+.art-body ul,.art-body ol{margin:0 0 22px 22px}
+.art-body li{margin-bottom:9px;color:rgba(255,255,255,.72)}
+.art-body ul li::marker{color:#14B8A6}
+.art-body ol li::marker{color:#2DD4BF;font-weight:700}
+.art-body strong{color:#F1F5F9;font-weight:700}
+.art-body a{color:#2DD4BF;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(45,212,191,.4);transition:text-decoration-color .2s}
+.art-body a:hover{text-decoration-color:#2DD4BF}
+blockquote{border-left:3px solid #14B8A6;padding:16px 22px;background:rgba(20,184,166,.06);border-radius:0 10px 10px 0;margin:28px 0;font-style:italic;color:rgba(255,255,255,.72);font-size:16px}
+.tip-box{background:rgba(20,184,166,.07);border:1px solid rgba(20,184,166,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.tip-box b{color:#2DD4BF;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.warn-box{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.warn-box b{color:#FBBF24;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.hot-box{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.22);border-radius:12px;padding:20px 22px;margin:28px 0}
+.hot-box b{color:#F87171;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+.info-box{background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.20);border-radius:12px;padding:20px 22px;margin:28px 0}
+.info-box b{color:#60A5FA;display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}
+
+/* Agent type cards */
+.agent-card{background:rgba(10,22,40,.75);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:30px;margin:36px 0;position:relative;overflow:hidden}
+.agent-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.agent-card.coding::before{background:linear-gradient(90deg,#14B8A6,#06B6D4)}
+.agent-card.testing::before{background:linear-gradient(90deg,#8B5CF6,#A78BFA)}
+.agent-card.devops::before{background:linear-gradient(90deg,#F59E0B,#FBBF24)}
+.agent-card.review::before{background:linear-gradient(90deg,#3B82F6,#60A5FA)}
+.agent-card.docs::before{background:linear-gradient(90deg,#10B981,#34D399)}
+
+.agent-header{display:flex;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.agent-emoji{font-size:28px;width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.agent-info h3{font-size:20px;font-weight:800;color:#F1F5F9;margin:0 0 4px;letter-spacing:-.2px}
+.agent-info .agent-tagline{font-size:13px;color:rgba(255,255,255,.42)}
+.agent-badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.3px;margin-left:auto;white-space:nowrap}
+.badge-mature{background:rgba(20,184,166,.14);border:1px solid rgba(20,184,166,.28);color:#2DD4BF}
+.badge-emerging{background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25);color:#FBBF24}
+.badge-early{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.45)}
+
+.agent-body p{font-size:15px;color:rgba(255,255,255,.65);line-height:1.72;margin-bottom:16px}
+.examples-list{background:rgba(255,255,255,.03);border-radius:10px;padding:16px 18px;margin:14px 0}
+.examples-list h5{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:rgba(255,255,255,.30);margin-bottom:10px}
+.examples-list ul{margin:0 0 0 16px}
+.examples-list li{font-size:13px;color:rgba(255,255,255,.55);margin-bottom:6px}
+.examples-list li::marker{color:#14B8A6}
+.tools-row{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.tool-chip{background:rgba(20,184,166,.10);border:1px solid rgba(20,184,166,.22);border-radius:100px;padding:4px 12px;font-size:12px;font-weight:600;color:#2DD4BF}
+
+/* Comparison table */
+.cmp-table-wrap{overflow-x:auto;margin:28px 0;border-radius:12px;border:1px solid rgba(255,255,255,.07)}
+.cmp-table{width:100%;border-collapse:collapse;font-size:13px;min-width:640px}
+.cmp-table th{background:rgba(20,184,166,.10);color:#2DD4BF;padding:12px 14px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;white-space:nowrap}
+.cmp-table th:first-child{color:rgba(255,255,255,.45);min-width:160px}
+.cmp-table td{padding:11px 14px;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.65);vertical-align:middle;line-height:1.45;font-size:13px}
+.cmp-table td:first-child{color:rgba(255,255,255,.42);font-weight:600;font-size:12px;white-space:nowrap}
+.cmp-table tr:hover td{background:rgba(255,255,255,.02)}
+.check{color:#34D399}
+.cross{color:#F87171}
+.partial{color:#FBBF24}
+
+/* Verdict grid */
+.verdict-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0}
+.verdict-card{background:rgba(10,22,40,.7);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:18px}
+.verdict-card .v-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px}
+.verdict-card .v-title{font-size:15px;font-weight:700;color:#F1F5F9;margin-bottom:6px}
+.verdict-card .v-desc{font-size:13px;color:rgba(255,255,255,.48);line-height:1.6}
+
+/* Steps */
+.step-list{counter-reset:steps;list-style:none;margin:0 0 22px;padding:0}
+.step-list li{counter-increment:steps;display:flex;gap:16px;margin-bottom:20px;align-items:flex-start}
+.step-list li::before{content:counter(steps);display:flex;align-items:center;justify-content:center;width:32px;height:32px;min-width:32px;border-radius:50%;background:rgba(20,184,166,.15);border:1px solid rgba(20,184,166,.30);color:#2DD4BF;font-size:13px;font-weight:800;margin-top:1px}
+.step-content strong{display:block;color:#F1F5F9;font-size:16px;font-weight:700;margin-bottom:5px}
+.step-content span{font-size:14px;color:rgba(255,255,255,.55);line-height:1.65}
+
+.art-cta{background:linear-gradient(135deg,rgba(20,184,166,.13),rgba(59,130,246,.08));border:1px solid rgba(20,184,166,.22);border-radius:16px;padding:36px;text-align:center;margin:44px 0}
+.art-cta h3{font-size:22px;font-weight:800;margin-bottom:10px}
+.art-cta p{color:rgba(255,255,255,.52);font-size:15px;margin-bottom:22px;line-height:1.6}
+.art-cta a{display:inline-block;background:linear-gradient(90deg,#14B8A6,#3B82F6);color:#fff;padding:12px 28px;border-radius:9px;font-size:14px;font-weight:700;transition:opacity .2s}
+.art-cta a:hover{opacity:.86;text-decoration:none}
+
+.art-sidebar{position:sticky;top:80px}
+.sb-card{background:rgba(10,22,40,.8);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px;margin-bottom:18px}
+.sb-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.35);margin-bottom:16px}
+.toc-list{list-style:none;padding:0}
+.toc-list li{margin-bottom:9px}
+.toc-list a{font-size:13px;color:rgba(255,255,255,.45);display:block;padding-left:10px;border-left:1px solid rgba(255,255,255,.08);line-height:1.5;transition:color .18s,border-color .18s}
+.toc-list a:hover,.toc-list a.active{color:#2DD4BF;border-left-color:#14B8A6;text-decoration:none}
+.rel-post{display:flex;gap:11px;margin-bottom:13px;align-items:flex-start}
+.rel-icon{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px}
+.rel-post a{font-size:13px;font-weight:600;color:rgba(255,255,255,.65);line-height:1.4;transition:color .2s;display:block;margin-bottom:3px}
+.rel-post a:hover{color:#2DD4BF;text-decoration:none}
+.rel-cat{font-size:11px;color:rgba(255,255,255,.28)}
+
+.b-footer{background:#020810;border-top:1px solid rgba(255,255,255,.07);padding:56px 24px 32px}
+.b-footer-inner{max-width:1200px;margin:0 auto}
+.b-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.b-footer-brand p{color:rgba(255,255,255,.38);font-size:13px;line-height:1.7;margin-top:14px;max-width:230px}
+.b-footer-col h5{color:#F1F5F9;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.b-footer-col a{display:block;color:rgba(255,255,255,.38);font-size:13px;margin-bottom:9px;transition:color .2s}
+.b-footer-col a:hover{color:#2DD4BF}
+.b-footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.b-footer-copy{color:rgba(255,255,255,.22);font-size:12px}
+
+@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{display:none}.verdict-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.b-nav-links{display:none}.b-nav-cta{margin-left:auto}.art-header h1{font-size:28px}.art-body{font-size:16px}.b-footer-grid{grid-template-columns:1fr;gap:24px}.agent-card{padding:20px}}
+
+.faq-block{margin:44px 0}
+.faq-block h2{font-size:26px;font-weight:800;color:#F1F5F9;margin-bottom:22px;letter-spacing:-.3px}
+.faq-entry{border:1px solid rgba(255,255,255,.07);border-radius:12px;margin-bottom:10px;overflow:hidden;background:rgba(10,22,40,.6)}
+.faq-entry summary{padding:17px 22px;font-size:15px;font-weight:700;color:#F1F5F9;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.4}
+.faq-entry summary::-webkit-details-marker{display:none}
+.faq-entry summary::after{content:'+';color:#2DD4BF;font-size:18px;font-weight:400;flex-shrink:0;transition:transform .2s}
+.faq-entry[open] summary::after{transform:rotate(45deg)}
+.faq-entry[open]{border-color:rgba(20,184,166,.22)}
+.faq-ans{padding:0 22px 18px;font-size:14px;color:rgba(255,255,255,.62);line-height:1.75}
+</style>
+</head>
+<body>
+
+<div class="prog" id="prog"></div>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4F46E5"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient><symbol id="projiq-p" viewBox="0 0 285 265"><path d="M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z" fill="url(#brand-grad)"/><rect x="0" y="65" width="60" height="12" rx="6" fill="#4F46E5"/><rect x="0" y="100" width="60" height="12" rx="6" fill="#06B6D4"/><rect x="0" y="135" width="60" height="12" rx="6" fill="#10B981"/><path d="M140 105 L160 125 L205 80" fill="none" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
+
+<nav class="b-nav">
+  <div class="b-nav-inner">
+    <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+    <div class="b-nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog/" class="active">Blog</a>
+    </div>
+    <a href="https://app.projiq.app/register-org" class="b-nav-cta">Get Started Free</a>
+  </div>
+</nav>
+
+<div class="b-crumb">
+  <a href="/">Home</a><span class="b-crumb-sep">›</span>
+  <a href="/blog/">Blog</a><span class="b-crumb-sep">›</span>
+  <span>AI Agents in Software Engineering 2026</span>
+</div>
+
+<div class="art-wrap">
+  <header class="art-header">
+    <span class="art-cat">Engineering</span>
+    <h1>AI Agents in Software Engineering: The Complete Guide for Engineering Teams (2026)</h1>
+    <div class="art-meta">
+      <span>✍ Projiq Team</span>
+      <span>📅 August 3, 2026</span>
+      <span>⏱ 12 min read</span>
+    </div>
+  </header>
+
+  <div class="art-layout">
+    <article class="art-body" id="article">
+
+      <p>There's a meaningful difference between an AI that answers your question and an AI that actually does the work. In 2024, engineering teams discovered AI assistants — tools that wrote code snippets, explained errors, and drafted documentation when asked. In 2026, the frontier has moved to <strong>AI agents</strong>: systems that take a goal, plan the steps to reach it, execute those steps using real tools, observe what happened, and keep going until the job is done.</p>
+
+      <p>The shift sounds incremental. It isn't. An AI assistant that helps you write a function is a faster keyboard. An AI agent that takes a GitHub issue, writes the fix, runs the tests, reads the failures, debugs them, and opens a PR is a new kind of team member. Engineering leaders who understand this distinction — and act on it — are getting measurably more from their teams in 2026.</p>
+
+      <div class="hot-box">
+        <b>🔥 The 2026 inflection point</b>
+        According to GitHub's State of Octoverse 2026, 68% of engineering teams at companies with over 50 engineers have at least one AI agent integrated into their development workflow — up from 12% in 2024. The adoption curve is steep, and it's not slowing down.
+      </div>
+
+      <h2 id="what-is-an-agent">What Is an AI Agent? (vs. an AI Assistant)</h2>
+
+      <p>The term "agent" is overloaded in tech. In the AI context, it has a precise meaning: an AI agent is a system that runs an <strong>autonomous loop</strong>. The loop looks like this:</p>
+
+      <ol>
+        <li><strong>Receive a goal</strong> — not a one-shot prompt, but a persistent objective.</li>
+        <li><strong>Plan steps</strong> — decompose the goal into actions, in order.</li>
+        <li><strong>Use tools</strong> — call APIs, run code, read files, search the web, write to databases.</li>
+        <li><strong>Observe results</strong> — read what happened after each action.</li>
+        <li><strong>Adjust and continue</strong> — if the result wasn't what was expected, adapt and try again.</li>
+        <li><strong>Stop when done</strong> — or when it determines the goal can't be reached and surfaces the blocker.</li>
+      </ol>
+
+      <p>Compare this to a standard AI assistant: you prompt it, it generates a response, and then it stops. It doesn't run code to verify its suggestion. It doesn't check whether the tests pass. It doesn't open a PR. It gives you a starting point and then you do the rest. An agent closes that loop.</p>
+
+      <div class="info-box">
+        <b>ℹ️ The agent loop in practice</b>
+        When Claude Code is given the task "Fix the failing tests in the auth module," it doesn't just write code — it reads the test output, identifies which tests are failing, reads the relevant source files, writes a fix, runs the tests again, and if they still fail, reads the new error output and tries a different approach. This loop can run 5–15 times before it either succeeds or reports what it couldn't resolve.
+      </div>
+
+      <h2 id="five-agent-types">The 5 Types of AI Agents Engineering Teams Use in 2026</h2>
+
+      <p>Not all agents are the same, and "AI agent" in 2026 covers a surprisingly wide range of tools. Here are the five categories that matter most for engineering teams — with honest assessments of where each stands in terms of maturity.</p>
+
+      <!-- Coding Agents -->
+      <div class="agent-card coding" id="coding-agents">
+        <div class="agent-header">
+          <div class="agent-emoji" style="background:rgba(20,184,166,.12);border:1px solid rgba(20,184,166,.25)">🤖</div>
+          <div class="agent-info">
+            <h3>Coding Agents</h3>
+            <div class="agent-tagline">Full-cycle autonomous software development — from issue to merged PR</div>
+          </div>
+          <span class="agent-badge badge-mature">Mature</span>
+        </div>
+        <div class="agent-body">
+          <p>Coding agents are the most prominent category — they write code, run tests, debug failures, and submit PRs with minimal human intervention. The leading examples are <strong>Claude Code</strong> (Anthropic), <strong>Devin</strong> (Cognition), <strong>GitHub Copilot Workspace</strong>, and open-source frameworks like <strong>SWE-agent</strong> and <strong>OpenHands</strong>.</p>
+          <p>The critical insight: these agents are not equally capable. Claude Code and Devin handle genuinely complex, multi-file tasks. Copilot Workspace is more structured — it guides you through the task rather than executing autonomously. Choose based on how much autonomy you need and how well-defined your tasks are.</p>
+          <div class="examples-list">
+            <h5>What coding agents handle well</h5>
+            <ul>
+              <li>Isolated bug fixes from a clear reproduction case</li>
+              <li>Adding a new REST API endpoint from a spec</li>
+              <li>Database migrations with associated model updates</li>
+              <li>Refactoring a module to a new interface</li>
+              <li>Writing and running unit tests for a new function</li>
+              <li>Updating dependencies and fixing breaking changes</li>
+            </ul>
+          </div>
+          <div class="examples-list">
+            <h5>Where coding agents still struggle</h5>
+            <ul>
+              <li>Tasks requiring deep business domain understanding</li>
+              <li>Architecture decisions with long-term implications</li>
+              <li>Highly coupled legacy code with implicit dependencies</li>
+              <li>Features with ambiguous or incomplete requirements</li>
+            </ul>
+          </div>
+          <div class="tools-row">
+            <span class="tool-chip">Claude Code</span>
+            <span class="tool-chip">Devin</span>
+            <span class="tool-chip">Copilot Workspace</span>
+            <span class="tool-chip">SWE-agent</span>
+            <span class="tool-chip">OpenHands</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testing Agents -->
+      <div class="agent-card testing">
+        <div class="agent-header">
+          <div class="agent-emoji" style="background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.25)">🧪</div>
+          <div class="agent-info">
+            <h3>Testing &amp; QA Agents</h3>
+            <div class="agent-tagline">Autonomous test generation, execution, and regression coverage</div>
+          </div>
+          <span class="agent-badge badge-mature">Mature</span>
+        </div>
+        <div class="agent-body">
+          <p>Testing agents are among the highest-ROI AI investments for engineering teams right now. They don't just generate test stubs — they <strong>analyse your codebase</strong>, identify untested code paths, write meaningful test cases, execute them, and report coverage gaps. Some can synthesise end-to-end test scenarios from user stories and run them against your staging environment.</p>
+          <p>Tools like <strong>Codium AI</strong>, <strong>Diffblue Cover</strong>, and <strong>Octomind</strong> (end-to-end) have demonstrated measurable reductions in QA time. Teams report generating comprehensive test suites for new modules in minutes rather than hours — with better branch coverage than manually written tests because the agent explores edge cases systematically.</p>
+          <div class="examples-list">
+            <h5>Use cases</h5>
+            <ul>
+              <li>Auto-generating unit tests for every new function in a PR</li>
+              <li>Identifying code paths with zero test coverage</li>
+              <li>End-to-end test generation from user story acceptance criteria</li>
+              <li>Regression test maintenance when APIs change</li>
+              <li>Mutation testing — generating code mutations to validate test quality</li>
+            </ul>
+          </div>
+          <div class="tools-row">
+            <span class="tool-chip" style="background:rgba(139,92,246,.10);border-color:rgba(139,92,246,.22);color:#A78BFA">Codium AI</span>
+            <span class="tool-chip" style="background:rgba(139,92,246,.10);border-color:rgba(139,92,246,.22);color:#A78BFA">Diffblue Cover</span>
+            <span class="tool-chip" style="background:rgba(139,92,246,.10);border-color:rgba(139,92,246,.22);color:#A78BFA">Octomind</span>
+            <span class="tool-chip" style="background:rgba(139,92,246,.10);border-color:rgba(139,92,246,.22);color:#A78BFA">Applitools</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DevOps Agents -->
+      <div class="agent-card devops">
+        <div class="agent-header">
+          <div class="agent-emoji" style="background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25)">⚙️</div>
+          <div class="agent-info">
+            <h3>DevOps &amp; CI/CD Agents</h3>
+            <div class="agent-tagline">Autonomous deployment, monitoring, and incident response</div>
+          </div>
+          <span class="agent-badge badge-emerging">Emerging</span>
+        </div>
+        <div class="agent-body">
+          <p>DevOps agents sit in your CI/CD pipeline and take autonomous action — not just flagging failures but <strong>diagnosing and sometimes fixing them</strong>. The emerging category includes agents that watch your deployment metrics, detect anomalies, correlate them with recent changes, and either auto-roll-back or page the right engineer with a pre-diagnosed incident report.</p>
+          <p>The most mature form of this today is <strong>AI-assisted root cause analysis</strong> — when a deployment fails or a spike appears in error rates, the agent traces logs, correlates with the last deploy, and produces a structured incident summary. Teams using this consistently report MTTR (mean time to recovery) reductions of 30–50% because the first 20 minutes of investigation happen automatically.</p>
+          <div class="examples-list">
+            <h5>Current capabilities</h5>
+            <ul>
+              <li>CI failure analysis — reads logs and explains what broke and why</li>
+              <li>Flaky test detection and auto-retry with pattern identification</li>
+              <li>Deployment anomaly detection with auto-rollback triggers</li>
+              <li>Incident postmortem drafting from log and alert data</li>
+              <li>Infrastructure cost optimization recommendations</li>
+            </ul>
+          </div>
+          <div class="tools-row">
+            <span class="tool-chip" style="background:rgba(245,158,11,.10);border-color:rgba(245,158,11,.22);color:#FBBF24">Cortex</span>
+            <span class="tool-chip" style="background:rgba(245,158,11,.10);border-color:rgba(245,158,11,.22);color:#FBBF24">Harness AI</span>
+            <span class="tool-chip" style="background:rgba(245,158,11,.10);border-color:rgba(245,158,11,.22);color:#FBBF24">Datadog AI</span>
+            <span class="tool-chip" style="background:rgba(245,158,11,.10);border-color:rgba(245,158,11,.22);color:#FBBF24">PagerDuty AI</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Code Review Agents -->
+      <div class="agent-card review">
+        <div class="agent-header">
+          <div class="agent-emoji" style="background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.25)">🔍</div>
+          <div class="agent-info">
+            <h3>Code Review Agents</h3>
+            <div class="agent-tagline">Automated first-pass review — security, quality, and correctness</div>
+          </div>
+          <span class="agent-badge badge-mature">Mature</span>
+        </div>
+        <div class="agent-body">
+          <p>Code review agents run on every PR before human reviewers touch it. They're different from static analysis — instead of pattern-matching for known anti-patterns, they <strong>reason about your specific change in context</strong>: what does this PR intend to do, what could go wrong given the surrounding code, and are there edge cases the author likely missed?</p>
+          <p>The best in 2026 — <strong>CodeRabbit</strong>, <strong>Graphite Automations</strong>, and <strong>GitHub Copilot code review</strong> — leave inline comments, summarise the PR's purpose, flag security concerns, and even suggest alternative implementations. They've become a genuine productivity multiplier: human reviewers focus on architecture and intent rather than missing null checks.</p>
+          <div class="examples-list">
+            <h5>What they catch reliably</h5>
+            <ul>
+              <li>Security vulnerabilities (SQL injection, missing auth checks, secrets in code)</li>
+              <li>Missing error handling and unchecked null paths</li>
+              <li>Performance anti-patterns (N+1 queries, unbounded loops)</li>
+              <li>Missing test cases for new code paths</li>
+              <li>Inconsistency with your codebase's existing patterns</li>
+            </ul>
+          </div>
+          <div class="tools-row">
+            <span class="tool-chip" style="background:rgba(59,130,246,.10);border-color:rgba(59,130,246,.22);color:#60A5FA">CodeRabbit</span>
+            <span class="tool-chip" style="background:rgba(59,130,246,.10);border-color:rgba(59,130,246,.22);color:#60A5FA">Graphite</span>
+            <span class="tool-chip" style="background:rgba(59,130,246,.10);border-color:rgba(59,130,246,.22);color:#60A5FA">Copilot Review</span>
+            <span class="tool-chip" style="background:rgba(59,130,246,.10);border-color:rgba(59,130,246,.22);color:#60A5FA">Sourcery</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documentation Agents -->
+      <div class="agent-card docs">
+        <div class="agent-header">
+          <div class="agent-emoji" style="background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25)">📚</div>
+          <div class="agent-info">
+            <h3>Documentation Agents</h3>
+            <div class="agent-tagline">Auto-generated, always-current API docs, changelogs, and runbooks</div>
+          </div>
+          <span class="agent-badge badge-emerging">Emerging</span>
+        </div>
+        <div class="agent-body">
+          <p>Documentation is the most universally hated engineering chore — and the category where AI agents have made the most frictionless gains. Documentation agents <strong>watch your code changes and update docs automatically</strong>: API docs regenerate when endpoints change, changelogs draft themselves from PR descriptions and commit messages, and runbooks update when infrastructure changes are merged.</p>
+          <p>The value is compounding. Teams that deploy documentation agents consistently report that their internal docs go from "perpetually out of date" to "current within one sprint" — because the agent doesn't need to be asked and doesn't forget. The quality still needs human editing for clarity and narrative, but the raw accuracy improves dramatically.</p>
+          <div class="examples-list">
+            <h5>High-value documentation targets</h5>
+            <ul>
+              <li>API reference docs — auto-generated from code + comments</li>
+              <li>Changelogs — synthesised from PR titles, descriptions, and linked issues</li>
+              <li>Architecture decision records (ADRs) — drafted from design discussions</li>
+              <li>Incident postmortems — structured from alert and log data</li>
+              <li>Onboarding guides — updated when setup steps change</li>
+            </ul>
+          </div>
+          <div class="tools-row">
+            <span class="tool-chip" style="background:rgba(16,185,129,.10);border-color:rgba(16,185,129,.22);color:#34D399">Mintlify</span>
+            <span class="tool-chip" style="background:rgba(16,185,129,.10);border-color:rgba(16,185,129,.22);color:#34D399">Swimm AI</span>
+            <span class="tool-chip" style="background:rgba(16,185,129,.10);border-color:rgba(16,185,129,.22);color:#34D399">Stenography</span>
+            <span class="tool-chip" style="background:rgba(16,185,129,.10);border-color:rgba(16,185,129,.22);color:#34D399">Changelog AI</span>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="mcp">The Model Context Protocol (MCP): How Agents Talk to Your Tools</h2>
+
+      <p>One of the most consequential engineering developments of 2025 was the widespread adoption of <strong>MCP — the Model Context Protocol</strong>, an open standard created by Anthropic that defines how AI models connect to external tools, data sources, and services.</p>
+
+      <p>Before MCP, every AI integration was a custom one-off: a plugin here, a webhook there, an API wrapper built by your team. MCP standardises this: any MCP-compatible AI can connect to any MCP server through a common interface. Think of it as the USB-C of AI integrations — one standard, universal compatibility.</p>
+
+      <div class="info-box">
+        <b>ℹ️ MCP in plain terms</b>
+        With MCP, you can connect Claude Code to your Jira, GitHub, Slack, database, and internal APIs — and the agent can read your tickets, write code, open PRs, post status updates, and query your staging database, all in a single autonomous task. Without MCP, each of those connections would require a separate custom integration.
+      </div>
+
+      <h3>What Your Engineering Team Can Connect Today</h3>
+      <p>The MCP ecosystem in 2026 has grown to hundreds of servers. The most valuable for engineering teams:</p>
+      <ul>
+        <li><strong>GitHub MCP</strong> — read/write issues, PRs, code, and actions</li>
+        <li><strong>Linear / Jira MCP</strong> — read and update sprint tickets during agent tasks</li>
+        <li><strong>Slack MCP</strong> — post agent status updates and summaries to channels</li>
+        <li><strong>Database MCPs</strong> — read schemas, run read-only queries during debugging</li>
+        <li><strong>Datadog / PagerDuty MCP</strong> — read alerts and metric data during incident investigation</li>
+        <li><strong>Figma MCP</strong> — read design specs and generate UI code from components</li>
+      </ul>
+
+      <blockquote>"MCP is to AI agents what npm was to Node.js — the ecosystem multiplier that turns a useful tool into a platform."</blockquote>
+
+      <h2 id="comparison-table">Agent Capability Comparison</h2>
+
+      <div class="cmp-table-wrap">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>Capability</th>
+              <th>Coding Agents</th>
+              <th>Testing Agents</th>
+              <th>DevOps Agents</th>
+              <th>Review Agents</th>
+              <th>Docs Agents</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Autonomy level</td><td class="check">High</td><td class="check">High</td><td class="partial">Medium</td><td class="check">High</td><td class="check">High</td></tr>
+            <tr><td>Maturity (2026)</td><td class="check">Mature</td><td class="check">Mature</td><td class="partial">Emerging</td><td class="check">Mature</td><td class="partial">Emerging</td></tr>
+            <tr><td>Human oversight needed</td><td class="partial">PR review</td><td class="partial">Coverage review</td><td class="check">Always</td><td class="partial">Final approval</td><td class="partial">Clarity edit</td></tr>
+            <tr><td>MCP integration value</td><td class="check">Very high</td><td class="partial">Medium</td><td class="check">Very high</td><td class="check">High</td><td class="partial">Medium</td></tr>
+            <tr><td>Avg. time savings/week</td><td>3–8 hrs/eng</td><td>2–5 hrs/eng</td><td>1–3 hrs/eng</td><td>1–4 hrs/eng</td><td>1–3 hrs/eng</td></tr>
+            <tr><td>Setup complexity</td><td class="partial">Medium</td><td class="partial">Medium</td><td class="cross">High</td><td class="check">Low</td><td class="check">Low</td></tr>
+            <tr><td>Risk of bad output</td><td class="partial">Medium</td><td class="check">Low</td><td class="cross">High</td><td class="check">Low</td><td class="check">Low</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="sprint-integration">How to Integrate AI Agents into Your Sprint Workflow</h2>
+      <p>The teams getting the most from AI agents haven't replaced their sprint process — they've <strong>added agents as a new category of sprint contributor</strong>. Here's a practical six-step integration:</p>
+
+      <ul class="step-list">
+        <li>
+          <div class="step-content">
+            <strong>Start with code review agents</strong>
+            <span>The lowest-risk entry point. Install CodeRabbit or Copilot Code Review on your GitHub org. It runs automatically on every PR with zero workflow change. Your team immediately gets first-pass review coverage without sacrificing anything. Run it for 2–3 sprints to build trust before adding more autonomous agents.</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Add testing agents to your CI pipeline</strong>
+            <span>Configure a testing agent to run on every new PR and report coverage gaps as PR comments. Teams that do this consistently see test coverage increase 15–25% within two sprints — not because developers are doing more work, but because the agent is catching what they missed.</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Tag sprint tickets as "agent-suitable"</strong>
+            <span>During sprint planning, identify 2–4 tickets per sprint that are well-defined, isolated, and testable. Tag them. These become your coding agent queue. Good candidates: "Add endpoint X to API," "Fix bug Y in module Z," "Upgrade dependency A and fix breaking changes." Bad candidates: "Improve the checkout flow" or anything requiring product judgment.</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Run coding agents as async contributors</strong>
+            <span>Assign agent-suitable tickets to your coding agent (Claude Code, Devin, etc.) at sprint start. Let it work overnight or over a weekend. When it opens a PR, a senior engineer reviews and merges. One engineer reviewing five agent PRs is faster than five engineers writing five implementations.</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Automate documentation after merges</strong>
+            <span>Set up your documentation agent to run post-merge: regenerate API docs, draft a changelog entry, update any runbook that references changed infrastructure. Make this a merge hook so docs are never more than one PR behind the code.</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Add DevOps agents for incident triage</strong>
+            <span>This is the highest-complexity step — do it last. Start narrow: configure your monitoring agent to auto-generate an incident summary when on-call is paged. Don't give it auto-rollback rights until you've reviewed 10+ of its summaries and confirmed they're accurate. Trust is earned incrementally.</span>
+          </div>
+        </li>
+      </ul>
+
+      <div class="tip-box">
+        <b>Team tip</b>
+        The most common mistake teams make when adopting agents is going too broad too fast — giving agents access to production systems, vague tasks, and no review gate. Start narrow: one agent type, read-only access, all output reviewed before merge. Widen scope as you build confidence in that agent's accuracy on your specific codebase.
+      </div>
+
+      <h2 id="risks">Risks Engineering Leaders Must Manage</h2>
+
+      <p>AI agents introduce risks that static AI tools don't. Because agents take actions — not just generate suggestions — a mistake has consequences beyond a bad code suggestion:</p>
+
+      <ul>
+        <li><strong>Blast radius.</strong> An agent with write access to your production database or live infrastructure can do real damage if given a bad goal or if it misunderstands context. Always start agents with the minimum permissions needed for the task — read before write, staging before production.</li>
+        <li><strong>Hallucinated correctness.</strong> Agents can produce code that looks correct, passes basic tests, and gets merged — but has subtle logic errors that only surface under edge conditions. Your PR review process is not a safety net you can relax because the code came from an agent. If anything, review agent PRs more carefully than human PRs for the first 3 months.</li>
+        <li><strong>Over-automation.</strong> Junior engineers who spend their first year having agents write all their code may not develop the debugging and reasoning skills that come from writing code yourself. Deliberately reserve learning-appropriate tasks for humans. Agents should take the repetitive work; humans should take the complexity.</li>
+        <li><strong>Prompt injection.</strong> If your coding agent reads external content (tickets, documentation, user comments) as part of its context, malicious content in those sources could redirect agent behaviour. Keep agent access to external user content minimal and validate agent output before acting on it.</li>
+        <li><strong>Secret exposure.</strong> Agents with filesystem access may inadvertently log, commit, or transmit secrets found in environment files. Use secret-scanning tools on all agent output and ensure agents can't push directly to main without a review gate.</li>
+      </ul>
+
+      <div class="warn-box">
+        <b>⚠️ The governance baseline</b>
+        Before deploying any autonomous coding or DevOps agent: (1) define exactly what permissions it has, (2) ensure all agent output goes through a human review gate before reaching production, (3) log every agent action for audit purposes, (4) set a kill switch — a way to immediately revoke agent access if something goes wrong.
+      </div>
+
+      <h2 id="where-to-start">Verdict: Where to Start in 2026</h2>
+
+      <div class="verdict-grid">
+        <div class="verdict-card">
+          <div class="v-label" style="color:#2DD4BF">Best first agent to deploy</div>
+          <div class="v-title">Code Review Agent (CodeRabbit)</div>
+          <div class="v-desc">Zero workflow change, immediate value, minimal risk. Works on top of your existing GitHub/GitLab PR process. Every team should have this running within a week.</div>
+        </div>
+        <div class="verdict-card">
+          <div class="v-label" style="color:#A78BFA">Best for velocity gains</div>
+          <div class="v-title">Coding Agent (Claude Code)</div>
+          <div class="v-desc">Assign 2–4 well-scoped tickets per sprint to Claude Code and review the PRs. Teams consistently report completing 20–35% more story points per sprint with the same headcount.</div>
+        </div>
+        <div class="verdict-card">
+          <div class="v-label" style="color:#34D399">Best underrated opportunity</div>
+          <div class="v-title">Testing Agent (Codium AI)</div>
+          <div class="v-desc">Test coverage debt is universal. A testing agent can systematically eliminate it sprint by sprint. ROI is high because the agent works on existing code — no new feature work required.</div>
+        </div>
+        <div class="verdict-card">
+          <div class="v-label" style="color:#FBBF24">Save for later</div>
+          <div class="v-title">DevOps / CI Agents</div>
+          <div class="v-desc">High value when mature, but the risk of misconfigured autonomous action in production is real. Wait until you have 3+ months of experience with lower-risk agents before giving any agent write access to infrastructure.</div>
+        </div>
+      </div>
+
+      <h2 id="projiq-agents">How Projiq Fits Into an Agent-First Engineering Workflow</h2>
+      <p>AI agents don't operate in a vacuum — they operate in the context of your sprint. When a coding agent picks up a ticket, completes it, and opens a PR, that action needs to be reflected in your project management tool: the ticket status updates, the sprint board shows progress, and the team can see what's in review without checking GitHub separately.</p>
+      <p>Projiq's sprint boards, real-time status updates, and <strong>GitHub integration</strong> keep the human and agent sides of your sprint synchronized. When an agent opens a PR linked to a Projiq ticket, the ticket moves automatically. When the PR is merged, the story is marked complete. The sprint velocity calculation includes agent-completed work alongside human-completed work — because from the sprint's perspective, done is done.</p>
+      <p>As agent workflows mature, the sprint board becomes the orchestration layer: humans plan tasks, agents execute them, and the board tracks both without distinguishing who wrote the code — only what shipped.</p>
+
+      <div class="art-cta">
+        <h3>Track agent and human work in one sprint board</h3>
+        <p>Projiq's sprint boards, real-time collaboration, and GitHub integration keep your AI-agent workflow and your human engineers synchronized. One board, one source of truth, one place where done means done.</p>
+        <a href="https://app.projiq.app/register-org">Start Free — No Credit Card</a>
+      </div>
+
+      <div class="faq-block">
+        <h2>Frequently Asked Questions</h2>
+
+        <details class="faq-entry">
+          <summary>What is an AI agent in software engineering?</summary>
+          <div class="faq-ans">An AI agent in software engineering is an AI system that runs an autonomous loop — it receives a goal, plans steps, uses real tools (running code, reading files, calling APIs), observes what happened, and continues until the goal is reached. Unlike a chatbot that responds once, an agent acts iteratively until the job is done. Examples include Claude Code writing and testing a bugfix, or a CI agent diagnosing a deployment failure from logs and metrics.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>What is the Model Context Protocol (MCP) and why does it matter?</summary>
+          <div class="faq-ans">MCP is an open protocol created by Anthropic in 2024 that standardises how AI models connect to external tools, data sources, and APIs. Before MCP, every integration required custom code. With MCP, any compatible AI can connect to any MCP server through a common interface — your GitHub, Jira, database, Slack, or internal API. It's the reason AI agents can now be connected to your entire engineering toolchain without months of integration work. In 2026, MCP server support has become a standard feature request for enterprise SaaS products.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>Is Devin AI worth it for most engineering teams?</summary>
+          <div class="faq-ans">Devin delivers genuine value on isolated, well-scoped tasks — building API endpoints, writing migrations, upgrading dependencies. It struggles with deeply interconnected legacy code, ambiguous requirements, and tasks requiring strong business domain knowledge. For most teams in 2026, Claude Code is the better starting point: it's more accessible, integrates with your existing terminal workflow, and the pricing model is more predictable. Try Devin when your team has enough agent experience to know what kinds of tasks to assign it.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>How do AI agents change the role of senior engineers?</summary>
+          <div class="faq-ans">Senior engineers who adopt an agent-first workflow shift from being primary code producers to being code reviewers, task definers, and architecture owners. The ratio of implementation to review changes: instead of writing 8 functions and reviewing 2, you might review 10 agent-written functions and write 2 yourself — the ones requiring deep domain reasoning. The skills that matter most shift toward: writing precise task specifications that agents can execute accurately, reviewing agent output critically (not assuming it's correct), and making architectural decisions that agents can't make alone.</div>
+        </details>
+
+        <details class="faq-entry">
+          <summary>Can AI agents access my production database or cloud infrastructure?</summary>
+          <div class="faq-ans">Technically yes, with the right MCP servers or tool integrations. Practically, you should be extremely careful about what access you grant. Start with read-only access to staging environments. Never give an autonomous agent write access to production databases or infrastructure without a human review gate and a tested rollback procedure. The risk isn't just that the agent makes an error — it's that an autonomous agent can make that error at 3am while nobody is watching. Build in human checkpoints for any action that's hard to reverse.</div>
+        </details>
+      </div>
+
+    </article>
+
+    <aside class="art-sidebar">
+      <div class="sb-card">
+        <h4>Contents</h4>
+        <ul class="toc-list">
+          <li><a href="#what-is-an-agent">What Is an AI Agent?</a></li>
+          <li><a href="#five-agent-types">5 Types of AI Agents</a></li>
+          <li><a href="#coding-agents">↳ Coding Agents</a></li>
+          <li><a href="#mcp">Model Context Protocol (MCP)</a></li>
+          <li><a href="#comparison-table">Capability Comparison</a></li>
+          <li><a href="#sprint-integration">Sprint Workflow Integration</a></li>
+          <li><a href="#risks">Risks to Manage</a></li>
+          <li><a href="#where-to-start">Where to Start</a></li>
+          <li><a href="#projiq-agents">Projiq &amp; Agent Workflows</a></li>
+        </ul>
+      </div>
+      <div class="sb-card">
+        <h4>Related Articles</h4>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(99,102,241,.13);border:1px solid rgba(99,102,241,.22)">🤖</div>
+          <div>
+            <a href="/blog/best-ai-coding-tools/">Best AI Coding Tools 2026</a>
+            <span class="rel-cat">Productivity</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(59,130,246,.13);border:1px solid rgba(59,130,246,.22)">🧠</div>
+          <div>
+            <a href="/blog/reduce-context-switching/">Context Switching &amp; Engineering Productivity</a>
+            <span class="rel-cat">Engineering</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(16,185,129,.13);border:1px solid rgba(16,185,129,.22)">⚡</div>
+          <div>
+            <a href="/blog/engineering-team-productivity/">Why Your Team Is Losing 5+ Hours a Week</a>
+            <span class="rel-cat">Engineering</span>
+          </div>
+        </div>
+        <div class="rel-post">
+          <div class="rel-icon" style="background:rgba(99,102,241,.13);border:1px solid rgba(99,102,241,.22)">📈</div>
+          <div>
+            <a href="/blog/dora-metrics/">DORA Metrics Explained</a>
+            <span class="rel-cat">Productivity</span>
+          </div>
+        </div>
+        <a href="https://app.projiq.app/register-org" style="display:block;background:linear-gradient(90deg,#14B8A6,#3B82F6);color:#fff;text-align:center;padding:10px 16px;border-radius:8px;font-size:13px;font-weight:700;margin-top:6px;transition:opacity .2s" onmouseover="this.style.opacity='.86'" onmouseout="this.style.opacity='1'">Get Started Free</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="b-footer">
+  <div class="b-footer-inner">
+    <div class="b-footer-grid">
+      <div class="b-footer-brand">
+        <a href="/" class="b-logo"><svg class="b-logo-mark" width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><use href="#projiq-p"/></svg><span>Projiq<span class="b-dot-app">.app</span></span></a>
+        <p>Project management built for engineering organizations. Sprints, boards, timelines, and real-time collaboration — one plan for your whole org.</p>
+      </div>
+      <div class="b-footer-col">
+        <h5>Product</h5>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#security">Security</a>
+        <a href="https://app.projiq.app/login">Sign In</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Blog</h5>
+        <a href="/blog/">All Articles</a>
+        <a href="/blog/ai-agents-engineering/">AI Agents 2026</a>
+        <a href="/blog/best-ai-coding-tools/">AI Coding Tools</a>
+        <a href="/blog/reduce-context-switching/">Context Switching</a>
+        <a href="/blog/dora-metrics/">DORA Metrics</a>
+      </div>
+      <div class="b-footer-col">
+        <h5>Alternatives</h5>
+        <a href="/jira-alternative/">Jira Alternative</a>
+        <a href="/linear-alternative/">Linear Alternative</a>
+        <a href="/asana-alternative/">Asana Alternative</a>
+        <a href="https://app.projiq.app/register-org">Free Trial</a>
+      </div>
+    </div>
+    <div class="b-footer-bottom">
+      <span class="b-footer-copy">© 2026 Projiq. All rights reserved.</span>
+      <a href="https://www.linkedin.com/company/porjiq-app/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.38);font-size:12px;text-decoration:none;transition:color .2s" onmouseover="this.style.color='#2DD4BF'" onmouseout="this.style.color='rgba(255,255,255,.38)'"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+      <span class="b-footer-copy">Built for engineering organizations.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var prog=document.getElementById('prog');
+  window.addEventListener('scroll',function(){
+    var d=document.documentElement;
+    var pct=(d.scrollTop||document.body.scrollTop)/(d.scrollHeight-d.clientHeight||1)*100;
+    prog.style.width=Math.min(pct,100)+'%';
+  },{passive:true});
+  var links=document.querySelectorAll('.toc-list a');
+  var heads=Array.from(links).map(function(l){
+    var id=l.getAttribute('href').replace('#','');
+    return document.getElementById(id);
+  }).filter(Boolean);
+  window.addEventListener('scroll',function(){
+    var top=window.scrollY+100;
+    var cur=heads[0];
+    heads.forEach(function(h){if(h&&h.offsetTop<=top)cur=h;});
+    links.forEach(function(l){l.classList.toggle('active',cur&&l.getAttribute('href')==='#'+cur.id);});
+  },{passive:true});
+})();
+</script>
+<style>.back-top{position:fixed;bottom:32px;right:32px;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#14B8A6,#3B82F6);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transform:translateY(14px);transition:opacity .25s,transform .25s,box-shadow .2s;z-index:500;box-shadow:0 4px 18px rgba(20,184,166,.40)}.back-top.visible{opacity:1;pointer-events:auto;transform:translateY(0)}.back-top:hover{box-shadow:0 6px 28px rgba(20,184,166,.60)}.back-top svg{display:block}@media(max-width:600px){.back-top{bottom:20px;right:20px;width:42px;height:42px}}</style>
+<button class="back-top" id="back-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14V4M4 9l5-5 5 5"/></svg></button>
+<script>var _bt=document.getElementById('back-top');window.addEventListener('scroll',function(){_bt.classList.toggle('visible',window.scrollY>320)},{passive:true});</script>
+</body>
+</html>
