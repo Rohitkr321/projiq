@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms &amp; Conditions — Projiq</title>
+  <meta name="description" content="Projiq Terms and Conditions — the rules governing use of the Projiq platform." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <style>
+    :root {
+      --bg:        #F7F9FC;
+      --surface:   #FFFFFF;
+      --border:    #DDE6F3;
+      --text:      #0F172A;
+      --muted:     #526077;
+      --accent:    #3B82F6;
+      --accent-dim:#EFF6FF;
+      --toc-bg:    #F0F5FF;
+      --tag-bg:    #EFF6FF;
+      --tag-text:  #1D4ED8;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:        #080F1E;
+        --surface:   #0D1A2E;
+        --border:    #1A2E4A;
+        --text:      #E2EAF8;
+        --muted:     #7A93B4;
+        --accent:    #60A5FA;
+        --accent-dim:#0F1E35;
+        --toc-bg:    #0A1628;
+        --tag-bg:    #0F1E35;
+        --tag-text:  #93C5FD;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 15.5px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    .site-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    .logo-link {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .logo-name {
+      font-size: 20px; font-weight: 900; letter-spacing: -0.04em;
+      color: var(--text);
+    }
+    .logo-name .dot-app { color: #06B6D4; }
+    .header-sep { flex: 1; }
+    .doc-tag {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.7px;
+      text-transform: uppercase;
+      background: var(--tag-bg); color: var(--tag-text);
+      padding: 4px 10px; border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+
+    /* ── Layout ── */
+    .layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      max-width: 1080px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      position: sticky;
+      top: 69px;
+      padding: 36px 28px 36px 40px;
+      background: var(--toc-bg);
+      border-right: 1px solid var(--border);
+      min-height: calc(100vh - 69px);
+    }
+    .toc-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .toc-list a {
+      display: block;
+      font-size: 12.5px; color: var(--muted);
+      text-decoration: none; padding: 5px 8px;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+      line-height: 1.4;
+    }
+    .toc-list a:hover { color: var(--accent); background: var(--accent-dim); }
+    .toc-list a.active { color: var(--accent); font-weight: 600; background: var(--accent-dim); }
+    .toc-updated {
+      margin-top: 28px;
+      font-size: 11px; color: var(--muted); line-height: 1.6;
+    }
+    .toc-updated strong { display: block; color: var(--text); font-weight: 600; font-size: 12px; }
+
+    /* ── Content ── */
+    .content { padding: 48px 56px 80px 56px; max-width: 740px; }
+
+    .page-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+    }
+    .page-title {
+      font-size: 34px; font-weight: 900; letter-spacing: -0.8px;
+      line-height: 1.15; color: var(--text); margin-bottom: 12px;
+    }
+    .page-lead {
+      font-size: 15px; color: var(--muted); line-height: 1.7;
+      max-width: 58ch; margin-bottom: 40px;
+      padding-bottom: 32px; border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Sections ── */
+    .section { margin-bottom: 48px; scroll-margin-top: 88px; }
+    .section-heading {
+      font-size: 19px; font-weight: 800; letter-spacing: -0.3px;
+      color: var(--text); margin-bottom: 16px;
+      padding-left: 14px;
+      border-left: 3px solid var(--accent);
+      line-height: 1.3;
+    }
+    .section p {
+      font-size: 15px; color: var(--text);
+      margin-bottom: 14px; max-width: 64ch; line-height: 1.78;
+    }
+    .section p:last-child { margin-bottom: 0; }
+    .section ul, .section ol {
+      padding-left: 0; list-style: none;
+      display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px;
+    }
+    .section ul li, .section ol li {
+      font-size: 15px; color: var(--text);
+      padding-left: 20px; position: relative; line-height: 1.68;
+    }
+    .section ul li::before {
+      content: '';
+      position: absolute; left: 0; top: 10px;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent);
+    }
+    .section ol { counter-reset: ol-counter; }
+    .section ol li { counter-increment: ol-counter; }
+    .section ol li::before {
+      content: counter(ol-counter) ".";
+      position: absolute; left: 0;
+      font-size: 13px; font-weight: 700; color: var(--accent);
+    }
+    .sub-heading {
+      font-size: 13.5px; font-weight: 700;
+      color: var(--text); margin: 22px 0 8px;
+    }
+    .info-box {
+      background: var(--accent-dim);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px; padding: 14px 18px;
+      font-size: 13.5px; color: var(--muted);
+      line-height: 1.65; margin: 18px 0;
+    }
+    .info-box strong { color: var(--text); }
+    .warn-box {
+      background: rgba(245, 158, 11, 0.07);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-left: 3px solid #F59E0B;
+      border-radius: 8px; padding: 14px 18px;
+      font-size: 13.5px; color: var(--muted);
+      line-height: 1.65; margin: 18px 0;
+    }
+    .warn-box strong { color: var(--text); }
+
+    /* ── Contact card ── */
+    .contact-card {
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 24px 28px; background: var(--surface);
+      display: flex; flex-direction: column; gap: 8px; margin-top: 16px;
+    }
+    .contact-card .name { font-weight: 700; font-size: 15px; color: var(--text); }
+    .contact-card a { color: var(--accent); text-decoration: none; font-size: 14px; }
+    .contact-card a:hover { text-decoration: underline; }
+    .contact-card .row { display: flex; align-items: center; gap: 8px; }
+    .contact-card .label { font-size: 12px; color: var(--muted); min-width: 52px; }
+
+    /* ── Footer ── */
+    .page-footer {
+      text-align: center; padding: 24px 40px;
+      border-top: 1px solid var(--border);
+      font-size: 12px; color: var(--muted);
+      background: var(--surface);
+    }
+    .page-footer a { color: var(--accent); text-decoration: none; }
+    .page-footer a:hover { text-decoration: underline; }
+
+    /* ── Mobile ── */
+    @media (max-width: 760px) {
+      .site-header { padding: 14px 20px; }
+      .layout { grid-template-columns: 1fr; }
+      .toc {
+        position: static; min-height: unset;
+        border-right: none; border-bottom: 1px solid var(--border);
+        padding: 24px 20px;
+      }
+      .content { padding: 32px 20px 60px; }
+      .page-title { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header class="site-header">
+  <a href="/" class="logo-link">
+    <svg width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-label="Projiq mark">
+      <defs>
+        <linearGradient id="tc-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#4F46E5"/>
+          <stop offset="100%" stop-color="#06B6D4"/>
+        </linearGradient>
+      </defs>
+      <path d="M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z" fill="url(#tc-bg)"/>
+      <rect x="0" y="65"  width="60" height="12" rx="6" fill="#4F46E5"/>
+      <rect x="0" y="100" width="60" height="12" rx="6" fill="#06B6D4"/>
+      <rect x="0" y="135" width="60" height="12" rx="6" fill="#10B981"/>
+      <path d="M140 105 L160 125 L205 80" fill="none" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="logo-name">Projiq<span class="dot-app">.app</span></span>
+  </a>
+  <span class="header-sep"></span>
+  <span class="doc-tag">Terms &amp; Conditions</span>
+</header>
+
+<div class="layout">
+
+  <!-- ── TOC ── -->
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-label">Contents</div>
+    <ul class="toc-list" id="toc-list">
+      <li><a href="#acceptance">Acceptance of Terms</a></li>
+      <li><a href="#service">Description of Service</a></li>
+      <li><a href="#accounts">Accounts &amp; Registration</a></li>
+      <li><a href="#acceptable-use">Acceptable Use</a></li>
+      <li><a href="#subscriptions">Subscriptions &amp; Payment</a></li>
+      <li><a href="#ip">Intellectual Property</a></li>
+      <li><a href="#user-content">Your Content</a></li>
+      <li><a href="#privacy">Privacy</a></li>
+      <li><a href="#disclaimers">Disclaimers</a></li>
+      <li><a href="#liability">Limitation of Liability</a></li>
+      <li><a href="#termination">Termination</a></li>
+      <li><a href="#governing-law">Governing Law</a></li>
+      <li><a href="#changes">Changes to Terms</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+    <div class="toc-updated">
+      <strong>Last updated</strong>
+      August 14, 2026
+    </div>
+  </nav>
+
+  <!-- ── Content ── -->
+  <main class="content">
+
+    <div class="page-eyebrow">Legal</div>
+    <h1 class="page-title">Terms &amp; Conditions</h1>
+    <p class="page-lead">
+      These Terms and Conditions ("Terms") govern your access to and use of the Projiq
+      platform operated by <strong>Projiq</strong> ("we", "our", or "us"). By accessing
+      or using Projiq, you confirm that you have read, understood, and agree to be bound
+      by these Terms.
+    </p>
+
+    <!-- 1. Acceptance -->
+    <section class="section" id="acceptance">
+      <h2 class="section-heading">Acceptance of Terms</h2>
+      <p>
+        By creating an account, joining an organization, or using any part of the Projiq
+        platform, you agree to these Terms and our
+        <a href="/privacy.html" style="color:var(--accent);">Privacy Policy</a>.
+        If you are using Projiq on behalf of an organization, you represent that you have
+        the authority to bind that organization to these Terms.
+      </p>
+      <p>
+        If you do not agree to these Terms, you must not access or use the Projiq platform.
+      </p>
+      <div class="info-box">
+        <strong>Minimum age:</strong> You must be at least 16 years old to use Projiq.
+        By using the platform, you confirm you meet this requirement.
+      </div>
+    </section>
+
+    <!-- 2. Service -->
+    <section class="section" id="service">
+      <h2 class="section-heading">Description of Service</h2>
+      <p>
+        Projiq is a cloud-based project management platform that allows organizations to
+        manage projects, track issues, collaborate with team members, and coordinate work
+        across sprints and workflows.
+      </p>
+      <p>
+        We reserve the right to modify, suspend, or discontinue any part of the service at
+        any time, with or without notice. We will not be liable to you or any third party
+        for any modification, suspension, or discontinuation of the service.
+      </p>
+      <p>
+        We do not guarantee uninterrupted or error-free availability of the platform.
+        Scheduled and unscheduled maintenance windows may cause temporary service unavailability.
+      </p>
+    </section>
+
+    <!-- 3. Accounts -->
+    <section class="section" id="accounts">
+      <h2 class="section-heading">Accounts &amp; Registration</h2>
+
+      <div class="sub-heading">Account Responsibility</div>
+      <p>
+        You are responsible for maintaining the confidentiality of your account credentials
+        and for all activity that occurs under your account. You must immediately notify us
+        at <a href="mailto:hello@projiq.app" style="color:var(--accent);">hello@projiq.app</a>
+        if you suspect any unauthorized access to your account.
+      </p>
+
+      <div class="sub-heading">Accurate Information</div>
+      <p>
+        You agree to provide accurate, current, and complete information during registration
+        and to keep your account information updated. We may suspend or terminate accounts
+        created with false or misleading information.
+      </p>
+
+      <div class="sub-heading">Organization Admins</div>
+      <p>
+        The person who registers an organization on Projiq ("Organization Admin") has full
+        administrative authority over that organization's account, members, and data.
+        Organization Admins are responsible for ensuring that members within their organization
+        comply with these Terms.
+      </p>
+    </section>
+
+    <!-- 4. Acceptable Use -->
+    <section class="section" id="acceptable-use">
+      <h2 class="section-heading">Acceptable Use</h2>
+      <p>You agree to use Projiq only for lawful purposes. You must not:</p>
+      <ul>
+        <li>Use the platform in any way that violates applicable laws or regulations</li>
+        <li>Upload, post, or transmit content that is unlawful, harmful, threatening, abusive, defamatory, or otherwise objectionable</li>
+        <li>Attempt to gain unauthorized access to any part of the platform, other users' accounts, or our systems</li>
+        <li>Interfere with or disrupt the integrity or performance of the platform or its infrastructure</li>
+        <li>Scrape, crawl, or extract data from the platform without our prior written consent</li>
+        <li>Use the platform to send spam, unsolicited messages, or bulk communications</li>
+        <li>Reverse-engineer, decompile, or attempt to discover the source code of any part of the platform</li>
+        <li>Resell, sublicense, or otherwise make the platform available to third parties outside your registered organization</li>
+        <li>Use the platform in a manner that could damage, overburden, or impair its servers or networks</li>
+      </ul>
+
+      <div class="warn-box">
+        <strong>Violations:</strong> We reserve the right to immediately suspend or terminate
+        accounts that breach these acceptable use rules, without refund and without prior notice,
+        where the breach is serious or repeated.
+      </div>
+    </section>
+
+    <!-- 5. Subscriptions -->
+    <section class="section" id="subscriptions">
+      <h2 class="section-heading">Subscriptions &amp; Payment</h2>
+
+      <div class="sub-heading">Plans</div>
+      <p>
+        Projiq offers subscription plans on a monthly or annual basis. The features and
+        limits of each plan are described on our pricing page and may be updated from time
+        to time.
+      </p>
+
+      <div class="sub-heading">Payment</div>
+      <p>
+        By selecting a paid plan, you authorize us to charge your chosen payment method on
+        a recurring basis. All payments are processed securely by our payment provider.
+        We do not store your full payment card details.
+      </p>
+
+      <div class="sub-heading">Cancellation</div>
+      <p>
+        You may cancel your subscription at any time from your account settings. Your
+        access to paid features will continue until the end of the current billing period.
+        We do not provide refunds for partial periods, except where required by applicable law.
+      </p>
+
+      <div class="sub-heading">Price Changes</div>
+      <p>
+        We may change subscription prices with at least 30 days' advance notice. Continued
+        use of the service after a price change constitutes acceptance of the new price.
+      </p>
+
+      <div class="sub-heading">Taxes</div>
+      <p>
+        You are responsible for any applicable taxes, levies, or duties on your subscription,
+        except where we are required by law to collect and remit such taxes on your behalf.
+      </p>
+    </section>
+
+    <!-- 6. IP -->
+    <section class="section" id="ip">
+      <h2 class="section-heading">Intellectual Property</h2>
+
+      <div class="sub-heading">Our IP</div>
+      <p>
+        The Projiq platform — including its name, logo, design, code, features, and all
+        related materials — is owned by us and protected by applicable intellectual property
+        laws. These Terms do not grant you any right to use our trademarks, logos, or
+        brand elements without our prior written permission.
+      </p>
+
+      <div class="sub-heading">License to Use</div>
+      <p>
+        Subject to these Terms and payment of any applicable fees, we grant you a limited,
+        non-exclusive, non-transferable, revocable license to access and use the Projiq
+        platform for your internal business purposes during the term of your subscription.
+      </p>
+
+      <div class="sub-heading">Feedback</div>
+      <p>
+        If you provide us with feedback, suggestions, or ideas about the platform, you grant
+        us a royalty-free, perpetual, irrevocable license to use that feedback without
+        any obligation to you.
+      </p>
+    </section>
+
+    <!-- 7. User Content -->
+    <section class="section" id="user-content">
+      <h2 class="section-heading">Your Content</h2>
+      <p>
+        You retain ownership of all content you create, upload, or store in Projiq
+        ("User Content"), including projects, tasks, comments, and attachments.
+      </p>
+      <p>
+        By submitting User Content to Projiq, you grant us a limited license to host,
+        store, and display that content solely for the purpose of providing the service
+        to you. We do not claim ownership of your content and will not use it for any
+        other purpose.
+      </p>
+      <p>
+        You are solely responsible for the accuracy, legality, and appropriateness of
+        your User Content. We are not responsible for any content created or shared by
+        users within the platform.
+      </p>
+      <p>
+        We reserve the right to remove User Content that violates these Terms or applicable
+        law, without prior notice.
+      </p>
+    </section>
+
+    <!-- 8. Privacy -->
+    <section class="section" id="privacy">
+      <h2 class="section-heading">Privacy</h2>
+      <p>
+        Your privacy is important to us. Our
+        <a href="/privacy.html" style="color:var(--accent);">Privacy Policy</a>
+        explains how we collect, use, and protect your personal information. By using
+        Projiq, you agree to the collection and use of information as described in that policy.
+      </p>
+      <p>
+        We will never sell your personal data to third parties. Your data is used only to
+        operate, maintain, and improve the Projiq platform.
+      </p>
+    </section>
+
+    <!-- 9. Disclaimers -->
+    <section class="section" id="disclaimers">
+      <h2 class="section-heading">Disclaimers</h2>
+      <p>
+        The Projiq platform is provided on an <strong>"as is"</strong> and
+        <strong>"as available"</strong> basis, without warranties of any kind, either
+        express or implied.
+      </p>
+      <p>We specifically disclaim all warranties, including but not limited to:</p>
+      <ul>
+        <li>Implied warranties of merchantability, fitness for a particular purpose, and non-infringement</li>
+        <li>Any guarantee that the platform will be available, uninterrupted, timely, secure, or error-free</li>
+        <li>Any warranty regarding the accuracy, reliability, or completeness of any content or data on the platform</li>
+        <li>Any warranty that defects or errors will be corrected</li>
+      </ul>
+      <p>
+        Your use of the platform is at your sole risk. We are not responsible for any
+        harm that may result from your use of the service or your reliance on any
+        information obtained through it.
+      </p>
+    </section>
+
+    <!-- 10. Liability -->
+    <section class="section" id="liability">
+      <h2 class="section-heading">Limitation of Liability</h2>
+      <p>
+        To the fullest extent permitted by applicable law, Projiq and its officers,
+        directors, employees, agents, and partners shall not be liable for:
+      </p>
+      <ul>
+        <li>Any indirect, incidental, special, consequential, or punitive damages</li>
+        <li>Loss of profits, revenue, data, goodwill, or business opportunities</li>
+        <li>Damages resulting from unauthorized access to or alteration of your data</li>
+        <li>Damages resulting from interruption or cessation of the service</li>
+        <li>Damages resulting from any content posted or transmitted through the platform</li>
+      </ul>
+      <p>
+        In no event shall our total liability to you for all claims arising out of or
+        relating to these Terms or your use of the platform exceed the greater of
+        (a) the total amount you paid us in the 12 months preceding the claim, or
+        (b) INR 1,000.
+      </p>
+      <div class="warn-box">
+        <strong>Note:</strong> Some jurisdictions do not allow the exclusion of certain
+        warranties or limitation of liability. In such jurisdictions, our liability will
+        be limited to the maximum extent permitted by applicable law.
+      </div>
+    </section>
+
+    <!-- 11. Termination -->
+    <section class="section" id="termination">
+      <h2 class="section-heading">Termination</h2>
+
+      <div class="sub-heading">By You</div>
+      <p>
+        You may stop using Projiq and close your account at any time by contacting us or
+        using the account deletion option in your settings. Cancellation of a paid
+        subscription and account deletion are two separate actions.
+      </p>
+
+      <div class="sub-heading">By Us</div>
+      <p>
+        We may suspend or terminate your access to the platform at any time if:
+      </p>
+      <ul>
+        <li>You breach any provision of these Terms</li>
+        <li>We reasonably believe your use poses a security risk or legal liability</li>
+        <li>We are required to do so by law or regulatory authority</li>
+        <li>We discontinue the platform or any material part of it</li>
+      </ul>
+
+      <div class="sub-heading">Effect of Termination</div>
+      <p>
+        Upon termination, your right to use the platform ceases immediately. We will
+        retain your data for up to 90 days after termination of a paid subscription,
+        during which you may request an export. After that period, your data may be
+        permanently deleted.
+      </p>
+      <p>
+        Sections on Intellectual Property, Disclaimers, Limitation of Liability, and
+        Governing Law survive termination.
+      </p>
+    </section>
+
+    <!-- 12. Governing Law -->
+    <section class="section" id="governing-law">
+      <h2 class="section-heading">Governing Law</h2>
+      <p>
+        These Terms are governed by and construed in accordance with the laws of
+        <strong>India</strong>, without regard to its conflict of law principles.
+      </p>
+      <p>
+        Any dispute arising out of or in connection with these Terms shall be subject
+        to the exclusive jurisdiction of the courts located in India. You agree to
+        submit to the personal jurisdiction of such courts.
+      </p>
+      <p>
+        We encourage you to contact us first before initiating any formal proceedings —
+        most issues can be resolved quickly and informally by writing to
+        <a href="mailto:hello@projiq.app" style="color:var(--accent);">hello@projiq.app</a>.
+      </p>
+    </section>
+
+    <!-- 13. Changes -->
+    <section class="section" id="changes">
+      <h2 class="section-heading">Changes to Terms</h2>
+      <p>
+        We may update these Terms from time to time to reflect changes in our practices,
+        legal requirements, or platform features. When we make material changes, we will:
+      </p>
+      <ol>
+        <li>Update the "Last updated" date at the top of this page</li>
+        <li>Send an email notification to the Organization Admin of each active account</li>
+        <li>Display a notice within the platform for at least 14 days</li>
+      </ol>
+      <p>
+        Your continued use of Projiq after the effective date of any updated Terms
+        constitutes your acceptance of those changes. If you do not agree to the updated
+        Terms, you must stop using the platform and cancel your subscription.
+      </p>
+    </section>
+
+    <!-- 14. Contact -->
+    <section class="section" id="contact">
+      <h2 class="section-heading">Contact Us</h2>
+      <p>If you have any questions about these Terms, please reach out:</p>
+      <div class="contact-card">
+        <div class="name">Projiq Legal</div>
+        <div class="row">
+          <span class="label">Email</span>
+          <a href="mailto:hello@projiq.app">hello@projiq.app</a>
+        </div>
+        <div class="row">
+          <span class="label">Website</span>
+          <a href="https://projiq.app" target="_blank" rel="noopener">projiq.app</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="page-footer">
+  &copy; 2026 Projiq &nbsp;·&nbsp;
+  <a href="/">Home</a> &nbsp;·&nbsp;
+  <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+  <a href="/terms.html">Terms &amp; Conditions</a> &nbsp;·&nbsp;
+  <a href="mailto:hello@projiq.app">hello@projiq.app</a>
+  <br />
+  <span style="margin-top:4px;display:inline-block;">Effective August 14, 2026</span>
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('.section');
+  const links = document.querySelectorAll('#toc-list a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector('#toc-list a[href="#' + e.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>

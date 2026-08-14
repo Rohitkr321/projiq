@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Projiq</title>
+  <meta name="description" content="Projiq Privacy Policy — how we collect, use, and protect your data." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <style>
+    :root {
+      --bg:        #F7F9FC;
+      --surface:   #FFFFFF;
+      --border:    #DDE6F3;
+      --text:      #0F172A;
+      --muted:     #526077;
+      --accent:    #3B82F6;
+      --accent-dim:#EFF6FF;
+      --toc-bg:    #F0F5FF;
+      --tag-bg:    #EFF6FF;
+      --tag-text:  #1D4ED8;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:        #080F1E;
+        --surface:   #0D1A2E;
+        --border:    #1A2E4A;
+        --text:      #E2EAF8;
+        --muted:     #7A93B4;
+        --accent:    #60A5FA;
+        --accent-dim:#0F1E35;
+        --toc-bg:    #0A1628;
+        --tag-bg:    #0F1E35;
+        --tag-text:  #93C5FD;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 15.5px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    .site-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    .logo-link {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .logo-name {
+      font-size: 20px; font-weight: 900; letter-spacing: -0.04em;
+      color: var(--text);
+    }
+    .logo-name .dot-app { color: #06B6D4; }
+    .header-sep { flex: 1; }
+    .doc-tag {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.7px;
+      text-transform: uppercase;
+      background: var(--tag-bg); color: var(--tag-text);
+      padding: 4px 10px; border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+
+    /* ── Layout ── */
+    .layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      max-width: 1080px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      position: sticky;
+      top: 69px;
+      padding: 36px 28px 36px 40px;
+      background: var(--toc-bg);
+      border-right: 1px solid var(--border);
+      min-height: calc(100vh - 69px);
+    }
+    .toc-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .toc-list a {
+      display: block;
+      font-size: 12.5px; color: var(--muted);
+      text-decoration: none; padding: 5px 8px;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+      line-height: 1.4;
+    }
+    .toc-list a:hover { color: var(--accent); background: var(--accent-dim); }
+    .toc-list a.active { color: var(--accent); font-weight: 600; background: var(--accent-dim); }
+    .toc-updated {
+      margin-top: 28px;
+      font-size: 11px; color: var(--muted); line-height: 1.6;
+    }
+    .toc-updated strong { display: block; color: var(--text); font-weight: 600; font-size: 12px; }
+
+    /* ── Content ── */
+    .content { padding: 48px 56px 80px 56px; max-width: 740px; }
+
+    .page-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+    }
+    .page-title {
+      font-size: 34px; font-weight: 900; letter-spacing: -0.8px;
+      line-height: 1.15; color: var(--text); margin-bottom: 12px;
+    }
+    .page-lead {
+      font-size: 15px; color: var(--muted); line-height: 1.7;
+      max-width: 58ch; margin-bottom: 40px;
+      padding-bottom: 32px; border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Sections ── */
+    .section { margin-bottom: 48px; scroll-margin-top: 88px; }
+    .section-heading {
+      font-size: 19px; font-weight: 800; letter-spacing: -0.3px;
+      color: var(--text); margin-bottom: 16px;
+      padding-left: 14px;
+      border-left: 3px solid var(--accent);
+      line-height: 1.3;
+    }
+    .section p {
+      font-size: 15px; color: var(--text);
+      margin-bottom: 14px; max-width: 64ch; line-height: 1.78;
+    }
+    .section p:last-child { margin-bottom: 0; }
+    .section ul, .section ol {
+      padding-left: 0; list-style: none;
+      display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px;
+    }
+    .section ul li, .section ol li {
+      font-size: 15px; color: var(--text);
+      padding-left: 20px; position: relative; line-height: 1.68;
+    }
+    .section ul li::before {
+      content: '';
+      position: absolute; left: 0; top: 10px;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent);
+    }
+    .section ol { counter-reset: ol-counter; }
+    .section ol li { counter-increment: ol-counter; }
+    .section ol li::before {
+      content: counter(ol-counter) ".";
+      position: absolute; left: 0;
+      font-size: 13px; font-weight: 700; color: var(--accent);
+    }
+    .sub-heading {
+      font-size: 13.5px; font-weight: 700;
+      color: var(--text); margin: 22px 0 8px;
+    }
+    .info-box {
+      background: var(--accent-dim);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px; padding: 14px 18px;
+      font-size: 13.5px; color: var(--muted);
+      line-height: 1.65; margin: 18px 0;
+    }
+    .info-box strong { color: var(--text); }
+
+    /* ── Tables ── */
+    .data-table-wrap { overflow-x: auto; margin: 16px 0; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    .data-table th {
+      text-align: left; padding: 10px 14px;
+      background: var(--toc-bg);
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;
+    }
+    .data-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text); line-height: 1.5; vertical-align: top;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    /* ── Contact card ── */
+    .contact-card {
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 24px 28px; background: var(--surface);
+      display: flex; flex-direction: column; gap: 8px; margin-top: 16px;
+    }
+    .contact-card .name { font-weight: 700; font-size: 15px; color: var(--text); }
+    .contact-card a { color: var(--accent); text-decoration: none; font-size: 14px; }
+    .contact-card a:hover { text-decoration: underline; }
+    .contact-card .row { display: flex; align-items: center; gap: 8px; }
+    .contact-card .label { font-size: 12px; color: var(--muted); min-width: 52px; }
+
+    /* ── Footer ── */
+    .page-footer {
+      text-align: center; padding: 24px 40px;
+      border-top: 1px solid var(--border);
+      font-size: 12px; color: var(--muted);
+      background: var(--surface);
+    }
+    .page-footer a { color: var(--accent); text-decoration: none; }
+    .page-footer a:hover { text-decoration: underline; }
+
+    /* ── Mobile ── */
+    @media (max-width: 760px) {
+      .site-header { padding: 14px 20px; }
+      .layout { grid-template-columns: 1fr; }
+      .toc {
+        position: static; min-height: unset;
+        border-right: none; border-bottom: 1px solid var(--border);
+        padding: 24px 20px;
+      }
+      .content { padding: 32px 20px 60px; }
+      .page-title { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header class="site-header">
+  <a href="/" class="logo-link">
+    <svg width="28" height="26" viewBox="0 0 285 265" xmlns="http://www.w3.org/2000/svg" aria-label="Projiq mark">
+      <defs>
+        <linearGradient id="pp-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#4F46E5"/>
+          <stop offset="100%" stop-color="#06B6D4"/>
+        </linearGradient>
+      </defs>
+      <path d="M80 0 H180 C235 0 280 45 280 100 C280 155 235 200 180 200 H130 L110 260 H50 L75 180 H180 C205 180 225 160 225 135 C225 110 205 90 180 90 H80 Z" fill="url(#pp-bg)"/>
+      <rect x="0" y="65"  width="60" height="12" rx="6" fill="#4F46E5"/>
+      <rect x="0" y="100" width="60" height="12" rx="6" fill="#06B6D4"/>
+      <rect x="0" y="135" width="60" height="12" rx="6" fill="#10B981"/>
+      <path d="M140 105 L160 125 L205 80" fill="none" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="logo-name">Projiq<span class="dot-app">.app</span></span>
+  </a>
+  <span class="header-sep"></span>
+  <span class="doc-tag">Privacy Policy</span>
+</header>
+
+<div class="layout">
+
+  <!-- ── TOC ── -->
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-label">Contents</div>
+    <ul class="toc-list" id="toc-list">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#information-we-collect">Information We Collect</a></li>
+      <li><a href="#how-we-use">How We Use Your Information</a></li>
+      <li><a href="#sharing">Sharing &amp; Disclosure</a></li>
+      <li><a href="#storage-security">Storage &amp; Security</a></li>
+      <li><a href="#cookies">Cookies &amp; Tracking</a></li>
+      <li><a href="#your-rights">Your Rights &amp; Choices</a></li>
+      <li><a href="#retention">Data Retention</a></li>
+      <li><a href="#children">Children's Privacy</a></li>
+      <li><a href="#changes">Changes to This Policy</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+    <div class="toc-updated">
+      <strong>Last updated</strong>
+      August 14, 2026
+    </div>
+  </nav>
+
+  <!-- ── Content ── -->
+  <main class="content">
+
+    <div class="page-eyebrow">Legal</div>
+    <h1 class="page-title">Privacy Policy</h1>
+    <p class="page-lead">
+      Projiq ("we", "our", or "us") operates the project management platform at
+      <strong>projiq.app</strong>. This policy explains what data we collect, how we use
+      it, and the choices you have — written in plain English, not legalese.
+    </p>
+
+    <!-- 1. Overview -->
+    <section class="section" id="overview">
+      <h2 class="section-heading">Overview</h2>
+      <p>
+        Projiq is a cloud-based project management tool used by engineering and operations
+        teams. When you register an organization, invite teammates, and manage projects,
+        we process data on your behalf. We act as a <strong>data processor</strong> for
+        content you create inside Projiq, and as a <strong>data controller</strong> for
+        account and billing information.
+      </p>
+      <div class="info-box">
+        <strong>Short version:</strong> We collect only what we need to run the service,
+        we do not sell your data to anyone, and you can delete your account and data at
+        any time.
+      </div>
+    </section>
+
+    <!-- 2. Information We Collect -->
+    <section class="section" id="information-we-collect">
+      <h2 class="section-heading">Information We Collect</h2>
+
+      <div class="sub-heading">Account &amp; Registration Data</div>
+      <ul>
+        <li>Full name and work email address</li>
+        <li>Organization name, industry, and team size</li>
+        <li>Password (we never store your plaintext password — it is hashed before saving)</li>
+        <li>Google account profile (if you sign in with Google)</li>
+        <li>Subscription plan and billing country</li>
+      </ul>
+
+      <div class="sub-heading">Content You Create</div>
+      <ul>
+        <li>Projects, issues, tasks, comments, and attachments</li>
+        <li>Sprint boards, Kanban columns, and workflow configurations</li>
+        <li>Team member assignments and activity history</li>
+      </ul>
+
+      <div class="sub-heading">Usage &amp; Technical Data</div>
+      <ul>
+        <li>IP address, browser type, and operating system</li>
+        <li>Pages visited, features used, and session duration</li>
+        <li>Error logs and performance metrics</li>
+        <li>Timestamps for logins, project actions, and API calls</li>
+      </ul>
+
+      <div class="sub-heading">Payment Data</div>
+      <p>
+        Payments are processed through <strong>Razorpay</strong>. We receive a transaction
+        ID and subscription status but do not store your full card number or CVV. Razorpay's
+        own privacy policy governs how they handle payment details.
+      </p>
+    </section>
+
+    <!-- 3. How We Use -->
+    <section class="section" id="how-we-use">
+      <h2 class="section-heading">How We Use Your Information</h2>
+
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Purpose</th><th>Legal Basis</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Creating and managing your account</td><td>Contract performance</td></tr>
+            <tr><td>Delivering the Projiq platform and its features</td><td>Contract performance</td></tr>
+            <tr><td>Processing subscription payments</td><td>Contract performance</td></tr>
+            <tr><td>Sending transactional emails (invites, password resets, receipts)</td><td>Contract performance</td></tr>
+            <tr><td>Improving and debugging the product</td><td>Legitimate interest</td></tr>
+            <tr><td>Security monitoring and fraud prevention</td><td>Legitimate interest</td></tr>
+            <tr><td>Sending product update emails (opt-out available)</td><td>Legitimate interest / Consent</td></tr>
+            <tr><td>Complying with legal obligations</td><td>Legal obligation</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>We do not use your data to train machine learning models or sell insights to third parties.</p>
+    </section>
+
+    <!-- 4. Sharing -->
+    <section class="section" id="sharing">
+      <h2 class="section-heading">Sharing &amp; Disclosure</h2>
+      <p>We do not sell, rent, or trade your personal information. We share data only in these limited circumstances:</p>
+      <ul>
+        <li><strong>Service providers:</strong> Infrastructure and tooling partners (cloud hosting, email delivery, payment processing) who are contractually bound to process data only on our instructions.</li>
+        <li><strong>Your organization:</strong> Admins in your Projiq organization can see member profiles, activity, and content within that organization.</li>
+        <li><strong>Legal requirements:</strong> If required by law, regulation, court order, or to protect the rights and safety of Projiq and its users.</li>
+        <li><strong>Business transfers:</strong> In the event of a merger, acquisition, or sale of assets, your data may be transferred to the successor entity, subject to the same privacy commitments.</li>
+      </ul>
+
+      <div class="sub-heading">Sub-processors</div>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Provider</th><th>Purpose</th><th>Location</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Amazon Web Services (AWS)</td><td>Cloud hosting, database, file storage</td><td>India / Global</td></tr>
+            <tr><td>AWS SES</td><td>Transactional email delivery</td><td>India</td></tr>
+            <tr><td>Razorpay</td><td>Payment processing</td><td>India</td></tr>
+            <tr><td>Google OAuth</td><td>Optional social sign-in</td><td>Global</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5. Storage & Security -->
+    <section class="section" id="storage-security">
+      <h2 class="section-heading">Storage &amp; Security</h2>
+      <p>Your data is stored on AWS infrastructure. We apply industry-standard safeguards:</p>
+      <ul>
+        <li>All data in transit is protected using industry-standard transport encryption</li>
+        <li>Passwords are processed with a one-way cryptographic hash — we cannot reverse or read them</li>
+        <li>Authentication sessions use signed, time-limited tokens that expire automatically</li>
+        <li>Access to production systems is restricted to authorised personnel with MFA</li>
+        <li>Regular automated backups are retained for 30 days</li>
+      </ul>
+      <p>
+        No method of transmission over the internet is 100% secure. We maintain reasonable
+        safeguards and will notify affected users promptly if a breach occurs.
+      </p>
+    </section>
+
+    <!-- 6. Cookies -->
+    <section class="section" id="cookies">
+      <h2 class="section-heading">Cookies &amp; Tracking</h2>
+      <p>Projiq uses a small number of cookies and local storage entries:</p>
+      <ul>
+        <li><strong>Session token:</strong> Required to keep you signed in. Expires when you log out or after 30 days of inactivity.</li>
+        <li><strong>Preferences:</strong> Theme (dark/light) and UI settings stored locally in your browser.</li>
+        <li><strong>CSRF protection:</strong> A short-lived token to prevent cross-site request forgery.</li>
+      </ul>
+      <p>
+        We do not use third-party advertising cookies or cross-site tracking pixels on the
+        authenticated application. The marketing landing page at projiq.app may use basic
+        analytics to measure page visits.
+      </p>
+    </section>
+
+    <!-- 7. Your Rights -->
+    <section class="section" id="your-rights">
+      <h2 class="section-heading">Your Rights &amp; Choices</h2>
+      <p>Depending on your location, you may have the following rights regarding your personal data:</p>
+      <ul>
+        <li><strong>Access:</strong> Request a copy of the personal data we hold about you.</li>
+        <li><strong>Correction:</strong> Update inaccurate or incomplete information from your account settings or by contacting us.</li>
+        <li><strong>Deletion:</strong> Request deletion of your account and associated personal data. Content shared within your organization may be subject to your organization admin's retention settings.</li>
+        <li><strong>Portability:</strong> Export your projects and issues as JSON or CSV from within the app.</li>
+        <li><strong>Objection:</strong> Opt out of non-essential communications from your account notification settings.</li>
+        <li><strong>Restriction:</strong> Request that we restrict processing of your data in certain circumstances.</li>
+      </ul>
+      <p>
+        To exercise any right, email us at <a href="mailto:privacy@projiq.app">privacy@projiq.app</a>.
+        We will respond within <strong>30 days</strong>.
+      </p>
+    </section>
+
+    <!-- 8. Retention -->
+    <section class="section" id="retention">
+      <h2 class="section-heading">Data Retention</h2>
+      <p>We retain your personal data for as long as your account is active or as needed to provide the service:</p>
+      <ul>
+        <li><strong>Account data:</strong> Retained until account deletion is requested. Deleted within 30 days of request.</li>
+        <li><strong>Project content:</strong> Retained while the organization subscription is active. Deleted 90 days after subscription cancellation.</li>
+        <li><strong>Billing records:</strong> Retained for 7 years to meet financial and tax reporting requirements.</li>
+        <li><strong>Server logs:</strong> Retained for 90 days for security and debugging, then deleted.</li>
+        <li><strong>Backups:</strong> Rolling 30-day backup window; data deleted from a backup after that backup expires.</li>
+      </ul>
+    </section>
+
+    <!-- 9. Children -->
+    <section class="section" id="children">
+      <h2 class="section-heading">Children's Privacy</h2>
+      <p>
+        Projiq is a professional business tool intended for use by adults in a workplace
+        context. We do not knowingly collect personal data from anyone under the age of
+        <strong>16</strong>. If you believe a minor has created an account, please contact
+        us and we will promptly delete the account.
+      </p>
+    </section>
+
+    <!-- 10. Changes -->
+    <section class="section" id="changes">
+      <h2 class="section-heading">Changes to This Policy</h2>
+      <p>When we make material changes, we will:</p>
+      <ol>
+        <li>Update the "Last updated" date at the top of this page</li>
+        <li>Send an email notification to the admin of each active organization</li>
+        <li>Display an in-app notice for 14 days after the change takes effect</li>
+      </ol>
+      <p>Continued use of Projiq after a policy update constitutes acceptance of the revised terms.</p>
+    </section>
+
+    <!-- 11. Contact -->
+    <section class="section" id="contact">
+      <h2 class="section-heading">Contact Us</h2>
+      <p>If you have questions, concerns, or requests regarding this Privacy Policy, please reach out:</p>
+      <div class="contact-card">
+        <div class="name">Projiq Privacy Team</div>
+        <div class="row">
+          <span class="label">Email</span>
+          <a href="mailto:privacy@projiq.app">privacy@projiq.app</a>
+        </div>
+        <div class="row">
+          <span class="label">Support</span>
+          <a href="mailto:hello@projiq.app">hello@projiq.app</a>
+        </div>
+        <div class="row">
+          <span class="label">Website</span>
+          <a href="https://projiq.app" target="_blank" rel="noopener">projiq.app</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="page-footer">
+  &copy; 2026 Projiq &nbsp;·&nbsp;
+  <a href="/">Home</a> &nbsp;·&nbsp;
+  <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+  <a href="/terms.html">Terms &amp; Conditions</a> &nbsp;·&nbsp;
+  <a href="mailto:hello@projiq.app">hello@projiq.app</a>
+  <br />
+  <span style="margin-top:4px;display:inline-block;">Effective August 14, 2026</span>
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('.section');
+  const links = document.querySelectorAll('#toc-list a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector('#toc-list a[href="#' + e.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
