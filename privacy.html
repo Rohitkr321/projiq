@@ -221,17 +221,70 @@
     .page-footer a { color: var(--accent); text-decoration: none; }
     .page-footer a:hover { text-decoration: underline; }
 
+    /* ── Mobile TOC toggle button (hidden on desktop) ── */
+    .toc-toggle {
+      display: none;
+      width: 100%;
+      padding: 13px 20px;
+      background: var(--toc-bg);
+      border: none;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: left;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 57px;
+      z-index: 15;
+      letter-spacing: 0.1px;
+    }
+    .toc-toggle-arrow {
+      margin-left: auto;
+      font-size: 10px;
+      transition: transform 0.22s ease;
+      color: var(--muted);
+    }
+    .toc-toggle[aria-expanded="true"] .toc-toggle-arrow { transform: rotate(180deg); }
+
     /* ── Mobile ── */
     @media (max-width: 760px) {
-      .site-header { padding: 14px 20px; }
-      .layout { grid-template-columns: 1fr; }
+      body { background: var(--surface); }
+
+      .site-header { padding: 12px 16px; }
+      .logo-name   { font-size: 18px; }
+      .doc-tag     { font-size: 10px; padding: 3px 8px; }
+
+      .layout { display: block; max-width: 100%; }
+
+      .toc-toggle { display: flex; }
+
       .toc {
-        position: static; min-height: unset;
-        border-right: none; border-bottom: 1px solid var(--border);
-        padding: 24px 20px;
+        display: none;
+        position: static;
+        min-height: unset;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 20px 20px 24px;
       }
-      .content { padding: 32px 20px 60px; }
-      .page-title { font-size: 26px; }
+      .toc.open { display: block; }
+
+      .content {
+        padding: 28px 20px 64px;
+        max-width: 100%;
+      }
+      .page-title   { font-size: 24px; letter-spacing: -0.5px; }
+      .page-lead    { font-size: 14px; margin-bottom: 32px; }
+      .section      { margin-bottom: 36px; }
+      .section-heading { font-size: 17px; }
+      .section p    { font-size: 14.5px; max-width: 100%; }
+      .section ul li, .section ol li { font-size: 14.5px; }
+      .info-box     { padding: 12px 14px; font-size: 13px; }
+      .data-table   { font-size: 12.5px; }
+      .contact-card { padding: 18px 18px; }
+      .page-footer  { padding: 20px 16px; }
     }
   </style>
 </head>
@@ -259,10 +312,17 @@
   <span class="doc-tag">Privacy Policy</span>
 </header>
 
+<!-- Mobile TOC toggle (hidden on desktop via CSS) -->
+<button class="toc-toggle" id="toc-toggle" aria-expanded="false" aria-controls="toc-nav">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="16" y2="12"/><line x1="3" y1="18" x2="11" y2="18"/></svg>
+  Table of Contents
+  <span class="toc-toggle-arrow" aria-hidden="true">▼</span>
+</button>
+
 <div class="layout">
 
   <!-- ── TOC ── -->
-  <nav class="toc" aria-label="Table of contents">
+  <nav class="toc" id="toc-nav" aria-label="Table of contents">
     <div class="toc-label">Contents</div>
     <ul class="toc-list" id="toc-list">
       <li><a href="#overview">Overview</a></li>
@@ -533,6 +593,24 @@
     });
   }, { rootMargin: '-20% 0px -70% 0px' });
   sections.forEach(s => observer.observe(s));
+
+  // Mobile TOC toggle
+  const tocToggle = document.getElementById('toc-toggle');
+  const tocNav = document.getElementById('toc-nav');
+  if (tocToggle && tocNav) {
+    tocToggle.addEventListener('click', () => {
+      const open = tocNav.classList.toggle('open');
+      tocToggle.setAttribute('aria-expanded', String(open));
+    });
+    tocNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 760) {
+          tocNav.classList.remove('open');
+          tocToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  }
 </script>
 
 </body>
