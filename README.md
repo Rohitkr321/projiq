@@ -158,25 +158,11 @@ _Unlimited members · Unlimited projects_
 - Dedicated customer success support
 - Custom workflow configuration
 - Hands-on team onboarding
-- Data migration assistance
 - Priority uptime & monitoring
 - Priority support & escalation
 - Custom billing & invoicing
 
 **Contact:** `sales@projiq.com` or `https://app.projiq.app/register-org?plan=enterprise`
-
----
-
-## Implementation (Enterprise / Onboarding)
-
-4-week managed rollout included with Enterprise plans:
-
-| Week | Phase | What happens |
-|------|-------|-------------|
-| 1 | **Discovery & Setup** | Kickoff call, org & project structure, admin accounts, roles mapped to org chart, workspace live |
-| 2 | **Configuration** | Custom workflows per team, custom fields & labels, data migration, permissions & notifications |
-| 3 | **Pilot & Training** | 5–10 pilot users onboarded, live role-based training, first sprint run end-to-end, feedback actioned |
-| 4 | **Full Rollout** | All users invited, all projects migrated, go-live sign-off, 30-day post-launch helpdesk, QBR scheduled |
 
 ---
 
