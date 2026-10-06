@@ -83,7 +83,7 @@
 }
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Projiq Site Navigation","itemListElement":[{"@type":"SiteLinksSearchBox","url":"https://projiq.app/","potentialAction":{"@type":"SearchAction","target":"https://projiq.app/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"ListItem","position":1,"name":"Features","url":"https://projiq.app/#features"},{"@type":"ListItem","position":2,"name":"Pricing","url":"https://projiq.app/#pricing"},{"@type":"ListItem","position":3,"name":"Security","url":"https://projiq.app/#security"},{"@type":"ListItem","position":4,"name":"Blog","url":"https://projiq.app/blog/"},{"@type":"ListItem","position":5,"name":"Jira Alternative","url":"https://projiq.app/jira-alternative/"},{"@type":"ListItem","position":6,"name":"Get Started Free","url":"https://app.projiq.app/register-org"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is pricing really per organization — not per seat?","acceptedAnswer":{"@type":"Answer","text":"Yes — completely. You pay one flat monthly fee for your entire organization. Every member you invite gets full Web access at no additional cost. Starter covers up to 10 members; Professional up to 50; Enterprise is unlimited. No per-seat charges, ever."}},{"@type":"Question","name":"How does the 14-day free trial work?","acceptedAnswer":{"@type":"Answer","text":"Sign up and get 14 days of full Professional access at no cost — no credit card required. You get every feature and full team access on the Web. At the end of the trial you can choose a plan, or your workspace is paused with all data preserved."}},{"@type":"Question","name":"Can we migrate from Jira, Trello, or another tool?","acceptedAnswer":{"@type":"Answer","text":"Yes. Enterprise plans include hands-on data migration assistance from Jira, Trello, Asana, Linear, or spreadsheets. Professional and Starter plans include CSV import support. Your implementation manager handles the full transition."}},{"@type":"Question","name":"How secure is our organization's data?","acceptedAnswer":{"@type":"Answer","text":"Every organization's data is fully isolated at the database level — complete multi-tenant separation. Member access is invite-only. All API endpoints enforce role-based access control server-side. Every action is audit-logged with a timestamp and user ID."}},{"@type":"Question","name":"Can we invite clients or external stakeholders?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can invite anyone via email and assign them the Viewer role — read-only access to the projects you choose. Viewers can see boards, issues, and progress without being able to make any changes."}},{"@type":"Question","name":"How long does onboarding take?","acceptedAnswer":{"@type":"Answer","text":"Self-serve teams are typically live in under an hour. Enterprise onboarding is structured across 4 weeks with a dedicated implementation manager. Most teams run their first sprint within Week 3."}},{"@type":"Question","name":"Can we upgrade, downgrade, or cancel any time?","acceptedAnswer":{"@type":"Answer","text":"Yes — no lock-in, ever. Upgrade or downgrade your plan at any time from the billing settings. Cancel whenever you want; access continues until the end of your current billing period. All data is retained for 90 days after cancellation."}},{"@type":"Question","name":"Which browsers does Projiq support?","acceptedAnswer":{"@type":"Answer","text":"Projiq runs on Web — Chrome, Safari, Firefox, and Edge. No installation required. Real-time WebSocket sync keeps all browser sessions live. Native iOS and Android apps are in development and coming soon."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is pricing really per organization — not per seat?","acceptedAnswer":{"@type":"Answer","text":"Yes — completely. You pay one flat monthly fee for your entire organization. Every member you invite gets full Web access at no additional cost. Starter covers up to 10 members; Professional up to 50; Enterprise is unlimited. No per-seat charges, ever."}},{"@type":"Question","name":"How does the 14-day free trial work?","acceptedAnswer":{"@type":"Answer","text":"Sign up and get 14 days of full Professional access at no cost — no credit card required. You get every feature and full team access on the Web. At the end of the trial you can choose a plan, or your workspace is paused with all data preserved."}},{"@type":"Question","name":"Can we migrate from Jira, Trello, or another tool?","acceptedAnswer":{"@type":"Answer","text":"Yes. Export a CSV from your current tool and import it from any project’s Backlog. Projiq recognises Jira, Trello, Asana and Linear column names and shows a preview with any problems before anything is created. Enterprise onboarding includes hands-on migration help."}},{"@type":"Question","name":"How secure is our organization's data?","acceptedAnswer":{"@type":"Answer","text":"Every organization's data is fully isolated at the database level — complete multi-tenant separation. Member access is invite-only and every user can turn on two-step verification. All API endpoints enforce role-based access control server-side. Every action is audit-logged with a timestamp and user ID."}},{"@type":"Question","name":"Can we invite clients or external stakeholders?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can invite anyone via email and assign them the Viewer role — read-only access to the projects you choose. Viewers can see boards, issues, and progress without being able to make any changes."}},{"@type":"Question","name":"How long does onboarding take?","acceptedAnswer":{"@type":"Answer","text":"Self-serve teams are typically live in under an hour — create a project from a template, import your issues from a CSV and invite your team. Enterprise customers get hands-on onboarding help from our team."}},{"@type":"Question","name":"Can we upgrade, downgrade, or cancel any time?","acceptedAnswer":{"@type":"Answer","text":"Yes — no lock-in, ever. Upgrade or downgrade your plan at any time from the billing settings. Cancel whenever you want; access continues until the end of your current billing period. All data is retained for 90 days after cancellation."}},{"@type":"Question","name":"Which browsers does Projiq support?","acceptedAnswer":{"@type":"Answer","text":"Projiq runs on Web — Chrome, Safari, Firefox, and Edge. No installation required. Real-time WebSocket sync keeps all browser sessions live. Native iOS and Android apps are in development and coming soon."}},{"@type":"Question","name":"Does Projiq integrate with GitHub, Slack or Microsoft Teams?","acceptedAnswer":{"@type":"Answer","text":"Yes. Connect GitHub, GitLab or Bitbucket and every commit, branch and pull request that mentions an issue key appears on that issue. Send project updates to Slack, Microsoft Teams or Discord, or to your own server with signed webhooks."}},{"@type":"Question","name":"Is there an API?","acceptedAnswer":{"@type":"Answer","text":"Yes. Create personal API tokens (read-only or read & write, with an expiry) and use the same REST API the app uses, for scripts, CI pipelines and automation tools. Due dates can also be subscribed to from Google Calendar, Outlook or Apple Calendar."}}]}</script>
 <style>
 /* ─── RESET & VARS ─────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -381,6 +381,40 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .ck{color:var(--success);font-weight:700;font-size:16px;}
 .cx{color:rgba(255,255,255,.14);font-size:16px;}
 .lm{color:var(--amber);font-size:11.5px;letter-spacing:.04em;}
+
+/* ─── INTEGRATIONS (bento) ─────────────────────────── */
+.int-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px;margin-top:48px;}
+.int-card{background:var(--bg3);border:1px solid var(--border);border-radius:18px;padding:24px;transition:border-color .2s,box-shadow .2s;}
+.int-card:hover{border-color:rgba(59,130,246,.28);box-shadow:0 0 32px rgba(59,130,246,.09);}
+.int-big{grid-row:span 2;}
+.int-wide{grid-column:span 2;display:flex;flex-direction:column;align-items:flex-start;gap:16px;}
+.int-logos{display:flex;gap:8px;}
+.int-logo{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:13px;letter-spacing:-.02em;}
+.int-name{color:var(--strong);font-weight:800;font-size:17px;margin-top:14px;letter-spacing:-.01em;}
+.int-desc{font-size:14px;line-height:1.6;margin-top:6px;}
+.int-shot{margin-top:18px;border-radius:12px;border:1px solid var(--border);background:rgba(2,11,24,.7);padding:16px;}
+.int-shot-title{color:var(--strong);font-weight:700;font-size:14px;}
+.int-shot-label{font-size:10px;letter-spacing:.16em;color:var(--muted);margin:14px 0 4px;text-transform:uppercase;}
+.int-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid rgba(255,255,255,.06);font-size:13.5px;color:#E2E8F0;}
+.int-row code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px;color:var(--text);}
+.int-pill{flex-shrink:0;padding:3px 10px;border-radius:999px;font-size:11.5px;font-weight:700;}
+.int-msg{margin-top:14px;border-radius:10px;border:1px solid var(--border);background:rgba(2,11,24,.7);padding:12px 14px;font-size:13px;}
+.int-msg b{color:var(--strong);}
+.int-tools{display:flex;flex-wrap:wrap;gap:8px;}
+.int-tool{padding:8px 16px;border-radius:999px;border:1px solid var(--border);color:var(--strong);font-size:13.5px;font-weight:600;white-space:nowrap;}
+@media(max-width:900px){.int-grid{grid-template-columns:1fr 1fr;}.int-big{grid-column:span 2;grid-row:auto;}.int-wide{grid-column:span 2;}}
+@media(max-width:560px){.int-grid{grid-template-columns:1fr;}.int-big,.int-wide{grid-column:auto;}.int-wide{flex-direction:column;align-items:flex-start;}.int-tools{justify-content:flex-start;}}
+
+/* ─── COMPARISON: "Compare with" chips ─────────────── */
+.cmp-chips{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;margin:36px 0 18px;}
+.cmp-chips span{font-size:13px;color:var(--text);margin-right:4px;}
+.cmp-chip{padding:8px 16px;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--text);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;}
+.cmp-chip:hover{color:var(--strong);border-color:rgba(59,130,246,.35);}
+.cmp-chip[aria-selected="true"]{background:rgba(59,130,246,.16);border-color:rgba(59,130,246,.5);color:#fff;}
+.tbl[data-show="jira"] tr>:nth-child(4),.tbl[data-show="jira"] tr>:nth-child(5),
+.tbl[data-show="asana"] tr>:nth-child(3),.tbl[data-show="asana"] tr>:nth-child(5),
+.tbl[data-show="trello"] tr>:nth-child(3),.tbl[data-show="trello"] tr>:nth-child(4){display:none;}
+.tbl[data-show]:not([data-show="all"]) th:nth-child(2){width:24%;}
 
 /* ─── PRICING ──────────────────────────────────────── */
 .pricing-note{font-size:13px;color:var(--muted);margin-top:8px;margin-bottom:36px;}
@@ -1124,6 +1158,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
     </a>
     <div class="nav-links">
       <a href="#features">Features</a>
+      <a href="#integrations">Integrations</a>
       <a href="#pricing">Pricing</a>
       <a href="#" onclick="openContactModal('contact');return false;">Contact</a>
       <a href="/blog/">Blog</a>
@@ -2257,7 +2292,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
   <div class="container">
     <div class="reveal center">
       <span class="ey">Work Views</span>
-      <h2 class="section-title">Six ways to see your work.<br><span class="gr">Every role covered.</span></h2>
+      <h2 class="section-title">Nine ways to see your work.<br><span class="gr">Every role covered.</span></h2>
       <p class="section-sub">From developer to director — every role gets the right perspective on the same live data. No switching tools, no exporting, no waiting.</p>
     </div>
     <div class="views-grid">
@@ -2274,7 +2309,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
       <div class="view-card reveal d3">
         <div class="view-icon"><svg viewBox="0 0 24 24"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg></div>
         <div class="view-name">Timeline</div>
-        <div class="view-desc">Sprint Gantt view across the calendar. Spot scheduling conflicts and plan team capacity at a glance.</div>
+        <div class="view-desc">Sprints, epics and dated issues on one Gantt, with arrows for blocking dependencies. Conflicts are flagged in red before they hurt.</div>
       </div>
       <div class="view-card reveal d4" style="--vi-color:var(--amber);">
         <div class="view-icon" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.18);"><svg viewBox="0 0 24 24" style="stroke:var(--amber)"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="8 6 3 12 8 18"/><polyline points="16 6 21 12 16 18"/></svg></div>
@@ -2290,6 +2325,70 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
         <div class="view-icon" style="background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.18);"><svg viewBox="0 0 24 24" style="stroke:var(--violet)"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
         <div class="view-name">Sprint Report</div>
         <div class="view-desc">Burndown chart — ideal vs. actual — plus story point metrics and full issue-status breakdown per sprint. Always ready to share.</div>
+      </div>
+      <div class="view-card reveal d1">
+        <div class="view-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <div class="view-name">Issues search</div>
+        <div class="view-desc">Search every project at once with filters for status, assignee, priority, due date and more. Save filters, share them with your team, export to CSV.</div>
+      </div>
+      <div class="view-card reveal d2" style="--vi-color:var(--amber);">
+        <div class="view-icon" style="background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.18);"><svg viewBox="0 0 24 24" style="stroke:#8B5CF6"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <div class="view-name">Reports library</div>
+        <div class="view-desc">Velocity, burndown, cumulative flow, created vs resolved, workload, time logged and resolution time — each with a chart and a data table.</div>
+      </div>
+      <div class="view-card reveal d3">
+        <div class="view-icon" style="background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.18);"><svg viewBox="0 0 24 24" style="stroke:var(--success)"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></div>
+        <div class="view-name">Docs</div>
+        <div class="view-desc">Specs, meeting notes and runbooks next to the work — nested pages, templates and rich formatting inside every project.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ INTEGRATIONS ═══════════════ -->
+<section id="integrations" class="section-pad">
+  <div class="container">
+    <div class="reveal center">
+      <span class="ey">Integrations</span>
+      <h2 class="section-title">Works with the tools<br><span class="gr">your team already uses.</span></h2>
+      <p class="section-sub">Code, chat, calendars and your own systems — connected in minutes, no plugins to install.</p>
+    </div>
+    <div class="int-grid">
+      <div class="int-card int-big reveal d1">
+        <div class="int-logos" aria-label="GitHub, GitLab and Bitbucket">
+          <div class="int-logo" style="background:#24292F">GH</div><div class="int-logo" style="background:#FC6D26">GL</div><div class="int-logo" style="background:#2684FF">BB</div>
+        </div>
+        <div class="int-name">Code that links itself to issues</div>
+        <div class="int-desc">Mention an issue key like CRM-12 in a commit, branch or pull request. It appears on the issue, and pull request status stays up to date — open, merged or closed.</div>
+        <div class="int-shot" aria-hidden="true">
+          <div class="int-shot-title">CRM-12 · Login fails on Safari</div>
+          <div class="int-shot-label">Development</div>
+          <div class="int-row"><span>#48 Fix token refresh on WebKit</span><span class="int-pill" style="background:rgba(139,92,246,.18);color:#C4B5FD">Merged</span></div>
+          <div class="int-row"><span><code>a91f2c0</code>&nbsp;&nbsp;CRM-12: retry refresh once</span><span class="int-pill" style="background:rgba(16,185,129,.14);color:#6EE7B7">Commit</span></div>
+          <div class="int-row"><span><code>feature/CRM-12-safari</code></span><span class="int-pill" style="background:rgba(59,130,246,.16);color:#93C5FD">Branch</span></div>
+        </div>
+      </div>
+      <div class="int-card reveal d2">
+        <div class="int-logos" aria-label="Slack, Microsoft Teams and Discord">
+          <div class="int-logo" style="background:#4A154B">S</div><div class="int-logo" style="background:#5059C9">T</div><div class="int-logo" style="background:#5865F2">D</div>
+        </div>
+        <div class="int-name">Slack, Teams &amp; Discord</div>
+        <div class="int-desc">New issues, status changes, comments and sprints posted to the right channel.</div>
+        <div class="int-msg" aria-hidden="true"><b>CRM-12 moved to Done</b><br>Login fails on Safari</div>
+      </div>
+      <div class="int-card reveal d3">
+        <div class="int-logos" aria-label="Calendar and API">
+          <div class="int-logo" style="background:#0F9D58">31</div><div class="int-logo" style="background:#334155">{ }</div>
+        </div>
+        <div class="int-name">Calendar &amp; API</div>
+        <div class="int-desc">Your due dates in Google Calendar, Outlook or Apple Calendar. A REST API with scoped tokens, plus signed webhooks for your own systems.</div>
+      </div>
+      <div class="int-card int-wide reveal d4">
+        <div>
+          <div class="int-name" style="margin-top:0">Import from Jira, Trello, Asana or Linear</div>
+          <div class="int-desc">Drop in a CSV, check the preview, import. Statuses, priorities, people, labels and due dates come with it.</div>
+        </div>
+        <div class="int-tools"><span class="int-tool">Jira</span><span class="int-tool">Trello</span><span class="int-tool">Asana</span><span class="int-tool">Linear</span></div>
       </div>
     </div>
   </div>
@@ -2309,8 +2408,8 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
           <svg viewBox="0 0 24 24" fill="none" stroke="var(--accentL)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
         </div>
         <div class="plat-name">Web Application</div>
-        <div class="plat-desc">Full-featured browser experience on Chrome, Safari, Firefox, and Edge. No installation required — open your workspace from any computer, anywhere in the world. All 6 views, all features, all live.</div>
-        <div class="plat-tags"><span class="chip chip-b">All 6 views</span><span class="chip chip-b">Full feature set</span><span class="chip chip-b">Any browser</span></div>
+        <div class="plat-desc">Full-featured browser experience on Chrome, Safari, Firefox, and Edge. No installation required — open your workspace from any computer, anywhere in the world. Every view, every feature, all live.</div>
+        <div class="plat-tags"><span class="chip chip-b">Every view</span><span class="chip chip-b">Full feature set</span><span class="chip chip-b">Any browser</span></div>
       </div>
       <div class="plat-card reveal d2" style="border-color:rgba(16,185,129,.2);">
         <div class="plat-icon" style="background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.2);">
@@ -2386,8 +2485,15 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
       <h2 class="section-title">How Projiq compares<br><span class="gr">to the alternatives</span></h2>
       <p class="section-sub">Enterprise-grade features, per-organization pricing, and dedicated onboarding — all in one platform that's configured to fit your organization from day one.</p>
     </div>
+    <div class="cmp-chips reveal" role="tablist" aria-label="Compare Projiq with">
+      <span>Compare with</span>
+      <button class="cmp-chip" role="tab" data-cmp="jira" aria-selected="false">Jira</button>
+      <button class="cmp-chip" role="tab" data-cmp="asana" aria-selected="false">Asana</button>
+      <button class="cmp-chip" role="tab" data-cmp="trello" aria-selected="false">Trello</button>
+      <button class="cmp-chip" role="tab" data-cmp="all" aria-selected="true">All</button>
+    </div>
     <div class="tbl-wrap reveal">
-      <table class="tbl">
+      <table class="tbl" id="cmpTable" data-show="all">
         <thead>
           <tr>
             <th>Capability</th>
@@ -2403,6 +2509,13 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
           <tr><td>Epic / Gantt roadmap view</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="cx">—</span></td></tr>
           <tr><td>Release &amp; version management</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="cx">—</span></td><td><span class="cx">—</span></td></tr>
           <tr><td>Custom fields per project</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="cx">—</span></td></tr>
+          <tr><td>Cross-project search &amp; saved filters</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="lm">Limited</span></td></tr>
+          <tr><td>CSV import from Jira, Trello &amp; Asana</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="lm">Power-Up</span></td></tr>
+          <tr><td>Cumulative flow &amp; resolution-time reports</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="lm">Limited</span></td><td><span class="cx">—</span></td></tr>
+          <tr><td>SLA targets by priority</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="lm">Add-on</span></td><td><span class="cx">—</span></td><td><span class="cx">—</span></td></tr>
+          <tr><td>Built-in project docs</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="lm">Add-on</span></td><td><span class="lm">Limited</span></td><td><span class="cx">—</span></td></tr>
+          <tr><td>GitHub, GitLab &amp; Bitbucket links</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="lm">Limited</span></td><td><span class="lm">Power-Up</span></td></tr>
+          <tr><td>Slack, Teams &amp; Discord notifications</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
           <tr><td>Real-time WebSocket updates</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="lm">Limited</span></td><td><span class="lm">Limited</span></td></tr>
           <tr><td>Mobile app (iOS &amp; Android)</td><td class="ours-col"><span class="lm">Coming Soon</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
           <tr><td>Per-organization pricing (no per-seat)</td><td class="ours-col"><span class="ck">✓</span></td><td><span class="cx">—</span></td><td><span class="cx">—</span></td><td><span class="cx">—</span></td></tr>
@@ -2500,72 +2613,8 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
   </div>
 </section>
 
-<!-- ═══════════════ IMPLEMENTATION ═══════════════ -->
-<section class="section-pad" style="background:var(--bg2);">
-  <div class="container">
-    <div class="reveal center">
-      <span class="ey">Getting Started</span>
-      <h2 class="section-title">From sign-up to fully live<br><span class="gr">in four weeks.</span></h2>
-      <p class="section-sub">A dedicated implementation manager handles everything — from workspace setup and data migration to team training on the Web platform.</p>
-    </div>
-    <div class="impl-grid">
-      <div class="impl-card ic1 reveal d1">
-        <div class="impl-week">Week 1</div>
-        <div class="impl-phase">Discovery &amp; Setup</div>
-        <div class="impl-items">
-          <div class="impl-item"><div class="impl-dot"></div>Kickoff call and team mapping</div>
-          <div class="impl-item"><div class="impl-dot"></div>Organisation and project structure setup</div>
-          <div class="impl-item"><div class="impl-dot"></div>Admin accounts provisioned</div>
-          <div class="impl-item"><div class="impl-dot"></div>Roles mapped to your org chart</div>
-          <div class="impl-item"><div class="impl-dot"></div>Web workspace access live</div>
-        </div>
-      </div>
-      <div class="impl-card ic2 reveal d2">
-        <div class="impl-week">Week 2</div>
-        <div class="impl-phase">Configuration</div>
-        <div class="impl-items">
-          <div class="impl-item"><div class="impl-dot"></div>Custom workflow setup per team</div>
-          <div class="impl-item"><div class="impl-dot"></div>Custom fields and labels configured</div>
-          <div class="impl-item"><div class="impl-dot"></div>Existing project data migrated</div>
-          <div class="impl-item"><div class="impl-dot"></div>Notification and permission setup</div>
-          <div class="impl-item"><div class="impl-dot"></div>Permissions and notifications configured</div>
-        </div>
-      </div>
-      <div class="impl-card ic3 reveal d3">
-        <div class="impl-week">Week 3</div>
-        <div class="impl-phase">Pilot &amp; Training</div>
-        <div class="impl-items">
-          <div class="impl-item"><div class="impl-dot"></div>Pilot team onboarded (5–10 users)</div>
-          <div class="impl-item"><div class="impl-dot"></div>Live training by role — tailored per team</div>
-          <div class="impl-item"><div class="impl-dot"></div>First sprint run end-to-end</div>
-          <div class="impl-item"><div class="impl-dot"></div>Feedback collected and actioned</div>
-          <div class="impl-item"><div class="impl-dot"></div>User documentation delivered</div>
-        </div>
-      </div>
-      <div class="impl-card ic4 reveal d4">
-        <div class="impl-week">Week 4</div>
-        <div class="impl-phase">Full Rollout</div>
-        <div class="impl-items">
-          <div class="impl-item"><div class="impl-dot"></div>All users invited and onboarded</div>
-          <div class="impl-item"><div class="impl-dot"></div>All projects migrated and live</div>
-          <div class="impl-item"><div class="impl-dot"></div>Go-live sign-off with your team</div>
-          <div class="impl-item"><div class="impl-dot"></div>30-day post-launch helpdesk</div>
-          <div class="impl-item"><div class="impl-dot"></div>Quarterly business review scheduled</div>
-        </div>
-      </div>
-    </div>
-    <div class="impl-tags reveal">
-      <span class="impl-tags-label">Enterprise includes</span>
-      <span class="chip chip-g">Dedicated implementation manager</span>
-      <span class="chip chip-g">Data migration support</span>
-      <span class="chip chip-b">Role-based training</span>
-      <span class="chip chip-v">30-day post-launch helpdesk</span>
-      <span class="chip chip-a">Quarterly business review</span>
-    </div>
-  </div>
-</section>
-
 <!-- ═══════════════ FAQ ═══════════════ -->
+
 <section id="faq" class="section-pad" style="background:var(--bg2);">
   <div class="container">
     <div class="reveal center">
@@ -2604,7 +2653,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
           <span class="faq-q-text">How secure is our organization's data?</span>
           <span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">Every organization's data is <strong>fully isolated at the database level</strong> — complete multi-tenant separation. Member access is invite-only; no one can join without an explicit email invitation. All API endpoints enforce role-based access control server-side. Every action is audit-logged with a timestamp and user ID.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Every organization's data is <strong>fully isolated at the database level</strong> — complete multi-tenant separation. Member access is invite-only; no one can join without an explicit email invitation. Every user can turn on two-step verification (authenticator app or email code). All API endpoints enforce role-based access control server-side. Every action is audit-logged with a timestamp and user ID.</div></div>
       </div>
 
       <div class="faq-item">
@@ -2617,10 +2666,34 @@ footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-ind
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">Can we import our work from Jira, Trello or Asana?</span>
+          <span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Export a CSV from your current tool and import it from any project&rsquo;s Backlog. Projiq recognises Jira, Trello, Asana and Linear column names, shows a <strong>preview with any problems</strong> before anything is created, and keeps priorities, statuses, assignees, labels and due dates. Enterprise onboarding includes hands-on migration help.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">Does Projiq integrate with GitHub, Slack or Microsoft Teams?</span>
+          <span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Connect <strong>GitHub, GitLab or Bitbucket</strong> and every commit, branch and pull request that mentions an issue key (like CRM-12) appears on that issue. Send project updates to <strong>Slack, Microsoft Teams or Discord</strong>, or to your own server with signed webhooks.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-q-text">Is there an API?</span>
+          <span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Create personal API tokens (read-only or read &amp; write, with an expiry) and use the same REST API the app uses — great for scripts, CI pipelines and automation tools like Zapier. Your due dates can also be subscribed to from Google Calendar, Outlook or Apple Calendar.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
           <span class="faq-q-text">How long does onboarding take?</span>
           <span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">Self-serve teams are typically <strong>live in under an hour</strong>. Enterprise onboarding is structured across 4 weeks: discovery and setup, configuration, pilot training, and full rollout — with a dedicated implementation manager guiding every step. Most teams run their first sprint within Week 3.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Self-serve teams are typically live in <strong>under an hour</strong> &mdash; create a project from a template, import your issues from a CSV and invite your team. Enterprise customers get hands-on onboarding help from our team.</div></div>
       </div>
 
       <div class="faq-item">
@@ -3475,5 +3548,15 @@ async function submitContactForm(e) {
 <style>.back-top{position:fixed;bottom:32px;right:32px;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#3B82F6,#8B5CF6);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transform:translateY(14px);transition:opacity .25s,transform .25s,box-shadow .2s;z-index:500;box-shadow:0 4px 18px rgba(59,130,246,.40)}.back-top.visible{opacity:1;pointer-events:auto;transform:translateY(0)}.back-top:hover{box-shadow:0 6px 28px rgba(59,130,246,.60)}.back-top svg{display:block}@media(max-width:600px){.back-top{bottom:20px;right:20px;width:42px;height:42px}}</style>
 <button class="back-top" id="back-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14V4M4 9l5-5 5 5"/></svg></button>
 <script>var _bt=document.getElementById('back-top');window.addEventListener('scroll',function(){_bt.classList.toggle('visible',window.scrollY>320)},{passive:true});</script>
+<script>
+/* Comparison: "Compare with" chips. Phones start with Jira so the table fits without scrolling. */
+(function(){
+  var t=document.getElementById('cmpTable'); if(!t) return;
+  var chips=document.querySelectorAll('.cmp-chip');
+  function show(k){ t.setAttribute('data-show',k); chips.forEach(function(c){ c.setAttribute('aria-selected', c.getAttribute('data-cmp')===k ? 'true' : 'false'); }); }
+  chips.forEach(function(c){ c.addEventListener('click', function(){ show(c.getAttribute('data-cmp')); }); });
+  if (window.matchMedia('(max-width:768px)').matches) show('jira');
+})();
+</script>
 </body>
 </html>
