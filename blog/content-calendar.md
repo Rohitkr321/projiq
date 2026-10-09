@@ -40,7 +40,7 @@ Always pick the next `pending` entry in order.
 | 25 | pending | remote work tools | Best Remote Work Tools for Engineering Teams in 2026 | /blog/remote-work-tools/ |
 | 26 | pending | how to prioritize backlog | How to Prioritize a Product Backlog: 5 Frameworks That Work | /blog/how-to-prioritize-backlog/ |
 | 27 | pending | engineering kpis | Engineering KPIs: 12 Metrics Every Engineering Leader Should Track | /blog/engineering-kpis/ |
-| 28 | pending | code review best practices | Code Review Best Practices for Engineering Teams in 2026 | /blog/code-review-best-practices/ |
+| 28 | done | code review best practices | Code Review in the AI Era: How to Keep Fast Coding from Becoming Slow Delivery | /blog/code-review-best-practices/ |
 | 29 | pending | onboarding new engineers | How to Onboard New Engineers in 30 Days Without Slowing Down the Team | /blog/onboarding-new-engineers/ |
 | 30 | pending | async communication | Async-First Communication: How Engineering Teams Ship Without Constant Meetings | /blog/async-communication/ |
 
