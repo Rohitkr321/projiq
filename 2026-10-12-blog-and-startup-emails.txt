@@ -1,0 +1,220 @@
+BLOG AND STARTUP EMAILS - 12 OCTOBER 2026
+
+Blog title: Project Management for Startups: How to Stay Organized While Moving Fast
+Local article: blog/project-management-for-startups/index.html
+Status: Saved locally; not published. Emails are drafts and have not been sent.
+
+FULL BLOG
+On Monday, your startup agrees to improve onboarding. By Wednesday, a prospect wants a custom integration, a customer reports a billing bug, and an AI coding agent has opened several pull requests. Everyone is working. Nobody is quite sure which work should finish first.
+
+Project management for startups starts with making that decision visible. A small team needs to know what outcome matters, who owns it, what is blocking it, and what evidence will count as finished. The process should help answer those questions quickly enough that people actually use it.
+
+This guide describes a lightweight setup for founders and software teams. You can run it with your existing tools, then adapt it as the team grows. The examples and suggested routines are practical starting points, not guaranteed productivity gains. Begin with one project and learn where your own delivery process gets stuck.
+
+Start with one outcome for the week
+
+A list of tasks can hide a lack of agreement about the goal. ?Build dashboard,? ?fix onboarding,? and ?improve reporting? each sound useful, but they compete for the same engineering attention. First decide which customer or business problem deserves that attention this week.
+
+Write the outcome in observable terms. For example: ?A new workspace admin can invite teammates and create a first project without our help.? This is more useful than ?finish onboarding? because the team can evaluate the result. It also leaves room to choose the smallest implementation that solves the problem.
+
+Keep the goal and its evidence together. Record the customer feedback that motivated it, the behavior you expect to change, and any known constraints. A founder should be able to explain why the outcome matters; an engineer should be able to explain what must happen for it to be achieved.
+
+One weekly outcome does not mean ignoring incidents or all maintenance. It gives the team a reference point when new work arrives. If an urgent request replaces the original goal, acknowledge the change rather than pretending both can fit into unchanged capacity.
+
+Keep the backlog smaller than your ambitions
+
+Your backlog should represent work worth considering, not every idea anyone has mentioned. Put raw suggestions into a separate ideas list. Move them into the working backlog only when the problem is understood well enough to compare with existing priorities.
+
+For each candidate, record who needs it, what currently happens, and why the current behavior is inadequate. Ask what would happen if you deferred it for a week. A customer-blocking bug and a cosmetic improvement may both be easy to build, but their consequences are different.
+
+A simple prioritization discussion can use three questions: how serious is the problem, how strong is the evidence, and how much uncertainty remains in the proposed solution? An uncertain request may deserve a customer conversation or prototype before it deserves a full implementation ticket.
+
+Review the near-term backlog weekly. Remove duplicates, close requests that no longer matter, and move distant ideas out of the active planning view. Avoid treating every item as a promise. Customers and teammates should be able to distinguish a request under consideration from work the team has committed to delivering.
+
+Make tickets clear enough to hand over
+
+A useful issue explains the behavior, not just the component name. ?Trial bug? forces the next person to investigate the same context again. ?Expired trials still show Trial in the admin list? gives them a concrete starting point and a visible symptom.
+
+Add a short description of the trigger, expected behavior, and relevant constraints. If a subscription lasts fourteen days, define when those days begin and what happens at the deadline. If a project is private, explain which roles may see it. These details prevent people from filling gaps with different assumptions.
+A lightweight issue template
+- Problem: Who is affected, and what happens today?
+- Expected result: What should they be able to do afterward?
+- Acceptance criteria: Which observable cases must work?
+- Owner: Who will take the next step?
+- Evidence: Where are the report, example, or reproduction steps?
+
+Include enough context to begin without another meeting. Link the original discussion, relevant screenshots, or repository issue when available. Avoid pasting an entire chat history and asking the assignee to discover the decision inside it. A few precise sentences are usually more useful than a long speculative specification.
+
+For larger features, use an epic or parent issue for the outcome and smaller issues for independently reviewable changes. The user-story format can help connect implementation to user needs, but clarity matters more than following a sentence formula.
+
+Use a board that reflects how work moves
+
+Start with a few statuses: Backlog, Ready, In Progress, In Review, and Done. Add a blocked marker or a separate column if blocked work needs explicit attention. Each status should have a meaning the team can explain without consulting a manual.
+
+Ready means the issue has enough context and an owner can begin. In Progress means someone is actively working on it. In Review means the implementation is waiting for validation or feedback. Done means the agreed completion criteria have been met, including deployment when delivery to users is part of the goal.
+
+Do not use a board to create the appearance of activity. If a change is waiting on a customer decision, record that dependency. If it is waiting for a reviewer, name the reviewer. A task that remains In Progress for a week with no next action needs a conversation, not another status update.
+
+Choose Kanban or Scrum according to how work arrives. A small team handling unpredictable customer requests may prefer continuous flow. A team with a stable short-term goal may benefit from a sprint. Either approach still needs clear priorities, ownership, and a realistic limit on simultaneous work.
+
+Assign one owner and make dependencies visible
+
+Every active issue needs one person responsible for moving it forward. That person does not have to implement every part. They are responsible for knowing the next action, asking for help, and making sure the result reaches the right reviewer.
+
+Separate the owner from contributors and approvers. For a billing change, one engineer may implement it, a founder may clarify the product rule, and another engineer may review it. Calling all three the owner makes it unclear who should act when the issue stalls.
+
+Record dependencies explicitly. ?Waiting for API credentials from the customer? is actionable. ?Blocked? is incomplete. Include who needs to respond and when the team will revisit the dependency. A founder can then help remove a business blocker without repeatedly asking engineers what is happening.
+
+For important knowledge areas, identify a backup. When only one engineer understands deployment or permissions, that person's absence can halt unrelated work. Pairing on a small change and documenting the relevant rules can spread knowledge without requiring a large documentation project.
+
+Protect capacity for finishing work
+
+A startup can create more tasks than it can finish, especially when AI tools make implementation faster. Starting another ticket feels productive, but it can increase the number of changes waiting for review, customer feedback, or release.
+
+Try a simple working agreement: before starting another unrelated task, check whether existing work needs review or help. Treat it as an experiment rather than a rigid rule. A blocked external dependency may justify starting something else; an available reviewer ignoring an aging pull request deserves a different conversation.
+
+Plan around the team's actual availability. Customer support, onboarding calls, incidents, and interviews consume time even when they are absent from the sprint backlog. Keep space for them. Do not assume last week's output can be repeated during a week when half the team is away.
+
+Watch where work waits. If reviews are the constraint, improve review coverage. If deployments are slow, investigate the release process. Adding more implementation work to the queue will not solve either issue. Our guide to code review in the AI era covers that handoff in more detail.
+
+Manage AI-assisted work with the same delivery rules
+
+An agent-created pull request still needs a purpose, an owner, and evidence that it meets the requirement. Give agents bounded tasks with concrete acceptance criteria. ?Fix everything in billing? creates uncertainty. ?Make the expired-trial status visible without requiring a billing-page visit? gives the reviewer a behavior to check.
+
+Ask the person submitting the change to explain it. Useful evidence includes relevant test results, reproduction steps, and a description of any remaining limitations. Keep product decisions and production access with the appropriate team members, and use repository controls to enforce review requirements.
+
+DORA's 2025 research describes AI as amplifying existing organizational strengths and weaknesses. Our interpretation for small teams is practical: clarify the workflow around the tool while adopting the tool. Otherwise, faster implementation can simply produce more unfinished work.
+
+Do not create a separate definition of done for AI contributions. A human-written change and an agent-assisted change should satisfy the same product rules. The amount of review should depend on the risk and complexity of the behavior, not on a claim that a particular author is automatically trustworthy.
+
+Keep coordination short and useful
+
+Use a short weekly planning discussion to agree on the outcome, choose the next few issues, and check capacity. Invite the people who can resolve the relevant decisions. Write the decisions into the project so that someone who missed the meeting can understand the plan.
+
+Daily coordination can be an async update: what changed, what is next, and what needs help? Use a conversation when there is a real blocker or disagreement. Avoid turning an update into a detailed activity diary. The goal is to reveal a dependency early enough that someone can act.
+
+At the end of the week, review the outcome and demonstrate what users can now do. Discuss one delivery problem worth improving next week. Perhaps acceptance criteria were unclear, reviews waited too long, or a customer request displaced the plan. Make one adjustment and observe whether it helps.
+
+Keep recurring meetings only when they produce decisions or remove obstacles. A calendar full of status meetings often indicates that the work is difficult to inspect elsewhere. Improve the shared record before adding another meeting to explain it.
+
+Measure delivery and learning together
+
+Track a few signals: completed outcomes, aging active work, unresolved blockers, and defects discovered after release. Alongside them, track what you learned from users. Finishing five features matters less if the customer problem that motivated them remains unresolved.
+
+Use task counts to understand workload, not to rank people. A complex migration and a wording correction are different units of work. Compare similar changes, record the context, and look for recurring sources of delay. If the team is growing, broader delivery metrics can complement this view.
+
+Ask whether a released change made the intended user action easier. Watch an onboarding session, review support questions, or ask the pilot customer what still requires help. Those observations can reveal a missing step that a completed ticket and a green test suite do not show.
+
+Set up your first week in Projiq
+
+Create one project for the product or customer outcome you want to improve. Add a small set of issues, define their expected results, and assign owners. Use the board to show implementation and review work. Keep relevant decisions and validation notes attached to the issue.
+
+For the first week, resist importing every old idea. Bring across current commitments and the context needed to deliver them. Once the team reliably updates the board, add more structure only where it answers a question: an epic for a larger outcome, a sprint for a short planning period, or a timeline to examine competing deadlines.
+
+The test is simple: can a teammate open the project and tell what matters, who owns the next step, and what is blocking delivery? If they can, the process is doing useful work. If they cannot, revise the workflow before adding more fields or meetings.
+
+Start with one real project
+
+Track issues, owners, and delivery progress in Projiq. Try it with your team's current work during the 14-day free trial.Start your free trial
+
+Frequently asked questions
+
+When does a startup need a project-management tool?When priorities, ownership, or delivery context become difficult to share reliably. Start with one project and a few clear statuses. The tool should reduce missing context and repeated status questions; it does not replace decisions about what matters.
+
+Should a small startup use Scrum or Kanban?Either can work. Kanban often fits continuously arriving requests, while a sprint can help a team pursue a stable short-term outcome. Choose based on how work arrives and keep the process lightweight. Both approaches need ownership and visible blockers.
+
+How detailed should startup tickets be?Include the problem, expected result, acceptance criteria, owner, and relevant evidence. Add enough context for someone to start without repeating the original investigation. Larger or riskier changes need more detail than simple, reversible edits.
+
+How should we track work completed by AI agents?Track the outcome through the same workflow as other implementation work. Assign a human owner, provide bounded acceptance criteria, and review evidence before merging or releasing. Completion should depend on the requirement being met, not on the agent saying it is done.
+
+What should we measure during our first month?Watch completed outcomes, aging active work, unresolved blockers, and released defects. Combine those signals with customer feedback. Avoid ranking individuals on task counts or assuming that a short trial proves a permanent productivity improvement.
+
+Source and editorial note
+
+DORA: State of AI-assisted Software Development 2025 provides background for the discussion of AI and organizational conditions. The examples, weekly routine, and recommended setup in this article are Projiq editorial guidance; they are not findings from a study of Projiq customers.
+
+STARTUP OUTREACH DRAFTS
+Public addresses rechecked on 12 October 2026; delivery and interest are unconfirmed.
+These drafts are for an initial approach. If you already contacted a company, use the follow-up below instead.
+
+1. SIXTYFOUR
+To: saarth@sixtyfour.ai
+Subject: How does Sixtyfour track engineering priorities?
+Source: https://www.ycombinator.com/companies/sixtyfour
+
+Hi Saarth,
+
+I came across Sixtyfour's work on AI-powered people and company intelligence.
+
+I'm the founder of Projiq, a project-management platform for software teams to track issues, sprint priorities, ownership, and deadlines.
+
+How does your team currently coordinate engineering work? If keeping priorities and progress visible is a challenge, I'd welcome a short conversation to see whether Projiq could help.
+
+We offer a 14-day free trial, and I can personally help set up one real project.
+
+Would you be open to a 15-minute conversation this week?
+
+Website: https://projiq.app
+
+Thanks,
+[Your name]
+Founder, Projiq
+
+2. ELEVATE
+To: hello@useelevate.dev
+Subject: How does Elevate coordinate product and customer work?
+Source: https://www.ycombinator.com/companies/elevate-2
+
+Hi Elevate team,
+
+I came across your work on AI-powered data integrations for private equity-backed businesses.
+
+I'm the founder of Projiq, a project-management platform for software teams to track issues, sprint priorities, ownership, and deadlines.
+
+How do you coordinate customer implementations alongside product development? If keeping priorities and progress visible is a challenge, I'd welcome a short conversation to see whether Projiq could help.
+
+We offer a 14-day free trial, and I can personally help set up one real project.
+
+Would you be open to a 15-minute conversation this week?
+
+Website: https://projiq.app
+
+Thanks,
+[Your name]
+Founder, Projiq
+
+3. COMPOSIO
+To: hello@composio.dev
+Subject: How does Composio coordinate integration and product work?
+Source: https://github.com/composiohq
+
+Hi Composio team,
+
+I came across your work connecting AI agents with external tools and applications.
+
+I'm the founder of Projiq, a project-management platform for software teams to track issues, sprint priorities, ownership, and deadlines.
+
+How do you coordinate work across integrations and product development? If keeping priorities and progress visible is a challenge, I'd welcome a short conversation to see whether Projiq could help.
+
+We offer a 14-day free trial, and I can personally help set up one real project.
+
+Would you be open to a 15-minute conversation this week?
+
+Website: https://projiq.app
+
+Thanks,
+[Your name]
+Founder, Projiq
+
+OPTIONAL FOLLOW-UP FOR A COMPANY YOU ALREADY EMAILED
+Reply in the original email thread.
+
+Hi [Name/team],
+
+Following up on my earlier message about Projiq. Is managing engineering priorities or task ownership something your team is looking to improve?
+
+If useful, I can help set up one real project during our 14-day trial. If someone else handles your team's workflow tools, could you point me to them?
+
+Thanks,
+[Your name]
+Founder, Projiq
